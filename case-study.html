@@ -3,337 +3,417 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Study — From Friction to Value · €597K with 10 Days of Human + AI Work</title>
+<title>From Friction to €597K — Case Study by Valentin Angenot</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F5F3EE;--paper2:#EEEBE3;--card:#FBFAF7;
-  --navy:#0A2540;--ink:#15171A;--body:#3A3F47;--muted:#8C8780;
-  --blue:#2F6BFF;--blue-d:#1E4FD0;--blue-l:#E6ECFB;
-  --line:rgba(10,37,64,.12);--line2:rgba(10,37,64,.06);
-  --green:#0F8A5F;
+  --bg:#FAFAF6;--card:#fff;
+  --navy:#0A2540;--ink:#111;--body:#444;--muted:#999;
+  --blue:#2F6BFF;--blue-d:#1E4FD0;--blue-l:#EBF0FF;
+  --green:#10B981;
+  --line:rgba(0,0,0,.08);
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Instrument Sans',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.2,.7,.3,1);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
 ::selection{background:var(--blue);color:#fff}
-.serif{font-family:'IBM Plex Serif',serif}
-.mono{font-family:'IBM Plex Mono',monospace}
 
-/* progress + grain */
-.progress{position:fixed;top:0;left:0;height:2px;z-index:9000;background:var(--blue);width:0}
-.grain{position:fixed;inset:0;z-index:9001;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.progress{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,var(--blue),var(--green));width:0;transition:width .1s}
 
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 4vw;background:rgba(245,243,238,.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--line2)}
-.nav-logo{font-family:'IBM Plex Serif',serif;font-size:1.02rem;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
-.nav-logo:hover{color:var(--blue)}
-.nav-back{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:.5rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5vw;background:rgba(250,250,246,.7);backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid rgba(0,0,0,.04);transition:transform .4s var(--ease)}
+nav.hidden{transform:translateY(-100%)}
+.nav-name{font-family:var(--serif);font-size:1rem;color:var(--ink);text-decoration:none}
+.nav-back{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s}
 .nav-back:hover{color:var(--ink)}
-.nav-back svg{transition:transform .3s}
-.nav-back:hover svg{transform:translateX(-3px)}
 
-/* layout */
-.wrap{max-width:1080px;margin:0 auto;padding:0 4vw}
-.narrow{max-width:720px}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:0 5vw;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-15%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(47,107,255,.06) 0%,transparent 65%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:40vw;height:40vw;background:radial-gradient(circle,rgba(16,185,129,.04) 0%,transparent 65%);pointer-events:none}
+.hero-inner{max-width:900px}
+.hero-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .3s var(--ease) forwards}
+.hero-tag span{display:inline-block;width:28px;height:1px;background:var(--blue);vertical-align:middle;margin-right:.8rem}
+.hero h1{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);line-height:1.02;letter-spacing:-.02em;color:var(--ink);opacity:0;animation:fadeUp 1s .5s var(--ease) forwards}
+.hero h1 i{font-style:italic;color:var(--blue)}
+.hero h1 .num{display:inline-block;background:var(--navy);color:#fff;padding:0 .15em;border-radius:4px;margin:0 .05em}
+.hero-desc{font-size:1.15rem;font-weight:400;color:var(--body);line-height:1.8;max-width:38em;margin-top:2rem;opacity:0;animation:fadeUp .8s .8s var(--ease) forwards}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem;opacity:0;animation:fadeUp .8s 1s var(--ease) forwards}
+.chip{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;padding:.45rem .9rem;border:1px solid var(--line);border-radius:99px;color:var(--body);background:var(--card)}
+.scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeUp .8s 1.4s var(--ease) forwards}
+.scroll-cue span{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--blue),transparent);animation:pulse 2s ease-in-out infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
 
-/* hero */
-.hero{padding:11rem 0 4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-25%;right:-12%;width:48vw;height:48vw;background:radial-gradient(circle,rgba(47,107,255,.07) 0%,transparent 70%);pointer-events:none}
-.kick{display:inline-flex;align-items:center;gap:.7rem;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:2rem}
-.kick::before{content:'';width:26px;height:1px;background:var(--blue)}
-.hero h1{font-family:'IBM Plex Serif',serif;font-weight:500;font-size:clamp(2.4rem,5.6vw,4.6rem);line-height:1.08;letter-spacing:-.02em;color:var(--ink);max-width:13ch}
-.hero h1 em{font-style:italic;color:var(--blue)}
-.hero-sub{font-size:1.06rem;font-weight:300;color:var(--body);line-height:1.75;max-width:34rem;margin-top:1.8rem}
-.hero-meta{display:flex;gap:2.6rem;margin-top:3rem;flex-wrap:wrap}
-.hm{display:flex;flex-direction:column;gap:.25rem}
-.hm .l{font-family:'IBM Plex Mono',monospace;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.hm .v{font-size:.9rem;font-weight:500;color:var(--ink)}
+/* STATS */
+.stats{background:var(--navy);position:relative;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(47,107,255,.15),transparent 50%),radial-gradient(circle at 80% 30%,rgba(16,185,129,.1),transparent 40%)}
+.stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:0 5vw}
+.stat{padding:3.5rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,.06);position:relative;z-index:1}
+.stat:last-child{border:none}
+.stat-n{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.6rem);color:#fff;line-height:1}
+.stat-n .unit{font-size:.4em;color:rgba(255,255,255,.4);font-family:var(--sans);font-weight:400}
+.stat-l{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.8rem;line-height:1.7}
 
-/* stat band */
-.band{background:var(--navy);color:#fff;position:relative;overflow:hidden}
-.band::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
-.band-inner{max-width:1080px;margin:0 auto;padding:0 4vw;display:grid;grid-template-columns:repeat(4,1fr)}
-.bstat{padding:3.2rem 1.4rem;border-right:1px solid rgba(255,255,255,.08);position:relative;z-index:1}
-.bstat:last-child{border-right:none}
-.bstat .n{font-family:'IBM Plex Serif',serif;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1;color:#fff}
-.bstat .n .u{font-size:.5em;color:#7FA4FF;font-weight:400}
-.bstat .l{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.7rem;line-height:1.6}
+/* SECTIONS */
+.sec{padding:8rem 5vw}
+.sec-inner{max-width:700px;margin:0 auto}
+.sec-wide{max-width:1100px;margin:0 auto}
+.sec-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem}
+.sec h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
+.sec h2 i{font-style:italic;color:var(--blue)}
+.sec p{font-size:1.05rem;color:var(--body);line-height:1.85;margin-bottom:1.2rem}
+.sec p strong{color:var(--ink);font-weight:600}
+.pullquote{border-left:3px solid var(--blue);padding:1rem 0 1rem 2rem;margin:2.5rem 0}
+.pullquote p{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--ink);line-height:1.5;margin:0}
 
-/* section */
-section{padding:6rem 0;position:relative}
-.snum{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
-.snum::before{content:'';width:24px;height:1px;background:var(--blue)}
-h2.st{font-family:'IBM Plex Serif',serif;font-weight:500;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.18;letter-spacing:-.015em;margin-bottom:1.8rem;max-width:18ch}
-h2.st em{font-style:italic;color:var(--blue)}
-.prose p{font-size:1rem;font-weight:300;color:var(--body);line-height:1.85;margin-bottom:1.2rem}
-.prose strong{font-weight:600;color:var(--ink)}
-.prose em{font-style:italic;color:var(--navy);font-weight:400}
-
-.pull{border-left:2px solid var(--blue);padding:.4rem 0 .4rem 1.8rem;margin:2.6rem 0}
-.pull p{font-family:'IBM Plex Serif',serif;font-size:clamp(1.15rem,2vw,1.5rem);font-style:italic;font-weight:400;color:var(--ink);line-height:1.55}
-
-/* features */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.6rem}
-.feat{background:var(--card);border:1px solid var(--line2);border-radius:10px;padding:1.7rem;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s}
-.feat:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,37,64,.09);border-color:var(--line)}
-.feat .fn{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--blue);letter-spacing:.1em;margin-bottom:.9rem}
-.feat h3{font-size:.96rem;font-weight:600;color:var(--ink);margin-bottom:.45rem}
-.feat p{font-size:.82rem;font-weight:300;color:var(--body);line-height:1.7}
-
-/* before/after */
-.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:1.4rem;align-items:stretch;margin-top:2.6rem}
-.ba-c{border-radius:12px;padding:2.4rem 1.6rem;text-align:center;display:flex;flex-direction:column;justify-content:center}
-.ba-c.b{background:var(--card);border:1px solid var(--line2)}
-.ba-c.a{background:var(--navy);color:#fff}
-.ba-c .n{font-family:'IBM Plex Serif',serif;font-size:3rem;line-height:1}
-.ba-c.b .n{color:var(--muted)}
-.ba-c.a .n{color:#fff}
-.ba-c .l{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;margin-top:.7rem}
-.ba-c.b .l{color:var(--muted)}.ba-c.a .l{color:#7FA4FF}
-.ba-arrow{display:flex;align-items:center;color:var(--blue);font-size:1.4rem}
-
-/* math */
-.math{background:var(--navy);border-radius:14px;padding:2.6rem 2.8rem;margin-top:2.4rem;color:#fff;position:relative;overflow:hidden}
-.math::after{content:'';position:absolute;top:-40%;right:-10%;width:40%;height:180%;background:radial-gradient(circle,rgba(47,107,255,.16),transparent 70%)}
-.math .ml{font-family:'IBM Plex Mono',monospace;font-size:.95rem;line-height:2.1;color:#C9D6EC;position:relative}
-.math .ml b{color:#fff;font-weight:500}
-.math .res{font-family:'IBM Plex Serif',serif;font-size:1.7rem;color:#7FE0B0;font-weight:500}
-.math .note{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:1.1rem;position:relative}
-
-/* takeaways */
-.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2.6rem}
-.tk{background:var(--card);border:1px solid var(--line2);border-radius:10px;padding:1.7rem 1.9rem;transition:border-color .4s,transform .4s}
-.tk:hover{border-color:var(--line);transform:translateY(-4px)}
-.tk .tn{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--blue);letter-spacing:.1em;margin-bottom:.7rem}
-.tk h3{font-size:.96rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;line-height:1.35}
-.tk p{font-size:.83rem;font-weight:300;color:var(--body);line-height:1.7}
-
-/* report download — dossier */
-.report{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:2.8rem;margin-top:3rem;display:grid;grid-template-columns:auto 1fr;gap:2.6rem;align-items:center}
-.dossier{width:128px;height:166px;border-radius:6px;background:linear-gradient(150deg,#0A2540,#143a63);box-shadow:0 22px 44px rgba(10,37,64,.28);position:relative;overflow:hidden;flex-shrink:0}
-.dossier::before{content:'';position:absolute;top:0;left:0;width:100%;height:7px;background:var(--blue)}
-.dossier .dk{position:absolute;top:20px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:.42rem;letter-spacing:.2em;text-transform:uppercase;color:#7FA4FF}
-.dossier .dt{position:absolute;top:42px;left:16px;right:16px;font-family:'IBM Plex Serif',serif;font-size:1.05rem;font-weight:500;color:#fff;line-height:1.15}
-.dossier .dt em{color:#7FA4FF;font-style:italic}
-.dossier .dr{position:absolute;bottom:46px;left:16px;width:30px;height:2px;background:var(--blue)}
-.dossier .dm{position:absolute;bottom:18px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:.4rem;letter-spacing:.12em;color:rgba(255,255,255,.45)}
-.report-c .rl{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:.7rem}
-.report-c h3{font-family:'IBM Plex Serif',serif;font-size:1.5rem;font-weight:500;color:var(--ink);margin-bottom:.6rem;line-height:1.2}
-.report-c p{font-size:.9rem;font-weight:300;color:var(--body);line-height:1.7;margin-bottom:1rem;max-width:42ch}
-.report-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem}
-.rtag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.06em;color:var(--navy);background:var(--blue-l);border:1px solid rgba(47,107,255,.18);padding:.3rem .6rem;border-radius:4px}
-.dl-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.8rem;background:var(--navy);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-decoration:none;border-radius:6px;transition:background .3s,transform .3s}
-.dl-btn:hover{background:var(--blue);transform:translateY(-2px)}
-
-/* cta */
-.cta{text-align:center;padding:7rem 0}
-.cta h2{font-family:'IBM Plex Serif',serif;font-weight:500;font-size:clamp(1.9rem,4vw,3rem);margin-bottom:1.1rem}
-.cta h2 em{font-style:italic;color:var(--blue)}
-.cta p{font-size:.96rem;font-weight:300;color:var(--body);max-width:30rem;margin:0 auto 2.2rem;line-height:1.75}
-.cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
-.cbtn{display:inline-block;padding:.85rem 2.1rem;font-size:.72rem;font-weight:600;letter-spacing:.05em;text-decoration:none;border-radius:6px;transition:all .3s}
-.cbtn.p{background:var(--blue);color:#fff}
-.cbtn.p:hover{background:var(--blue-d);transform:translateY(-2px)}
-.cbtn.g{border:1px solid var(--line);color:var(--body)}
-.cbtn.g:hover{border-color:var(--navy);color:var(--navy)}
-
-footer{border-top:1px solid var(--line2);padding:1.8rem 0}
-.foot{max-width:1080px;margin:0 auto;padding:0 4vw;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:.06em}
-
-/* reveals */
-.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
-.stg>*{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.stg>*{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .stg.in>*{opacity:1;transform:none}
-.stg.in>*:nth-child(1){transition-delay:0s}.stg.in>*:nth-child(2){transition-delay:.07s}.stg.in>*:nth-child(3){transition-delay:.14s}.stg.in>*:nth-child(4){transition-delay:.21s}.stg.in>*:nth-child(5){transition-delay:.28s}.stg.in>*:nth-child(6){transition-delay:.35s}
+.stg.in>*:nth-child(1){transition-delay:0s}.stg.in>*:nth-child(2){transition-delay:.08s}.stg.in>*:nth-child(3){transition-delay:.16s}.stg.in>*:nth-child(4){transition-delay:.24s}.stg.in>*:nth-child(5){transition-delay:.32s}.stg.in>*:nth-child(6){transition-delay:.4s}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:3rem}
+.feat{background:var(--card);padding:2.2rem 1.8rem;transition:background .3s}
+.feat:hover{background:var(--blue-l)}
+.feat-num{font-family:var(--mono);font-size:.55rem;color:var(--blue);letter-spacing:.08em;margin-bottom:1rem}
+.feat h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem}
+.feat p{font-size:.85rem;color:var(--body);line-height:1.7;margin:0}
+
+/* BEFORE/AFTER */
+.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(10,37,64,.12)}
+.ba-card{padding:3.5rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.ba-card.before{background:var(--card);border:1px solid var(--line);border-right:none}
+.ba-card.after{background:var(--navy);color:#fff}
+.ba-card.after::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(16,185,129,.12),transparent 60%)}
+.ba-big{font-family:var(--serif);font-size:clamp(4rem,8vw,6rem);line-height:1;position:relative;z-index:1}
+.ba-card.before .ba-big{color:#ccc}
+.ba-card.before .ba-big s{text-decoration:line-through;text-decoration-color:rgba(220,50,50,.4);text-decoration-thickness:3px}
+.ba-card.after .ba-big{color:#fff;text-shadow:0 0 40px rgba(16,185,129,.3)}
+.ba-unit{font-family:var(--sans);font-size:.8rem;font-weight:400;opacity:.5}
+.ba-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-top:1rem}
+.ba-card.before .ba-label{color:var(--muted)}
+.ba-card.after .ba-label{color:rgba(255,255,255,.45)}
+.ba-pct{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;font-weight:700;color:#fff;z-index:10;box-shadow:0 4px 20px rgba(47,107,255,.4)}
+.ba-bar{width:100%;height:6px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:1.5rem;overflow:hidden;position:relative;z-index:1}
+.ba-bar-fill{height:100%;border-radius:99px;width:0;transition:width 1.5s cubic-bezier(.2,.7,.3,1)}
+.ba-card.before .ba-bar-fill{background:#ddd;width:100%}
+.ba-card.after .ba-bar-fill{background:var(--green)}
+.ba-card.after.animated .ba-bar-fill{width:11.1%}
+
+/* VALUE CALC */
+.calc{background:var(--navy);border-radius:20px;padding:3.5rem;margin-top:2rem;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(10,37,64,.18)}
+.calc::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(circle,rgba(47,107,255,.1),transparent 60%)}
+.calc::after{content:'';position:absolute;bottom:-30%;left:-10%;width:40%;height:140%;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 60%)}
+.calc-steps{position:relative;z-index:1}
+.calc-step{display:flex;align-items:baseline;gap:.6rem;font-family:var(--mono);font-size:.9rem;color:#6B7D99;line-height:2.4}
+.calc-step b{color:#fff;font-weight:600}
+.calc-eq{font-family:var(--mono);font-size:.75rem;color:#4A5F7A}
+.calc-divider{width:100%;height:1px;background:rgba(255,255,255,.08);margin:1rem 0}
+.calc-total-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.3rem;position:relative;z-index:1}
+.calc-result{font-family:var(--serif);font-size:clamp(2.5rem,5vw,3.8rem);color:var(--green);position:relative;z-index:1;text-shadow:0 0 60px rgba(16,185,129,.25)}
+.calc-note{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:1.2rem;position:relative;z-index:1}
+
+/* PRINCIPLES */
+.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}
+.tk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.tk:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.06);border-color:rgba(47,107,255,.2)}
+.tk-num{font-family:var(--mono);font-size:.6rem;color:var(--blue);letter-spacing:.1em;margin-bottom:.8rem}
+.tk h3{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;line-height:1.35}
+.tk p{font-size:.82rem;color:var(--body);line-height:1.7;margin:0}
+
+/* REPORT */
+.report-sec{background:linear-gradient(180deg,var(--bg) 0%,#f0eee8 100%);padding:6rem 5vw}
+.report-box{max-width:900px;margin:0 auto;display:grid;grid-template-columns:180px 1fr;gap:3rem;align-items:center}
+.book{width:180px;height:240px;perspective:800px;cursor:pointer}
+.book-inner{width:100%;height:100%;position:relative;transform:rotateY(-8deg);transition:transform .6s var(--ease);transform-style:preserve-3d}
+.book:hover .book-inner{transform:rotateY(0deg)}
+.book-cover{width:100%;height:100%;background:linear-gradient(160deg,#0A2540 0%,#143a63 100%);border-radius:2px 8px 8px 2px;box-shadow:6px 6px 30px rgba(10,37,64,.35),-2px 0 8px rgba(10,37,64,.15);position:relative;overflow:hidden;display:flex;flex-direction:column;padding:1.6rem}
+.book-cover::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px;background:var(--blue)}
+.book-cover::after{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:linear-gradient(90deg,rgba(0,0,0,.15),transparent)}
+.book-tag{font-family:var(--mono);font-size:.38rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(127,164,255,.7)}
+.book-title{font-family:var(--serif);font-size:1.1rem;color:#fff;line-height:1.15;margin-top:.8rem;flex:1}
+.book-title i{color:#7FA4FF}
+.book-spine{position:absolute;bottom:1.6rem;left:1.6rem;width:24px;height:2px;background:var(--blue)}
+.book-author{font-family:var(--mono);font-size:.36rem;letter-spacing:.12em;color:rgba(255,255,255,.35);margin-top:auto}
+.report-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
+.report-info h3{font-family:var(--serif);font-size:1.8rem;color:var(--ink);line-height:1.15;margin-bottom:.8rem}
+.report-info>p{font-size:.95rem;color:var(--body);line-height:1.75;margin-bottom:1.2rem;max-width:38em}
+.report-topics{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.6rem}
+.topic{font-family:var(--mono);font-size:.55rem;letter-spacing:.04em;color:var(--navy);background:var(--blue-l);border:1px solid rgba(47,107,255,.15);padding:.35rem .65rem;border-radius:4px}
+.dl-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;background:var(--navy);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.05em;text-decoration:none;border-radius:8px;transition:all .3s var(--ease)}
+.dl-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 30px rgba(47,107,255,.25)}
+
+/* CTA */
+.cta{text-align:center;padding:8rem 5vw;position:relative}
+.cta::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.cta h2{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.5rem);color:var(--ink);margin-bottom:1rem}
+.cta h2 i{font-style:italic;color:var(--blue)}
+.cta>p{font-size:1.05rem;color:var(--body);max-width:28em;margin:0 auto 2.5rem;line-height:1.75}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-p{display:inline-block;padding:1rem 2.4rem;background:var(--blue);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-decoration:none;border-radius:8px;transition:all .3s}
+.btn-p:hover{background:var(--blue-d);transform:translateY(-2px)}
+.btn-g{display:inline-block;padding:1rem 2.4rem;border:1px solid var(--line);color:var(--body);font-size:.75rem;font-weight:500;text-decoration:none;border-radius:8px;transition:all .3s}
+.btn-g:hover{border-color:var(--navy);color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding:2rem 5vw}
+.foot{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;font-family:var(--mono);font-size:.55rem;color:var(--muted);letter-spacing:.06em}
 
 @media(max-width:860px){
   .feat-grid{grid-template-columns:1fr}
   .tk-grid{grid-template-columns:1fr}
-  .band-inner{grid-template-columns:1fr 1fr}
-  .bstat{border-bottom:1px solid rgba(255,255,255,.08)}
-  .report{grid-template-columns:1fr;justify-items:center;text-align:center;padding:2rem}
-  .report-c p{margin-left:auto;margin-right:auto}
-  .report-tags{justify-content:center}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-bottom:1px solid rgba(255,255,255,.06)}
+  .report-box{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .report-topics{justify-content:center}
 }
 @media(max-width:560px){
-  nav{padding:1rem 5vw}
-  .hero{padding:8rem 0 3rem}
-  .band-inner{grid-template-columns:1fr}
-  .ba{grid-template-columns:1fr;gap:.9rem}
-  .ba-arrow{transform:rotate(90deg);justify-content:center}
-  .math{padding:1.8rem}.math .ml{font-size:.8rem}
+  .hero{padding:0 5vw}
+  .stats-grid{grid-template-columns:1fr}
+  .ba-wrap{grid-template-columns:1fr}
+  .ba-pct{top:auto;bottom:0;left:50%;transform:translate(-50%,50%)}
   .cta-btns{flex-direction:column;align-items:center}
-  .cbtn{width:100%;max-width:280px;text-align:center}
+  .btn-p,.btn-g{width:100%;max-width:280px;text-align:center}
+  .calc{padding:1.5rem}
+  .calc-step{font-size:.75rem}
+  .calc-result{font-size:2.2rem}
 }
 </style>
 </head>
 <body>
-<div class="progress" id="pg"></div>
-<div class="grain"></div>
 
-<nav>
-  <a class="nav-logo" href="index.html">Valentin Angenot</a>
-  <a class="nav-back" href="index.html#projects"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Portfolio</a>
+<div class="progress" id="pg"></div>
+
+<nav id="nav">
+  <a class="nav-name" href="index.html">Valentin Angenot</a>
+  <a class="nav-back" href="index.html#publications">&#8592; Portfolio</a>
 </nav>
 
-<!-- HERO -->
 <header class="hero">
-  <div class="wrap">
-    <span class="kick">Case Study · AI × Engineering · 2026</span>
-    <h1 class="serif">From friction to <em>€597K</em> in ten days.</h1>
-    <p class="hero-sub">Working with Claude, I turned an organization's biggest administrative bottleneck into measurable savings — and a repeatable method. Here is the issue, the solution, the impact, and what transfers to any organization.</p>
-    <div class="hero-meta">
-      <div class="hm"><span class="l">Client</span><span class="v">Anonymous · Public utility</span></div>
-      <div class="hm"><span class="l">Build time</span><span class="v">~10 days</span></div>
-      <div class="hm"><span class="l">Team</span><span class="v">1 person + Claude</span></div>
-      <div class="hm"><span class="l">Result</span><span class="v">~€597,000 saved</span></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span></span>Case Study &middot; 2026</div>
+    <h1>From friction<br>to <span class="num">&euro;597K</span><br>in <i>ten days.</i></h1>
+    <p class="hero-desc">Working with Claude, I turned an organization's biggest administrative bottleneck into a tool that saves nearly six hundred thousand euros. This is the problem, the build, the numbers, and what transfers to any organization.</p>
+    <div class="hero-chips">
+      <span class="chip">1 person + Claude</span>
+      <span class="chip">Public utility</span>
+      <span class="chip">24 procedures unified</span>
+      <span class="chip">Zero infrastructure cost</span>
     </div>
   </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
 </header>
 
-<!-- STAT BAND -->
-<div class="band">
-  <div class="band-inner stg" id="band">
-    <div class="bstat"><div class="n">99<span class="u">→</span>11</div><div class="l">Minutes per task<br>before → after</div></div>
-    <div class="bstat"><div class="n">24</div><div class="l">Procedures<br>unified into one</div></div>
-    <div class="bstat"><div class="n">597<span class="u">K€</span></div><div class="l">Saved over<br>ten years</div></div>
-    <div class="bstat"><div class="n">0<span class="u">€</span></div><div class="l">Hosting &amp;<br>infrastructure</div></div>
+<div class="stats">
+  <div class="stats-grid stg" id="stats">
+    <div class="stat">
+      <div class="stat-n"><span class="counter" data-target="99">0</span><span class="unit"> &rarr; </span><span class="counter" data-target="11">0</span></div>
+      <div class="stat-l">Minutes per task<br>before &rarr; after</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n"><span class="counter" data-target="24">0</span></div>
+      <div class="stat-l">Municipal procedures<br>unified into one</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n"><span class="counter" data-target="597">0</span><span class="unit">K&euro;</span></div>
+      <div class="stat-l">Value created<br>over ten years</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n"><span class="counter" data-target="0">0</span><span class="unit">&euro;</span></div>
+      <div class="stat-l">Hosting &amp;<br>infrastructure cost</div>
+    </div>
   </div>
 </div>
 
-<!-- 01 ISSUE -->
-<section>
-  <div class="wrap narrow rv">
-    <div class="snum">01 — The issue</div>
-    <h2 class="st serif">A small task, repeated <em>thousands</em> of times.</h2>
-    <div class="prose">
-      <p>An organization decided to bring a field operation in-house instead of outsourcing it. The financial logic was sound — except for one cost hiding in the paperwork.</p>
-      <p>Every job required permits from local authorities. Across the territory, <strong>24 different administrations each had their own rules</strong>: different forms, platforms, deadlines, contacts, and fees. For every single job, an employee had to identify the right procedure, gather documents, draw a compliant plan, and route it to the right people.</p>
-      <p>Done by hand, this consumed <strong>over 90 minutes per job</strong> — slow, error-prone, and entirely dependent on one person holding a maze of procedures in their head. The administrative overhead alone <em>threatened to make the whole project unprofitable.</em></p>
-    </div>
-    <div class="pull"><p>The hard part was never the work itself. It was the paperwork around it — and there was a mountain of it.</p></div>
+<!-- 01 -->
+<section class="sec">
+  <div class="sec-inner rv">
+    <div class="sec-tag">01 &mdash; The problem</div>
+    <h2>A small task,<br>repeated <i>thousands</i> of times.</h2>
+    <p>An organization decided to bring a field operation in-house instead of outsourcing it. The financial logic was sound. But one cost was hiding in the paperwork.</p>
+    <p>Every single job required permits from local authorities. Across the territory, <strong>24 different administrations</strong> each had their own rules: separate forms, separate platforms, separate deadlines, separate contacts, separate fees. For each job, an employee had to figure out the right procedure, gather the documents, draw a compliant plan, and route it to the right people.</p>
+    <p>Done by hand, this consumed <strong>over 90 minutes per job</strong>. It was slow. It was error-prone. And the whole operation depended on a single person keeping a maze of procedures in their head. The administrative overhead alone threatened to make the entire project unprofitable.</p>
+    <div class="pullquote"><p>The hard part was never the work itself. It was the paperwork around it, and there was a mountain of it.</p></div>
   </div>
 </section>
 
-<!-- 02 SOLUTION -->
-<section>
-  <div class="wrap">
-    <div class="narrow rv">
-      <div class="snum">02 — The solution</div>
-      <h2 class="st serif">One form. Every rule. <em>Zero friction.</em></h2>
-      <div class="prose">
-        <p>The fix was a single web tool that absorbs the complexity behind one interface. The employee fills out <strong>one form</strong>, regardless of location. The tool detects which administration applies, loads its specific rules, and produces everything required — automatically.</p>
-        <p>I built it in roughly <strong>10 days</strong>, working with Claude. I brought the domain knowledge — researching every procedure, mapping every rule. Claude turned that knowledge into working software at a speed no individual could match alone.</p>
-      </div>
-    </div>
+<!-- 02 -->
+<section class="sec" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="sec-inner rv">
+    <div class="sec-tag">02 &mdash; The solution</div>
+    <h2>One form.<br>Every rule. <i>Zero friction.</i></h2>
+    <p>The fix was a single web tool that absorbs the complexity behind one clean interface. The employee fills out <strong>one form</strong>, regardless of where the job takes place. The tool figures out which administration applies, loads the right rules, and produces every required document and message automatically. For the signage plan, the operator designs it using a built-in visual editor on a real map. The tool handles the formatting and export.</p>
+    <p>I built it in roughly <strong>ten working days</strong>, using Claude as my build partner. I brought the domain knowledge: I researched every procedure, mapped every rule, defined what "correct" looks like. Claude turned that knowledge into working software at a speed no individual could match alone.</p>
+  </div>
+  <div class="sec-wide">
     <div class="feat-grid stg rv">
-      <div class="feat"><div class="fn">01</div><h3>Auto-detection</h3><p>Type an address — the tool identifies the right administration and loads its rules, contacts, and deadlines instantly.</p></div>
-      <div class="feat"><div class="fn">02</div><h3>Document generation</h3><p>Official permit documents created automatically, formatted to each authority's exact requirements.</p></div>
-      <div class="feat"><div class="fn">03</div><h3>Visual plan editor</h3><p>Drag-and-drop editor to build compliant signage plans on a real map — no separate software needed.</p></div>
-      <div class="feat"><div class="fn">04</div><h3>Email automation</h3><p>Pre-filled messages to the right recipients, with the right attachments, ready to send.</p></div>
-      <div class="feat"><div class="fn">05</div><h3>Live dashboard</h3><p>Real-time view of activity, volumes, and trends — exportable to a spreadsheet.</p></div>
-      <div class="feat"><div class="fn">06</div><h3>Runs anywhere</h3><p>Entirely in the browser. No server, no IT setup. Works on a tablet in the field.</p></div>
+      <div class="feat"><div class="feat-num">01</div><h3>Auto-detection</h3><p>Type an address and the tool identifies the right administration. It loads the correct rules, contacts, and deadlines instantly.</p></div>
+      <div class="feat"><div class="feat-num">02</div><h3>Document generation</h3><p>Official permit documents are created automatically, formatted to each authority's exact requirements. No retyping.</p></div>
+      <div class="feat"><div class="feat-num">03</div><h3>Visual plan editor</h3><p>A drag-and-drop editor to build compliant signage plans directly on a real map. No separate software needed.</p></div>
+      <div class="feat"><div class="feat-num">04</div><h3>Email automation</h3><p>Pre-filled messages go to the right recipients with the right attachments. Ready to send in one click.</p></div>
+      <div class="feat"><div class="feat-num">05</div><h3>Live dashboard</h3><p>Real-time view of activity, volumes, and trends across the territory. Exportable to a spreadsheet.</p></div>
+      <div class="feat"><div class="feat-num">06</div><h3>Runs anywhere</h3><p>The tool runs entirely in the browser. No server, no IT setup. It works on a tablet in the field.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 03 IMPACT -->
-<section>
-  <div class="wrap narrow rv">
-    <div class="snum">03 — The impact</div>
-    <h2 class="st serif">From 90 minutes to <em>eleven</em>.</h2>
-    <div class="prose">
-      <p>What used to take an employee over an hour and a half now takes eleven minutes. That gap, multiplied across every job over a ten-year horizon, is where the value lives.</p>
-    </div>
-    <div class="ba">
-      <div class="ba-c b"><div class="n">~99<span style="font-size:.4em"> min</span></div><div class="l">Before — by hand</div></div>
-      <div class="ba-arrow">→</div>
-      <div class="ba-c a"><div class="n">11<span style="font-size:.4em"> min</span></div><div class="l">After — with the tool</div></div>
-    </div>
-    <div class="math">
-      <div class="ml">87 min saved ÷ 60 × €77/hr = <b>€111.65</b> per job<br>€111.65 × 5,346 jobs = <span class="res">€596,880.90</span></div>
-      <div class="note">Conservative estimate · excludes error reduction, faster onboarding &amp; de-risking</div>
-    </div>
-    <div class="prose" style="margin-top:2rem">
-      <p>And that's only the administrative savings. It excludes <strong>fewer rejected applications</strong>, <strong>faster onboarding</strong> of new staff, and knowledge no longer trapped in one person's head. The tool effectively paid for itself within its first months.</p>
-    </div>
+<!-- 03 -->
+<section class="sec">
+  <div class="sec-inner rv">
+    <div class="sec-tag">03 &mdash; The impact</div>
+    <h2>From 99 minutes<br>to <i>eleven.</i></h2>
+    <p>What used to take an employee over an hour and a half now takes eleven minutes. That gap, multiplied across every job over a ten-year horizon, is where the value lives.</p>
   </div>
-</section>
-
-<!-- 04 TRANSFERS -->
-<section>
-  <div class="wrap">
-    <div class="narrow rv">
-      <div class="snum">04 — What transfers</div>
-      <h2 class="st serif">The method, <em>not</em> the tool.</h2>
-      <div class="prose">
-        <p>Forget the specifics. The reason this worked is a repeatable pattern that applies to almost any organization with a tedious, recurring process. Six principles generalize.</p>
+  <div class="sec-wide rv">
+    <div class="ba-wrap" id="ba">
+      <div class="ba-card before">
+        <div class="ba-big"><s>~99</s><span class="ba-unit"> min</span></div>
+        <div class="ba-label">Before, by hand</div>
+        <div class="ba-bar"><div class="ba-bar-fill"></div></div>
+      </div>
+      <div class="ba-card after">
+        <div class="ba-pct">&minus;88%</div>
+        <div class="ba-big">11<span class="ba-unit"> min</span></div>
+        <div class="ba-label">After, with the tool</div>
+        <div class="ba-bar"><div class="ba-bar-fill"></div></div>
       </div>
     </div>
+    <div class="calc">
+      <div class="calc-steps">
+        <div class="calc-step"><b>88</b>&thinsp;min saved &divide; 60 <span class="calc-eq">=</span> <b>1.467</b>&thinsp;hrs/job</div>
+        <div class="calc-step"><b>1.467</b>&thinsp;hrs &times; <b>&euro;77</b>/hr <span class="calc-eq">=</span> <b>&euro;112.93</b> saved per job</div>
+        <div class="calc-step"><b>&euro;112.93</b> &times; <b>5,346</b> jobs over 10 years <span class="calc-eq">=</span></div>
+      </div>
+      <div class="calc-divider"></div>
+      <div class="calc-total-label">Total value created</div>
+      <div class="calc-result">&euro;596,881</div>
+      <div class="calc-note">Conservative estimate &middot; excludes error reduction, faster onboarding &amp; strategic de-risking</div>
+    </div>
+  </div>
+  <div class="sec-inner rv" style="margin-top:2rem">
+    <p>That figure only captures the administrative time savings. It does not include <strong>fewer rejected applications</strong>, <strong>faster onboarding</strong> of new staff, or the fact that critical knowledge is no longer trapped in one person's head.</p>
+    <div class="pullquote"><p>The tool does not replace the operator. It upgrades them.</p></div>
+    <p>Before, a skilled field worker spent most of their permit time buried in chaotic admin: hunting for the right form, cross-referencing contacts, reformatting the same data across three systems. The actual expertise (knowing where to place signs, understanding traffic flow, reading a site) was squeezed into a fraction of the process.</p>
+    <p>Now that same person spends their time doing what they are actually good at: designing compliant signage plans with a purpose-built visual editor, making real decisions about real roads. The tool absorbed the bureaucracy so the human could do the thinking. That is not automation replacing a person. That is a person finally working at the level they should have been working at all along.</p>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="sec" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="sec-inner rv">
+    <div class="sec-tag">04 &mdash; What transfers</div>
+    <h2>The method,<br><i>not</i> the tool.</h2>
+    <p>Forget the specifics. The reason this worked is a repeatable pattern that applies to almost any organization sitting on a tedious, recurring process. Six principles generalize.</p>
+  </div>
+  <div class="sec-wide">
     <div class="tk-grid stg rv">
-      <div class="tk"><div class="tn">01</div><h3>Target expensive friction</h3><p>The biggest wins come from killing boring, repetitive work — not clever features. Find the task everyone dreads.</p></div>
-      <div class="tk"><div class="tn">02</div><h3>Human expertise is the moat</h3><p>AI writes the code, but knowing what to build — the domain, the rules, the relationships — is irreplaceably human.</p></div>
-      <div class="tk"><div class="tn">03</div><h3>Turn knowledge into a system</h3><p>When procedures live in a tool instead of someone's memory, you get an asset: easier onboarding, fewer errors, full traceability.</p></div>
-      <div class="tk"><div class="tn">04</div><h3>Price impact in money</h3><p>"Saves time" is forgettable. "Saves €597K over ten years" gets approved. Translate minutes into euros, conservatively.</p></div>
-      <div class="tk"><div class="tn">05</div><h3>Design for the long run</h3><p>The build is a day; operation is years. Separate data from logic so a non-developer can maintain it.</p></div>
-      <div class="tk"><div class="tn">06</div><h3>Co-construct for adoption</h3><p>Tools fail on adoption, not technology. Build with the team, not for them, and measure the realized return.</p></div>
+      <div class="tk"><div class="tk-num">01</div><h3>Target expensive friction</h3><p>The biggest wins come from killing boring, repetitive work. Look for the task everyone dreads and nobody questions.</p></div>
+      <div class="tk"><div class="tk-num">02</div><h3>Human expertise is the moat</h3><p>AI writes the code. But knowing what to build, understanding the domain, mapping the rules, maintaining the relationships: that is irreplaceably human.</p></div>
+      <div class="tk"><div class="tk-num">03</div><h3>Turn knowledge into a system</h3><p>When procedures live in a tool instead of someone's memory, you get a real asset: easier onboarding, fewer errors, full traceability.</p></div>
+      <div class="tk"><div class="tk-num">04</div><h3>Price the impact in money</h3><p>"Saves time" is forgettable. "Saves &euro;597K over ten years" gets approved. Always translate minutes into euros, conservatively.</p></div>
+      <div class="tk"><div class="tk-num">05</div><h3>Design for the long run</h3><p>Building is a day. Operation is years. Separate data from logic so a non-developer can maintain it without touching code.</p></div>
+      <div class="tk"><div class="tk-num">06</div><h3>Co-construct for adoption</h3><p>Tools fail on adoption, not technology. Build with the team, not for them. Then measure the realized return to prove it works.</p></div>
     </div>
   </div>
 </section>
 
-<!-- REPORT DOWNLOAD -->
-<section style="padding-top:0">
-  <div class="wrap rv">
-    <div class="report">
-      <div class="dossier">
-        <span class="dk">Methodology · 2026</span>
-        <span class="dt serif">From <em>Friction</em> to Value</span>
-        <span class="dr"></span>
-        <span class="dm">33 pages · V. Angenot</span>
-      </div>
-      <div class="report-c">
-        <div class="rl">The complete methodology — free</div>
-        <h3 class="serif">From Friction to Value</h3>
-        <p>A 33-page field guide expanding this case study into a full method: assessing a process, sizing the value in money, designing for the long run, building with Claude, securing adoption, deploying for free, and proving the realized return.</p>
-        <div class="report-tags">
-          <span class="rtag">Process assessment</span>
-          <span class="rtag">Value discovery</span>
-          <span class="rtag">Building with Claude</span>
-          <span class="rtag">Adoption</span>
-          <span class="rtag">Deployment</span>
-          <span class="rtag">24 exhibits</span>
+<!-- REPORT -->
+<section class="report-sec">
+  <div class="report-box rv">
+    <div class="book">
+      <div class="book-inner">
+        <div class="book-cover">
+          <span class="book-tag">Methodology &middot; 2026</span>
+          <div class="book-title">From <i>Friction</i><br>to Value</div>
+          <div class="book-spine"></div>
+          <span class="book-author">Valentin Angenot</span>
         </div>
-        <a href="/from-friction-to-value.pdf" target="_blank" class="dl-btn">↓ Download the report (PDF)</a>
       </div>
+    </div>
+    <div class="report-info">
+      <div class="report-label">The complete methodology, free</div>
+      <h3>From Friction to Value</h3>
+      <p>A 38-page field guide that expands this case study into a full, reusable method. It covers process assessment, value sizing, intelligent design, building with Claude, advanced prompting and token strategy, cybersecurity, adoption, deployment, and benefits realization.</p>
+      <div class="report-topics">
+        <span class="topic">Process assessment</span>
+        <span class="topic">Value discovery</span>
+        <span class="topic">Building with Claude</span>
+        <span class="topic">Prompting &amp; tokens</span>
+        <span class="topic">Security</span>
+        <span class="topic">Adoption</span>
+        <span class="topic">Deployment</span>
+      </div>
+      <a href="from-friction-to-value.pdf" target="_blank" class="dl-btn">&darr; Download the report (PDF)</a>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta rv">
-  <div class="wrap">
-    <h2 class="serif">Let's build <em>yours</em>.</h2>
-    <p>I combine strategy, engineering, and AI fluency to build tools that create measurable value.</p>
-    <div class="cta-btns">
-      <a href="mailto:val.angenot@icloud.com" class="cbtn p">Get in touch</a>
-      <a href="index.html" class="cbtn g">← Back to portfolio</a>
-    </div>
+  <h2>Let's build <i>yours.</i></h2>
+  <p>I combine strategy, engineering, and AI fluency to build tools that create measurable value inside organizations.</p>
+  <div class="cta-btns">
+    <a href="mailto:val.angenot@icloud.com" class="btn-p">Get in touch</a>
+    <a href="index.html" class="btn-g">&larr; Back to portfolio</a>
   </div>
 </section>
 
-<footer><div class="foot"><span>© 2026 Valentin Angenot</span><span>Strategy · Finance · AI · Engineering</span></div></footer>
+<footer><div class="foot"><span>&copy; 2026 Valentin Angenot</span><span>Strategy &middot; Engineering &middot; AI</span></div></footer>
 
 <script>
 (function(){
 'use strict';
-function sc(){var y=scrollY,m=document.body.scrollHeight-innerHeight;document.getElementById('pg').style.width=(m>0?(y/m)*100:0)+'%'}
-var t=false;addEventListener('scroll',function(){if(!t){requestAnimationFrame(function(){sc();t=false});t=true}},{passive:true});sc();
-var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
-document.querySelectorAll('.rv,.stg').forEach(function(el){o.observe(el)});
+var lastY=0,ticking=false;
+function onScroll(){
+  var y=scrollY,m=document.body.scrollHeight-innerHeight;
+  document.getElementById('pg').style.width=(m>0?(y/m)*100:0)+'%';
+  var nav=document.getElementById('nav');
+  if(y>lastY&&y>200)nav.classList.add('hidden');
+  else nav.classList.remove('hidden');
+  lastY=y;
+}
+addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){onScroll();ticking=false});ticking=true}},{passive:true});
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.id==='stats')animateCounters();
+      if(e.target.id==='ba'){
+        setTimeout(function(){
+          var after=document.querySelector('.ba-card.after');
+          if(after)after.classList.add('animated');
+        },400);
+      }
+    }
+  });
+},{threshold:.15});
+document.querySelectorAll('.rv,.stg').forEach(function(el){obs.observe(el)});
+
+var counted=false;
+function animateCounters(){
+  if(counted)return;counted=true;
+  document.querySelectorAll('.counter').forEach(function(el){
+    var target=parseInt(el.dataset.target);
+    var duration=1200;
+    var start=performance.now();
+    function step(now){
+      var progress=Math.min((now-start)/duration,1);
+      var ease=1-Math.pow(1-progress,3);
+      el.textContent=Math.round(ease*target);
+      if(progress<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
 })();
 </script>
 </body>
