@@ -1,26 +1,27 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="How Valentin Angenot turned 24 municipal road-opening procedures into one browser-based workflow for CILE — two applications, zero servers, 98 minutes down to 11.">
-  <meta name="author" content="Valentin Angenot">
-  <meta name="theme-color" content="#f4f5f7">
-  <title>How 24 procedures became one workflow — Valentin Angenot</title>
-  <link rel="canonical" href="https://valentinangenot.com/case-study.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Valentin Angenot">
-  <meta property="og:title" content="How 24 municipal procedures became one software workflow">
-  <meta property="og:description" content="A software and operations case study for CILE: two browser applications, zero servers, 98 minutes down to 11 per permit.">
-  <meta property="og:url" content="https://valentinangenot.com/case-study.html">
-  <meta property="og:image" content="https://valentinangenot.com/framework-cover.png">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="How Valentin Angenot turned 24 municipal road-opening procedures into one browser-based workflow for CILE — two applications, zero servers, 98 minutes down to 11." name="description"/>
+<meta content="Valentin Angenot" name="author"/>
+<meta content="#f4f5f7" name="theme-color"/>
+<title>How 24 procedures became one workflow — Valentin Angenot</title>
+<link href="https://valentinangenot.com/case-study.html" rel="canonical"/>
+<link href="https://valentinangenot.com/case-study.html" hreflang="en" rel="alternate"/>
+<link href="https://valentinangenot.com/case-study.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="Valentin Angenot" property="og:site_name"/>
+<meta content="How 24 municipal procedures became one software workflow" property="og:title"/>
+<meta content="A software and operations case study for CILE: two browser applications, zero servers, 98 minutes down to 11 per permit." property="og:description"/>
+<meta content="https://valentinangenot.com/case-study.html" property="og:url"/>
+<meta content="https://valentinangenot.com/framework-cover.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -41,8 +42,7 @@
       ]
     }
   </script>
-
-  <style>
+<style>
     :root {
       --paper: #f4f5f7;
       --paper-deep: #e3e6eb;
@@ -161,6 +161,69 @@
       display: flex;
       align-items: center;
       gap: 18px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .lang-select {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 26px 0 9px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      opacity: .75;
+      transition: opacity .2s ease, border-color .2s ease;
+    }
+
+    .lang-select:hover,
+    .lang-select:focus-within {
+      opacity: 1;
+      border-color: var(--blue);
+    }
+
+    .lang-globe {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .lang-select-input {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 0;
+      padding: 8px 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lang-select-input:focus { outline: none; }
+
+    .lang-select-input option {
+      color: #0a0c10;
+      background: #fff;
+    }
+
+    .lang-caret {
+      position: absolute;
+      right: 9px;
+      font-size: 10px;
+      pointer-events: none;
     }
 
     .nav-mini {
@@ -970,6 +1033,74 @@
       }
     }
 
+
+    /* ---------- Modern motion ---------- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+      transition-delay: var(--d, 0s);
+      will-change: opacity, transform;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .site-header {
+      transition: box-shadow .3s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 12px 34px rgba(10, 12, 16, .08);
+    }
+
+    .module {
+      transition: transform .3s var(--ease), border-color .3s ease, box-shadow .3s var(--ease);
+    }
+
+    .module:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue);
+      box-shadow: 0 16px 34px rgba(10, 12, 16, .08);
+    }
+
+    .dive {
+      transition: border-color .3s ease;
+    }
+
+    .solution-board,
+    .system-board {
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    .solution-board:hover,
+    .system-board:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 15px 15px 0 var(--paper-deep);
+    }
+
+    .fact strong {
+      display: block;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .solution-board:hover,
+      .system-board:hover {
+        transform: none;
+        box-shadow: 7px 7px 0 var(--paper-deep);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
 
@@ -981,279 +1112,256 @@
     }
   </style>
 </head>
-
-<body>
-  <a class="skip-link" href="#article">Skip to article</a>
-  <div class="reading-progress" id="progress" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <nav class="nav shell" aria-label="Case study navigation">
-      <a class="brand" href="index.html">Valentin Angenot</a>
-      <span class="edition">Case study &middot; Software &amp; operations</span>
-      <div class="nav-actions">
-        <a class="nav-mini" href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="nav-mini" href="cv.pdf" target="_blank" rel="noopener">CV</a>
-        <a class="back-link" href="index.html#work">&larr; Portfolio</a>
-      </div>
-    </nav>
-  </header>
-
-  <main id="article">
-    <article>
-      <header class="article-header shell">
-        <span class="kicker">Software case study &middot; CILE &middot; 2026</span>
-        <h1>How 24 municipal procedures became one software workflow.</h1>
-        <p class="deck">The field operation was repeatable. The paperwork was not. I designed and built two linked browser applications that reduced a road-opening permit workflow from 98 minutes to 11.</p>
-
-        <div class="byline">
-          <span>By <strong>Valentin Angenot</strong></span>
-          <span>8-minute read</span>
-          <span>Li&egrave;ge, Belgium</span>
-        </div>
-
-        <div class="case-facts" role="group" aria-label="Case study facts">
-          <div class="fact">
-            <strong>24</strong>
-            <span>Municipal procedures translated into one operating path</span>
-          </div>
-          <div class="fact">
-            <strong>98 &rarr; 11</strong>
-            <span>Minutes required to prepare one permit package</span>
-          </div>
-          <div class="fact">
-            <strong>&euro;596,881</strong>
-            <span>Projected workflow value over ten years</span>
-          </div>
-        </div>
-      </header>
-
-      <div class="story">
-        <div class="article-column">
-          <p class="opening">Internalising selected road-opening work made strategic sense for CILE. The bottleneck was not the excavation itself. It was the administrative process surrounding every intervention.</p>
-
-          <h2><span class="section-number">01 &middot; The case</span>One operation, 24 administrative realities.</h2>
-
-          <p>CILE serves more than 560,000 residents across 24 municipalities. The same type of field intervention could require a different form, contact, deadline and submission route depending on the address: Powalco in one commune, the GODP police platform in Ans and Saint-Nicolas, EAGLE&nbsp;BE in Vis&eacute;, plain e-mail elsewhere &mdash; each with its own signage-plan format, fees and validation circuit.</p>
-
-          <p>At roughly 480 interventions a year, that variation was more than an inconvenience. It created recurring administrative effort and made selected road-opening activities harder to bring in-house.</p>
-
-          <blockquote>
-            &ldquo;The field work did not change at the municipal border. The administrative process did.&rdquo;
+<body data-title-en="How 24 procedures became one workflow — Valentin Angenot" data-title-fr="Comment 24 procédures sont devenues un seul workflow — Valentin Angenot">
+<a class="skip-link" data-en="Skip to article" data-fr="Aller à l’article" href="#article">Skip to article</a>
+<div aria-hidden="true" class="reading-progress" id="progress"></div>
+<header class="site-header">
+<nav aria-label="Case study navigation" class="nav shell">
+<a class="brand" href="index.html">Valentin Angenot</a>
+<span class="edition" data-en="Case study · Software &amp; operations" data-fr="Étude de cas · Logiciel &amp; opérations">Case study · Software &amp; operations</span>
+<div class="nav-actions">
+<div class="lang-select">
+<span aria-hidden="true" class="lang-globe">⊕</span>
+<label class="sr-only" for="langSelect">Language / Langue</label>
+<select class="lang-select-input" id="langSelect">
+<option value="en">English</option>
+<option value="fr">Français</option>
+</select>
+<span aria-hidden="true" class="lang-caret">▾</span>
+</div>
+<a class="nav-mini" href="https://www.linkedin.com/in/valentin-angenot/" rel="noopener" target="_blank">LinkedIn</a>
+<a class="nav-mini" href="cv.pdf" rel="noopener" target="_blank">CV</a>
+<a class="back-link" href="index.html#work">← Portfolio</a>
+</div>
+</nav>
+</header>
+<main id="article">
+<article>
+<header class="article-header shell">
+<span class="kicker" data-en="Software case study · CILE · 2026" data-fr="Étude de cas logicielle · CILE · 2026">Software case study · CILE · 2026</span>
+<h1 data-en="How 24 municipal procedures became one software workflow." data-fr="Comment 24 procédures communales sont devenues un seul workflow logiciel.">How 24 municipal procedures became one software workflow.</h1>
+<p class="deck" data-en="The field operation was repeatable. The paperwork was not. I designed and built two linked browser applications that reduced a road-opening permit workflow from 98 minutes to 11." data-fr="L’opération de terrain était répétable. La paperasse, non. J’ai conçu et développé deux applications web liées qui ont réduit le workflow de demande d’ouverture de voirie de 98 à 11 minutes.">The field operation was repeatable. The paperwork was not. I designed and built two linked browser applications that reduced a road-opening permit workflow from 98 minutes to 11.</p>
+<div class="byline">
+<span data-en="By &lt;strong&gt;Valentin Angenot&lt;/strong&gt;" data-fr="Par &lt;strong&gt;Valentin Angenot&lt;/strong&gt;">By <strong>Valentin Angenot</strong></span>
+<span data-en="8-minute read" data-fr="Lecture de 8 minutes">8-minute read</span>
+<span data-en="Liège, Belgium" data-fr="Liège, Belgique">Liège, Belgium</span>
+</div>
+<div aria-label="Case study facts" class="case-facts" data-aria-label-en="Case study facts" data-aria-label-fr="Faits clés de l’étude de cas" role="group">
+<div class="fact">
+<strong>24</strong>
+<span data-en="Municipal procedures translated into one operating path" data-fr="Procédures communales traduites en un seul chemin opérationnel">Municipal procedures translated into one operating path</span>
+</div>
+<div class="fact">
+<strong>98 → 11</strong>
+<span data-en="Minutes required to prepare one permit package" data-fr="Minutes nécessaires pour préparer un dossier de demande">Minutes required to prepare one permit package</span>
+</div>
+<div class="fact">
+<strong>€596,881</strong>
+<span data-en="Projected workflow value over ten years" data-fr="Valeur projetée du workflow sur dix ans">Projected workflow value over ten years</span>
+</div>
+</div>
+</header>
+<div class="story">
+<div class="article-column">
+<p class="opening" data-en="Internalising selected road-opening work made strategic sense for CILE. The bottleneck was not the excavation itself. It was the administrative process surrounding every intervention." data-fr="Internaliser une partie des ouvertures de voirie avait un sens stratégique pour la CILE. Le goulot d’étranglement n’était pas l’excavation elle-même, mais le processus administratif entourant chaque intervention.">Internalising selected road-opening work made strategic sense for CILE. The bottleneck was not the excavation itself. It was the administrative process surrounding every intervention.</p>
+<h2 data-en='&lt;span class="section-number"&gt;01 · The case&lt;/span&gt;One operation, 24 administrative realities.' data-fr='&lt;span class="section-number"&gt;01 · Le cas&lt;/span&gt;Une opération, 24 réalités administratives.'><span class="section-number">01 · The case</span>One operation, 24 administrative realities.</h2>
+<p data-en="CILE serves more than 560,000 residents across 24 municipalities. The same type of field intervention could require a different form, contact, deadline and submission route depending on the address: Powalco in one commune, the GODP police platform in Ans and Saint-Nicolas, EAGLE BE in Visé, plain e-mail elsewhere — each with its own signage-plan format, fees and validation circuit." data-fr="La CILE dessert plus de 560 000 habitants sur 24 communes. Un même type d’intervention de terrain pouvait exiger un formulaire, un contact, un délai et un canal de dépôt différents selon l’adresse : Powalco ici, la plateforme de police GODP à Ans et Saint-Nicolas, EAGLE BE à Visé, un simple e-mail ailleurs — chacun avec son format de plan de signalisation, ses redevances et son circuit de validation.">CILE serves more than 560,000 residents across 24 municipalities. The same type of field intervention could require a different form, contact, deadline and submission route depending on the address: Powalco in one commune, the GODP police platform in Ans and Saint-Nicolas, EAGLE BE in Visé, plain e-mail elsewhere — each with its own signage-plan format, fees and validation circuit.</p>
+<p data-en="At roughly 480 interventions a year, that variation was more than an inconvenience. It created recurring administrative effort and made selected road-opening activities harder to bring in-house." data-fr="À environ 480 interventions par an, cette variation dépassait le simple désagrément. Elle créait un effort administratif récurrent et compliquait l’internalisation des activités d’ouverture de voirie.">At roughly 480 interventions a year, that variation was more than an inconvenience. It created recurring administrative effort and made selected road-opening activities harder to bring in-house.</p>
+<blockquote data-en="
+            “The field work did not change at the municipal border. The administrative process did.”
+            &lt;span&gt;The design problem&lt;/span&gt;
+" data-fr="
+            « Le travail de terrain ne changeait pas à la frontière communale. Le processus administratif, si. »
+            &lt;span&gt;Le problème de conception&lt;/span&gt;
+">
+            “The field work did not change at the municipal border. The administrative process did.”
             <span>The design problem</span>
-          </blockquote>
-
-          <h2><span class="section-number">02 &middot; The solution</span>Move the complexity into the software.</h2>
-
-          <p>I mapped the 24 local procedures, identified their common structure and converted the variation into a single data model. The product was then designed around one operator journey: enter the address and intervention once, receive the complete permit package.</p>
-        </div>
-
-        <figure class="solution-figure">
-          <div class="solution-board">
-            <div class="solution-panel">
-              <span class="panel-label">One entry</span>
-              <h3>Describe the intervention.</h3>
-              <div class="field">
-                <small>Address</small>
-                <strong>Rue de l'Industrie 14, Li&egrave;ge</strong>
-              </div>
-              <div class="field">
-                <small>Intervention</small>
-                <strong>Urgent leak repair</strong>
-              </div>
-            </div>
-
-            <div class="solution-arrow" aria-hidden="true"><span>&rarr;</span></div>
-
-            <div class="solution-panel output">
-              <span class="panel-label">Ready package</span>
-              <h3>Local procedure matched automatically.</h3>
-              <ul class="output-list">
-                <li><span class="check">&#10003;</span>Permit documents generated</li>
-                <li><span class="check">&#10003;</span>Signage plan prepared</li>
-                <li><span class="check">&#10003;</span>Recipients identified</li>
-                <li><span class="check">&#10003;</span>Submission tracked</li>
-              </ul>
-            </div>
-          </div>
-          <figcaption>The operator follows one clear path. The rules of 24 municipalities remain inside the application.</figcaption>
-        </figure>
-
-        <div class="article-column">
-          <p>The application geocodes the address, detects the competent authority, applies the relevant rules, populates the required documents, prepares the signage plan, assembles the recipients and tracks the submission.</p>
-
-          <p>Built in ten working days, it runs entirely in the browser and requires no server deployment or additional infrastructure. Claude accelerated implementation as a development partner; the procedure research, product logic, validation and financial model remained my responsibility.</p>
-
-          <h2><span class="section-number">03 &middot; Under the hood</span>Two applications. Zero servers.</h2>
-
-          <p>The system is two single-page applications &mdash; a permit generator and a signage editor &mdash; that synchronise through the browser's local storage. The zero-server architecture is a deliberate choice, not a shortcut: the tool has to run on a CILE workstation or a field tablet with nothing to install, no backend to maintain, and no data leaving the machine.</p>
-        </div>
-
-        <figure class="system-figure">
-          <div class="system-board">
-            <div class="system-apps">
-              <div class="system-app">
-                <span class="system-app-file">index.html &middot; ~3,350 lines</span>
-                <h3>Permit generator</h3>
-                <p>Smart form, municipal rules engine, real-time validation, DOCX generation, e-mail workflow, site-manager registry, analytics dashboard.</p>
-                <div class="system-tags">
-                  <span>geocoding</span>
-                  <span>rules engine</span>
-                  <span>OOXML builder</span>
-                  <span>QR codes</span>
-                  <span>analytics</span>
-                </div>
-              </div>
-
-              <div class="system-link" aria-hidden="true">
-                <div>
-                  <span class="sync-arrows">&#8644;</span>
-                  <span>localStorage<br>sync</span>
-                </div>
-              </div>
-
-              <div class="system-app">
-                <span class="system-app-file">editeur.html &middot; ~1,470 lines</span>
-                <h3>Signage editor</h3>
-                <p>Interactive Leaflet map, geolocated placement of 60+ official Belgian road signs, multi-tab dimensioned-plan canvas, automatic detour computation.</p>
-                <div class="system-tags">
-                  <span>Leaflet</span>
-                  <span>4 map layers</span>
-                  <span>canvas plans</span>
-                  <span>OSRM routing</span>
-                  <span>PNG export</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="system-services">
-              <span class="system-services-label">External services</span>
-              <span>Nominatim geocoding</span>
-              <span>OSRM routing</span>
-              <span>SPW orthophotos + PICC</span>
-              <span>CartoDB basemaps</span>
-              <span>Google Street View</span>
-            </div>
-          </div>
-          <figcaption>Everything else &mdash; validation, document generation, persistence, analytics &mdash; runs client-side. Business data lives in four external JSON files that CILE can edit without touching a line of code.</figcaption>
-        </figure>
-
-        <div class="module-grid" role="group" aria-label="System modules">
-          <div class="module">
-            <span class="module-name">Rules engine</span>
-            <h3>24 municipalities as structured data</h3>
-            <p>Each commune is a record: submission platform, notice periods, required signage format (Qualiroute, annotated capture, dimensioned plan), contacts, fees, validation circuit and urgency procedure.</p>
-          </div>
-          <div class="module">
-            <span class="module-name">Geocoding</span>
-            <h3>Address to authority in one step</h3>
-            <p>Structured Nominatim queries, debounced at 800&nbsp;ms, with a postal-code fast path, tolerant commune matching and a supervised override for edge cases outside the base.</p>
-          </div>
-          <div class="module">
-            <span class="module-name">Document engine</span>
-            <h3>Word files built from raw XML</h3>
-            <p>The DOCX is assembled character by character in Office Open XML and zipped with JSZip &mdash; no document library &mdash; for pixel-level control over headers, tables, embedded plans and QR codes.</p>
-          </div>
-          <div class="module">
-            <span class="module-name">Detour computation</span>
-            <h3>Deviations calculated, not drawn</h3>
-            <p>The operator traces the blocked axis; three OSRM routing strategies run in parallel, candidates crossing the closure are excluded, and the best detour is rendered with arrows, metrics and a PNG export.</p>
-          </div>
-          <div class="module">
-            <span class="module-name">Validation</span>
-            <h3>Four validators, live</h3>
-            <p>Postal code against the CILE territory, date coherence with duration alerts, Belgian phone formats and working-hour checks &mdash; aggregated in real time to gate generation.</p>
-          </div>
-          <div class="module">
-            <span class="module-name">Field link</span>
-            <h3>From plan to site manager</h3>
-            <p>Placed signs are aggregated across map and plans into a quantified list, matched with a CRUD registry of site managers, and sent with the signage plans in one action.</p>
-          </div>
-        </div>
-
-        <div class="article-column">
-          <h2><span class="section-number">04 &middot; The details that matter</span>Where the engineering actually lives.</h2>
-
-          <div class="dive">
-            <h3>Rules live as data, not code.</h3>
-            <p>Deadlines change. Contacts change. Fees change. Every municipal rule sits in external JSON files (<code>communes.json</code>, <code>codes-postaux.json</code>) loaded fresh at startup &mdash; so CILE updates a deadline by editing a file, never by shipping code.</p>
-          </div>
-
-          <div class="dive">
-            <h3>Official municipal forms, filled automatically.</h3>
-            <p>Where a commune imposes its own template, the generator loads the official Word file and injects the form values directly into its XML &mdash; preserving the municipal layout, checkboxes and letterhead while removing the manual copying.</p>
-          </div>
-
-          <div class="dive">
-            <h3>E-mail attachments, despite the browser.</h3>
-            <p>Browsers cannot attach files through <code>mailto:</code>. The workflow degrades gracefully through three strategies &mdash; native Web Share on mobile, clipboard-to-Gmail on desktop, plain <code>mailto:</code> as the universal fallback &mdash; so the package reaches the commune from any device.</p>
-          </div>
-
-          <div class="dive">
-            <h3>The analytics were free.</h3>
-            <p>Every generated permit records an 18-field entry locally, feeding a dashboard of volumes, urgency rates, duration percentiles and per-commune breakdowns &mdash; with CSV export ready for Excel. Operational reporting came as a by-product of the workflow itself.</p>
-          </div>
-
-          <h2><span class="section-number">05 &middot; The result</span>From administrative friction to operating capacity.</h2>
-
-          <p>Measured against the existing process, permit preparation fell from 98 minutes to 11. The gain was not only faster paperwork: a fragmented procedure became a repeatable operating capability.</p>
-
-          <div class="result-table" role="group" aria-label="Case study results">
-            <div class="result-row">
-              <strong>87 minutes</strong>
-              <span>Saved on each permit workflow</span>
-            </div>
-            <div class="result-row">
-              <strong>&euro;0</strong>
-              <span>Additional server or infrastructure cost</span>
-            </div>
-            <div class="result-row">
-              <strong>&euro;596,881</strong>
-              <span>Projected value over ten years at modelled operating volumes</span>
-            </div>
-          </div>
-
-          <p class="note">The ten-year value is a projected business case, not a realised saving. It depends on adoption, operating volumes and the assumptions documented in the full report.</p>
-        </div>
-      </div>
-    </article>
-
-    <section class="report-section" aria-labelledby="report-title">
-      <div class="report-grid shell">
-        <a class="report-cover-link" href="from-friction-to-value.pdf" target="_blank" rel="noopener" aria-label="Open the From Friction to Value report">
-          <img class="report-cover" src="framework-cover.png" width="2384" height="3372" alt="Cover of From Friction to Value by Valentin Angenot">
-        </a>
-
-        <div class="report-copy">
-          <span class="kicker">The complete methodology</span>
-          <h2 id="report-title">Read the full case behind the article.</h2>
-          <p><em>From Friction to Value</em> is the full report covering the diagnosis, procedure mapping, product design, human&ndash;AI collaboration and financial model.</p>
-          <a class="button" href="from-friction-to-value.pdf" target="_blank" rel="noopener">Open the full report &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="author-band" aria-label="Contact the author">
-      <div class="author-inner shell">
-        <div>
-          <p class="author-name">Valentin Angenot</p>
-          <p class="author-role">Business Engineer &middot; Industrial Engineer &middot; CFA Level I passed</p>
-        </div>
-        <div class="author-actions">
-          <a class="button" href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">Connect on LinkedIn</a>
-          <a class="button button-ghost" href="cv.pdf" target="_blank" rel="noopener">Download CV</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner shell">
-      <span>&copy; 2026 Valentin Angenot</span>
-      <span>Software &middot; Operations &middot; Engineering</span>
-    </div>
-  </footer>
-
-  <script>
+</blockquote>
+<h2 data-en='&lt;span class="section-number"&gt;02 · The solution&lt;/span&gt;Move the complexity into the software.' data-fr='&lt;span class="section-number"&gt;02 · La solution&lt;/span&gt;Déplacer la complexité dans le logiciel.'><span class="section-number">02 · The solution</span>Move the complexity into the software.</h2>
+<p data-en="I mapped the 24 local procedures, identified their common structure and converted the variation into a single data model. The product was then designed around one operator journey: enter the address and intervention once, receive the complete permit package." data-fr="J’ai cartographié les 24 procédures locales, identifié leur structure commune et converti la variation en un modèle de données unique. Le produit a ensuite été conçu autour d’un seul parcours opérateur : saisir l’adresse et l’intervention une fois, recevoir le dossier de demande complet.">I mapped the 24 local procedures, identified their common structure and converted the variation into a single data model. The product was then designed around one operator journey: enter the address and intervention once, receive the complete permit package.</p>
+</div>
+<figure class="solution-figure">
+<div class="solution-board">
+<div class="solution-panel">
+<span class="panel-label" data-en="One entry" data-fr="Une saisie">One entry</span>
+<h3 data-en="Describe the intervention." data-fr="Décrire l’intervention.">Describe the intervention.</h3>
+<div class="field">
+<small data-en="Address" data-fr="Adresse">Address</small>
+<strong>Rue de l'Industrie 14, Liège</strong>
+</div>
+<div class="field">
+<small>Intervention</small>
+<strong data-en="Urgent leak repair" data-fr="Réparation de fuite urgente">Urgent leak repair</strong>
+</div>
+</div>
+<div aria-hidden="true" class="solution-arrow"><span>→</span></div>
+<div class="solution-panel output">
+<span class="panel-label" data-en="Ready package" data-fr="Dossier prêt">Ready package</span>
+<h3 data-en="Local procedure matched automatically." data-fr="Procédure locale identifiée automatiquement.">Local procedure matched automatically.</h3>
+<ul class="output-list">
+<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Permit documents generated' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Documents de demande générés'><span class="check">✓</span>Permit documents generated</li>
+<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Signage plan prepared' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Plan de signalisation préparé'><span class="check">✓</span>Signage plan prepared</li>
+<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Recipients identified' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Destinataires identifiés'><span class="check">✓</span>Recipients identified</li>
+<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Submission tracked' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Soumission suivie'><span class="check">✓</span>Submission tracked</li>
+</ul>
+</div>
+</div>
+<figcaption data-en="The operator follows one clear path. The rules of 24 municipalities remain inside the application." data-fr="L’opérateur suit un seul chemin clair. Les règles des 24 communes restent dans l’application.">The operator follows one clear path. The rules of 24 municipalities remain inside the application.</figcaption>
+</figure>
+<div class="article-column">
+<p data-en="The application geocodes the address, detects the competent authority, applies the relevant rules, populates the required documents, prepares the signage plan, assembles the recipients and tracks the submission." data-fr="L’application géocode l’adresse, détecte l’autorité compétente, applique les règles pertinentes, remplit les documents requis, prépare le plan de signalisation, assemble les destinataires et suit la soumission.">The application geocodes the address, detects the competent authority, applies the relevant rules, populates the required documents, prepares the signage plan, assembles the recipients and tracks the submission.</p>
+<p data-en="Built in ten working days, it runs entirely in the browser and requires no server deployment or additional infrastructure. Claude accelerated implementation as a development partner; the procedure research, product logic, validation and financial model remained my responsibility." data-fr="Développée en dix jours ouvrables, elle tourne entièrement dans le navigateur et ne nécessite ni serveur ni infrastructure supplémentaire. Claude a accéléré l’implémentation comme partenaire de développement ; la recherche sur les procédures, la logique produit, la validation et le modèle financier sont restés de ma responsabilité.">Built in ten working days, it runs entirely in the browser and requires no server deployment or additional infrastructure. Claude accelerated implementation as a development partner; the procedure research, product logic, validation and financial model remained my responsibility.</p>
+<h2 data-en='&lt;span class="section-number"&gt;03 · Under the hood&lt;/span&gt;Two applications. Zero servers.' data-fr='&lt;span class="section-number"&gt;03 · Sous le capot&lt;/span&gt;Deux applications. Zéro serveur.'><span class="section-number">03 · Under the hood</span>Two applications. Zero servers.</h2>
+<p data-en="The system is two single-page applications — a permit generator and a signage editor — that synchronise through the browser's local storage. The zero-server architecture is a deliberate choice, not a shortcut: the tool has to run on a CILE workstation or a field tablet with nothing to install, no backend to maintain, and no data leaving the machine." data-fr="Le système se compose de deux applications mono-page — un générateur de demandes et un éditeur de signalisation — synchronisées via le stockage local du navigateur. L’architecture zéro-serveur est un choix délibéré, pas un raccourci : l’outil doit tourner sur un poste CILE ou une tablette de terrain sans rien installer, sans backend à maintenir, et sans donnée qui quitte la machine.">The system is two single-page applications — a permit generator and a signage editor — that synchronise through the browser's local storage. The zero-server architecture is a deliberate choice, not a shortcut: the tool has to run on a CILE workstation or a field tablet with nothing to install, no backend to maintain, and no data leaving the machine.</p>
+</div>
+<figure class="system-figure">
+<div class="system-board">
+<div class="system-apps">
+<div class="system-app">
+<span class="system-app-file" data-en="index.html · ~3,350 lines" data-fr="index.html · ~3 350 lignes">index.html · ~3,350 lines</span>
+<h3 data-en="Permit generator" data-fr="Générateur de demandes">Permit generator</h3>
+<p data-en="Smart form, municipal rules engine, real-time validation, DOCX generation, e-mail workflow, site-manager registry, analytics dashboard." data-fr="Formulaire intelligent, moteur de règles communales, validation en temps réel, génération DOCX, workflow e-mail, registre des chefs de chantier, dashboard analytique.">Smart form, municipal rules engine, real-time validation, DOCX generation, e-mail workflow, site-manager registry, analytics dashboard.</p>
+<div class="system-tags">
+<span data-en="geocoding" data-fr="géocodage">geocoding</span>
+<span data-en="rules engine" data-fr="moteur de règles">rules engine</span>
+<span data-en="OOXML builder" data-fr="builder OOXML">OOXML builder</span>
+<span>QR codes</span>
+<span data-en="analytics" data-fr="analytique">analytics</span>
+</div>
+</div>
+<div aria-hidden="true" class="system-link">
+<div>
+<span class="sync-arrows">⇄</span>
+<span>localStorage<br/>sync</span>
+</div>
+</div>
+<div class="system-app">
+<span class="system-app-file" data-en="editeur.html · ~1,470 lines" data-fr="editeur.html · ~1 470 lignes">editeur.html · ~1,470 lines</span>
+<h3 data-en="Signage editor" data-fr="Éditeur de signalisation">Signage editor</h3>
+<p data-en="Interactive Leaflet map, geolocated placement of 60+ official Belgian road signs, multi-tab dimensioned-plan canvas, automatic detour computation." data-fr="Carte Leaflet interactive, placement géolocalisé de plus de 60 panneaux routiers belges officiels, plans cotés multi-onglets sur canvas, calcul automatique de déviations.">Interactive Leaflet map, geolocated placement of 60+ official Belgian road signs, multi-tab dimensioned-plan canvas, automatic detour computation.</p>
+<div class="system-tags">
+<span>Leaflet</span>
+<span data-en="4 map layers" data-fr="4 couches carto">4 map layers</span>
+<span data-en="canvas plans" data-fr="plans sur canvas">canvas plans</span>
+<span data-en="OSRM routing" data-fr="routage OSRM">OSRM routing</span>
+<span data-en="PNG export" data-fr="export PNG">PNG export</span>
+</div>
+</div>
+</div>
+<div class="system-services">
+<span class="system-services-label" data-en="External services" data-fr="Services externes">External services</span>
+<span data-en="Nominatim geocoding" data-fr="Géocodage Nominatim">Nominatim geocoding</span>
+<span data-en="OSRM routing" data-fr="Routage OSRM">OSRM routing</span>
+<span data-en="SPW orthophotos + PICC" data-fr="Orthophotos SPW + PICC">SPW orthophotos + PICC</span>
+<span data-en="CartoDB basemaps" data-fr="Fonds CartoDB">CartoDB basemaps</span>
+<span>Google Street View</span>
+</div>
+</div>
+<figcaption data-en="Everything else — validation, document generation, persistence, analytics — runs client-side. Business data lives in four external JSON files that CILE can edit without touching a line of code." data-fr="Tout le reste — validation, génération documentaire, persistance, analytique — tourne côté client. Les données métier vivent dans quatre fichiers JSON externes que la CILE peut éditer sans toucher une ligne de code.">Everything else — validation, document generation, persistence, analytics — runs client-side. Business data lives in four external JSON files that CILE can edit without touching a line of code.</figcaption>
+</figure>
+<div aria-label="System modules" class="module-grid" data-aria-label-en="System modules" data-aria-label-fr="Modules du système" role="group">
+<div class="module">
+<span class="module-name" data-en="Rules engine" data-fr="Moteur de règles">Rules engine</span>
+<h3 data-en="24 municipalities as structured data" data-fr="24 communes en données structurées">24 municipalities as structured data</h3>
+<p data-en="Each commune is a record: submission platform, notice periods, required signage format (Qualiroute, annotated capture, dimensioned plan), contacts, fees, validation circuit and urgency procedure." data-fr="Chaque commune est un enregistrement : plateforme de dépôt, délais de préavis, format de signalisation requis (Qualiroute, capture annotée, plan coté), contacts, redevances, circuit de validation et procédure d’urgence.">Each commune is a record: submission platform, notice periods, required signage format (Qualiroute, annotated capture, dimensioned plan), contacts, fees, validation circuit and urgency procedure.</p>
+</div>
+<div class="module">
+<span class="module-name" data-en="Geocoding" data-fr="Géocodage">Geocoding</span>
+<h3 data-en="Address to authority in one step" data-fr="De l’adresse à l’autorité en une étape">Address to authority in one step</h3>
+<p data-en="Structured Nominatim queries, debounced at 800 ms, with a postal-code fast path, tolerant commune matching and a supervised override for edge cases outside the base." data-fr="Requêtes Nominatim structurées, débouncées à 800 ms, avec raccourci par code postal, correspondance tolérante des communes et forçage supervisé pour les cas hors base.">Structured Nominatim queries, debounced at 800 ms, with a postal-code fast path, tolerant commune matching and a supervised override for edge cases outside the base.</p>
+</div>
+<div class="module">
+<span class="module-name" data-en="Document engine" data-fr="Moteur documentaire">Document engine</span>
+<h3 data-en="Word files built from raw XML" data-fr="Des fichiers Word construits en XML brut">Word files built from raw XML</h3>
+<p data-en="The DOCX is assembled character by character in Office Open XML and zipped with JSZip — no document library — for pixel-level control over headers, tables, embedded plans and QR codes." data-fr="Le DOCX est assemblé caractère par caractère en Office Open XML puis zippé via JSZip — sans bibliothèque documentaire — pour un contrôle au pixel des en-têtes, tableaux, plans intégrés et QR codes.">The DOCX is assembled character by character in Office Open XML and zipped with JSZip — no document library — for pixel-level control over headers, tables, embedded plans and QR codes.</p>
+</div>
+<div class="module">
+<span class="module-name" data-en="Detour computation" data-fr="Calcul de déviations">Detour computation</span>
+<h3 data-en="Deviations calculated, not drawn" data-fr="Des déviations calculées, pas dessinées">Deviations calculated, not drawn</h3>
+<p data-en="The operator traces the blocked axis; three OSRM routing strategies run in parallel, candidates crossing the closure are excluded, and the best detour is rendered with arrows, metrics and a PNG export." data-fr="L’opérateur trace l’axe bloqué ; trois stratégies de routage OSRM tournent en parallèle, les candidats croisant la fermeture sont exclus, et la meilleure déviation est rendue avec flèches, métriques et export PNG.">The operator traces the blocked axis; three OSRM routing strategies run in parallel, candidates crossing the closure are excluded, and the best detour is rendered with arrows, metrics and a PNG export.</p>
+</div>
+<div class="module">
+<span class="module-name">Validation</span>
+<h3 data-en="Four validators, live" data-fr="Quatre validateurs, en direct">Four validators, live</h3>
+<p data-en="Postal code against the CILE territory, date coherence with duration alerts, Belgian phone formats and working-hour checks — aggregated in real time to gate generation." data-fr="Code postal contre le territoire CILE, cohérence des dates avec alertes de durée, formats téléphoniques belges et contrôles d’horaires — agrégés en temps réel pour conditionner la génération.">Postal code against the CILE territory, date coherence with duration alerts, Belgian phone formats and working-hour checks — aggregated in real time to gate generation.</p>
+</div>
+<div class="module">
+<span class="module-name" data-en="Field link" data-fr="Lien terrain">Field link</span>
+<h3 data-en="From plan to site manager" data-fr="Du plan au chef de chantier">From plan to site manager</h3>
+<p data-en="Placed signs are aggregated across map and plans into a quantified list, matched with a CRUD registry of site managers, and sent with the signage plans in one action." data-fr="Les panneaux placés sont agrégés carte et plans confondus en une liste quantifiée, reliée à un registre CRUD des chefs de chantier, et envoyés avec les plans de signalisation en une action.">Placed signs are aggregated across map and plans into a quantified list, matched with a CRUD registry of site managers, and sent with the signage plans in one action.</p>
+</div>
+</div>
+<div class="article-column">
+<h2 data-en='&lt;span class="section-number"&gt;04 · The details that matter&lt;/span&gt;Where the engineering actually lives.' data-fr='&lt;span class="section-number"&gt;04 · Les détails qui comptent&lt;/span&gt;Là où vit vraiment l’ingénierie.'><span class="section-number">04 · The details that matter</span>Where the engineering actually lives.</h2>
+<div class="dive">
+<h3 data-en="Rules live as data, not code." data-fr="Les règles vivent en données, pas en code.">Rules live as data, not code.</h3>
+<p data-en="Deadlines change. Contacts change. Fees change. Every municipal rule sits in external JSON files (&lt;code&gt;communes.json&lt;/code&gt;, &lt;code&gt;codes-postaux.json&lt;/code&gt;) loaded fresh at startup — so CILE updates a deadline by editing a file, never by shipping code." data-fr="Les délais changent. Les contacts changent. Les redevances changent. Chaque règle communale vit dans des fichiers JSON externes (&lt;code&gt;communes.json&lt;/code&gt;, &lt;code&gt;codes-postaux.json&lt;/code&gt;) rechargés au démarrage — la CILE met à jour un délai en éditant un fichier, jamais en livrant du code.">Deadlines change. Contacts change. Fees change. Every municipal rule sits in external JSON files (<code>communes.json</code>, <code>codes-postaux.json</code>) loaded fresh at startup — so CILE updates a deadline by editing a file, never by shipping code.</p>
+</div>
+<div class="dive">
+<h3 data-en="Official municipal forms, filled automatically." data-fr="Les formulaires communaux officiels, remplis automatiquement.">Official municipal forms, filled automatically.</h3>
+<p data-en="Where a commune imposes its own template, the generator loads the official Word file and injects the form values directly into its XML — preserving the municipal layout, checkboxes and letterhead while removing the manual copying." data-fr="Quand une commune impose son propre modèle, le générateur charge le fichier Word officiel et injecte les valeurs directement dans son XML — en préservant la mise en page communale, les cases à cocher et l’en-tête, tout en supprimant la copie manuelle.">Where a commune imposes its own template, the generator loads the official Word file and injects the form values directly into its XML — preserving the municipal layout, checkboxes and letterhead while removing the manual copying.</p>
+</div>
+<div class="dive">
+<h3 data-en="E-mail attachments, despite the browser." data-fr="Des pièces jointes e-mail, malgré le navigateur.">E-mail attachments, despite the browser.</h3>
+<p data-en="Browsers cannot attach files through &lt;code&gt;mailto:&lt;/code&gt;. The workflow degrades gracefully through three strategies — native Web Share on mobile, clipboard-to-Gmail on desktop, plain &lt;code&gt;mailto:&lt;/code&gt; as the universal fallback — so the package reaches the commune from any device." data-fr="Les navigateurs ne peuvent pas joindre de fichier via &lt;code&gt;mailto:&lt;/code&gt;. Le workflow dégrade élégamment sur trois stratégies — Web Share natif sur mobile, presse-papier vers Gmail sur desktop, &lt;code&gt;mailto:&lt;/code&gt; en repli universel — pour que le dossier atteigne la commune depuis n’importe quel appareil.">Browsers cannot attach files through <code>mailto:</code>. The workflow degrades gracefully through three strategies — native Web Share on mobile, clipboard-to-Gmail on desktop, plain <code>mailto:</code> as the universal fallback — so the package reaches the commune from any device.</p>
+</div>
+<div class="dive">
+<h3 data-en="The analytics were free." data-fr="L’analytique était gratuite.">The analytics were free.</h3>
+<p data-en="Every generated permit records an 18-field entry locally, feeding a dashboard of volumes, urgency rates, duration percentiles and per-commune breakdowns — with CSV export ready for Excel. Operational reporting came as a by-product of the workflow itself." data-fr="Chaque demande générée enregistre localement une entrée à 18 champs, alimentant un dashboard de volumes, taux d’urgence, percentiles de durée et répartitions par commune — avec export CSV prêt pour Excel. Le reporting opérationnel est venu en sous-produit du workflow lui-même.">Every generated permit records an 18-field entry locally, feeding a dashboard of volumes, urgency rates, duration percentiles and per-commune breakdowns — with CSV export ready for Excel. Operational reporting came as a by-product of the workflow itself.</p>
+</div>
+<h2 data-en='&lt;span class="section-number"&gt;05 · The result&lt;/span&gt;From administrative friction to operating capacity.' data-fr='&lt;span class="section-number"&gt;05 · Le résultat&lt;/span&gt;De la friction administrative à la capacité opérationnelle.'><span class="section-number">05 · The result</span>From administrative friction to operating capacity.</h2>
+<p data-en="Measured against the existing process, permit preparation fell from 98 minutes to 11. The gain was not only faster paperwork: a fragmented procedure became a repeatable operating capability." data-fr="Mesurée contre le processus existant, la préparation d’une demande est passée de 98 à 11 minutes. Le gain ne se limite pas à une paperasse plus rapide : une procédure fragmentée est devenue une capacité opérationnelle répétable.">Measured against the existing process, permit preparation fell from 98 minutes to 11. The gain was not only faster paperwork: a fragmented procedure became a repeatable operating capability.</p>
+<div aria-label="Case study results" class="result-table" data-aria-label-en="Case study results" data-aria-label-fr="Résultats de l’étude de cas" role="group">
+<div class="result-row">
+<strong>87 minutes</strong>
+<span data-en="Saved on each permit workflow" data-fr="Gagnées sur chaque workflow de demande">Saved on each permit workflow</span>
+</div>
+<div class="result-row">
+<strong>€0</strong>
+<span data-en="Additional server or infrastructure cost" data-fr="Coût serveur ou infrastructure supplémentaire">Additional server or infrastructure cost</span>
+</div>
+<div class="result-row">
+<strong>€596,881</strong>
+<span data-en="Projected value over ten years at modelled operating volumes" data-fr="Valeur projetée sur dix ans aux volumes opérationnels modélisés">Projected value over ten years at modelled operating volumes</span>
+</div>
+</div>
+<p class="note" data-en="The ten-year value is a projected business case, not a realised saving. It depends on adoption, operating volumes and the assumptions documented in the full report." data-fr="La valeur sur dix ans est un business case projeté, pas une économie réalisée. Elle dépend de l’adoption, des volumes opérationnels et des hypothèses documentées dans le rapport complet.">The ten-year value is a projected business case, not a realised saving. It depends on adoption, operating volumes and the assumptions documented in the full report.</p>
+</div>
+</div>
+</article>
+<section aria-labelledby="report-title" class="report-section">
+<div class="report-grid shell">
+<a aria-label="Open the From Friction to Value report" class="report-cover-link" data-aria-label-en="Open the From Friction to Value report" data-aria-label-fr="Ouvrir le rapport From Friction to Value" href="from-friction-to-value.pdf" rel="noopener" target="_blank">
+<img alt="Cover of From Friction to Value by Valentin Angenot" class="report-cover" data-alt-en="Cover of From Friction to Value by Valentin Angenot" data-alt-fr="Couverture de From Friction to Value par Valentin Angenot" height="3372" src="framework-cover.png" width="2384"/>
+</a>
+<div class="report-copy">
+<span class="kicker" data-en="The complete methodology" data-fr="La méthodologie complète">The complete methodology</span>
+<h2 data-en="Read the full case behind the article." data-fr="Lire le cas complet derrière l’article." id="report-title">Read the full case behind the article.</h2>
+<p data-en="&lt;em&gt;From Friction to Value&lt;/em&gt; is the full report covering the diagnosis, procedure mapping, product design, human–AI collaboration and financial model." data-fr="&lt;em&gt;From Friction to Value&lt;/em&gt; est le rapport complet couvrant le diagnostic, la cartographie des procédures, la conception produit, la collaboration humain–IA et le modèle financier."><em>From Friction to Value</em> is the full report covering the diagnosis, procedure mapping, product design, human–AI collaboration and financial model.</p>
+<a class="button" data-en="Open the full report →" data-fr="Ouvrir le rapport complet →" href="from-friction-to-value.pdf" rel="noopener" target="_blank">Open the full report →</a>
+</div>
+</div>
+</section>
+<section aria-label="Contact the author" class="author-band" data-aria-label-en="Contact the author" data-aria-label-fr="Contacter l’auteur">
+<div class="author-inner shell">
+<div>
+<p class="author-name">Valentin Angenot</p>
+<p class="author-role" data-en="Business Engineer · Industrial Engineer · CFA Level I passed" data-fr="Ingénieur de gestion · Ingénieur industriel · CFA Level I réussi">Business Engineer · Industrial Engineer · CFA Level I passed</p>
+</div>
+<div class="author-actions">
+<a class="button" data-en="Connect on LinkedIn" data-fr="Me contacter sur LinkedIn" href="https://www.linkedin.com/in/valentin-angenot/" rel="noopener" target="_blank">Connect on LinkedIn</a>
+<a class="button button-ghost" data-en="Download CV" data-fr="Télécharger le CV" href="cv.pdf" rel="noopener" target="_blank">Download CV</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-inner shell">
+<span>© 2026 Valentin Angenot</span>
+<span data-en="Software · Operations · Engineering" data-fr="Logiciel · Opérations · Ingénierie">Software · Operations · Engineering</span>
+</div>
+</footer>
+<script>
     (function () {
       "use strict";
 
@@ -1275,6 +1383,110 @@
       }, { passive: true });
 
       updateProgress();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+      var body = document.body;
+      var swaps = document.querySelectorAll("[data-en]");
+      var ATTRS = ["aria-label", "alt", "title"];
+
+      function setLang(l) {
+        document.documentElement.setAttribute("lang", l);
+        swaps.forEach(function (el) {
+          el.innerHTML = el.getAttribute("data-" + l) || el.getAttribute("data-en");
+        });
+        ATTRS.forEach(function (a) {
+          document.querySelectorAll("[data-" + a + "-fr]").forEach(function (el) {
+            el.setAttribute(a, el.getAttribute("data-" + a + "-" + l));
+          });
+        });
+        var t = body.getAttribute("data-title-" + l);
+        if (t) document.title = t;
+        var sel = document.getElementById("langSelect");
+        if (sel && sel.value !== l) sel.value = l;
+        try { localStorage.setItem("va_lang", l); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem("va_lang"); } catch (e) {}
+      var initial = saved || "en";
+      if (initial !== "en") setLang(initial);
+
+      var sel = document.getElementById("langSelect");
+      if (sel) {
+        sel.value = initial;
+        sel.addEventListener("change", function () { setLang(sel.value); });
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* Header shadow */
+      var header = document.querySelector(".site-header");
+      window.addEventListener("scroll", function () {
+        header.classList.toggle("scrolled", window.scrollY > 8);
+      }, { passive: true });
+
+      /* Scroll reveals */
+      var targets = document.querySelectorAll(
+        ".story h2, .article-column > p, blockquote, .solution-figure, .system-figure, .dive, .result-table, .report-grid, .author-inner"
+      );
+      targets.forEach(function (el) { el.classList.add("reveal"); });
+
+      /* Staggered grids */
+      [".case-facts .fact", ".module-grid .module", ".result-table .result-row"].forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el, i) {
+          el.classList.add("reveal");
+          el.style.setProperty("--d", (i * 90) + "ms");
+        });
+      });
+
+      var all = document.querySelectorAll(".reveal");
+      if (reduced || !("IntersectionObserver" in window)) {
+        all.forEach(function (el) { el.classList.add("in"); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+        all.forEach(function (el) { io.observe(el); });
+      }
+
+      /* Count-up on the "24" fact */
+      var facts = document.querySelectorAll(".fact strong");
+      facts.forEach(function (el) {
+        var raw = el.textContent.trim();
+        if (!/^\d+$/.test(raw) || reduced) return;
+        var target = parseInt(raw, 10);
+        var done = false;
+        var io2 = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting || done) return;
+            done = true;
+            var t0 = null;
+            function step(ts) {
+              if (!t0) t0 = ts;
+              var p = Math.min(1, (ts - t0) / 900);
+              el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+              if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+            io2.unobserve(el);
+          });
+        }, { threshold: .5 });
+        io2.observe(el);
+      });
     })();
   </script>
 </body>
