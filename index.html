@@ -1,30 +1,32 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Valentin Angenot | Strategy, Finance, AI &amp; Engineering</title>
-  <meta name="description" content="Valentin Angenot is a Business Engineer and Industrial Engineer who passed CFA Level I, with experience in strategy, applied AI, equity research and field engineering.">
-  <meta name="author" content="Valentin Angenot">
-  <meta name="theme-color" content="#0a0c10">
-  <meta property="og:type" content="profile">
-  <meta property="og:title" content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering">
-  <meta property="og:description" content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering.">
-  <meta property="og:url" content="https://valentinangenot.com/">
-  <meta property="og:image" content="https://valentinangenot.com/photo4.jpg">
-  <meta property="og:image:alt" content="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI.">
-  <meta property="og:site_name" content="Valentin Angenot">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering">
-  <meta name="twitter:description" content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering.">
-  <meta name="twitter:image" content="https://valentinangenot.com/photo4.jpg">
-  <link rel="canonical" href="https://valentinangenot.com/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Valentin Angenot | Strategy, Finance, AI &amp; Engineering</title>
+<meta content="Valentin Angenot is a Business Engineer and Industrial Engineer who passed CFA Level I, with experience in strategy, applied AI, equity research and field engineering. Open to roles in strategy, finance, AI, transformation and chief of staff positions." name="description"/>
+<meta content="Valentin Angenot" name="author"/>
+<meta content="#0a0c10" name="theme-color"/>
+<meta content="profile" property="og:type"/>
+<meta content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" property="og:title"/>
+<meta content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering." property="og:description"/>
+<meta content="https://valentinangenot.com/" property="og:url"/>
+<meta content="https://valentinangenot.com/photo4.jpg" property="og:image"/>
+<meta content="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI." property="og:image:alt"/>
+<meta content="Valentin Angenot" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" name="twitter:title"/>
+<meta content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering." name="twitter:description"/>
+<meta content="https://valentinangenot.com/photo4.jpg" name="twitter:image"/>
+<link href="https://valentinangenot.com/" rel="canonical"/>
+<link href="https://valentinangenot.com/" hreflang="en" rel="alternate"/>
+<link href="https://valentinangenot.com/" hreflang="x-default" rel="alternate"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -72,8 +74,7 @@
     ]
   }
   </script>
-
-  <style>
+<style>
     :root {
       --ink: #0a0c10;
       --ink-2: #10131a;
@@ -261,6 +262,69 @@
     .nav-links a.active::after {
       transform: scaleX(1);
       transform-origin: left;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .lang-select {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 26px 0 9px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      opacity: .75;
+      transition: opacity .2s ease, border-color .2s ease;
+    }
+
+    .lang-select:hover,
+    .lang-select:focus-within {
+      opacity: 1;
+      border-color: var(--blue);
+    }
+
+    .lang-globe {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .lang-select-input {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 0;
+      padding: 8px 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lang-select-input:focus { outline: none; }
+
+    .lang-select-input option {
+      color: #0a0c10;
+      background: #fff;
+    }
+
+    .lang-caret {
+      position: absolute;
+      right: 9px;
+      font-size: 10px;
+      pointer-events: none;
     }
 
     .nav-actions .cv-link {
@@ -1382,7 +1446,7 @@
 
     .recognition-grid {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
+      grid-template-columns: minmax(0, 820px);
       gap: 72px;
       align-items: start;
     }
@@ -2027,6 +2091,37 @@
       }
     }
 
+    /* ---------- Modern motion additions ---------- */
+
+    .case-featured {
+      transform-style: preserve-3d;
+      transition: transform .25s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    .case-featured.tilting {
+      transition: box-shadow .35s var(--ease);
+    }
+
+    .button,
+    .back-link {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120px 120px at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .25), transparent 70%);
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .button:hover::after {
+      opacity: 1;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
 
@@ -2050,679 +2145,585 @@
     }
   </style>
 </head>
-
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" id="siteHeader">
-    <nav class="nav shell" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Valentin Angenot, back to top">
+<body data-title-en="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" data-title-fr="Valentin Angenot | Stratégie, Finance, IA &amp; Ingénierie">
+<a class="skip-link" data-en="Skip to content" data-fr="Aller au contenu" href="#main">Skip to content</a>
+<header class="site-header" id="siteHeader">
+<nav aria-label="Primary navigation" class="nav shell">
+<a aria-label="Valentin Angenot, back to top" class="brand" href="#top">
         Valentin Angenot
-        <span class="brand-mark">Portfolio &middot; 2026</span>
-      </a>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#education">Qualifications</a>
-        <a href="#experience">Experience</a>
-        <a href="#work">Selected work</a>
-        <a href="#recognition">Recognition</a>
-        <a href="#writing">Publications</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="nav-actions">
-        <a href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="cv-link" href="cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <span class="scroll-progress" id="scrollProgress" aria-hidden="true"></span>
-    </nav>
-  </header>
-
-  <nav class="spine" id="spine" aria-label="Section index">
-    <a href="#education" data-spine="education">01</a>
-    <a href="#experience" data-spine="experience">02</a>
-    <a href="#work" data-spine="work">03</a>
-    <a href="#recognition" data-spine="recognition">04</a>
-    <a href="#writing" data-spine="writing">05</a>
-    <a href="#contact" data-spine="contact">06</a>
-    <span class="spine-label">Index</span>
-  </nav>
-
-  <dialog class="video-modal" id="interviewDialog" aria-labelledby="interviewDialogTitle">
-    <div class="video-modal-head">
-      <div>
-        <span class="video-modal-brand">RTBF La Premi&egrave;re &middot; Tendances Premi&egrave;re</span>
-        <h2 id="interviewDialogTitle">Digital transformation and award-winning student work</h2>
-      </div>
-      <button class="video-modal-close" id="closeInterview" type="button" aria-label="Close interview">&times;</button>
-    </div>
-    <div class="video-frame" id="interviewFrame"></div>
-    <div class="video-modal-footer">
-      <span>Featured guest &middot; 20-minute interview &middot; December 2025</span>
-      <a href="https://auvio.rtbf.be/media/tendances-premiere-tendances-premiere-le-dossier-3417149" target="_blank" rel="noopener">Open on RTBF Auvio &rarr;</a>
-    </div>
-  </dialog>
-
-  <main id="main">
-
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <img
-        class="hero-media"
-        src="photo4.jpg"
-        width="7360"
-        height="4906"
-        alt="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI."
-        fetchpriority="high"
-        onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo4.jpg'}">
-
-      <div class="shell">
-        <div class="hero-content hero-stagger">
-          <p class="eyebrow">Strategy, Finance, AI &amp; Engineering</p>
-          <h1 id="hero-title">Valentin Angenot</h1>
-          <p class="hero-credentials">Business Engineer &middot; Industrial Engineer &middot; CFA Level I passed</p>
-          <p class="hero-copy">Teaching Assistant in Strategy, strategic consulting, AI project leadership, equity research and engineering.</p>
-          <button class="hero-interview js-open-interview" id="openInterview" type="button" aria-haspopup="dialog" aria-controls="interviewDialog">
-            <span class="interview-play" aria-hidden="true">&#9654;</span>
-            <span class="interview-copy">
-              <span class="interview-source">
-                <span class="rtbf-logo">
-                  <svg viewBox="0 0 3508 877" role="img" aria-labelledby="rtbfLogoTitle" focusable="false" xmlns="http://www.w3.org/2000/svg">
-                    <title id="rtbfLogoTitle">RTBF</title>
-                    <g transform="matrix(3.00129,0,0,3.00129,-4457.13,-447.862)">
-                      <g transform="matrix(2.90461,0,0,2.90461,1905.29,242.052)">
-                        <path d="M36.381,52.394C34.512,50.66 32.439,49.673 29.7,49.673L-24.216,49.679L-24.255,49.679L-24.293,49.685C-25.916,50.107 -27.914,48.885 -29.558,47.893C-30.936,46.706 -31.546,45.056 -31.546,42.893L-31.546,8.182L29.646,8.186C31.649,8.186 33.956,7.912 36.084,5.947C37.838,4.084 38.723,2 38.723,-0.672C38.723,-3.207 37.828,-5.446 35.923,-7.22C34.152,-9.125 31.913,-10.018 29.377,-10.018L-31.545,-10.018L-31.544,-22.595C-31.544,-25.079 -32.546,-27.277 -34.269,-29.029C-35.999,-30.915 -38.216,-31.797 -40.756,-31.797C-43.291,-31.797 -45.528,-30.903 -47.435,-28.995C-49.342,-27.224 -50.233,-24.986 -50.233,-22.317L-50.233,50.689C-50.233,62.402 -44.618,68.035 -32.948,68.035L29.97,68.028C32.456,68.028 34.524,67.026 36.408,65.303C38.164,63.573 39.179,61.355 39.179,58.95C39.179,56.328 38.313,54.461 36.381,52.394Z"/>
-                        <path d="M87.782,-9.969C85.561,-9.969 83.154,-9.701 81.21,-7.787C79.455,-6.057 78.572,-3.841 78.572,-1.301C78.572,1.234 79.466,3.472 81.371,5.378C83.145,7.151 85.383,8.178 87.919,8.178L89.31,8.184L123.079,8.184C125.294,8.184 126.981,8.779 128.324,10.122C129.533,11.332 130.26,12.997 130.26,15.166L130.311,42.908C130.311,45.065 129.7,46.714 128.325,47.899C126.934,49.098 125.086,49.688 122.994,49.688L78.326,49.688C76.051,49.688 74.183,49.098 72.794,47.899C71.417,46.714 70.806,45.069 70.806,42.906L70.754,-22.749C70.754,-25.102 69.753,-27.303 68.029,-29.186C66.298,-30.943 64.083,-31.959 61.542,-31.959C59.008,-31.959 56.77,-30.933 54.864,-29.028C52.957,-27.252 52.065,-25.016 52.065,-22.479L52.065,50.56C52.065,62.007 57.986,68.039 69.743,68.039L131.139,68.053C142.764,68.053 148.818,62.312 148.818,50.655L148.818,7.117C148.818,-4.153 143.188,-9.74 131.491,-9.948L87.782,-9.969Z"/>
-                        <path d="M254.943,6.022C256.698,4.293 257.717,2.077 257.717,-0.463C257.717,-3 256.689,-5.237 254.917,-7.142C252.841,-9.085 250.605,-9.998 248.236,-9.998L179.538,-9.993C168.238,-9.73 162.317,-4.057 162.627,7.072L162.158,59.511C162.158,61.874 163.172,64.083 164.925,65.837C166.678,67.591 168.877,68.607 171.236,68.607C173.903,68.607 176.131,67.591 177.885,65.837C179.937,64.038 180.706,61.83 180.706,59.508L181.048,12.72C181.048,9.677 182.327,8.208 185.139,8.208L248.378,8.205C250.595,8.206 252.868,7.935 254.943,6.022Z"/>
-                        <path d="M-64.984,-7.405C-66.699,-9.122 -68.906,-9.969 -71.663,-9.969C-89.078,-9.987 -106.629,-9.928 -124.043,-9.996C-125.398,-10.019 -126.226,-10.522 -127.032,-11.636C-128.73,-14.109 -132.375,-14.963 -135.197,-14.963C-138.001,-14.963 -140.55,-13.839 -142.465,-11.839C-144.323,-9.895 -144.648,-7.753 -144.648,-5.251L-144.674,59.005C-144.674,61.361 -143.78,63.575 -141.874,65.347C-139.97,67.382 -137.734,68.146 -135.197,68.146C-132.66,68.146 -130.445,67.406 -128.716,65.678C-126.856,63.685 -125.985,61.736 -125.985,59.066L-125.985,15.26C-125.985,13.182 -125.343,11.274 -123.998,10.116C-122.626,8.801 -120.913,8.212 -118.673,8.196L-71.394,8.196C-68.629,8.196 -66.494,7.405 -64.956,5.76C-63.068,4.031 -62.184,1.814 -62.184,-0.725C-62.184,-3.264 -63.078,-5.497 -64.984,-7.405Z"/>
-                        <path d="M234.947,33.804L234.947,33.797C234.947,31.004 233.854,28.44 231.948,26.643C229.82,24.758 227.45,23.877 224.344,23.877L206.446,23.877C203.605,23.877 201.233,24.758 199.104,26.643C196.94,28.44 195.844,31.004 195.844,33.797L195.844,33.804C195.844,36.596 196.938,38.905 199.104,40.691C201.233,42.444 203.605,43.461 206.446,43.461L224.344,43.461C227.45,43.461 229.82,42.444 231.948,40.691C233.85,38.905 234.947,36.596 234.947,33.804Z"/>
-                      </g>
-                    </g>
-                  </svg>
-                </span>
-                <span class="interview-brand">La Premi&egrave;re &middot; Tendances Premi&egrave;re</span>
-              </span>
-              <span class="interview-title">Watch the 20-minute interview</span>
-            </span>
-            <span class="interview-duration">Play in page</span>
-          </button>
-          <div class="actions">
-            <a class="button button-primary" href="#experience">View experience</a>
-            <a class="button button-light" href="cv.pdf" target="_blank" rel="noopener">Download CV</a>
-          </div>
-        </div>
-        <p class="hero-meta">Belgium-based<br>Open to roles in Belgium, Luxembourg, London,<br>Madrid, Barcelona and internationally</p>
-      </div>
-      <span class="hero-scroll" aria-hidden="true"></span>
-    </section>
-
-
-
-
-
-
-
-
-    <section class="section section-white" id="education">
-      <div class="shell">
-        <header class="profile-head" data-reveal>
-          <div class="head-index">
-            <p class="eyebrow">01 &middot; Profile</p>
-            <span class="head-rule"></span>
-          </div>
-          <h2>Business Engineer.<br>Industrial Engineer.<br><span>CFA Level I passed.</span></h2>
-        </header>
-
-        <div class="credential-rail" data-reveal>
-          <article class="credential">
-            <div class="credential-label">01 &middot; HEC Li&egrave;ge &middot; 2025</div>
-            <h3>Business Engineer</h3>
-            <p class="credential-school">M.Sc. Business Engineering, Science &amp; Technology</p>
-            <p class="credential-honour">Valedictorian &middot; Major de Promotion</p>
-            <p class="credential-detail">B.Sc. 18/20 &middot; M.Sc. 18.5/20 &middot; First-ranked at both levels &middot; Summa Cum Laude with Committee Praise.</p>
-          </article>
-          <article class="credential">
-            <div class="credential-label">02 &middot; HELMo Gramme &middot; 2026</div>
-            <h3>Industrial Engineer</h3>
-            <p class="credential-school">M.Eng. Industrial Engineering</p>
-            <p class="credential-detail">Current average: 18.2/20 &middot; Mechanics, energy, industrial systems, robotics and optimisation.</p>
-          </article>
-          <article class="credential">
-            <div class="credential-label">03 &middot; CFA Institute &middot; Aug 2025</div>
-            <h3>CFA Level I</h3>
-            <p class="credential-school">Passed on the first attempt</p>
-            <p class="credential-detail">Financial analysis, valuation, portfolio management, ethics and quantitative methods.</p>
-          </article>
-        </div>
-
-        <div class="languages-block" data-reveal>
-          <h3 class="languages-title">Languages</h3>
-          <div class="language-grid" role="group" aria-label="Languages">
-            <div class="language">
-              <span class="language-name">French</span>
-              <strong class="language-level">Native</strong>
-            </div>
-            <div class="language">
-              <span class="language-name">English</span>
-              <strong class="language-level">C1</strong>
-            </div>
-            <div class="language">
-              <span class="language-name">Spanish</span>
-              <strong class="language-level">C1</strong>
-            </div>
-            <div class="language">
-              <span class="language-name">Dutch</span>
-              <strong class="language-level">Beginner</strong>
-              <span class="language-note">Ready to deepen</span>
-            </div>
-            <div class="language">
-              <span class="language-name">Italian</span>
-              <strong class="language-level">Beginner</strong>
-              <span class="language-note">Ready to deepen</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="certifications-block" data-reveal>
-          <h3 class="languages-title">Certifications</h3>
-          <div class="cert-grid" role="list" aria-label="Certifications">
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">CFA Institute</span>
-              <p class="cert-name">CFA Level I &mdash; Passed</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">IBM</span>
-              <p class="cert-name">Generative AI for Executives and Business Leaders</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">University of London</span>
-              <p class="cert-name">Corporate Strategy</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">Dassault Syst&egrave;mes</span>
-              <p class="cert-name">Certified SOLIDWORKS Associate</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">Erasmus Rotterdam</span>
-              <p class="cert-name">Advanced Valuation &amp; Strategy &mdash; M&amp;A, PE &amp; VC</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">CFI</span>
-              <p class="cert-name">FMI Foundations in Financial Modeling</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">University of Michigan</span>
-              <p class="cert-name">Digital Twins</p>
-            </div>
-            <div class="cert" role="listitem">
-              <span class="cert-issuer">Yale University</span>
-              <p class="cert-name">Financial Markets</p>
-            </div>
-          </div>
-          <p class="additional-credentials">
-            <span>Python &middot; Data, NLP &amp; optimisation</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="shell">
-        <header class="section-head" data-reveal>
-          <div class="head-index">
-            <p class="eyebrow">02 &middot; Experience</p>
-            <span class="head-rule"></span>
-          </div>
-          <h2>Professional experience.</h2>
-          <p class="section-intro">Seven roles between 2022 and 2026 &mdash; all held in parallel with full-time studies.</p>
-        </header>
-
-        <div class="experience-toolbar" data-reveal>
-          <p class="experience-toolbar-label">Filter experience</p>
-          <div class="experience-filters" role="group" aria-label="Filter professional experience">
-            <button class="experience-filter" type="button" data-experience-filter="all" aria-pressed="true">All</button>
-            <button class="experience-filter" type="button" data-experience-filter="role" aria-pressed="false">Professional roles</button>
-            <button class="experience-filter" type="button" data-experience-filter="internship" aria-pressed="false">Internships</button>
-          </div>
-        </div>
-
-        <div class="experience-list">
-          <article class="experience-row" data-experience-type="internship" data-reveal>
-            <div class="experience-date">Sep 2025 &ndash; Jun 2026</div>
-            <div class="experience-role">
-              <h3>Industrial Engineering Intern &middot; Strategy &amp; Operations</h3>
-              <p class="experience-org">CILE &middot; Compagnie Intercommunale Li&eacute;geoise des Eaux &middot; Industrial Engineering degree internship</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Built the make-or-buy case and target operating model for bringing a critical field operation in-house across a utility serving 560,000+ residents.</p>
-              <ul class="experience-points">
-                <li>Modelled staffing, equipment, vehicle, compliance and workflows for 480 road-opening interventions per year across two depots and 24 municipalities.</li>
-                <li>Designed and built two linked browser applications combining geocoding, 24 rule sets, native DOCX generation, a canvas-based signage editor, submission workflows and analytics.</li>
-                <li>Quantified &euro;597K in ten-year savings, unified 24 permit procedures and reduced the core administrative workflow from 98 to 11 minutes.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="experience-row" data-experience-type="role" data-reveal>
-            <div class="experience-date">Sep 2023 &ndash; Mar 2026</div>
-            <div class="experience-role">
-              <h3>Teaching Assistant &middot; Strategy &amp; Digital Transformation</h3>
-              <p class="experience-org">HEC Li&egrave;ge &amp; Faculty of Medicine, ULi&egrave;ge</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Mentored 300+ students on applied strategic diagnoses and transformation mandates built around live company and healthcare cases.</p>
-              <ul class="experience-points">
-                <li>Supervised corporate projects in digital strategy, Industry 4.0 and strategic consulting in collaboration with companies and MecaTech.</li>
-                <li>At the Faculty of Medicine, coached Master's teams on healthcare strategy and digital transition, translating field issues into structured recommendations.</li>
-              </ul>
-              <p class="experience-people"><strong>Faculty</strong> &nbsp; Prof. Nicolas Neysen</p>
-            </div>
-          </article>
-
-          <article class="experience-row" data-experience-type="role" data-reveal>
-            <div class="experience-date">Jul 2025 &ndash; Feb 2026</div>
-            <div class="experience-role">
-              <h3>AI Engineer &amp; Researcher</h3>
-              <p class="experience-org">University of Li&egrave;ge &middot; University of Rouen &middot; Long COVID Research Network</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Designed the clinical NLP architecture used to turn unstructured paediatric Long COVID narratives into interoperable phenotype data.</p>
-              <ul class="experience-points">
-                <li>Built an E5 + FAISS + LLM pipeline that mapped 148 clinical observations from 10 cases into 128 Human Phenotype Ontology terms.</li>
-                <li>Co-authored research on LLMs in Belgian primary care and contributed evidence used in scientific and public-health discussions.</li>
-              </ul>
-              <p class="experience-people"><strong>Research lead</strong> &nbsp; Dr Marc Jamoulle</p>
-            </div>
-          </article>
-
-          <article class="experience-row" data-experience-type="role" data-reveal>
-            <div class="experience-date">Sep 2022 &ndash; Feb 2026</div>
-            <div class="experience-role">
-              <h3>Student Instructor &middot; Finance, Mathematics &amp; Engineering Sciences</h3>
-              <p class="experience-org">HEC Li&egrave;ge &middot; Five course appointments</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Delivered tutorials, problem-solving sessions and student support across finance, accounting, physics, mathematics and supply-chain management.</p>
-              <ul class="experience-points">
-                <li>Corporate Finance &amp; Strategic Financial Analysis; Physics I &amp; II; Mathematics: Infinitesimal Analysis.</li>
-                <li>Supply Chain Management; Finance &amp; Accounting.</li>
-              </ul>
-              <p class="experience-people"><strong>Course leads</strong> &nbsp; Marie Lambert (corporate finance) &middot; Pierre Deneye (physics) &middot; Val&eacute;rie Henry (analysis) &middot; Sabine Limbourg &amp; &Eacute;lodie Bebronne (supply chain) &middot; Giuseppina Capodici &amp; Wilfried Niessen (finance &amp; accounting)</p>
-            </div>
-          </article>
-
-          <article class="experience-row" data-experience-type="role" data-reveal>
-            <div class="experience-date">Sep 2024 &ndash; Oct 2025</div>
-            <div class="experience-role">
-              <h3>Invited Lecturer</h3>
-              <p class="experience-org">HEC Li&egrave;ge Executive Education &middot; Li&egrave;ge &middot; On-site</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Invited to deliver applied AI sessions for executive audiences using business cases I had personally led.</p>
-              <ul class="experience-points">
-                <li>Structured the intervention around strategic opportunity selection, operational limits, governance and the conditions required for adoption in real organisations.</li>
-                <li>Translated technical systems into decision frameworks for non-technical professionals.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="experience-row" data-experience-type="role" data-reveal>
-            <div class="experience-date">Sep 2024 &ndash; Sep 2025</div>
-            <div class="experience-role">
-              <h3>AI Engineer &amp; Project Lead</h3>
-              <p class="experience-org">AIASHI &middot; HEC Li&egrave;ge &middot; University of Li&egrave;ge</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Led a strategic research-intelligence initiative turning raw institutional data into a decision-ready taxonomy and quality-controlled pipeline, built to optimise the allocation of a &euro;200M budget through better data analysis.</p>
-              <ul class="experience-points">
-                <li>Engineered an NLP/LLM system processing 100,000+ documents; on 62,000 research abstracts, produced a three-level taxonomy spanning 1,977 topics.</li>
-                <li>Raised usable coverage to 89.8%, reduced unresolved records from 18,724 to 6,320 and reached 96% quality-control accuracy.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="experience-row" data-experience-type="role" data-reveal>
-            <div class="experience-date">Sep 2024 &ndash; May 2025</div>
-            <div class="experience-role">
-              <h3>Equity Research Analyst</h3>
-              <p class="experience-org">CFA Institute Research Challenge &middot; Benelux</p>
-            </div>
-            <div class="experience-content">
-              <p class="experience-result">Produced full sell-side initiating coverage on Just Eat Takeaway.com (Euronext: TKWY), from industry analysis and forecasting to valuation and investment recommendation.</p>
-              <ul class="experience-points">
-                <li>Issued a SELL recommendation with 18.5% downside potential and defended the thesis before investment professionals at Euronext Amsterdam.</li>
-                <li>Ranked 2nd among 20 Benelux universities.</li>
-              </ul>
-              <p class="experience-people"><strong>Academic mentor</strong> &nbsp; Prof. Marie Lambert</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="work">
-      <div class="shell">
-        <header class="section-head" data-reveal>
-          <div class="head-index">
-            <p class="eyebrow">03 &middot; Selected work</p>
-            <span class="head-rule"></span>
-          </div>
-          <h2>Selected work.</h2>
-          <p class="section-intro">Cases, models and reports with direct access to the work behind each result.</p>
-        </header>
-
-        <a class="case-featured" href="case-study.html" aria-label="Explore the public utility permit workflow software case study" data-reveal>
-          <div class="case-content">
-            <div class="case-topline">
-              <div class="case-index">01 &middot; Applied software &middot; Public utility</div>
-              <span class="case-open-label">Featured software case</span>
-            </div>
-            <h3>An end-to-end operating system for road-opening permits.</h3>
-            <p>Two linked browser applications unifying geocoding, municipal rules, document generation, signage design, submission and analytics.</p>
-          </div>
-          <div class="case-spotlight" role="group" aria-label="Public utility case highlights">
-            <div>
-              <span class="case-spotlight-label">Projected workflow value</span>
-              <strong class="case-spotlight-value">&euro;<span data-count="596881">596,881</span></strong>
-              <p class="case-spotlight-copy">Industrial Engineering internship</p>
-            </div>
-            <div>
-              <div class="case-proof-grid">
-                <span><strong>24</strong>Rule sets encoded</span>
-                <span><strong>98 &rarr; 11</strong>Minutes / workflow</span>
-                <span><strong>2</strong>Integrated applications</span>
-              </div>
-              <span class="case-open-icon">View the software case <span aria-hidden="true">&rarr;</span></span>
-            </div>
-          </div>
-        </a>
-
-        <div class="case-grid">
-          <article class="case-card" data-reveal>
-            <div class="case-card-topline">
-              <div class="case-index">02 &middot; Institutional intelligence</div>
-              <span class="case-card-icon" aria-hidden="true">&nearr;</span>
-            </div>
-            <h3>Research intelligence at institutional scale.</h3>
-            <p>An NLP/LLM system built to optimise the allocation of &euro;200M+ in research revenue.</p>
-            <div class="mini-metrics" role="group" aria-label="AIASHI project metrics">
-              <div class="mini-metric">
-                <div class="mini-value">100K+</div>
-                <div class="mini-label">Documents</div>
-              </div>
-              <div class="mini-metric">
-                <div class="mini-value">96%</div>
-                <div class="mini-label">QC rate</div>
-              </div>
-              <div class="mini-metric">
-                <div class="mini-value">1,977</div>
-                <div class="mini-label">Final topics</div>
-              </div>
-            </div>
-            <div class="case-actions">
-              <a class="case-action case-action-primary" href="https://www.digitalwallonia.be/fr/publications/digital-nextgen-12e-cahier-du-digital/" target="_blank" rel="noopener">Read article &rarr;</a>
-              <a class="case-action" href="thesis_presentation.html" target="_blank" rel="noopener">View defence &rarr;</a>
-            </div>
-          </article>
-
-          <article class="case-card" data-reveal data-delay="1">
-            <div class="case-card-topline">
-              <div class="case-index">03 &middot; Investment analysis</div>
-              <span class="case-card-icon" aria-hidden="true">&nearr;</span>
-            </div>
-            <h3>A sell-side thesis defended at Euronext.</h3>
-            <p>Full initiating coverage on Just Eat Takeaway.com with a SELL recommendation.</p>
-            <div class="mini-metrics" role="group" aria-label="CFA Research Challenge metrics">
-              <div class="mini-metric">
-                <div class="mini-value">2nd</div>
-                <div class="mini-label">Benelux</div>
-              </div>
-              <div class="mini-metric">
-                <div class="mini-value">20</div>
-                <div class="mini-label">Universities</div>
-              </div>
-              <div class="mini-metric">
-                <div class="mini-value">18.5%</div>
-                <div class="mini-label">Downside</div>
-              </div>
-            </div>
-            <div class="case-actions">
-              <a class="case-action case-action-primary" href="cfa-report.pdf" target="_blank" rel="noopener">Open report &rarr;</a>
-              <a class="case-action" href="cfa-presentation.pdf" target="_blank" rel="noopener">View presentation &rarr;</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="project-index" data-reveal>
-          <header class="project-index-head">
-            <div>
-              <p class="eyebrow">More projects</p>
-              <h3>Reports, models and research.</h3>
-            </div>
-            <p>Open the report, model or research behind each project.</p>
-          </header>
-
-          <div class="work-list">
-            <a class="work-row" href="denmark-sustainable-energy-plan-2045.pdf" target="_blank" rel="noopener">
-              <div class="work-year">2026 &middot; Energy</div>
-              <h3>Denmark Energy Plan 2045</h3>
-              <p>35 GW offshore wind &middot; ~&euro;90B over 20 years</p>
-              <span class="work-cta">Open report <span aria-hidden="true">&rarr;</span></span>
-            </a>
-            <article class="work-row">
-              <div class="work-year">2026 &middot; Mechanical systems</div>
-              <h3>Mechanical Systems Simulator</h3>
-              <p>Live RK4 model &middot; energy and phase tracking</p>
-              <div class="work-links">
-                <a class="work-cta" href="https://valentinangenot.github.io/simulation_modelling/" target="_blank" rel="noopener">Live model <span aria-hidden="true">&rarr;</span></a>
-                <a class="work-cta" href="simulation.pdf" target="_blank" rel="noopener">Report <span aria-hidden="true">&rarr;</span></a>
-              </div>
-            </article>
-            <a class="work-row" href="ai-for-biotech.pdf" target="_blank" rel="noopener">
-              <div class="work-year">2026 &middot; Biotech</div>
-              <h3>mRNA Sequence Optimisation</h3>
-              <p>LinearDesign &middot; structure and translation efficiency</p>
-              <span class="work-cta">Open report <span aria-hidden="true">&rarr;</span></span>
-            </a>
-            <a class="work-row" href="https://orbi.uliege.be/handle/2268/335655" target="_blank" rel="noopener">
-              <div class="work-year">2025 &middot; Health</div>
-              <h3>Clinical NLP for Long COVID</h3>
-              <p>E5 + FAISS + LLM &middot; HPO phenotyping</p>
-              <span class="work-cta">Open research <span aria-hidden="true">&rarr;</span></span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-dark" id="recognition">
-      <div class="shell recognition-grid">
-        <div class="recognition-copy" data-reveal>
-          <div class="head-index">
-            <p class="eyebrow">04 &middot; Recognition</p>
-            <span class="head-rule"></span>
-          </div>
-          <h2 class="recognition-title">Awards, distinctions and media.</h2>
-          <p class="section-intro">Academic honours, the CFA Research Challenge, a jury-awarded thesis and a national media appearance.</p>
-
-          <ul class="award-list">
-            <li>
-              <div class="award-number">2&times;</div>
-              <div>
-                <div class="award-title">Valedictorian, Business Engineering</div>
-                <p class="award-detail">B.Sc. 18/20 and M.Sc. 18.5/20, both Summa Cum Laude with Committee Praise.</p>
-              </div>
-            </li>
-            <li>
-              <div class="award-number">2025</div>
-              <div>
-                <div class="award-title">Jury Prize, Digital Transformation Thesis</div>
-                <p class="award-detail">Awarded by an industry panel for the business and societal impact of an AI-driven governance approach.</p>
-              </div>
-            </li>
-            <li>
-              <div class="award-number">#2</div>
-              <div>
-                <div class="award-title">CFA Research Challenge Benelux</div>
-                <p class="award-detail">Second among teams from 20 universities; final presentation at Euronext Amsterdam.</p>
-              </div>
-            </li>
-          </ul>
-
-          <button class="media-interview js-open-interview" type="button" aria-haspopup="dialog" aria-controls="interviewDialog">
-            <span class="interview-play" aria-hidden="true">&#9654;</span>
-            <span class="interview-copy">
-              <span class="interview-brand">RTBF La Premi&egrave;re &middot; Tendances Premi&egrave;re &middot; December 2025</span>
-              <span class="interview-title">Watch the 20-minute national radio interview</span>
-            </span>
-            <span class="interview-duration">Play in page</span>
-          </button>
-        </div>
-
-        <div class="recognition-media" data-reveal data-delay="1">
-          <figure>
-            <a href="photo3.jpg" target="_blank" rel="noopener" aria-label="Open thesis prize photograph">
-              <img
-                src="photo3.jpg"
-                width="7234"
-                height="4823"
-                loading="lazy"
-                alt="Valentin Angenot speaking after receiving the 2025 Digital Transformation Thesis Jury Prize."
-                onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo3.jpg'}">
-            </a>
-            <figcaption>Digital Transformation Thesis Jury Prize &middot; 2025</figcaption>
-          </figure>
-          <figure>
-            <a href="photo2.jpg" target="_blank" rel="noopener" aria-label="Open HEC Liège graduation photograph">
-              <img
-                src="photo2.jpg"
-                width="1145"
-                height="1000"
-                loading="lazy"
-                alt="Valentin Angenot at his HEC Liège graduation."
-                onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo2.jpg'}">
-            </a>
-            <figcaption>HEC Li&egrave;ge &middot; M.Sc. Business Engineering &middot; Valedictorian</figcaption>
-          </figure>
-          <figure>
-            <a href="photo1.jpg" target="_blank" rel="noopener" aria-label="Open Digital Transformation Thesis Prize photograph">
-              <img
-                src="photo1.jpg"
-                width="7891"
-                height="4544"
-                loading="lazy"
-                alt="Recipients and organisers of the 2025 Digital Transformation Thesis Prize."
-                onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo1.jpg'}">
-            </a>
-            <figcaption>Digital Transformation Thesis Prize &middot; 2025 cohort</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="section" id="writing">
-      <div class="shell">
-        <header class="section-head" data-reveal>
-          <div class="head-index">
-            <p class="eyebrow">05 &middot; Publications</p>
-            <span class="head-rule"></span>
-          </div>
-          <h2>Publications &amp; contributions.</h2>
-          <p class="section-intro">Published articles, research contributions and field guides across governance, operations and healthcare.</p>
-        </header>
-
-        <div class="writing-list">
-          <a class="writing-row" href="from-friction-to-value.pdf" target="_blank" rel="noopener" data-reveal>
-            <div class="writing-date">2026</div>
-            <div class="writing-main">
-              <h3>From Friction to Value</h3>
-              <p class="writing-source">34-page field guide &middot; Strategy, engineering and applied AI</p>
-            </div>
-            <div class="writing-type">Field guide &rarr;</div>
-          </a>
-          <a class="writing-row" href="https://www.digitalwallonia.be/fr/publications/digital-nextgen-12e-cahier-du-digital/" target="_blank" rel="noopener" data-reveal>
-            <div class="writing-date">2026</div>
-            <div class="writing-main">
-              <h3>Quand le topic modeling devient un outil de gouvernance strategique</h3>
-              <p class="writing-source">Cahier du Digital #12 &middot; Digital Wallonia / Digital Lab</p>
-            </div>
-            <div class="writing-type">Published article &rarr;</div>
-          </a>
-          <a class="writing-row" href="https://orbi.uliege.be/handle/2268/336509" target="_blank" rel="noopener" data-reveal>
-            <div class="writing-date">2025</div>
-            <div class="writing-main">
-              <h3>Large Language Models in Belgian Primary Care</h3>
-              <p class="writing-source">Co-author &middot; ULi&egrave;ge &middot; AI in healthcare</p>
-            </div>
-            <div class="writing-type">Research paper &rarr;</div>
-          </a>
-          <a class="writing-row" href="https://orbi.uliege.be/handle/2268/335655" target="_blank" rel="noopener" data-reveal>
-            <div class="writing-date">2025</div>
-            <div class="writing-main">
-              <h3>Long COVID, Invisible Illness</h3>
-              <p class="writing-source">Research contribution &middot; Belgian Long COVID Research Network</p>
-            </div>
-            <div class="writing-type">Expert report &rarr;</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-blue" id="contact">
-      <div class="shell">
-        <header class="section-head contact-head" data-reveal>
-          <div class="head-index">
-            <p class="eyebrow">06 &middot; Contact</p>
-            <span class="head-rule"></span>
-          </div>
-          <h2>Let&rsquo;s talk.</h2>
-          <p class="contact-copy">For strategy, investment and industrial transformation roles where the bar is high. Replies within 24 hours.</p>
-        </header>
-
-        <div class="contact-channels" data-reveal>
-          <a class="contact-mail" href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">
-            <span>LinkedIn <span class="contact-handle">/ valentin-angenot</span></span>
-            <span class="contact-mail-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-          <a class="contact-mail" href="mailto:valentinangenot@icloud.com">
-            <span>valentinangenot@icloud.com</span>
-            <span class="contact-mail-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-
-        <div class="contact-meta" data-reveal data-delay="1">
-          <div>
-            <span class="contact-meta-label">Based in</span>
-            <p>Li&egrave;ge, Belgium &mdash; open to roles in Belgium, Luxembourg, London, Madrid, Barcelona and internationally.</p>
-          </div>
-          <div>
-            <span class="contact-meta-label">Languages</span>
-            <p>French native &middot; English C1 &middot; Spanish C1 &middot; Dutch and Italian beginner.</p>
-          </div>
-          <div>
-            <span class="contact-meta-label">Curriculum</span>
-            <p><a href="cv.pdf" target="_blank" rel="noopener">Download the full CV (PDF)</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-inner shell">
-      <span>&copy; 2026 Valentin Angenot</span>
-      <span>Strategy &middot; Finance &middot; AI &middot; Engineering</span>
-    </div>
-  </footer>
-
-  <script>
+        <span class="brand-mark">Portfolio · 2026</span>
+</a>
+<div class="nav-links" id="navLinks">
+<a data-en="Qualifications" data-fr="Profil" href="#education">Qualifications</a>
+<a data-en="Experience" data-fr="Expérience" href="#experience">Experience</a>
+<a data-en="Selected work" data-fr="Projets" href="#work">Selected work</a>
+<a data-en="Recognition" data-fr="Distinctions" href="#recognition">Recognition</a>
+<a href="#writing">Publications</a>
+<a href="#contact">Contact</a>
+</div>
+<div class="nav-actions">
+<div class="lang-select">
+<span aria-hidden="true" class="lang-globe">⊕</span>
+<label class="sr-only" for="langSelect">Language / Langue</label>
+<select class="lang-select-input" id="langSelect">
+<option value="en">English</option>
+<option value="fr">Français</option>
+</select>
+<span aria-hidden="true" class="lang-caret">▾</span>
+</div>
+<a href="https://www.linkedin.com/in/valentin-angenot/" rel="noopener" target="_blank">LinkedIn</a>
+<a class="cv-link" href="cv.pdf" rel="noopener" target="_blank">CV</a>
+</div>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Open navigation" class="menu-toggle" id="menuToggle" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<span aria-hidden="true" class="scroll-progress" id="scrollProgress"></span>
+</nav>
+</header>
+<nav aria-label="Section index" class="spine" id="spine">
+<a data-spine="education" href="#education">01</a>
+<a data-spine="experience" href="#experience">02</a>
+<a data-spine="work" href="#work">03</a>
+<a data-spine="recognition" href="#recognition">04</a>
+<a data-spine="writing" href="#writing">05</a>
+<a data-spine="contact" href="#contact">06</a>
+<span class="spine-label">Index</span>
+</nav>
+<dialog aria-labelledby="interviewDialogTitle" class="video-modal" id="interviewDialog">
+<div class="video-modal-head">
+<div>
+<span class="video-modal-brand">RTBF La Première · Tendances Première</span>
+<h2 data-en="Digital transformation and award-winning student work" data-fr="Transformation digitale et travaux étudiants primés" id="interviewDialogTitle">Digital transformation and award-winning student work</h2>
+</div>
+<button aria-label="Close interview" class="video-modal-close" id="closeInterview" type="button">×</button>
+</div>
+<div class="video-frame" id="interviewFrame"></div>
+<div class="video-modal-footer">
+<span data-en="Featured guest · 20-minute interview · December 2025" data-fr="Invité · Interview de 20 minutes · Décembre 2025">Featured guest · 20-minute interview · December 2025</span>
+<a data-en="Open on RTBF Auvio →" data-fr="Ouvrir sur RTBF Auvio →" href="https://auvio.rtbf.be/media/tendances-premiere-tendances-premiere-le-dossier-3417149" rel="noopener" target="_blank">Open on RTBF Auvio →</a>
+</div>
+</dialog>
+<main id="main">
+<section aria-labelledby="hero-title" class="hero" id="top">
+<img alt="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI." class="hero-media" fetchpriority="high" height="4906" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo4.jpg'}" src="photo4.jpg" width="7360"/>
+<div class="shell">
+<div class="hero-content hero-stagger">
+<p class="eyebrow" data-en="Strategy, Finance, AI &amp; Engineering" data-fr="Stratégie, Finance, IA &amp; Ingénierie">Strategy, Finance, AI &amp; Engineering</p>
+<h1 id="hero-title">Valentin Angenot</h1>
+<p class="hero-credentials" data-en="Business Engineer · Industrial Engineer · CFA Level I passed" data-fr="Ingénieur de gestion · Ingénieur industriel · CFA Level I réussi">Business Engineer · Industrial Engineer · CFA Level I passed</p>
+<button aria-controls="interviewDialog" aria-haspopup="dialog" class="hero-interview js-open-interview" id="openInterview" type="button">
+<span aria-hidden="true" class="interview-play">▶</span>
+<span class="interview-copy">
+<span class="interview-source">
+<span class="rtbf-logo">
+<svg aria-labelledby="rtbfLogoTitle" focusable="false" role="img" viewbox="0 0 3508 877" xmlns="http://www.w3.org/2000/svg">
+<title id="rtbfLogoTitle">RTBF</title>
+<g transform="matrix(3.00129,0,0,3.00129,-4457.13,-447.862)">
+<g transform="matrix(2.90461,0,0,2.90461,1905.29,242.052)">
+<path d="M36.381,52.394C34.512,50.66 32.439,49.673 29.7,49.673L-24.216,49.679L-24.255,49.679L-24.293,49.685C-25.916,50.107 -27.914,48.885 -29.558,47.893C-30.936,46.706 -31.546,45.056 -31.546,42.893L-31.546,8.182L29.646,8.186C31.649,8.186 33.956,7.912 36.084,5.947C37.838,4.084 38.723,2 38.723,-0.672C38.723,-3.207 37.828,-5.446 35.923,-7.22C34.152,-9.125 31.913,-10.018 29.377,-10.018L-31.545,-10.018L-31.544,-22.595C-31.544,-25.079 -32.546,-27.277 -34.269,-29.029C-35.999,-30.915 -38.216,-31.797 -40.756,-31.797C-43.291,-31.797 -45.528,-30.903 -47.435,-28.995C-49.342,-27.224 -50.233,-24.986 -50.233,-22.317L-50.233,50.689C-50.233,62.402 -44.618,68.035 -32.948,68.035L29.97,68.028C32.456,68.028 34.524,67.026 36.408,65.303C38.164,63.573 39.179,61.355 39.179,58.95C39.179,56.328 38.313,54.461 36.381,52.394Z"></path>
+<path d="M87.782,-9.969C85.561,-9.969 83.154,-9.701 81.21,-7.787C79.455,-6.057 78.572,-3.841 78.572,-1.301C78.572,1.234 79.466,3.472 81.371,5.378C83.145,7.151 85.383,8.178 87.919,8.178L89.31,8.184L123.079,8.184C125.294,8.184 126.981,8.779 128.324,10.122C129.533,11.332 130.26,12.997 130.26,15.166L130.311,42.908C130.311,45.065 129.7,46.714 128.325,47.899C126.934,49.098 125.086,49.688 122.994,49.688L78.326,49.688C76.051,49.688 74.183,49.098 72.794,47.899C71.417,46.714 70.806,45.069 70.806,42.906L70.754,-22.749C70.754,-25.102 69.753,-27.303 68.029,-29.186C66.298,-30.943 64.083,-31.959 61.542,-31.959C59.008,-31.959 56.77,-30.933 54.864,-29.028C52.957,-27.252 52.065,-25.016 52.065,-22.479L52.065,50.56C52.065,62.007 57.986,68.039 69.743,68.039L131.139,68.053C142.764,68.053 148.818,62.312 148.818,50.655L148.818,7.117C148.818,-4.153 143.188,-9.74 131.491,-9.948L87.782,-9.969Z"></path>
+<path d="M254.943,6.022C256.698,4.293 257.717,2.077 257.717,-0.463C257.717,-3 256.689,-5.237 254.917,-7.142C252.841,-9.085 250.605,-9.998 248.236,-9.998L179.538,-9.993C168.238,-9.73 162.317,-4.057 162.627,7.072L162.158,59.511C162.158,61.874 163.172,64.083 164.925,65.837C166.678,67.591 168.877,68.607 171.236,68.607C173.903,68.607 176.131,67.591 177.885,65.837C179.937,64.038 180.706,61.83 180.706,59.508L181.048,12.72C181.048,9.677 182.327,8.208 185.139,8.208L248.378,8.205C250.595,8.206 252.868,7.935 254.943,6.022Z"></path>
+<path d="M-64.984,-7.405C-66.699,-9.122 -68.906,-9.969 -71.663,-9.969C-89.078,-9.987 -106.629,-9.928 -124.043,-9.996C-125.398,-10.019 -126.226,-10.522 -127.032,-11.636C-128.73,-14.109 -132.375,-14.963 -135.197,-14.963C-138.001,-14.963 -140.55,-13.839 -142.465,-11.839C-144.323,-9.895 -144.648,-7.753 -144.648,-5.251L-144.674,59.005C-144.674,61.361 -143.78,63.575 -141.874,65.347C-139.97,67.382 -137.734,68.146 -135.197,68.146C-132.66,68.146 -130.445,67.406 -128.716,65.678C-126.856,63.685 -125.985,61.736 -125.985,59.066L-125.985,15.26C-125.985,13.182 -125.343,11.274 -123.998,10.116C-122.626,8.801 -120.913,8.212 -118.673,8.196L-71.394,8.196C-68.629,8.196 -66.494,7.405 -64.956,5.76C-63.068,4.031 -62.184,1.814 -62.184,-0.725C-62.184,-3.264 -63.078,-5.497 -64.984,-7.405Z"></path>
+<path d="M234.947,33.804L234.947,33.797C234.947,31.004 233.854,28.44 231.948,26.643C229.82,24.758 227.45,23.877 224.344,23.877L206.446,23.877C203.605,23.877 201.233,24.758 199.104,26.643C196.94,28.44 195.844,31.004 195.844,33.797L195.844,33.804C195.844,36.596 196.938,38.905 199.104,40.691C201.233,42.444 203.605,43.461 206.446,43.461L224.344,43.461C227.45,43.461 229.82,42.444 231.948,40.691C233.85,38.905 234.947,36.596 234.947,33.804Z"></path>
+</g>
+</g>
+</svg>
+</span>
+<span class="interview-brand">La Première · Tendances Première</span>
+</span>
+<span class="interview-title" data-en="Watch the 20-minute interview" data-fr="Regarder l’interview de 20 minutes">Watch the 20-minute interview</span>
+</span>
+<span class="interview-duration" data-en="Play in page" data-fr="Lecture intégrée">Play in page</span>
+</button>
+<div class="actions">
+<a class="button button-primary" data-en="View experience" data-fr="Voir l’expérience" href="#experience">View experience</a>
+<a class="button button-light" data-en="Download CV" data-fr="Télécharger le CV" href="cv.pdf" rel="noopener" target="_blank">Download CV</a>
+</div>
+</div>
+<p class="hero-meta" data-en="Belgium-based&lt;br/&gt;Open to roles in Belgium, Luxembourg, London,&lt;br/&gt;Madrid, Barcelona and internationally" data-fr="Basé en Belgique&lt;br/&gt;Ouvert aux postes en Belgique, au Luxembourg, à Londres,&lt;br/&gt;Madrid, Barcelone et à l’international">Belgium-based<br/>Open to roles in Belgium, Luxembourg, London,<br/>Madrid, Barcelona and internationally</p>
+</div>
+<span aria-hidden="true" class="hero-scroll"></span>
+</section>
+<section class="section section-white" id="education">
+<div class="shell">
+<header class="profile-head" data-reveal="">
+<div class="head-index">
+<p class="eyebrow" data-en="01 · Profile" data-fr="01 · Profil">01 · Profile</p>
+<span class="head-rule"></span>
+</div>
+<h2 data-en="Business Engineer.&lt;br/&gt;Industrial Engineer.&lt;br/&gt;&lt;span&gt;CFA Level I passed.&lt;/span&gt;" data-fr="Ingénieur de gestion.&lt;br/&gt;Ingénieur industriel.&lt;br/&gt;&lt;span&gt;CFA Level I réussi.&lt;/span&gt;">Business Engineer.<br/>Industrial Engineer.<br/><span>CFA Level I passed.</span></h2>
+</header>
+<div class="credential-rail" data-reveal="">
+<article class="credential">
+<div class="credential-label">01 · HEC Liège · 2025</div>
+<h3 data-en="Business Engineer" data-fr="Ingénieur de gestion">Business Engineer</h3>
+<p class="credential-school" data-en="M.Sc. Business Engineering, Science &amp; Technology" data-fr="Master ingénieur de gestion, Science &amp; Technologie">M.Sc. Business Engineering, Science &amp; Technology</p>
+<p class="credential-honour" data-en="Valedictorian · Major de Promotion" data-fr="Major de promotion">Valedictorian · Major de Promotion</p>
+<p class="credential-detail" data-en="B.Sc. 18/20 · M.Sc. 18.5/20 · First-ranked at both levels · Summa Cum Laude with Committee Praise." data-fr="B.Sc. 18/20 · M.Sc. 18,5/20 · Premier classé aux deux niveaux · La Plus Grande Distinction avec félicitations du jury.">B.Sc. 18/20 · M.Sc. 18.5/20 · First-ranked at both levels · Summa Cum Laude with Committee Praise.</p>
+</article>
+<article class="credential">
+<div class="credential-label">02 · HELMo Gramme · 2026</div>
+<h3 data-en="Industrial Engineer" data-fr="Ingénieur industriel">Industrial Engineer</h3>
+<p class="credential-school" data-en="M.Eng. Industrial Engineering" data-fr="Master ingénieur industriel">M.Eng. Industrial Engineering</p>
+<p class="credential-detail" data-en="Current average: 18.2/20 · Mechanics, energy, industrial systems, robotics and optimisation." data-fr="Moyenne actuelle : 18,2/20 · Mécanique, énergie, systèmes industriels, robotique et optimisation.">Current average: 18.2/20 · Mechanics, energy, industrial systems, robotics and optimisation.</p>
+</article>
+<article class="credential">
+<div class="credential-label">03 · CFA Institute · Aug 2025</div>
+<h3>CFA Level I</h3>
+<p class="credential-school" data-en="Passed on the first attempt" data-fr="Réussi à la première tentative">Passed on the first attempt</p>
+<p class="credential-detail" data-en="Financial analysis, valuation, portfolio management, ethics and quantitative methods." data-fr="Analyse financière, valorisation, gestion de portefeuille, éthique et méthodes quantitatives.">Financial analysis, valuation, portfolio management, ethics and quantitative methods.</p>
+</article>
+</div>
+<div class="languages-block" data-reveal="">
+<h3 class="languages-title" data-en="Languages" data-fr="Langues">Languages</h3>
+<div aria-label="Languages" class="language-grid" data-aria-label-en="Languages" data-aria-label-fr="Langues" role="group">
+<div class="language">
+<span class="language-name" data-en="French" data-fr="Français">French</span>
+<strong class="language-level" data-en="Native" data-fr="Langue maternelle">Native</strong>
+</div>
+<div class="language">
+<span class="language-name" data-en="English" data-fr="Anglais">English</span>
+<strong class="language-level">C1</strong>
+</div>
+<div class="language">
+<span class="language-name" data-en="Spanish" data-fr="Espagnol">Spanish</span>
+<strong class="language-level">C1</strong>
+</div>
+<div class="language">
+<span class="language-name" data-en="Dutch" data-fr="Néerlandais">Dutch</span>
+<strong class="language-level" data-en="Beginner" data-fr="Débutant">Beginner</strong>
+<span class="language-note" data-en="Ready to deepen" data-fr="Prêt à approfondir">Ready to deepen</span>
+</div>
+<div class="language">
+<span class="language-name" data-en="Italian" data-fr="Italien">Italian</span>
+<strong class="language-level" data-en="Beginner" data-fr="Débutant">Beginner</strong>
+<span class="language-note" data-en="Ready to deepen" data-fr="Prêt à approfondir">Ready to deepen</span>
+</div>
+</div>
+</div>
+<div class="certifications-block" data-reveal="">
+<h3 class="languages-title">Certifications</h3>
+<div aria-label="Certifications" class="cert-grid" role="list">
+<div class="cert" role="listitem">
+<span class="cert-issuer">CFA Institute</span>
+<p class="cert-name" data-en="CFA Level I — Passed" data-fr="CFA Level I — Réussi">CFA Level I — Passed</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">IBM</span>
+<p class="cert-name">Generative AI for Executives and Business Leaders</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">University of London</span>
+<p class="cert-name">Corporate Strategy</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">Dassault Systèmes</span>
+<p class="cert-name">Certified SOLIDWORKS Associate</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">Erasmus Rotterdam</span>
+<p class="cert-name">Advanced Valuation &amp; Strategy — M&amp;A, PE &amp; VC</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">CFI</span>
+<p class="cert-name">FMI Foundations in Financial Modeling</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">University of Michigan</span>
+<p class="cert-name">Digital Twins</p>
+</div>
+<div class="cert" role="listitem">
+<span class="cert-issuer">Yale University</span>
+<p class="cert-name">Financial Markets</p>
+</div>
+</div>
+<p class="additional-credentials">
+<span>Python · Data, NLP &amp; optimisation</span>
+</p>
+</div>
+</div>
+</section>
+<section class="section" id="experience">
+<div class="shell">
+<header class="section-head" data-reveal="">
+<div class="head-index">
+<p class="eyebrow" data-en="02 · Experience" data-fr="02 · Expérience">02 · Experience</p>
+<span class="head-rule"></span>
+</div>
+<h2 data-en="Professional experience." data-fr="Expérience professionnelle.">Professional experience.</h2>
+<p class="section-intro" data-en="Seven roles between 2022 and 2026 — all held in parallel with full-time studies." data-fr="Sept rôles entre 2022 et 2026 — tous menés en parallèle d’études à temps plein.">Seven roles between 2022 and 2026 — all held in parallel with full-time studies.</p>
+</header>
+<div class="experience-toolbar" data-reveal="">
+<p class="experience-toolbar-label" data-en="Filter experience" data-fr="Filtrer l’expérience">Filter experience</p>
+<div aria-label="Filter professional experience" class="experience-filters" data-aria-label-en="Filter professional experience" data-aria-label-fr="Filtrer l’expérience professionnelle" role="group">
+<button aria-pressed="true" class="experience-filter" data-en="All" data-experience-filter="all" data-fr="Tout" type="button">All</button>
+<button aria-pressed="false" class="experience-filter" data-en="Professional roles" data-experience-filter="role" data-fr="Rôles professionnels" type="button">Professional roles</button>
+<button aria-pressed="false" class="experience-filter" data-en="Internships" data-experience-filter="internship" data-fr="Stages" type="button">Internships</button>
+</div>
+</div>
+<div class="experience-list">
+<article class="experience-row" data-experience-type="internship" data-reveal="">
+<div class="experience-date">Sep 2025 – Jun 2026</div>
+<div class="experience-role">
+<h3 data-en="Industrial Engineering Intern · Strategy &amp; Operations" data-fr="Stagiaire ingénieur industriel · Stratégie &amp; Opérations">Industrial Engineering Intern · Strategy &amp; Operations</h3>
+<p class="experience-org" data-en="CILE · Compagnie Intercommunale Liégeoise des Eaux · Industrial Engineering degree internship" data-fr="CILE · Compagnie Intercommunale Liégeoise des Eaux · Stage de fin d’études d’ingénieur industriel">CILE · Compagnie Intercommunale Liégeoise des Eaux · Industrial Engineering degree internship</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Built the make-or-buy case and target operating model for bringing a critical field operation in-house across a utility serving 560,000+ residents." data-fr="Construction du business case make-or-buy et du modèle opérationnel cible pour l’internalisation d’une opération de terrain critique, pour un opérateur desservant plus de 560 000 habitants.">Built the make-or-buy case and target operating model for bringing a critical field operation in-house across a utility serving 560,000+ residents.</p>
+<ul class="experience-points">
+<li data-en="Modelled staffing, equipment, vehicle, compliance and workflows for 480 road-opening interventions per year across two depots and 24 municipalities." data-fr="Modélisation des effectifs, équipements, véhicules, conformité et workflows pour 480 interventions d’ouverture de voirie par an, sur deux dépôts et 24 communes.">Modelled staffing, equipment, vehicle, compliance and workflows for 480 road-opening interventions per year across two depots and 24 municipalities.</li>
+<li data-en="Designed and built two linked browser applications combining geocoding, 24 rule sets, native DOCX generation, a canvas-based signage editor, submission workflows and analytics." data-fr="Conception et développement de deux applications web liées combinant géocodage, 24 jeux de règles, génération DOCX native, éditeur de signalisation sur canvas, workflows de soumission et analytique.">Designed and built two linked browser applications combining geocoding, 24 rule sets, native DOCX generation, a canvas-based signage editor, submission workflows and analytics.</li>
+<li data-en="Quantified €597K in ten-year savings, unified 24 permit procedures and reduced the core administrative workflow from 98 to 11 minutes." data-fr="Quantification de 597 K€ d’économies sur dix ans, unification de 24 procédures de demande et réduction du workflow administratif central de 98 à 11 minutes.">Quantified €597K in ten-year savings, unified 24 permit procedures and reduced the core administrative workflow from 98 to 11 minutes.</li>
+</ul>
+</div>
+</article>
+<article class="experience-row" data-experience-type="role" data-reveal="">
+<div class="experience-date">Sep 2023 – Mar 2026</div>
+<div class="experience-role">
+<h3 data-en="Teaching Assistant · Strategy &amp; Digital Transformation" data-fr="Assistant d’enseignement · Stratégie &amp; Transformation digitale">Teaching Assistant · Strategy &amp; Digital Transformation</h3>
+<p class="experience-org" data-en="HEC Liège &amp; Faculty of Medicine, ULiège" data-fr="HEC Liège &amp; Faculté de Médecine, ULiège">HEC Liège &amp; Faculty of Medicine, ULiège</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Mentored 300+ students on applied strategic diagnoses and transformation mandates built around live company and healthcare cases." data-fr="Encadrement de plus de 300 étudiants sur des diagnostics stratégiques appliqués et des mandats de transformation construits sur des cas réels d’entreprises et de santé.">Mentored 300+ students on applied strategic diagnoses and transformation mandates built around live company and healthcare cases.</p>
+<ul class="experience-points">
+<li data-en="Supervised corporate projects in digital strategy, Industry 4.0 and strategic consulting in collaboration with companies and MecaTech." data-fr="Supervision de projets d’entreprise en stratégie digitale, Industrie 4.0 et conseil stratégique, en collaboration avec des entreprises et MecaTech.">Supervised corporate projects in digital strategy, Industry 4.0 and strategic consulting in collaboration with companies and MecaTech.</li>
+<li data-en="At the Faculty of Medicine, coached Master's teams on healthcare strategy and digital transition, translating field issues into structured recommendations." data-fr="À la Faculté de Médecine, coaching d’équipes de Master en stratégie de santé et transition digitale, en traduisant les enjeux de terrain en recommandations structurées.">At the Faculty of Medicine, coached Master's teams on healthcare strategy and digital transition, translating field issues into structured recommendations.</li>
+</ul>
+<p class="experience-people"><strong data-en="Faculty" data-fr="Faculté">Faculty</strong>   Prof. Nicolas Neysen</p>
+</div>
+</article>
+<article class="experience-row" data-experience-type="role" data-reveal="">
+<div class="experience-date">Jul 2025 – Feb 2026</div>
+<div class="experience-role">
+<h3 data-en="AI Engineer &amp; Researcher" data-fr="Ingénieur IA &amp; Chercheur">AI Engineer &amp; Researcher</h3>
+<p class="experience-org" data-en="University of Liège · University of Rouen · Long COVID Research Network" data-fr="Université de Liège · Université de Rouen · Long COVID Research Network">University of Liège · University of Rouen · Long COVID Research Network</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Designed and integrated the AI system that turns unstructured paediatric Long COVID narratives into interoperable phenotype data usable by clinicians." data-fr="Conception et intégration du système d’IA qui transforme des récits pédiatriques non structurés de Covid long en données phénotypiques interopérables, exploitables par les cliniciens.">Designed and integrated the AI system that turns unstructured paediatric Long COVID narratives into interoperable phenotype data usable by clinicians.</p>
+<ul class="experience-points">
+<li data-en="Built the AI pipeline (embeddings, semantic search and LLMs) that mapped 148 clinical observations from 10 cases into 128 standardised medical terms." data-fr="Développement du pipeline d’IA (embeddings, recherche sémantique et LLM) ayant mappé 148 observations cliniques issues de 10 cas vers 128 termes médicaux standardisés.">Built the AI pipeline (embeddings, semantic search and LLMs) that mapped 148 clinical observations from 10 cases into 128 standardised medical terms.</li>
+<li data-en="Co-authored research on integrating AI into Belgian primary care, contributing evidence used in scientific and public-health discussions." data-fr="Co-auteur de recherches sur l’intégration de l’IA en médecine générale belge, avec des travaux repris dans les discussions scientifiques et de santé publique.">Co-authored research on integrating AI into Belgian primary care, contributing evidence used in scientific and public-health discussions.</li>
+</ul>
+<p class="experience-people"><strong data-en="Research lead" data-fr="Direction de recherche">Research lead</strong>   Dr Marc Jamoulle</p>
+</div>
+</article>
+<article class="experience-row" data-experience-type="role" data-reveal="">
+<div class="experience-date">Sep 2022 – Feb 2026</div>
+<div class="experience-role">
+<h3 data-en="Student Instructor · Finance, Mathematics &amp; Engineering Sciences" data-fr="Moniteur étudiant · Finance, Mathématiques &amp; Sciences de l’ingénieur">Student Instructor · Finance, Mathematics &amp; Engineering Sciences</h3>
+<p class="experience-org" data-en="HEC Liège · Five course appointments" data-fr="HEC Liège · Cinq mandats de cours">HEC Liège · Five course appointments</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Delivered tutorials, problem-solving sessions and student support across finance, accounting, physics, mathematics and supply-chain management." data-fr="Animation de travaux dirigés, séances d’exercices et accompagnement d’étudiants en finance, comptabilité, physique, mathématiques et supply chain.">Delivered tutorials, problem-solving sessions and student support across finance, accounting, physics, mathematics and supply-chain management.</p>
+<ul class="experience-points">
+<li data-en="Corporate Finance &amp; Strategic Financial Analysis; Physics I &amp; II; Mathematics: Infinitesimal Analysis." data-fr="Finance d’entreprise &amp; analyse financière stratégique ; Physique I &amp; II ; Mathématiques : analyse infinitésimale.">Corporate Finance &amp; Strategic Financial Analysis; Physics I &amp; II; Mathematics: Infinitesimal Analysis.</li>
+<li data-en="Supply Chain Management; Finance &amp; Accounting." data-fr="Supply Chain Management ; Finance &amp; Comptabilité.">Supply Chain Management; Finance &amp; Accounting.</li>
+</ul>
+<p class="experience-people"><strong data-en="Course leads" data-fr="Titulaires">Course leads</strong>   Marie Lambert (corporate finance) · Pierre Deneye (physics) · Valérie Henry (analysis) · Sabine Limbourg &amp; Élodie Bebronne (supply chain) · Giuseppina Capodici &amp; Wilfried Niessen (finance &amp; accounting)</p>
+</div>
+</article>
+<article class="experience-row" data-experience-type="role" data-reveal="">
+<div class="experience-date">Sep 2024 – Oct 2025</div>
+<div class="experience-role">
+<h3 data-en="Invited Lecturer" data-fr="Conférencier invité">Invited Lecturer</h3>
+<p class="experience-org" data-en="HEC Liège Executive Education · Liège · On-site" data-fr="HEC Liège Executive Education · Liège · Présentiel">HEC Liège Executive Education · Liège · On-site</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Invited to deliver applied AI sessions for executive audiences using business cases I had personally led." data-fr="Invité à animer des sessions d’IA appliquée pour des publics de dirigeants, sur la base de cas d’affaires que j’avais personnellement menés.">Invited to deliver applied AI sessions for executive audiences using business cases I had personally led.</p>
+<ul class="experience-points">
+<li data-en="Structured the intervention around strategic opportunity selection, operational limits, governance and the conditions required for adoption in real organisations." data-fr="Intervention structurée autour de la sélection stratégique des opportunités, des limites opérationnelles, de la gouvernance et des conditions d’adoption dans des organisations réelles.">Structured the intervention around strategic opportunity selection, operational limits, governance and the conditions required for adoption in real organisations.</li>
+<li data-en="Translated technical systems into decision frameworks for non-technical professionals." data-fr="Traduction de systèmes techniques en cadres de décision pour des professionnels non techniques.">Translated technical systems into decision frameworks for non-technical professionals.</li>
+</ul>
+</div>
+</article>
+<article class="experience-row" data-experience-type="role" data-reveal="">
+<div class="experience-date">Sep 2024 – Sep 2025</div>
+<div class="experience-role">
+<h3 data-en="AI Engineer &amp; Project Lead" data-fr="Ingénieur IA &amp; Chef de projet">AI Engineer &amp; Project Lead</h3>
+<p class="experience-org">AIASHI · HEC Liège · University of Liège</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Led a strategic research-intelligence initiative turning raw institutional data into a decision-ready taxonomy and quality-controlled pipeline, built to optimise the allocation of a €200M budget through better data analysis." data-fr="Direction d’une initiative stratégique d’intelligence de recherche transformant des données institutionnelles brutes en taxonomie décisionnelle et pipeline sous contrôle qualité, conçue pour optimiser l’allocation d’un budget de 200 M€ par une meilleure analyse des données.">Led a strategic research-intelligence initiative turning raw institutional data into a decision-ready taxonomy and quality-controlled pipeline, built to optimise the allocation of a €200M budget through better data analysis.</p>
+<ul class="experience-points">
+<li data-en="Engineered an NLP/LLM system processing 100,000+ documents; on 62,000 research abstracts, produced a three-level taxonomy spanning 1,977 topics." data-fr="Conception d’un système NLP/LLM traitant plus de 100 000 documents ; sur 62 000 abstracts de recherche, production d’une taxonomie à trois niveaux couvrant 1 977 topics.">Engineered an NLP/LLM system processing 100,000+ documents; on 62,000 research abstracts, produced a three-level taxonomy spanning 1,977 topics.</li>
+<li data-en="Raised usable coverage to 89.8%, reduced unresolved records from 18,724 to 6,320 and reached 96% quality-control accuracy." data-fr="Couverture exploitable portée à 89,8 %, enregistrements non résolus réduits de 18 724 à 6 320 et précision du contrôle qualité de 96 %.">Raised usable coverage to 89.8%, reduced unresolved records from 18,724 to 6,320 and reached 96% quality-control accuracy.</li>
+</ul>
+</div>
+</article>
+<article class="experience-row" data-experience-type="role" data-reveal="">
+<div class="experience-date">Sep 2024 – May 2025</div>
+<div class="experience-role">
+<h3 data-en="Equity Research Analyst" data-fr="Analyste equity research">Equity Research Analyst</h3>
+<p class="experience-org">CFA Institute Research Challenge · Benelux</p>
+</div>
+<div class="experience-content">
+<p class="experience-result" data-en="Produced full sell-side initiating coverage on Just Eat Takeaway.com (Euronext: TKWY), from industry analysis and forecasting to valuation and investment recommendation." data-fr="Production d’une couverture initiale sell-side complète sur Just Eat Takeaway.com (Euronext : TKWY), de l’analyse sectorielle et des prévisions à la valorisation et la recommandation d’investissement.">Produced full sell-side initiating coverage on Just Eat Takeaway.com (Euronext: TKWY), from industry analysis and forecasting to valuation and investment recommendation.</p>
+<ul class="experience-points">
+<li data-en="Issued a SELL recommendation with 18.5% downside potential and defended the thesis before investment professionals at Euronext Amsterdam." data-fr="Émission d’une recommandation SELL avec un potentiel de baisse de 18,5 % et défense de la thèse devant des professionnels de l’investissement à Euronext Amsterdam.">Issued a SELL recommendation with 18.5% downside potential and defended the thesis before investment professionals at Euronext Amsterdam.</li>
+<li data-en="Ranked 2nd among 20 Benelux universities." data-fr="Classé 2e parmi 20 universités du Benelux.">Ranked 2nd among 20 Benelux universities.</li>
+</ul>
+<p class="experience-people"><strong data-en="Academic mentor" data-fr="Mentor académique">Academic mentor</strong>   Prof. Marie Lambert</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="work">
+<div class="shell">
+<header class="section-head" data-reveal="">
+<div class="head-index">
+<p class="eyebrow" data-en="03 · Selected work" data-fr="03 · Projets">03 · Selected work</p>
+<span class="head-rule"></span>
+</div>
+<h2 data-en="Selected work." data-fr="Projets sélectionnés.">Selected work.</h2>
+<p class="section-intro" data-en="Cases, models and reports with direct access to the work behind each result." data-fr="Cas, modèles et rapports, avec accès direct aux livrables derrière chaque résultat.">Cases, models and reports with direct access to the work behind each result.</p>
+</header>
+<a aria-label="Explore the public utility permit workflow software case study" class="case-featured" data-aria-label-en="Explore the public utility permit workflow software case study" data-aria-label-fr="Découvrir l’étude de cas logicielle du workflow de demandes de voirie" data-reveal="" href="case-study.html">
+<div class="case-content">
+<div class="case-topline">
+<div class="case-index" data-en="01 · Applied software · Public utility" data-fr="01 · Logiciel appliqué · Service public">01 · Applied software · Public utility</div>
+<span class="case-open-label" data-en="Featured software case" data-fr="Cas logiciel phare">Featured software case</span>
+</div>
+<h3 data-en="An end-to-end operating system for road-opening permits." data-fr="Un système d’exploitation de bout en bout pour les demandes d’ouverture de voirie.">An end-to-end operating system for road-opening permits.</h3>
+<p data-en="Two linked browser applications unifying geocoding, municipal rules, document generation, signage design, submission and analytics." data-fr="Deux applications web liées unifiant géocodage, règles communales, génération documentaire, plans de signalisation, soumission et analytique.">Two linked browser applications unifying geocoding, municipal rules, document generation, signage design, submission and analytics.</p>
+</div>
+<div aria-label="Public utility case highlights" class="case-spotlight" data-aria-label-en="Public utility case highlights" data-aria-label-fr="Points clés du cas service public" role="group">
+<div>
+<span class="case-spotlight-label" data-en="Projected workflow value" data-fr="Valeur projetée du workflow">Projected workflow value</span>
+<strong class="case-spotlight-value">€<span data-count="596881">596,881</span></strong>
+<p class="case-spotlight-copy" data-en="Industrial Engineering internship" data-fr="Stage d’ingénieur industriel">Industrial Engineering internship</p>
+</div>
+<div>
+<div class="case-proof-grid">
+<span data-en="&lt;strong&gt;24&lt;/strong&gt;Rule sets encoded" data-fr="&lt;strong&gt;24&lt;/strong&gt;Jeux de règles encodés"><strong>24</strong>Rule sets encoded</span>
+<span><strong>98 → 11</strong>Minutes / workflow</span>
+<span data-en="&lt;strong&gt;2&lt;/strong&gt;Integrated applications" data-fr="&lt;strong&gt;2&lt;/strong&gt;Applications intégrées"><strong>2</strong>Integrated applications</span>
+</div>
+<span class="case-open-icon" data-en='View the software case &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' data-fr='Voir le cas logiciel &lt;span aria-hidden="true"&gt;→&lt;/span&gt;'>View the software case <span aria-hidden="true">→</span></span>
+</div>
+</div>
+</a>
+<div class="case-grid">
+<article class="case-card" data-reveal="">
+<div class="case-card-topline">
+<div class="case-index" data-en="02 · Applied AI · Institutional intelligence" data-fr="02 · IA appliquée · Intelligence institutionnelle">02 · Applied AI · Institutional intelligence</div>
+<span aria-hidden="true" class="case-card-icon">↗</span>
+</div>
+<h3 data-en="AI-driven research intelligence at institutional scale." data-fr="L’IA appliquée à l’intelligence de recherche institutionnelle.">AI-driven research intelligence at institutional scale.</h3>
+<p data-en="An AI system — NLP and LLMs — built to optimise the allocation of €200M+ in research revenue." data-fr="Un système d’IA — NLP et LLM — conçu pour optimiser l’allocation de plus de 200 M€ de revenus de recherche.">An AI system — NLP and LLMs — built to optimise the allocation of €200M+ in research revenue.</p>
+<div aria-label="AIASHI project metrics" class="mini-metrics" data-aria-label-en="AIASHI project metrics" data-aria-label-fr="Métriques du projet AIASHI" role="group">
+<div class="mini-metric">
+<div class="mini-value">100K+</div>
+<div class="mini-label">Documents</div>
+</div>
+<div class="mini-metric">
+<div class="mini-value">96%</div>
+<div class="mini-label" data-en="QC rate" data-fr="Précision QC">QC rate</div>
+</div>
+<div class="mini-metric">
+<div class="mini-value">1,977</div>
+<div class="mini-label" data-en="Final topics" data-fr="Topics finaux">Final topics</div>
+</div>
+</div>
+<div class="case-actions">
+<a class="case-action case-action-primary" data-en="Read article →" data-fr="Lire l’article →" href="https://www.digitalwallonia.be/fr/publications/digital-nextgen-12e-cahier-du-digital/" rel="noopener" target="_blank">Read article →</a>
+<a class="case-action" data-en="View defence →" data-fr="Voir la défense →" href="thesis_presentation.html" rel="noopener" target="_blank">View defence →</a>
+</div>
+</article>
+<article class="case-card" data-delay="1" data-reveal="">
+<div class="case-card-topline">
+<div class="case-index" data-en="03 · Investment analysis" data-fr="03 · Analyse d’investissement">03 · Investment analysis</div>
+<span aria-hidden="true" class="case-card-icon">↗</span>
+</div>
+<h3 data-en="A sell-side thesis defended at Euronext." data-fr="Une thèse sell-side défendue à Euronext.">A sell-side thesis defended at Euronext.</h3>
+<p data-en="Full initiating coverage on Just Eat Takeaway.com with a SELL recommendation." data-fr="Couverture initiale complète de Just Eat Takeaway.com avec une recommandation SELL.">Full initiating coverage on Just Eat Takeaway.com with a SELL recommendation.</p>
+<div aria-label="CFA Research Challenge metrics" class="mini-metrics" data-aria-label-en="CFA Research Challenge metrics" data-aria-label-fr="Métriques du CFA Research Challenge" role="group">
+<div class="mini-metric">
+<div class="mini-value" data-en="2nd" data-fr="2e">2nd</div>
+<div class="mini-label">Benelux</div>
+</div>
+<div class="mini-metric">
+<div class="mini-value">20</div>
+<div class="mini-label" data-en="Universities" data-fr="Universités">Universities</div>
+</div>
+<div class="mini-metric">
+<div class="mini-value">18.5%</div>
+<div class="mini-label" data-en="Downside" data-fr="Potentiel de baisse">Downside</div>
+</div>
+</div>
+<div class="case-actions">
+<a class="case-action case-action-primary" data-en="Open report →" data-fr="Ouvrir le rapport →" href="cfa-report.pdf" rel="noopener" target="_blank">Open report →</a>
+<a class="case-action" data-en="View presentation →" data-fr="Voir la présentation →" href="cfa-presentation.pdf" rel="noopener" target="_blank">View presentation →</a>
+</div>
+</article>
+</div>
+<div class="project-index" data-reveal="">
+<header class="project-index-head">
+<div>
+<p class="eyebrow" data-en="More projects" data-fr="Plus de projets">More projects</p>
+<h3 data-en="Reports, models and research." data-fr="Rapports, modèles et recherche.">Reports, models and research.</h3>
+</div>
+<p data-en="Open the report, model or research behind each project." data-fr="Ouvrez le rapport, le modèle ou la recherche derrière chaque projet.">Open the report, model or research behind each project.</p>
+</header>
+<div class="work-list">
+<a class="work-row" href="denmark-sustainable-energy-plan-2045.pdf" rel="noopener" target="_blank">
+<div class="work-year" data-en="2026 · Energy" data-fr="2026 · Énergie">2026 · Energy</div>
+<h3 data-en="Denmark Energy Plan 2045" data-fr="Plan énergétique Danemark 2045">Denmark Energy Plan 2045</h3>
+<p data-en="35 GW offshore wind · ~€90B over 20 years" data-fr="35 GW d’éolien offshore · ~90 Md€ sur 20 ans">35 GW offshore wind · ~€90B over 20 years</p>
+<span class="work-cta" data-en='Open report &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' data-fr='Ouvrir le rapport &lt;span aria-hidden="true"&gt;→&lt;/span&gt;'>Open report <span aria-hidden="true">→</span></span>
+</a>
+<article class="work-row">
+<div class="work-year" data-en="2026 · Mechanical systems" data-fr="2026 · Systèmes mécaniques">2026 · Mechanical systems</div>
+<h3 data-en="Mechanical Systems Simulator" data-fr="Simulateur de systèmes mécaniques">Mechanical Systems Simulator</h3>
+<p data-en="Live RK4 model · energy and phase tracking" data-fr="Modèle RK4 en direct · suivi énergie et phase">Live RK4 model · energy and phase tracking</p>
+<div class="work-links">
+<a class="work-cta" data-en='Live model &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' data-fr='Modèle live &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' href="https://valentinangenot.github.io/simulation_modelling/" rel="noopener" target="_blank">Live model <span aria-hidden="true">→</span></a>
+<a class="work-cta" data-en='Report &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' data-fr='Rapport &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' href="simulation.pdf" rel="noopener" target="_blank">Report <span aria-hidden="true">→</span></a>
+</div>
+</article>
+<a class="work-row" href="ai-for-biotech.pdf" rel="noopener" target="_blank">
+<div class="work-year">2026 · Biotech</div>
+<h3 data-en="mRNA Sequence Optimisation" data-fr="Optimisation de séquences ARNm">mRNA Sequence Optimisation</h3>
+<p data-en="LinearDesign · structure and translation efficiency" data-fr="LinearDesign · structure et efficacité de traduction">LinearDesign · structure and translation efficiency</p>
+<span class="work-cta" data-en='Open report &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' data-fr='Ouvrir le rapport &lt;span aria-hidden="true"&gt;→&lt;/span&gt;'>Open report <span aria-hidden="true">→</span></span>
+</a>
+<a class="work-row" href="https://orbi.uliege.be/handle/2268/335655" rel="noopener" target="_blank">
+<div class="work-year" data-en="2025 · Health" data-fr="2025 · Santé">2025 · Health</div>
+<h3 data-en="AI in clinical medicine" data-fr="L’IA appliquée à la médecine clinique">AI in clinical medicine</h3>
+<p data-en="Long COVID · turning patient narratives into structured data" data-fr="Covid long · des récits patients aux données structurées">Long COVID · turning patient narratives into structured data</p>
+<span class="work-cta" data-en='Open research &lt;span aria-hidden="true"&gt;→&lt;/span&gt;' data-fr='Ouvrir la recherche &lt;span aria-hidden="true"&gt;→&lt;/span&gt;'>Open research <span aria-hidden="true">→</span></span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="section section-dark" id="recognition">
+<div class="shell recognition-grid">
+<div class="recognition-copy" data-reveal="">
+<div class="head-index">
+<p class="eyebrow" data-en="04 · Recognition" data-fr="04 · Distinctions">04 · Recognition</p>
+<span class="head-rule"></span>
+</div>
+<h2 class="recognition-title" data-en="Recognition." data-fr="Distinctions.">Recognition.</h2>
+<ul class="award-list">
+<li>
+<div class="award-number">2025</div>
+<div>
+<div class="award-title" data-en="Jury Prize, Digital Transformation Thesis" data-fr="Prix du Jury, Mémoire en transformation digitale">Jury Prize, Digital Transformation Thesis</div>
+<p class="award-detail" data-en="Awarded by an industry panel for business and societal impact." data-fr="Décerné par un panel industriel pour son impact business et sociétal.">Awarded by an industry panel for business and societal impact.</p>
+</div>
+</li>
+<li>
+<div class="award-number">#2</div>
+<div>
+<div class="award-title">CFA Research Challenge Benelux</div>
+<p class="award-detail" data-en="Second of 20 Benelux universities; final at Euronext Amsterdam." data-fr="Deuxième sur 20 universités du Benelux ; finale à Euronext Amsterdam.">Second of 20 Benelux universities; final at Euronext Amsterdam.</p>
+</div>
+</li>
+</ul>
+<button aria-controls="interviewDialog" aria-haspopup="dialog" class="media-interview js-open-interview" type="button">
+<span aria-hidden="true" class="interview-play">▶</span>
+<span class="interview-copy">
+<span class="interview-brand" data-en="RTBF La Première · Tendances Première · December 2025" data-fr="RTBF La Première · Tendances Première · Décembre 2025">RTBF La Première · Tendances Première · December 2025</span>
+<span class="interview-title" data-en="Watch the 20-minute national radio interview" data-fr="Regarder l’interview radio nationale de 20 minutes">Watch the 20-minute national radio interview</span>
+</span>
+<span class="interview-duration" data-en="Play in page" data-fr="Lecture intégrée">Play in page</span>
+</button>
+</div>
+</div>
+</section>
+<section class="section" id="writing">
+<div class="shell">
+<header class="section-head" data-reveal="">
+<div class="head-index">
+<p class="eyebrow">05 · Publications</p>
+<span class="head-rule"></span>
+</div>
+<h2>Publications &amp; contributions.</h2>
+<p class="section-intro" data-en="Published articles, research contributions and field guides across governance, operations and healthcare." data-fr="Articles publiés, contributions de recherche et guides de terrain en gouvernance, opérations et santé.">Published articles, research contributions and field guides across governance, operations and healthcare.</p>
+</header>
+<div class="writing-list">
+<a class="writing-row" data-reveal="" href="from-friction-to-value.pdf" rel="noopener" target="_blank">
+<div class="writing-date">2026</div>
+<div class="writing-main">
+<h3>From Friction to Value</h3>
+<p class="writing-source" data-en="34-page field guide · Strategy, engineering and applied AI" data-fr="Guide de terrain de 34 pages · Stratégie, ingénierie et IA appliquée">34-page field guide · Strategy, engineering and applied AI</p>
+</div>
+<div class="writing-type" data-en="Field guide →" data-fr="Guide de terrain →">Field guide →</div>
+</a>
+<a class="writing-row" data-reveal="" href="https://www.digitalwallonia.be/fr/publications/digital-nextgen-12e-cahier-du-digital/" rel="noopener" target="_blank">
+<div class="writing-date">2026</div>
+<div class="writing-main">
+<h3>Quand le topic modeling devient un outil de gouvernance strategique</h3>
+<p class="writing-source">Cahier du Digital #12 · Digital Wallonia / Digital Lab</p>
+</div>
+<div class="writing-type" data-en="Published article →" data-fr="Article publié →">Published article →</div>
+</a>
+<a class="writing-row" data-reveal="" href="https://orbi.uliege.be/handle/2268/336509" rel="noopener" target="_blank">
+<div class="writing-date">2025</div>
+<div class="writing-main">
+<h3>Large Language Models in Belgian Primary Care</h3>
+<p class="writing-source" data-en="Co-author · ULiège · AI in healthcare" data-fr="Co-auteur · ULiège · IA en santé">Co-author · ULiège · AI in healthcare</p>
+</div>
+<div class="writing-type" data-en="Research paper →" data-fr="Article de recherche →">Research paper →</div>
+</a>
+<a class="writing-row" data-reveal="" href="https://orbi.uliege.be/handle/2268/335655" rel="noopener" target="_blank">
+<div class="writing-date">2025</div>
+<div class="writing-main">
+<h3>Long COVID, Invisible Illness</h3>
+<p class="writing-source" data-en="Research contribution · Belgian Long COVID Research Network" data-fr="Contribution de recherche · Belgian Long COVID Research Network">Research contribution · Belgian Long COVID Research Network</p>
+</div>
+<div class="writing-type" data-en="Expert report →" data-fr="Rapport d’expert →">Expert report →</div>
+</a>
+</div>
+</div>
+</section>
+<section class="section section-blue" id="contact">
+<div class="shell">
+<header class="section-head contact-head" data-reveal="">
+<div class="head-index">
+<p class="eyebrow">06 · Contact</p>
+<span class="head-rule"></span>
+</div>
+<h2 data-en="Let’s talk." data-fr="Parlons-en.">Let’s talk.</h2>
+<p class="contact-copy" data-en="Open to roles in strategy, finance, AI or transformation — including chief of staff positions alongside a founder or executive. Replies within 24 hours." data-fr="Ouvert à des postes en stratégie, finance, IA ou transformation — y compris des rôles de bras droit d’un fondateur ou d’un dirigeant. Réponse sous 24 heures.">Open to roles in strategy, finance, AI or transformation — including chief of staff positions alongside a founder or executive. Replies within 24 hours.</p>
+</header>
+<div class="contact-channels" data-reveal="">
+<a class="contact-mail" href="https://www.linkedin.com/in/valentin-angenot/" rel="noopener" target="_blank">
+<span>LinkedIn <span class="contact-handle">/ valentin-angenot</span></span>
+<span aria-hidden="true" class="contact-mail-arrow">→</span>
+</a>
+<a class="contact-mail" href="mailto:valentinangenot@icloud.com">
+<span>valentinangenot@icloud.com</span>
+<span aria-hidden="true" class="contact-mail-arrow">→</span>
+</a>
+</div>
+<div class="contact-meta" data-delay="1" data-reveal="">
+<div>
+<span class="contact-meta-label" data-en="Based in" data-fr="Basé à">Based in</span>
+<p data-en="Liège, Belgium — open to roles in Belgium, Luxembourg, London, Madrid, Barcelona and internationally." data-fr="Liège, Belgique — ouvert aux postes en Belgique, au Luxembourg, à Londres, Madrid, Barcelone et à l’international.">Liège, Belgium — open to roles in Belgium, Luxembourg, London, Madrid, Barcelona and internationally.</p>
+</div>
+<div>
+<span class="contact-meta-label" data-en="Languages" data-fr="Langues">Languages</span>
+<p data-en="French native · English C1 · Spanish C1 · Dutch and Italian beginner." data-fr="Français langue maternelle · Anglais C1 · Espagnol C1 · Néerlandais et italien débutant.">French native · English C1 · Spanish C1 · Dutch and Italian beginner.</p>
+</div>
+<div>
+<span class="contact-meta-label">Curriculum</span>
+<p><a data-en="Download the full CV (PDF)" data-fr="Télécharger le CV complet (PDF)" href="cv.pdf" rel="noopener" target="_blank">Download the full CV (PDF)</a></p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-inner shell">
+<span>© 2026 Valentin Angenot</span>
+<span data-en="Strategy · Finance · AI · Engineering" data-fr="Stratégie · Finance · IA · Ingénierie">Strategy · Finance · AI · Engineering</span>
+</div>
+</footer>
+<script>
     (function () {
       "use strict";
 
@@ -2948,6 +2949,81 @@
           observer.observe(element);
         });
       }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+      var body = document.body;
+      var swaps = document.querySelectorAll("[data-en]");
+      var ATTRS = ["aria-label", "alt", "title"];
+
+      function setLang(l) {
+        document.documentElement.setAttribute("lang", l);
+        swaps.forEach(function (el) {
+          el.innerHTML = el.getAttribute("data-" + l) || el.getAttribute("data-en");
+        });
+        ATTRS.forEach(function (a) {
+          document.querySelectorAll("[data-" + a + "-fr]").forEach(function (el) {
+            el.setAttribute(a, el.getAttribute("data-" + a + "-" + l));
+          });
+        });
+        var t = body.getAttribute("data-title-" + l);
+        if (t) document.title = t;
+        var sel = document.getElementById("langSelect");
+        if (sel && sel.value !== l) sel.value = l;
+        try { localStorage.setItem("va_lang", l); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem("va_lang"); } catch (e) {}
+      var initial = saved || "en";
+      if (initial !== "en") setLang(initial);
+
+      var sel = document.getElementById("langSelect");
+      if (sel) {
+        sel.value = initial;
+        sel.addEventListener("change", function () { setLang(sel.value); });
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (window.matchMedia("(hover: none)").matches) return;
+
+      /* 3D tilt on the featured case */
+      var card = document.querySelector(".case-featured");
+      if (card) {
+        var raf = null;
+        card.addEventListener("pointermove", function (ev) {
+          var r = card.getBoundingClientRect();
+          var px = (ev.clientX - r.left) / r.width - .5;
+          var py = (ev.clientY - r.top) / r.height - .5;
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(function () {
+            card.classList.add("tilting");
+            card.style.transform = "perspective(1200px) rotateX(" + (-py * 3.2) + "deg) rotateY(" + (px * 3.2) + "deg)";
+          });
+        });
+        card.addEventListener("pointerleave", function () {
+          if (raf) cancelAnimationFrame(raf);
+          card.classList.remove("tilting");
+          card.style.transform = "";
+        });
+      }
+
+      /* Cursor-follow glow on primary buttons */
+      document.querySelectorAll(".button").forEach(function (b) {
+        b.addEventListener("pointermove", function (ev) {
+          var r = b.getBoundingClientRect();
+          b.style.setProperty("--mx", (ev.clientX - r.left) + "px");
+          b.style.setProperty("--my", (ev.clientY - r.top) + "px");
+        });
+      });
     })();
   </script>
 </body>
