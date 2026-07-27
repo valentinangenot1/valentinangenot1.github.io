@@ -1,890 +1,2955 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentin Angenot</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#080808;--bg2:#0e0e0e;--bg3:#151515;
-  --cream:#f0ece4;--cream2:#d4cfc6;--cream-dim:rgba(240,236,228,.06);
-  --gold:#b8973d;--gold2:#9a7f4f;--gold-dim:rgba(184,151,61,.15);--gold-glow:rgba(184,151,61,.08);
-  --muted:#71717a;--line:rgba(240,236,228,.08);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;overflow-x:hidden;scroll-behavior:auto}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif}
-::selection{background:var(--gold);color:var(--bg)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valentin Angenot | Strategy, Finance, AI &amp; Engineering</title>
+  <meta name="description" content="Valentin Angenot is a Business Engineer and Industrial Engineer who passed CFA Level I, with experience in strategy, applied AI, equity research and field engineering.">
+  <meta name="author" content="Valentin Angenot">
+  <meta name="theme-color" content="#0a0c10">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering">
+  <meta property="og:description" content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering.">
+  <meta property="og:url" content="https://valentinangenot.com/">
+  <meta property="og:image" content="https://valentinangenot.com/photo4.jpg">
+  <meta property="og:image:alt" content="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI.">
+  <meta property="og:site_name" content="Valentin Angenot">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering">
+  <meta name="twitter:description" content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering.">
+  <meta name="twitter:image" content="https://valentinangenot.com/photo4.jpg">
+  <link rel="canonical" href="https://valentinangenot.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
 
-/* ═══ LOADER ═══ */
-.loader{position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity .8s ease .2s}
-.loader.done{opacity:0;pointer-events:none}
-.loader-name{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,3vw,2.2rem);font-weight:500;color:var(--cream);letter-spacing:.8em;opacity:0;transition:letter-spacing 1.4s cubic-bezier(.25,.46,.45,.94),opacity .8s ease}
-.loader-bar{width:120px;height:1px;background:var(--line);position:relative;overflow:hidden}
-.loader-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold2),var(--gold));transition:width 1.8s cubic-bezier(.25,.46,.45,.94)}
-.loader-sub{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);opacity:0;transition:opacity .6s ease .5s}
-.loader.phase2 .loader-name{letter-spacing:.15em;opacity:1}
-.loader.phase2 .loader-fill{width:100%}
-.loader.phase2 .loader-sub{opacity:1}
-
-/* ═══ OVERLAYS ═══ */
-.grain{position:fixed;inset:0;z-index:8000;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
-.progress{position:fixed;top:0;left:0;height:2px;z-index:9000;background:linear-gradient(90deg,var(--gold2),var(--gold),var(--gold2));background-size:200% 100%;animation:shimmer 3s linear infinite;width:0;box-shadow:0 0 20px var(--gold-glow)}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-#particleCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
-
-/* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.6rem 4rem;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
-nav.scrolled{background:rgba(8,8,8,.92);backdrop-filter:blur(30px);padding:1rem 4rem;border-bottom:1px solid var(--line)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);text-decoration:none;letter-spacing:.04em;transition:color .3s}
-.nav-logo:hover{color:var(--gold)}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;position:relative;padding-bottom:4px}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.65,0,.35,1)}
-.nav-links a:hover,.nav-links a.active{color:var(--cream)}
-.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left}
-.hamburger{display:none;cursor:pointer;width:28px;height:20px;position:relative;background:none;border:none;z-index:510}
-.hamburger span{display:block;position:absolute;width:100%;height:1.5px;background:var(--cream);transition:all .4s cubic-bezier(.65,0,.35,1)}
-.hamburger span:nth-child(1){top:0}.hamburger span:nth-child(2){top:50%;transform:translateY(-50%);width:60%}.hamburger span:nth-child(3){bottom:0}
-.hamburger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
-.mobile-menu{position:fixed;inset:0;z-index:499;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;opacity:0;pointer-events:none;transition:opacity .5s}
-.mobile-menu.open{opacity:1;pointer-events:all}
-.mobile-menu a{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--cream);text-decoration:none;opacity:0;transform:translateY(30px);transition:all .5s ease,color .3s}
-.mobile-menu.open a{opacity:1;transform:none}
-.mobile-menu.open a:nth-child(1){transition-delay:.05s}.mobile-menu.open a:nth-child(2){transition-delay:.1s}.mobile-menu.open a:nth-child(3){transition-delay:.15s}.mobile-menu.open a:nth-child(4){transition-delay:.2s}.mobile-menu.open a:nth-child(5){transition-delay:.25s}.mobile-menu.open a:nth-child(6){transition-delay:.3s}.mobile-menu.open a:nth-child(7){transition-delay:.35s}
-.mobile-menu a:hover{color:var(--gold)}
-
-/* ═══ HERO ═══ */
-.hero{display:grid;grid-template-columns:1fr 42%;min-height:100vh;position:relative;z-index:1}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:9rem 5rem 4rem;position:relative;z-index:2}
-.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s ease forwards 2.4s}
-.hero-eyebrow-line{width:40px;height:1px;background:var(--gold)}
-.hero-eyebrow-txt{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.8rem,6vw,6.5rem);font-weight:500;line-height:1.15;letter-spacing:-.03em}
-.hero-name em{font-style:italic;color:var(--gold)}
-.scramble-line{display:block;overflow:hidden;min-height:1.2em}
-.hero-divider{width:0;height:1px;background:rgba(184,151,61,.2);margin:2.2rem 0;animation:growLine .8s cubic-bezier(.65,0,.35,1) forwards 3.2s}
-@keyframes growLine{to{width:60px}}
-.hero-tagline{font-size:1.08rem;font-weight:300;color:var(--cream2);line-height:1.75;max-width:500px;opacity:0;animation:fadeUp .8s ease forwards 3.4s}
-.hero-tagline strong{color:var(--cream);font-weight:600}
-.hero-actions{display:flex;gap:.9rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards 3.6s}
-.hero-scroll{position:absolute;bottom:2.5rem;left:5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeUp .8s ease forwards 3.8s;z-index:2}
-.scroll-mouse{width:18px;height:28px;border:1.5px solid rgba(184,151,61,.3);border-radius:10px;position:relative}
-.scroll-mouse::after{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:2px;height:6px;border-radius:2px;background:var(--gold);animation:scrollDot 2s ease-in-out infinite}
-@keyframes scrollDot{0%,100%{transform:translateX(-50%) translateY(0);opacity:1}50%{transform:translateX(-50%) translateY(10px);opacity:.2}}
-.hero-scroll-txt{font-family:'DM Mono',monospace;font-size:.5rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase}
-.hero-right{position:relative;overflow:hidden}
-.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 25%);z-index:2;pointer-events:none}
-.photo-wipe{position:absolute;inset:0;background:var(--bg);transform-origin:top;z-index:3;animation:photoWipe 1.4s cubic-bezier(.76,0,.24,1) forwards 2.2s}
-@keyframes photoWipe{to{transform:scaleY(0)}}
-.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.hero-photo-placeholder{width:100%;height:100%;background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:var(--muted)}
-.ph-ico{font-size:3rem;opacity:.3}.ph-txt{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;opacity:.4;text-align:center}
-@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
-
-/* ═══ CIRCLE REVEAL TRANSITION ═══ */
-.circle-reveal-wrapper{
-  position:relative;
-  z-index:2;
-  height:400vh; /* more scroll room for staggered content reveals */
-}
-.circle-reveal-sticky{
-  position:sticky;
-  top:0;
-  height:100vh;
-  width:100%;
-  overflow:hidden;
-  background:var(--bg);
-}
-.circle-blob{
-  position:absolute;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  transform:translate(-50%,-50%) scale(1);
-  will-change:transform, background;
-  pointer-events:none;
-  z-index:1;
-}
-/* ── Content layer ── */
-.circle-reveal-content{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:2rem 4rem;
-  pointer-events:none;
-  gap:0;
-}
-
-/* ── The signature phrase — revealed word by word ── */
-.cr-phrase{
-  text-align:center;
-  max-width:820px;
-  margin-bottom:2.8rem;
-}
-.cr-word{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,4.2vw,3.8rem);
-  font-weight:500;
-  color:#fff;
-  line-height:1.35;
-  letter-spacing:-.02em;
-  display:inline-block;
-  margin:0 .18em;
-  opacity:0;
-  transform:translateY(22px) scale(.97);
-  filter:blur(6px);
-  transition:opacity .55s cubic-bezier(.25,.46,.45,.94),
-             transform .55s cubic-bezier(.25,.46,.45,.94),
-             filter .55s cubic-bezier(.25,.46,.45,.94);
-}
-.cr-word.visible{
-  opacity:1;
-  transform:none;
-  filter:blur(0);
-}
-.cr-word em{
-  font-style:italic;
-  background:linear-gradient(135deg,#7eb8da,#a78bfa);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-
-/* ── Thin separator line ── */
-.cr-line{
-  width:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(126,184,218,.4),transparent);
-  margin-bottom:2.5rem;
-  transition:width 1s cubic-bezier(.25,.46,.45,.94);
-}
-.cr-line.visible{width:120px}
-
-/* ── Positioning statement ── */
-.cr-statement{
-  text-align:center;
-  margin-bottom:2.8rem;
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .8s cubic-bezier(.25,.46,.45,.94), transform .8s cubic-bezier(.25,.46,.45,.94);
-}
-.cr-statement.visible{opacity:1;transform:none}
-.cr-statement-text{
-  font-family:'DM Sans',sans-serif;
-  font-size:clamp(.85rem,1.3vw,1.08rem);
-  font-weight:300;
-  color:rgba(255,255,255,.5);
-  line-height:1.8;
-  max-width:480px;
-  margin:0 auto;
-}
-.cr-statement-text strong{
-  color:rgba(255,255,255,.85);
-  font-weight:500;
-}
-
-/* ── CTA row ── */
-.cr-cta{
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
-  justify-content:center;
-  opacity:0;
-  transform:translateY(18px);
-  transition:opacity .8s cubic-bezier(.25,.46,.45,.94) .1s, transform .8s cubic-bezier(.25,.46,.45,.94) .1s;
-  pointer-events:none;
-}
-.cr-cta.visible{opacity:1;transform:none;pointer-events:auto}
-.cr-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  padding:.8rem 2rem;
-  font-family:'DM Sans',sans-serif;
-  font-size:.72rem;
-  font-weight:600;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  text-decoration:none;
-  border-radius:3px;
-  transition:all .4s cubic-bezier(.25,.46,.45,.94);
-}
-.cr-btn-primary{
-  background:linear-gradient(135deg,#5a8ab5,#7e6dbb);
-  color:#fff;
-  border:none;
-}
-.cr-btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 30px rgba(90,138,181,.3),0 0 60px rgba(126,109,187,.15);
-}
-.cr-btn-ghost{
-  background:transparent;
-  color:rgba(255,255,255,.6);
-  border:1px solid rgba(255,255,255,.15);
-}
-.cr-btn-ghost:hover{
-  color:#fff;
-  border-color:rgba(255,255,255,.35);
-  transform:translateY(-2px);
-}
-
-/* ── Scroll invite ── */
-.cr-scroll-invite{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:.6rem;
-  margin-top:2rem;
-  opacity:0;
-  transform:translateY(12px);
-  transition:opacity .8s cubic-bezier(.25,.46,.45,.94) .2s, transform .8s cubic-bezier(.25,.46,.45,.94) .2s;
-}
-.cr-scroll-invite.visible{opacity:1;transform:none}
-.cr-scroll-text{
-  font-family:'DM Mono',monospace;
-  font-size:.5rem;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.25);
-}
-.cr-scroll-arrow{
-  color:rgba(255,255,255,.2);
-  animation:crBounce 2s ease-in-out infinite;
-}
-@keyframes crBounce{
-  0%,100%{transform:translateY(0);opacity:.3}
-  50%{transform:translateY(6px);opacity:.6}
-}
-
-/* ═══ BUTTONS ═══ */
-.btn{display:inline-block;padding:.85rem 2.2rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;overflow:hidden;position:relative;transition:all .4s cubic-bezier(.25,.46,.45,.94)}
-.btn-fill{background:var(--gold2);color:var(--bg);border:1px solid var(--gold2)}
-.btn-fill:hover{background:var(--gold);box-shadow:0 0 40px var(--gold-glow)}
-.btn-ghost{border:1px solid var(--line);color:var(--cream2);background:transparent}
-.btn-ghost::before{content:'';position:absolute;inset:0;background:var(--gold2);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.76,0,.24,1);z-index:0}
-.btn-ghost:hover{color:var(--bg);border-color:var(--gold2)}.btn-ghost:hover::before{transform:scaleY(1)}
-.btn-ghost span{position:relative;z-index:1}
-
-/* ═══ MARQUEE ═══ */
-.marquee{overflow:hidden;white-space:nowrap;padding:1.1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
-.marquee-track{display:inline-flex;animation:mqScroll 35s linear infinite;will-change:transform}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-item{display:inline-flex;align-items:center;gap:2rem;padding:0 2rem;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,236,228,.18)}
-.marquee-item .sep{color:var(--gold2);font-size:.7rem}
-@keyframes mqScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ═══ SECTION LABELS ═══ */
-.sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
-.sec-label-line{width:40px;height:1px;background:var(--gold)}
-.sec-label-txt{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:500;line-height:1.15}
-.sec-title em{font-style:italic;color:var(--gold)}
-
-/* ═══ ABOUT ═══ */
-.about-section{min-height:80vh;display:flex;align-items:center;padding:8rem 8vw;position:relative;z-index:1;overflow:hidden}
-.about-section .bg-num{position:absolute;left:-3%;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:clamp(14rem,28vw,26rem);font-weight:700;color:rgba(184,151,61,.02);pointer-events:none;line-height:1}
-.about-inner{max-width:860px;position:relative;z-index:2}
-.about-text{font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.2vw,1.7rem);font-weight:400;color:rgba(240,236,228,.6);line-height:2}
-.about-text p+p{margin-top:1.2rem}
-.about-text strong{color:var(--cream);font-weight:600}
-.about-text em{color:var(--gold);font-style:italic}
-
-/* ═══ STATS ═══ */
-.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
-.stat{padding:3.5rem 2rem;text-align:center;border-right:1px solid var(--line);transition:background .5s}
-.stat:last-child{border-right:none}
-.stat:hover{background:var(--cream-dim)}
-.stat-num{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4vw,3.8rem);color:var(--gold);line-height:1;margin-bottom:.6rem}
-.stat-suffix{font-size:.6em}
-.stat-label{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-
-/* ═══ EXPERIENCE ═══ */
-.exp-section{padding:8rem 8vw;background:var(--bg2);position:relative;z-index:1;overflow:hidden}
-.exp-header{margin-bottom:4rem}
-.timeline{position:relative;padding:2rem 0}
-.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line);transform:translateX(-50%)}
-.timeline-line-fill{position:absolute;left:50%;top:0;width:2px;height:0;background:var(--gold);transform:translateX(-50%);transition:none;box-shadow:0 0 12px rgba(184,151,61,.3),0 0 30px rgba(184,151,61,.1);z-index:1}
-.tl-item{position:relative;display:flex;align-items:flex-start;margin-bottom:4rem;opacity:0;transform:translateY(60px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
-.tl-item.visible{opacity:1;transform:none}
-.tl-item:nth-child(odd){flex-direction:row;padding-right:calc(50% + 3rem);text-align:right}
-.tl-item:nth-child(even){flex-direction:row-reverse;padding-left:calc(50% + 3rem);text-align:left}
-.tl-item:nth-child(odd) .tl-content{transform:translateX(40px)}.tl-item:nth-child(even) .tl-content{transform:translateX(-40px)}
-.tl-item.visible .tl-content{transform:translateX(0)}
-.tl-dot{position:absolute;left:50%;top:1.2rem;width:14px;height:14px;border:2px solid var(--line);border-radius:50%;background:var(--bg2);transform:translateX(-50%) scale(0);transition:all .5s cubic-bezier(.25,.46,.45,.94) .2s;z-index:2}
-.tl-item.visible .tl-dot{transform:translateX(-50%) scale(1);border-color:var(--gold);background:var(--gold);box-shadow:0 0 12px rgba(184,151,61,.5),0 0 30px rgba(184,151,61,.2)}
-.tl-content{transition:transform .8s cubic-bezier(.25,.46,.45,.94)}
-.tl-num{font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;color:rgba(184,151,61,.06);line-height:1;margin-bottom:.5rem;transition:color .5s}
-.tl-item:hover .tl-num{color:rgba(184,151,61,.12)}
-.tl-date{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.08em;margin-bottom:.6rem}
-.tl-role{font-size:1.15rem;font-weight:600;color:var(--cream);line-height:1.35;margin-bottom:.3rem}
-.tl-org{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.8rem}
-.tl-desc{font-size:.82rem;color:var(--cream2);line-height:1.8;opacity:.7}
-.tl-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tl-item:nth-child(odd) .tl-tags{justify-content:flex-end}
-.tag{display:inline-block;padding:.2rem .65rem;background:var(--gold-glow);color:var(--gold);font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(184,151,61,.12);border-radius:2px}
-
-/* ═══ AWARDS ═══ */
-.awards-section{padding:8rem 8vw;background:var(--bg);position:relative;z-index:1}
-.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.award-card{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:2.5rem;border-top:3px solid transparent;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
-.award-card:hover{border-top-color:var(--gold);transform:translateY(-12px);box-shadow:0 30px 60px rgba(0,0,0,.4)}
-.award-card.featured{background:linear-gradient(160deg,var(--bg2) 60%,rgba(184,151,61,.03));border-top-color:var(--gold2)}
-.award-icon{font-size:2.2rem;margin-bottom:1.2rem}
-.award-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--cream);margin-bottom:.6rem;line-height:1.4}
-.award-body{font-size:.8rem;color:var(--cream2);line-height:1.75;opacity:.7}
-.award-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;padding:.5rem 1.2rem;background:var(--gold-glow);border:1px solid rgba(184,151,61,.2);border-radius:2px;font-family:'DM Mono',monospace;font-size:.58rem;color:var(--gold);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:all .3s}
-.award-link:hover{background:var(--gold-dim);transform:translateY(-2px)}
-
-/* ═══ EDUCATION ═══ */
-.edu-section{padding:8rem 8vw;background:linear-gradient(180deg,var(--bg2),var(--bg));position:relative;z-index:1}
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
-.edu-card{border:1px solid var(--line);border-radius:4px;padding:2rem;position:relative;overflow:hidden;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
-.edu-card:hover{border-color:rgba(184,151,61,.4);transform:translateY(-6px)}
-.edu-card .bg-year{position:absolute;right:1rem;bottom:-.5rem;font-family:'Playfair Display',serif;font-size:6rem;font-weight:700;color:rgba(184,151,61,.03);line-height:1;pointer-events:none;transition:color .4s}
-.edu-card:hover .bg-year{color:rgba(184,151,61,.07)}
-.edu-school{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
-.edu-degree{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:var(--cream);margin-top:.5rem;line-height:1.5;position:relative;z-index:1}
-.edu-period{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--muted);margin-top:.5rem;letter-spacing:.08em}
-.edu-note{font-size:.72rem;color:var(--gold);margin-top:.4rem;font-style:italic}
-
-/* ═══ PUBLICATIONS ═══ */
-.pub-section{padding:8rem 8vw;background:var(--bg);position:relative;z-index:1}
-.pub-list{display:flex;flex-direction:column;gap:1rem;margin-top:3rem}
-.pub-card{display:flex;gap:2rem;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-left:3px solid transparent;border-radius:3px;padding:2rem;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
-.pub-card:hover{border-left-color:var(--gold);transform:translateX(10px)}
-.pub-idx{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--gold);padding-top:.3rem;white-space:nowrap}
-.pub-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);line-height:1.5;transition:color .3s}
-.pub-card:hover .pub-title{color:var(--gold)}
-.pub-meta{font-size:.72rem;color:var(--muted);margin-top:.4rem}
-.pub-card a{text-decoration:none}
-
-/* ═══ PROJECTS ═══ */
-.proj-section{padding:8rem 8vw;background:var(--bg2);position:relative;z-index:1}
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;margin-top:3rem}
-.proj-card{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:2.2rem;display:flex;flex-direction:column;gap:.8rem;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
-.proj-card:hover{transform:translateY(-10px);box-shadow:0 24px 48px rgba(0,0,0,.3);border-color:rgba(184,151,61,.2)}
-.proj-tag{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
-.proj-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;color:var(--cream);line-height:1.4}
-.proj-desc{font-size:.82rem;color:var(--cream2);line-height:1.75;opacity:.7;flex:1}
-.proj-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
-.proj-link{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--gold);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(184,151,61,.25);padding-bottom:2px;transition:all .3s}
-.proj-link:hover{color:var(--cream);border-color:var(--cream)}
-
-/* ═══ GALLERY ═══ */
-.gallery-section{padding:8rem 8vw;background:var(--bg);position:relative;z-index:1}
-.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:4px;margin-top:3rem}
-.photo-slot{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--bg2);border:1px solid var(--line);border-radius:2px;cursor:zoom-in}
-.photo-slot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .8s}
-.photo-slot:hover img{transform:scale(1.08);filter:brightness(1.1)}
-.photo-slot.empty{cursor:default}.photo-slot.empty::after{content:'';position:absolute;inset:0;background:var(--bg2)}
-.photo-caption{position:absolute;bottom:0;left:0;right:0;padding:.6rem .8rem;background:linear-gradient(transparent,rgba(8,8,8,.7));font-family:'DM Mono',monospace;font-size:.52rem;color:rgba(240,236,228,.6);letter-spacing:.08em;text-transform:uppercase;transform:translateY(100%);transition:transform .4s cubic-bezier(.25,.46,.45,.94)}
-.photo-slot:hover .photo-caption{transform:translateY(0)}
-.lightbox{position:fixed;inset:0;background:rgba(8,8,8,.96);backdrop-filter:blur(16px);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:zoom-out;opacity:0;pointer-events:none;transition:opacity .4s}
-.lightbox.open{opacity:1;pointer-events:all}
-.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:2px;transform:scale(.92) translateY(20px);transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
-.lightbox.open img{transform:scale(1) translateY(0)}
-
-/* ═══ CERTIFICATIONS ═══ */
-.cert-section{padding:6rem 8vw;background:var(--bg2);position:relative;z-index:1}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:3rem}
-.cert-card{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:1.8rem;border-bottom:2px solid transparent;transition:all .4s cubic-bezier(.25,.46,.45,.94)}
-.cert-card:hover{border-bottom-color:var(--gold);transform:translateY(-6px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
-.cert-issuer{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
-.cert-name{font-size:.85rem;font-weight:500;color:var(--cream);margin-top:.5rem;line-height:1.45}
-
-/* ═══ LANGUAGES ═══ */
-.lang-section{padding:8rem 8vw;background:var(--bg);position:relative;z-index:1;overflow:hidden}
-.lang-section .bg-word{position:absolute;right:-2%;bottom:10%;font-family:'Playfair Display',serif;font-size:clamp(8rem,16vw,14rem);font-weight:700;color:rgba(184,151,61,.015);pointer-events:none}
-.lang-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:3rem}
-.lang-card{background:rgba(240,236,228,.03);border:1px solid var(--line);border-radius:4px;padding:2rem 1rem;text-align:center;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
-.lang-card:hover{border-color:rgba(184,151,61,.4);transform:translateY(-10px);background:rgba(240,236,228,.05)}
-.lang-flag{font-size:2.5rem;transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
-.lang-card:hover .lang-flag{transform:scale(1.25) rotate(-5deg)}
-.lang-name{font-size:.88rem;font-weight:600;color:var(--cream);margin-top:.8rem}
-.lang-level{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:.08em;margin-top:.3rem}
-
-/* ═══ CONTACT ═══ */
-.contact-section{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 8vw;position:relative;z-index:1;overflow:hidden;background:var(--bg2)}
-.contact-section .bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(6rem,16vw,18rem);font-weight:700;color:rgba(184,151,61,.02);pointer-events:none;white-space:nowrap}
-.contact-pre{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--gold);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.5rem;position:relative}
-.contact-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:500;line-height:1.15;margin-bottom:1.2rem;position:relative}
-.contact-title em{font-style:italic;color:var(--gold)}
-.contact-p{font-size:.95rem;color:var(--muted);max-width:420px;margin:0 auto 3rem;line-height:1.8;position:relative}
-.contact-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;position:relative}
-.contact-btn{padding:.9rem 2.5rem;border:1px solid var(--line);background:transparent;color:var(--cream2);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.25,.46,.45,.94)}
-.contact-btn::before{content:'';position:absolute;inset:0;background:var(--gold2);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.76,0,.24,1);z-index:0}
-.contact-btn:hover{color:var(--bg);border-color:var(--gold2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(184,151,61,.15)}
-.contact-btn:hover::before{transform:scaleY(1)}
-.contact-btn span{position:relative;z-index:1}
-.contact-btn.primary{background:var(--gold2);color:var(--bg);border-color:var(--gold2)}
-.contact-btn.primary::before{background:var(--cream)}
-
-/* ═══ FOOTER ═══ */
-footer{padding:1.8rem 8vw;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);position:relative;z-index:1}
-.footer-txt{font-family:'DM Mono',monospace;font-size:.5rem;color:rgba(240,236,228,.15);letter-spacing:.08em}
-
-/* ═══ REVEAL ANIMATIONS ═══ */
-.reveal{opacity:0;transform:translateY(50px);transition:opacity 1s cubic-bezier(.25,.46,.45,.94),transform 1s cubic-bezier(.25,.46,.45,.94)}
-.reveal.visible{opacity:1;transform:none}
-.stagger>*{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
-.stagger.visible>*{opacity:1;transform:none}
-.stagger.visible>*:nth-child(1){transition-delay:0s}.stagger.visible>*:nth-child(2){transition-delay:.08s}.stagger.visible>*:nth-child(3){transition-delay:.16s}.stagger.visible>*:nth-child(4){transition-delay:.24s}.stagger.visible>*:nth-child(5){transition-delay:.32s}.stagger.visible>*:nth-child(6){transition-delay:.4s}.stagger.visible>*:nth-child(7){transition-delay:.48s}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:1024px){
-  .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-right{height:65vw;grid-column:1}
-  .hero-right::before{background:linear-gradient(to bottom,var(--bg) 0%,transparent 18%)}
-  .hero-left{padding:8rem 5vw 3rem}
-  .awards-grid{grid-template-columns:1fr 1fr}
-  .lang-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:block}
-  .hero-left{padding:6rem 5vw 2.5rem}.hero-right{height:70vw}.hero-scroll{display:none}
-  .about-section,.awards-section,.edu-section,.pub-section,.proj-section,.gallery-section,.cert-section,.lang-section,.contact-section{padding:4rem 5vw}
-  .stats-bar{grid-template-columns:1fr 1fr}.stat{padding:2.5rem 1rem}
-  .exp-section{padding:4rem 5vw}
-  .timeline::before{left:1.5rem}
-  .timeline-line-fill{left:1.5rem}
-  .tl-item{padding-right:0!important;padding-left:3.5rem!important;text-align:left!important;flex-direction:row!important;margin-bottom:3rem}
-  .tl-item .tl-content{transform:translateX(-30px)!important}
-  .tl-item.visible .tl-content{transform:translateX(0)!important}
-  .tl-dot{left:1.5rem}
-  .tl-tags{justify-content:flex-start!important}
-  .tl-num{font-size:3rem}
-  .awards-grid,.edu-grid{grid-template-columns:1fr}
-  .proj-grid{grid-template-columns:1fr}
-  .cert-grid{grid-template-columns:1fr 1fr}
-  .lang-grid{grid-template-columns:repeat(3,1fr)}
-  .photo-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-  footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 5vw}
-  .contact-btns{flex-direction:column;align-items:center}
-  .contact-btn{width:100%;max-width:300px;text-align:center}
-  .circle-reveal-wrapper{height:350vh}
-  .cr-phrase{margin-bottom:1.5rem}
-  .cr-cta{flex-direction:column;align-items:center}
-  .cr-btn{width:100%;max-width:260px;justify-content:center}
-}
-@media(max-width:480px){
-  .hero-name{font-size:2.6rem}.hero-actions{flex-direction:column}.btn{text-align:center}
-  .lang-grid{grid-template-columns:repeat(2,1fr)}.cert-grid{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-  .loader{display:none}.reveal,.stagger>*{opacity:1;transform:none}
-  .tl-item{opacity:1!important;transform:none!important}
-  .tl-item .tl-content{transform:none!important}
-}
-</style>
-<!-- CLEAN_VERSION_V2: publications cleaned -->
-</head>
-<body>
-<div class="loader" id="loader"><div class="loader-name">Valentin Angenot</div><div class="loader-bar"><div class="loader-fill"></div></div><div class="loader-sub">Portfolio · 2026</div></div>
-<canvas id="particleCanvas"></canvas>
-<div class="grain"></div>
-<div class="progress" id="progress"></div>
-
-<nav id="navbar">
-  <a class="nav-logo" href="#home">V. Angenot</a>
-  <ul class="nav-links"><li><a href="#about" data-nav>About</a></li><li><a href="#experience" data-nav>Experience</a></li><li><a href="#awards" data-nav>Awards</a></li><li><a href="#education" data-nav>Education</a></li><li><a href="#publications" data-nav>Publications</a></li><li><a href="#projects" data-nav>Work</a></li><li><a href="#gallery" data-nav>Gallery</a></li><li><a href="#contact" data-nav>Contact</a></li></ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-menu" id="mobileMenu"><a href="#about">About</a><a href="#experience">Experience</a><a href="#awards">Awards</a><a href="#education">Education</a><a href="#publications">Publications</a><a href="#projects">Work</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div>
-
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- HERO -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-left">
-    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-txt">Portfolio · 2026</span></div>
-    <h1 class="hero-name"><span class="scramble-line" id="scramble1" data-final="Valentin" style="opacity:0"></span><span class="scramble-line" id="scramble2" data-final="Angenot" style="opacity:0"></span></h1>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">Business Engineer · Industrial Engineer · CFA Level I  <br><strong>Strategy, Finance, Tech & AI</strong></p>
-  </div>
-  <div class="hero-scroll"><div class="scroll-mouse"></div><span class="hero-scroll-txt">Scroll</span></div>
-  <div class="hero-right"><div class="photo-wipe"></div><img class="hero-photo" src="photo4.jpg" alt="Valentin Angenot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-photo-placeholder" style="display:none"><span class="ph-ico">👤</span><span class="ph-txt">Add profile.jpg<br>to your repo</span></div></div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- CIRCLE REVEAL TRANSITION (Forbion-style) -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<div class="circle-reveal-wrapper" id="circleReveal">
-  <div class="circle-reveal-sticky">
-    <div class="circle-blob" id="circleBlob"></div>
-    <div class="circle-reveal-content" id="circleContent">
-
-      <!-- Phrase revealed word by word -->
-      <div class="cr-phrase" id="crPhrase">
-        <span class="cr-word">I</span>
-        <span class="cr-word">build</span>
-        <span class="cr-word">bridges</span>
-        <span class="cr-word">between</span>
-        <span class="cr-word"><em>technical</em></span>
-        <span class="cr-word"><em>rigour</em></span>
-        <span class="cr-word">and</span>
-        <span class="cr-word"><em>strategic</em></span>
-        <span class="cr-word"><em>vision.</em></span>
-      </div>
-
-      <!-- Separator -->
-      <div class="cr-line" id="crLine"></div>
-
-      <!-- Positioning statement -->
-      <div class="cr-statement" id="crStatement">
-        <p class="cr-statement-text">
-          Open to <strong>high-impact roles</strong> in strategy, finance, and technology —<br>
-          where analytical depth meets real-world decisions.
-        </p>
-      </div>
-
-      <!-- Call to action -->
-      <div class="cr-cta" id="crCta">
-        <a href="mailto:val.angenot@icloud.com" class="cr-btn cr-btn-primary">✉ Let's talk</a>
-        <a href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" class="cr-btn cr-btn-ghost">LinkedIn ↗</a>
-        <a href="cv.pdf" target="_blank" class="cr-btn cr-btn-ghost">Download CV ↓</a>
-      </div>
-
-      <!-- Scroll invite -->
-      <div class="cr-scroll-invite" id="crScrollInvite">
-        <span class="cr-scroll-text">Scroll to discover my journey</span>
-        <svg class="cr-scroll-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- MARQUEE -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<div class="marquee"><div class="marquee-track"><div class="marquee-item">Strategy <span class="sep">◆</span></div><div class="marquee-item">Finance <span class="sep">◆</span></div><div class="marquee-item">Artificial Intelligence <span class="sep">◆</span></div><div class="marquee-item">Engineering <span class="sep">◆</span></div><div class="marquee-item">Digital Transformation <span class="sep">◆</span></div><div class="marquee-item">Equity Research <span class="sep">◆</span></div><div class="marquee-item">NLP <span class="sep">◆</span></div><div class="marquee-item">Valuation <span class="sep">◆</span></div><div class="marquee-item">Strategy <span class="sep">◆</span></div><div class="marquee-item">Finance <span class="sep">◆</span></div><div class="marquee-item">Artificial Intelligence <span class="sep">◆</span></div><div class="marquee-item">Engineering <span class="sep">◆</span></div><div class="marquee-item">Digital Transformation <span class="sep">◆</span></div><div class="marquee-item">Equity Research <span class="sep">◆</span></div><div class="marquee-item">NLP <span class="sep">◆</span></div><div class="marquee-item">Valuation <span class="sep">◆</span></div></div></div>
-
-<section class="about-section" id="about"><div class="bg-num">01</div><div class="about-inner"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">01 — About</span></div><div class="about-text reveal"><p>Graduated as <strong>Valedictorian</strong> with a dual background in <em>Industrial Engineering</em> and <em>Business Engineering</em>, I build bridges between technical rigour and strategic thinking.</p><p>Former <strong>Teaching Assistant</strong> in Strategy & Digital Transformation, guiding hundreds of students through applied strategic projects at HEC and the Faculty of Medicine.</p><p>I aim to contribute to <strong>high-impact strategic roles</strong> in business, technology, or finance.</p></div></div></section>
-
-<section class="exp-section" id="experience">
-  <div class="exp-header"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">02 — Experience</span></div><h2 class="sec-title reveal">Where Theory Meets <em>Impact</em></h2></div>
-  <div class="timeline" id="timeline">
-    <div class="timeline-line-fill" id="tlFill"></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">01</div><div class="tl-date">Sep 2025 → Present</div><div class="tl-role">Engineer</div><div class="tl-org">CILE · Liège</div><div class="tl-desc">Full setup of a field operations unit: technical analysis, equipment sourcing, regulatory compliance, and cost modelling.</div><div class="tl-tags"><span class="tag">Operations</span><span class="tag">Cost Modelling</span><span class="tag">Compliance</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">02</div><div class="tl-date">May 2025 → Feb 2026</div><div class="tl-role">AI Engineer</div><div class="tl-org">University of Liège · Applied Research</div><div class="tl-desc">Designing an AI architecture for structuring and interpreting clinical data in a public health research project on Long COVID (ULiège × University of Rouen).</div><div class="tl-tags"><span class="tag">LLM</span><span class="tag">Clinical NLP</span><span class="tag">Public Health</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">03</div><div class="tl-date">Sep 2023 → Present</div><div class="tl-role">Teaching Assistant — Strategy & Digital Transformation</div><div class="tl-org">Faculty of Medicine, ULiège</div><div class="tl-desc">Strategic management of health organisations and digital transition in healthcare. Mentoring master's students on strategic healthcare projects.</div><div class="tl-tags"><span class="tag">Healthcare Strategy</span><span class="tag">Digital Health</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">04</div><div class="tl-date">Sep 2024 → Sep 2025</div><div class="tl-role">AI Engineer</div><div class="tl-org">AIASHI</div><div class="tl-desc">Built an advanced LLM-powered pipeline processing over 100,000 documents, significantly boosting topic detection accuracy and strategic value of insights.</div><div class="tl-tags"><span class="tag">LLM Pipeline</span><span class="tag">Topic Detection</span><span class="tag">NLP at Scale</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">05</div><div class="tl-date">Sep 2024 → May 2025</div><div class="tl-role">Equity Research Analyst</div><div class="tl-org">CFA Research Challenge · Benelux</div><div class="tl-desc">Full sell-side equity research on Just Eat Takeaway.com — SELL recommendation. Presented at Euronext Amsterdam. Ranked 2nd among 20 Benelux universities.</div><div class="tl-tags"><span class="tag">Equity Research</span><span class="tag">Valuation</span><span class="tag">DCF</span><span class="tag">🥈 2nd</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">06</div><div class="tl-date">Sep 2023 → Present</div><div class="tl-role">Teaching Assistant — Strategy & Digital Transformation</div><div class="tl-org">HEC Liège · Prof. N. Neysen</div><div class="tl-desc">Digital Strategy, Corporate Strategy, Industry 4.0, Tech/Strategic Consulting. Supervised team projects with companies and MecaTech cluster.</div><div class="tl-tags"><span class="tag">Digital Strategy</span><span class="tag">Industry 4.0</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-num">07</div><div class="tl-date">Sep 2022 → Feb 2026</div><div class="tl-role">Student Instructor</div><div class="tl-org">HEC Liège</div><div class="tl-desc">Teaching undergraduate and master's students in Corporate Finance, Financial Analysis, Mathematics, Supply Chain, Physics, and Accounting.</div><div class="tl-tags"><span class="tag">Teaching</span><span class="tag">Finance</span><span class="tag">Mathematics</span></div></div></div>
-  </div>
-</section>
-
-
-
-<section class="awards-section" id="awards"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">03 — Honours & Awards</span></div><h2 class="sec-title reveal">Recognition <em>&</em> Distinction</h2><div class="awards-grid stagger"><div class="award-card"><div class="award-icon">🏅</div><div class="award-title">Valedictorian — Major de Promotion</div><div class="award-body">Graduated top of the entire cohort at HEC Liège with the highest academic distinction & Committee Praise.</div></div><div class="award-card"><div class="award-icon">🏆</div><div class="award-title">2nd Place — CFA Research Challenge Benelux</div><div class="award-body">Ranked 2nd among 20 top universities across the Benelux. Presented at Euronext Amsterdam.</div></div><div class="award-card featured"><div class="award-icon">🎖️</div><div class="award-title">Jury Prize — Digital Transformation Thesis</div><div class="award-body">Special jury award for outstanding thesis, recognised for analytical depth and strategic insight.</div><a class="award-link" href="https://auvio.rtbf.be/media/tendances-premiere-tendances-premiere-le-dossier-3417149" target="_blank" rel="noopener">▶ RTBF Interview</a></div></div></section>
-
-<section class="edu-section" id="education"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">04 — Education</span></div><h2 class="sec-title reveal">Academic <em>Foundation</em></h2><div class="edu-grid stagger"><div class="edu-card"><div class="bg-year">2025</div><div class="edu-school">HEC Liège</div><div class="edu-degree">Master of Science — Business Engineering, Science & Technology</div><div class="edu-period">2023 — June 2025</div><div class="edu-note">★ Valedictorian · Jury Prize</div></div><div class="edu-card"><div class="bg-year">2026</div><div class="edu-school">HELMo Haute École</div><div class="edu-degree">Master of Engineering — Industrial Engineering</div><div class="edu-period">2023 — June 2026</div></div><div class="edu-card"><div class="bg-year">2023</div><div class="edu-school">HEC Liège</div><div class="edu-degree">Bachelor's Degree — Business Engineering</div><div class="edu-period">September 2020 — June 2023</div></div><div class="edu-card"><div class="bg-year">2025</div><div class="edu-school">CFA Institute</div><div class="edu-degree">CFA Level I Passed (1st attempt)</div></div></div></section>
-
-<section class="pub-section" id="publications"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">05 — Thought / Publications</span></div><h2 class="sec-title reveal">Thought <em>&</em> Publications</h2><div class="pub-list stagger"><div class="pub-card"><div class="pub-idx">01 —</div><div><a href="https://share.hsforms.com/1nWlQC773RMS3AUmi78JVlg42qt5" target="_blank" rel="noopener"><div class="pub-title">When Topic Modeling Becomes a Strategic Governance Tool — Cahier du Digital ↗</div></a><div class="pub-meta">Published article · Digital Wallonia / Digital Lab · Digital transformation · 2026</div></div></div><div class="pub-card"><div class="pub-idx">02 —</div><div><a href="/case-study.html"><div class="pub-title">From Friction to Value — How 10 Days of Human + AI Work Generated €597K in Savings ↗</div></a><div class="pub-meta">Case study · AI × Engineering · Human-in-the-loop transformation · 2026</div></div></div><div class="pub-card"><div class="pub-idx">03 —</div><div><a href="https://orbi.uliege.be/handle/2268/335655" target="_blank" rel="noopener"><div class="pub-title">Long COVID, Invisible Illness ↗</div></a><div class="pub-meta">Research publication · University of Liège · Public Health</div></div></div><div class="pub-card"><div class="pub-idx">04 —</div><div><a href="https://orbi.uliege.be/handle/2268/336509" target="_blank" rel="noopener"><div class="pub-title">Large Language Models in Belgian Primary Care ↗</div></a><div class="pub-meta">Research publication · AI in Healthcare · ULiège / Faculty of Medicine</div></div></div></div></section>
-
-<section class="proj-section" id="projects"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">06 — Selected Work</span></div><h2 class="sec-title reveal">Selected <em>Work</em></h2><div class="proj-grid stagger"><div class="proj-card"><div class="proj-tag">Biotechnology · AI · 2026</div><div class="proj-title">AI for Biotech — mRNA Vaccine Sequence & Structure Optimization</div><div class="proj-desc">Bibliographic research on computational sequence design for mRNA vaccines, with a detailed application to LinearDesign.</div><div class="proj-links"><a href="ai-for-biotech.pdf" target="_blank" class="proj-link">View report ↗</a></div></div><div class="proj-card"><div class="proj-tag">Numerical Optimization · Finance · 2026</div><div class="proj-title">Genetic Optimization for Portfolio Management</div><div class="proj-desc">Multi-objective genetic optimization of an SFDR Article 8 pension portfolio using NSGA-II, CVaR, ESG and institutional constraints.</div><div class="proj-links"><a href="genetic-optimization-portfolio-management.pdf" target="_blank" class="proj-link">View report ↗</a></div></div><div class="proj-card"><div class="proj-tag">Sustainable Energy · Strategy · 2026</div><div class="proj-title">Denmark Sustainable Energy Plan for 2045</div><div class="proj-desc">Calculation-backed national decarbonisation plan using MacKay’s kWh/person/day framework, with demand, supply and investment logic.</div><div class="proj-links"><a href="denmark-sustainable-energy-plan-2045.pdf" target="_blank" class="proj-link">View report ↗</a></div></div><div class="proj-card"><div class="proj-tag">Equity Research · 2025</div><div class="proj-title">Just Eat Takeaway.com — Initiating Coverage</div><div class="proj-desc">Full sell-side research report (Euronext: TKWY). Presented at Euronext Amsterdam — 2nd place Benelux CFA Research Challenge.</div><div class="proj-links"><a href="cfa-report.pdf" target="_blank" class="proj-link">View report ↗</a><a href="cfa-presentation.pdf" target="_blank" class="proj-link">View presentation ↗</a></div></div><div class="proj-card"><div class="proj-tag">Digital Transformation · 2025</div><div class="proj-title">Master's Thesis — Digital Transformation</div><div class="proj-desc">Jury Prize–awarded thesis (hereby presented as an interactive 10-slide deck).</div><div class="proj-links"><a href="thesis_presentation.html" target="_blank" class="proj-link">View presentation ↗</a></div></div><div class="proj-card"><div class="proj-tag">Simulation Modelling · 2025</div><div class="proj-title">Modelling of a Complex Mechanical System and Study of Its Evolution</div><div class="proj-desc">Full simulation of a complex mechanical system — modelling its dynamic behaviour and analysing its evolution over time through computational methods.</div><div class="proj-links"><a href="https://valentinangenot.github.io/simulation_modelling/" target="_blank" class="proj-link">Live simulation ↗</a><a href="simulation.pdf" target="_blank" class="proj-link">View report ↗</a></div></div></div></section>
-
-<section class="gallery-section" id="gallery"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">07 — Gallery</span></div><h2 class="sec-title reveal">Moments <em>&</em> Memories</h2><div class="photo-grid stagger"><div class="photo-slot" onclick="openLightbox('photo1.jpg')"><img src="photo1.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">01</div></div><div class="photo-slot" onclick="openLightbox('photo2.jpg')"><img src="photo2.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">02</div></div><div class="photo-slot" onclick="openLightbox('photo3.jpg')"><img src="photo3.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">03</div></div><div class="photo-slot" onclick="openLightbox('photo4.jpg')"><img src="photo4.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">04</div></div><div class="photo-slot" onclick="openLightbox('photo5.jpg')"><img src="photo5.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">05</div></div><div class="photo-slot" onclick="openLightbox('photo6.jpg')"><img src="photo6.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">06</div></div><div class="photo-slot" onclick="openLightbox('photo7.jpg')"><img src="photo7.jpg" alt="" onerror="this.parentElement.classList.add('empty');this.parentElement.style.cursor='default'"><div class="photo-caption">07</div></div></div></section>
-<div id="lightbox" class="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt=""></div>
-
-<section class="cert-section"><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">08 — Certifications</span></div><div class="cert-grid stagger"><div class="cert-card"><div class="cert-issuer">CFA Institute</div><div class="cert-name">CFA Level I — Passed</div></div><div class="cert-card"><div class="cert-issuer">IBM</div><div class="cert-name">Generative AI for Executives and Business Leaders</div></div><div class="cert-card"><div class="cert-issuer">University of London</div><div class="cert-name">Corporate Strategy</div></div><div class="cert-card"><div class="cert-issuer">Dassault Systèmes</div><div class="cert-name">Certified SOLIDWORKS Associate</div></div><div class="cert-card"><div class="cert-issuer">Erasmus Rotterdam</div><div class="cert-name">Advanced Valuation & Strategy — M&A, PE & VC</div></div><div class="cert-card"><div class="cert-issuer">CFI</div><div class="cert-name">FMI Foundations in Financial Modeling</div></div><div class="cert-card"><div class="cert-issuer">University of Michigan</div><div class="cert-name">Digital Twins</div></div><div class="cert-card"><div class="cert-issuer">Yale University</div><div class="cert-name">Financial Markets</div></div></div></section>
-
-<section class="lang-section"><div class="bg-word">Polyglot</div><div class="sec-label reveal"><div class="sec-label-line"></div><span class="sec-label-txt">09 — Languages</span></div><h2 class="sec-title reveal">Speaking <em>Globally</em></h2><div class="lang-grid stagger"><div class="lang-card"><div class="lang-flag">🇫🇷</div><div class="lang-name">French</div><div class="lang-level">Native</div></div><div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div><div class="lang-level">C1 — Full Professional</div></div><div class="lang-card"><div class="lang-flag">🇪🇸</div><div class="lang-name">Spanish</div><div class="lang-level">C1 — Full Professional</div></div><div class="lang-card"><div class="lang-flag">🇳🇱</div><div class="lang-name">Dutch</div><div class="lang-level">Elementary</div></div><div class="lang-card"><div class="lang-flag">🇮🇹</div><div class="lang-name">Italian</div><div class="lang-level">Elementary</div></div></div></section>
-
-<section class="contact-section" id="contact"><div class="bg-text">CONTACT</div><p class="contact-pre reveal">// Let's connect</p><h2 class="contact-title reveal">Open to <em>challenges</em><br>& opportunities</h2><p class="contact-p reveal">Strategy · Finance · AI · Engineering</p><div class="contact-btns reveal"><a href="mailto:val.angenot@icloud.com" class="contact-btn primary"><span>✉ Email me</span></a><a href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" class="contact-btn"><span>LinkedIn ↗</span></a><a href="cv.pdf" target="_blank" class="contact-btn"><span>Download CV ↓</span></a></div></section>
-
-<footer><span class="footer-txt">© 2026 Valentin Angenot</span><span class="footer-txt">Strategy · Finance · AI · Engineering</span></footer>
-
-<script>
-(function(){
-'use strict';
-var isMobile=window.innerWidth<769;
-
-// ═══ LOADER ═══
-var loader=document.getElementById('loader');
-requestAnimationFrame(function(){loader.classList.add('phase2')});
-window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('done')},2000);setTimeout(function(){loader.style.display='none'},3000)});
-
-// ═══ TEXT SCRAMBLE ═══
-var chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-function scramble(el,delay){
-  var final=el.dataset.final,isIt=final==='Angenot',iter=0,max=final.length;
-  el.style.opacity='1';
-  el.textContent=final.split('').map(function(){return chars[Math.floor(Math.random()*chars.length)]}).join('');
-  setTimeout(function(){
-    var iv=setInterval(function(){
-      el.innerHTML=final.split('').map(function(c,i){
-        if(i<iter)return isIt?'<em>'+c+'</em>':c;
-        var r=chars[Math.floor(Math.random()*chars.length)];
-        return isIt?'<em style="opacity:.35">'+r+'</em>':'<span style="opacity:.35">'+r+'</span>';
-      }).join('');
-      iter+=1/3;
-      if(iter>=max){clearInterval(iv);el.innerHTML=isIt?'<em>'+final+'</em>':final}
-    },35);
-  },delay);
-}
-setTimeout(function(){scramble(document.getElementById('scramble1'),0);scramble(document.getElementById('scramble2'),400)},2200);
-
-// ═══ PARTICLE VA CANVAS ═══
-var canvas=document.getElementById('particleCanvas'),ctx=canvas.getContext('2d');
-var W,H,particles=[],targets=[],mouseP={x:-9999,y:-9999};
-var pCount=isMobile?180:450,formed=false;
-
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;computeTargets()}
-function computeTargets(){
-  var off=document.createElement('canvas'),s=Math.min(W*.5,500);
-  off.width=s;off.height=s*.6;
-  var oc=off.getContext('2d');
-  oc.fillStyle='#fff';oc.font='bold '+(s*.55)+'px Playfair Display,serif';
-  oc.textAlign='center';oc.textBaseline='middle';
-  oc.fillText('VA',off.width/2,off.height/2);
-  var d=oc.getImageData(0,0,off.width,off.height).data,pts=[],step=isMobile?4:3;
-  for(var y=0;y<off.height;y+=step)for(var x=0;x<off.width;x+=step)
-    if(d[(y*off.width+x)*4+3]>128)pts.push({x:x/off.width*s+(W-s)/2,y:y/off.height*(s*.6)+H*.2});
-  targets=[];
-  if(pts.length<=pCount)targets=pts;
-  else{var st=pts.length/pCount;for(var i=0;i<pCount;i++)targets.push(pts[Math.floor(i*st)])}
-}
-function initP(){
-  particles=[];
-  for(var i=0;i<pCount;i++){var t=targets[i]||{x:Math.random()*W,y:Math.random()*H};
-    particles.push({x:Math.random()*W,y:Math.random()*H,tx:t.x,ty:t.y,vx:0,vy:0,r:Math.random()*1.2+.4})}
-}
-resize();initP();
-window.addEventListener('resize',function(){resize();for(var i=0;i<particles.length;i++)if(targets[i]){particles[i].tx=targets[i].x;particles[i].ty=targets[i].y}});
-document.addEventListener('mousemove',function(e){mouseP.x=e.clientX;mouseP.y=e.clientY});
-setTimeout(function(){formed=true},2500);
-
-function animP(){
-  ctx.clearRect(0,0,W,H);
-  var sy=window.scrollY,hH=window.innerHeight,fade=Math.max(0,1-sy/hH);
-  canvas.style.opacity=fade*.45;
-  for(var i=0;i<particles.length;i++){
-    var p=particles[i];
-    if(formed&&sy<hH){
-      p.vx+=(p.tx-p.x)*.02;p.vy+=(p.ty-p.y)*.02;
-      var mx=p.x-mouseP.x,my=p.y-mouseP.y,md=Math.sqrt(mx*mx+my*my);
-      if(md<120){var f=(120-md)/120*3;p.vx+=mx/md*f;p.vy+=my/md*f}
-    }else if(sy>=hH){p.vx+=(Math.random()-.5)*.08;p.vy+=(Math.random()-.5)*.08}
-    p.vx*=.92;p.vy*=.92;p.x+=p.vx;p.y+=p.vy;
-    if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(184,151,61,'+(formed&&sy<hH?.55:.2)+')';ctx.fill();
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Valentin Angenot",
+    "url": "https://valentinangenot.com/",
+    "image": "https://valentinangenot.com/photo4.jpg",
+    "email": "mailto:valentinangenot@icloud.com",
+    "jobTitle": "Business Engineer and Industrial Engineer",
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Li\u00e8ge, Belgium"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/valentin-angenot/",
+      "https://github.com/valentinangenot"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "CFA Level I",
+        "recognizedBy": { "@type": "Organization", "name": "CFA Institute" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "M.Sc. Business Engineering, Valedictorian, Summa Cum Laude",
+        "recognizedBy": { "@type": "CollegeOrUniversity", "name": "HEC Li\u00e8ge" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "M.Eng. Industrial Engineering",
+        "recognizedBy": { "@type": "CollegeOrUniversity", "name": "HELMo Gramme" }
+      }
+    ],
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "HEC Li\u00e8ge" },
+      { "@type": "CollegeOrUniversity", "name": "HELMo Gramme" }
+    ],
+    "knowsAbout": [
+      "Strategy",
+      "Corporate Finance",
+      "Investment Analysis",
+      "Industrial Engineering",
+      "Operational Transformation",
+      "Artificial Intelligence"
+    ]
   }
-  if(formed&&sy<hH&&!isMobile){
-    for(var i=0;i<particles.length;i+=3)for(var j=i+1;j<particles.length;j+=3){
-      var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<25){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.strokeStyle='rgba(184,151,61,'+((1-d/25)*.1)+')';ctx.lineWidth=.5;ctx.stroke()}
+  </script>
+
+  <style>
+    :root {
+      --ink: #0a0c10;
+      --ink-2: #10131a;
+      --paper: #f4f5f7;
+      --white: #ffffff;
+      --line: #dcdfe6;
+      --line-dark: rgba(255, 255, 255, 0.16);
+      --muted: #5d6470;
+      --muted-light: #b4bac6;
+      --blue: #1a5cff;
+      --blue-pale: #b7caff;
+      --blue-ghost: rgba(26, 92, 255, .07);
+      --max: 1240px;
+      --radius: 6px;
+      --ease: cubic-bezier(.22, .72, .22, 1);
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+      --mono: "DM Mono", ui-monospace, monospace;
     }
-  }
-  requestAnimationFrame(animP);
-}
-animP();
 
-// ═══════════════════════════════════════════════════════════
-// CIRCLE REVEAL — Growing blob + word-by-word typewriter + CTA
-// ═══════════════════════════════════════════════════════════
-(function(){
-  var wrapper = document.getElementById('circleReveal');
-  var blob = document.getElementById('circleBlob');
-  var words = document.querySelectorAll('.cr-word');
-  var crLine = document.getElementById('crLine');
-  var crStatement = document.getElementById('crStatement');
-  var crCta = document.getElementById('crCta');
-  var crScrollInvite = document.getElementById('crScrollInvite');
-  
-  var CX = 70, CY = 42;
-  blob.style.left = CX + '%';
-  blob.style.top = CY + '%';
-  
-  // Two-phase color: slate blue → deep navy → bg2
-  var c0 = { r:70,  g:100, b:145 };
-  var c1 = { r:30,  g:35,  b:65  };
-  var c2 = { r:14,  g:14,  b:14  };
-  
-  function lerp(a, b, t) { return a + (b - a) * t; }
-  function getColor(t) {
-    var r, g, b;
-    if (t < 0.5) {
-      var u = t / 0.5;
-      r = lerp(c0.r, c1.r, u); g = lerp(c0.g, c1.g, u); b = lerp(c0.b, c1.b, u);
-    } else {
-      var u = (t - 0.5) / 0.5;
-      r = lerp(c1.r, c2.r, u); g = lerp(c1.g, c2.g, u); b = lerp(c1.b, c2.b, u);
-    }
-    return 'rgb(' + Math.round(r) + ',' + Math.round(g) + ',' + Math.round(b) + ')';
-  }
-  
-  function maxRadius() {
-    var vw = window.innerWidth, vh = window.innerHeight;
-    var ax = vw * CX / 100, ay = vh * CY / 100;
-    return Math.max(
-      Math.hypot(ax, ay), Math.hypot(vw - ax, ay),
-      Math.hypot(ax, vh - ay), Math.hypot(vw - ax, vh - ay)
-    );
-  }
-  
-  var wordCount = words.length;
+    * { box-sizing: border-box; }
 
-  function update() {
-    var rect = wrapper.getBoundingClientRect();
-    var wH = wrapper.offsetHeight, vh = window.innerHeight;
-    var scrolled = Math.max(0, -rect.top);
-    var range = wH - vh;
-    if (range <= 0) return;
-    
-    var p = Math.max(0, Math.min(1, scrolled / range));
-    
-    // ── BLOB: 0.00 → 0.45 ──
-    var fullScale = (maxRadius() * 2.3) / 20;
-    var scale, colorT, opacity;
-    
-    if (p <= 0.03) {
-      var t = p / 0.03;
-      scale = t; colorT = 0; opacity = t;
-    } else if (p <= 0.45) {
-      var t = (p - 0.03) / (0.45 - 0.03);
-      var eased = 1 - Math.pow(1 - t, 3);
-      scale = 1 + (fullScale - 1) * eased;
-      var cr = Math.max(0, (t - 0.12) / 0.88);
-      colorT = cr * cr;
-      opacity = 1;
-    } else {
-      scale = fullScale; colorT = 1; opacity = 1;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
     }
-    
-    blob.style.transform = 'translate(-50%,-50%) scale(' + scale.toFixed(2) + ')';
-    blob.style.background = getColor(colorT);
-    blob.style.opacity = opacity;
-    
-    var glow = Math.max(0, 1 - colorT * 2);
-    blob.style.boxShadow = glow > 0.01
-      ? '0 0 ' + (50*glow|0) + 'px rgba(70,100,145,' + (0.6*glow).toFixed(2) + '),' +
-        '0 0 ' + (150*glow|0) + 'px rgba(70,100,145,' + (0.25*glow).toFixed(2) + ')'
-      : 'none';
-    
-    // ── WORDS: staggered across 0.42 → 0.72 ──
-    // Each word gets its own slice of scroll progress
-    var wordsStart = 0.42;
-    var wordsEnd = 0.72;
-    var wordWindow = (wordsEnd - wordsStart) / wordCount;
-    
-    for (var i = 0; i < wordCount; i++) {
-      var threshold = wordsStart + i * wordWindow;
-      if (p > threshold) {
-        words[i].classList.add('visible');
-      } else {
-        words[i].classList.remove('visible');
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open,
+    body.modal-open { overflow: hidden; }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    ::selection { background: var(--blue); color: var(--white); }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .serif-accent {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      background: var(--white);
+      color: var(--ink);
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell {
+      width: min(calc(100% - 64px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* ---------- Header ---------- */
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      color: var(--white);
+      border-bottom: 1px solid transparent;
+      transition: background .3s ease, border-color .3s ease, color .3s ease;
+    }
+
+    .site-header.scrolled,
+    .site-header.menu-active {
+      background: rgba(255, 255, 255, .95);
+      color: var(--ink);
+      border-bottom-color: var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .scroll-progress {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      transform-origin: left;
+      transform: scaleX(0);
+      background: var(--blue);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .site-header.scrolled .scroll-progress { opacity: 1; }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-pale);
+      transition: color .3s ease;
+    }
+
+    .site-header.scrolled .brand-mark,
+    .site-header.menu-active .brand-mark { color: var(--blue); }
+
+    .nav-links,
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a,
+    .nav-actions a {
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 26px 0 23px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 17px;
+      left: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .3s var(--ease);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-actions .cv-link {
+      padding: 9px 15px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      transition: background .25s ease, color .25s ease, border-color .25s ease;
+    }
+
+    .nav-actions .cv-link:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 5px auto;
+      background: currentColor;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ---------- Spine (section index) ---------- */
+
+    .spine {
+      position: fixed;
+      top: 50%;
+      left: 22px;
+      z-index: 90;
+      display: none;
+      transform: translateY(-50%);
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .spine a {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 30px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-decoration: none;
+      transition: color .25s ease;
+    }
+
+    .spine a::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 50%;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .45;
+      transform: translateY(-50%);
+      transition: opacity .25s ease, background .25s ease, height .25s var(--ease), border-radius .25s ease;
+    }
+
+    .spine a:hover { color: var(--ink); }
+
+    .spine a.active {
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .spine a.active::before {
+      height: 16px;
+      border-radius: 2px;
+      background: var(--blue);
+      opacity: 1;
+    }
+
+    .spine.on-dark a { color: var(--muted-light); }
+    .spine.on-dark a:hover { color: var(--white); }
+    .spine.on-dark a.active { color: var(--blue-pale); }
+    .spine.on-dark a.active::before { background: var(--blue-pale); }
+
+    .spine-label {
+      margin-top: 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transition: color .25s ease;
+    }
+
+    .spine.on-dark .spine-label { color: var(--muted-light); }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+      position: relative;
+      min-height: 780px;
+      height: 100svh;
+      max-height: 1000px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.06);
+      animation: hero-settle 2.4s var(--ease) forwards;
+    }
+
+    @keyframes hero-settle {
+      to { transform: scale(1); }
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(4, 6, 9, .94) 0%, rgba(4, 6, 9, .76) 31%, rgba(4, 6, 9, .16) 65%, rgba(4, 6, 9, .28) 100%),
+        linear-gradient(0deg, rgba(4, 6, 9, .78) 0%, rgba(4, 6, 9, 0) 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(780px, 64%);
+      padding-bottom: 84px;
+    }
+
+    .hero-stagger > * {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: rise .9s var(--ease) forwards;
+    }
+
+    .hero-stagger > *:nth-child(1) { animation-delay: .1s; }
+    .hero-stagger > *:nth-child(2) { animation-delay: .22s; }
+    .hero-stagger > *:nth-child(3) { animation-delay: .36s; }
+    .hero-stagger > *:nth-child(4) { animation-delay: .48s; }
+    .hero-stagger > *:nth-child(5) { animation-delay: .6s; }
+    .hero-stagger > *:nth-child(6) { animation-delay: .72s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: none; }
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: currentColor;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #d4d9e2;
+    }
+
+    .hero .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: var(--blue);
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 16px;
+      font-size: clamp(52px, 6.4vw, 88px);
+      font-weight: 500;
+      line-height: .98;
+    }
+
+    .hero-credentials {
+      margin-bottom: 14px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin-bottom: 24px;
+      color: #dfe3ea;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .hero-interview {
+      width: min(640px, 100%);
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      margin: 0 0 24px;
+      padding: 13px 15px;
+      background: rgba(8, 11, 17, .66);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, .36);
+      border-radius: 4px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: background .25s ease, border-color .25s ease, transform .25s var(--ease);
+    }
+
+    .hero-interview:hover {
+      background: rgba(8, 11, 17, .9);
+      border-color: rgba(255, 255, 255, .72);
+      transform: translateY(-2px);
+    }
+
+    .interview-play {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      background: var(--blue);
+      border-radius: 50%;
+      font-size: 14px;
+      line-height: 1;
+      transition: transform .25s var(--ease);
+    }
+
+    .hero-interview:hover .interview-play { transform: scale(1.08); }
+
+    .interview-copy { min-width: 0; }
+
+    .interview-source {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .rtbf-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 20px;
+      padding: 3px 6px;
+      background: var(--white);
+      border-radius: 2px;
+      flex: 0 0 auto;
+    }
+
+    .rtbf-logo svg {
+      display: block;
+      width: 42px;
+      height: auto;
+      fill: #004296;
+    }
+
+    .interview-brand,
+    .interview-title { display: block; }
+
+    .interview-brand {
+      color: #a9beff;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .interview-title {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .interview-duration {
+      color: #cdd3dc;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform .25s var(--ease), background .25s ease, border-color .25s ease, color .25s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary { background: var(--blue); color: var(--white); }
+    .button-primary:hover { background: #0f4df0; }
+    .button-light { border-color: rgba(255, 255, 255, .55); color: var(--white); }
+    .button-light:hover { border-color: var(--white); }
+    .button-dark { background: var(--ink); color: var(--white); }
+    .button-outline { border-color: var(--ink); color: var(--ink); }
+    .button-outline:hover { background: var(--ink); color: var(--white); }
+
+    .hero-meta {
+      position: absolute;
+      right: 0;
+      bottom: 88px;
+      z-index: 2;
+      margin: 0;
+      color: #d5d9e0;
+      font-family: var(--mono);
+      font-size: 10px;
+      line-height: 1.9;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      z-index: 2;
+      width: 1px;
+      height: 56px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .hero-scroll::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--blue-pale);
+      transform: translateY(-100%);
+      animation: scroll-cue 2.2s var(--ease) infinite;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes scroll-cue {
+      0% { transform: translateY(-100%); }
+      55% { transform: translateY(0); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* ---------- Sections & heads ---------- */
+
+    .section { padding: 118px 0; }
+    .section-white { background: var(--white); }
+    .section-dark { background: var(--ink); color: var(--white); }
+    .section-blue { background: var(--blue); color: var(--white); }
+
+    .section-head {
+      margin-bottom: 62px;
+    }
+
+    .head-index {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .head-index .eyebrow {
+      margin: 0;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .section-dark .head-index .eyebrow,
+    .section-blue .head-index .eyebrow { color: var(--blue-pale); }
+
+    .head-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.1s var(--ease) .15s;
+    }
+
+    .section-dark .head-rule,
+    .section-blue .head-rule { background: var(--line-dark); }
+
+    [data-reveal].visible .head-rule,
+    .visible .head-rule { transform: scaleX(1); }
+
+    .section-head h2 {
+      max-width: 880px;
+      margin-bottom: 0;
+      font-size: clamp(38px, 4.4vw, 56px);
+      line-height: 1.06;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .section-dark .section-intro { color: var(--muted-light); }
+
+    .case-index,
+    .work-year,
+    .experience-date,
+    .writing-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Featured case ---------- */
+
+    .case-featured {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
+      min-height: 400px;
+      margin-bottom: 22px;
+      background: var(--ink);
+      color: var(--white);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      box-shadow: 0 18px 46px rgba(11, 13, 16, .18);
+      transition: transform .25s var(--ease), border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .case-featured:hover {
+      border-color: var(--blue);
+      box-shadow: 0 24px 58px rgba(26, 92, 255, .28);
+      transform: translateY(-3px);
+    }
+
+    .case-content {
+      display: flex;
+      flex-direction: column;
+      padding: 44px 48px;
+    }
+
+    .case-topline,
+    .case-card-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .case-topline { margin-bottom: 48px; }
+
+    .case-index { margin: 0; color: var(--blue); }
+
+    .case-featured .case-index { color: var(--blue-pale); }
+
+    .case-open-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .case-open-label::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--white);
+      animation: badge-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .35; transform: scale(.8); }
+    }
+
+    .case-featured h3 {
+      max-width: 650px;
+      margin-bottom: 14px;
+      font-family: var(--serif);
+      font-size: clamp(32px, 3.4vw, 48px);
+      font-weight: 500;
+      line-height: 1.06;
+    }
+
+    .case-content > p {
+      max-width: 610px;
+      margin: 0;
+      color: var(--muted-light);
+      font-size: 14.5px;
+    }
+
+    .case-spotlight {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 38px;
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .case-spotlight-label {
+      display: block;
+      margin-bottom: 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .case-spotlight-value {
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--serif);
+      font-size: clamp(44px, 4vw, 58px);
+      font-weight: 500;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .case-spotlight-copy {
+      margin: 0;
+      color: #dbe4ff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .case-proof-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 34px;
+      margin-bottom: 22px;
+    }
+
+    .case-proof-grid span {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: #dbe4ff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .case-proof-grid strong {
+      min-width: 74px;
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .case-open-icon {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .case-open-icon span {
+      display: inline-block;
+      transition: transform .25s var(--ease);
+    }
+
+    .case-featured:hover .case-open-icon span { transform: translateX(4px); }
+
+    /* ---------- Case cards ---------- */
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      padding: 38px 40px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: transform .25s var(--ease), border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .case-card:hover {
+      border-color: rgba(26, 92, 255, .42);
+      box-shadow: 0 16px 38px rgba(11, 13, 16, .07);
+      transform: translateY(-3px);
+    }
+
+    .case-card-topline { margin-bottom: 34px; }
+
+    .case-card-icon {
+      color: var(--blue);
+      font-size: 15px;
+      transition: transform .25s var(--ease);
+    }
+
+    .case-card:hover .case-card-icon { transform: translate(3px, -3px); }
+
+    .case-card h3 {
+      margin-bottom: 10px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .case-card > p {
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mini-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 30px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-value {
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .case-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .case-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s var(--ease);
+    }
+
+    .case-action:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .case-action-primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--white);
+    }
+
+    .case-action-primary:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+
+    /* ---------- Project index ---------- */
+
+    .project-index { margin-top: 72px; }
+
+    .project-index-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 34px;
+    }
+
+    .project-index-head h3 {
+      margin-bottom: 0;
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 500;
+    }
+
+    .project-index-head .eyebrow {
+      margin-bottom: 14px;
+      color: var(--blue);
+    }
+
+    .project-index-head > p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .work-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .work-row {
+      display: flex;
+      flex-direction: column;
+      min-height: 190px;
+      padding: 26px 26px 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: border-color .2s ease, transform .2s var(--ease), box-shadow .2s ease;
+    }
+
+    .work-row:hover {
+      border-color: rgba(26, 92, 255, .45);
+      box-shadow: 0 12px 28px rgba(11, 13, 16, .06);
+      transform: translateY(-2px);
+    }
+
+    .work-year {
+      margin-bottom: 16px;
+      color: var(--blue);
+    }
+
+    .work-row h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .work-row p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    .work-cta {
+      margin-top: auto;
+      color: var(--ink);
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    .work-cta span {
+      display: inline-block;
+      transition: transform .2s var(--ease);
+    }
+
+    .work-row:hover .work-cta { color: var(--blue); }
+    .work-row:hover .work-cta span { transform: translateX(3px); }
+
+    .work-links {
+      display: flex;
+      gap: 18px;
+      margin-top: auto;
+    }
+
+    .work-links .work-cta { margin-top: 0; }
+
+    /* ---------- Experience ---------- */
+
+    .experience-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+
+    .experience-toolbar-label {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .experience-filters {
+      display: flex;
+      gap: 8px;
+    }
+
+    .experience-filter {
+      padding: 9px 15px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .experience-filter:hover {
+      color: var(--ink);
+      border-color: var(--muted);
+    }
+
+    .experience-filter[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--white);
+      border-color: var(--ink);
+    }
+
+    .experience-list {
+      border-top: 1px solid var(--ink);
+    }
+
+    .experience-row {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1.05fr) minmax(0, 1.35fr);
+      gap: 34px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-date {
+      padding-top: 4px;
+      color: var(--blue);
+      line-height: 1.5;
+    }
+
+    .experience-role h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .experience-org {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .experience-content { display: grid; gap: 12px; }
+
+    .experience-result {
+      margin-bottom: 0;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .experience-points {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .experience-points li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .experience-points li::before {
+      content: "";
+      position: absolute;
+      top: .75em;
+      left: 0;
+      width: 7px;
+      height: 1px;
+      background: var(--blue);
+    }
+
+    .experience-people {
+      margin: 0;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .experience-people strong {
+      color: var(--blue);
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Credentials ---------- */
+
+    .credential-rail {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .credential {
+      min-height: 270px;
+      padding: 32px 34px 34px;
+      border-right: 1px solid var(--line);
+      transition: background .25s ease;
+    }
+
+    .credential:hover { background: var(--blue-ghost); }
+    .credential:first-child { padding-left: 0; }
+    .credential:last-child { padding-right: 0; border-right: 0; }
+
+    .credential-label {
+      margin-bottom: 42px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .credential h3 {
+      margin-bottom: 8px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .credential-school {
+      min-height: 42px;
+      margin-bottom: 18px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .credential-honour {
+      margin: 0 0 14px;
+      padding-left: 10px;
+      border-left: 3px solid var(--blue);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .credential-detail {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .languages-block { margin-top: 58px; }
+
+    .languages-title {
+      margin-bottom: 20px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .language {
+      display: flex;
+      min-height: 112px;
+      padding: 22px 20px;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--line);
+    }
+
+    .language:first-child { padding-left: 0; }
+    .language:last-child { padding-right: 0; border-right: 0; }
+
+    .language-name {
+      margin-bottom: 4px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .language-level {
+      color: var(--blue);
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .language-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .additional-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .certifications-block { margin-top: 58px; }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+    }
+
+    .cert {
+      padding: 22px 22px 24px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cert:nth-child(4n) { border-right: 0; }
+    .cert:nth-child(4n+1) { padding-left: 0; }
+
+    .cert-issuer {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .cert-name {
+      margin: 0;
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    /* ---------- Recognition ---------- */
+
+    .recognition-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .recognition-title {
+      margin-bottom: 26px;
+      font-size: clamp(38px, 4.4vw, 56px);
+      line-height: 1.06;
+    }
+
+    .award-list {
+      margin: 46px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .award-list li {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .award-number {
+      color: #94adff;
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .award-title {
+      margin-bottom: 4px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .award-detail {
+      margin-bottom: 0;
+      color: var(--muted-light);
+      font-size: 12px;
+    }
+
+    .recognition-media {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+    }
+
+    .recognition-media figure { margin: 0; }
+    .recognition-media figure:first-child { grid-row: span 2; }
+
+    .recognition-media a {
+      display: block;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .recognition-media img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform .5s var(--ease);
+    }
+
+    .recognition-media figure:first-child img {
+      height: 100%;
+      min-height: 590px;
+      aspect-ratio: auto;
+      object-position: 51% center;
+    }
+
+    .recognition-media a:hover img { transform: scale(1.025); }
+
+    .media-interview {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      width: 100%;
+      margin-top: 34px;
+      padding: 15px 16px;
+      background: rgba(255, 255, 255, .04);
+      color: var(--white);
+      border: 1px solid var(--line-dark);
+      border-radius: 4px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: background .25s ease, border-color .25s ease, transform .25s var(--ease);
+    }
+
+    .media-interview:hover {
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(255, 255, 255, .42);
+      transform: translateY(-2px);
+    }
+
+    figcaption {
+      padding: 10px 0 0;
+      color: var(--muted-light);
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* ---------- Profile head (education) ---------- */
+
+    .profile-head { margin-bottom: 68px; }
+
+    .profile-head h2 {
+      max-width: 900px;
+      margin-bottom: 0;
+      font-family: var(--serif);
+      font-size: clamp(40px, 4.6vw, 58px);
+      font-weight: 500;
+      line-height: 1.03;
+    }
+
+    .profile-head h2 span { color: var(--blue); }
+
+    /* ---------- Video modal ---------- */
+
+    .video-modal {
+      width: min(calc(100% - 40px), 1080px);
+      max-height: calc(100svh - 40px);
+      padding: 0;
+      background: var(--ink);
+      color: var(--white);
+      border: 0;
+      border-radius: var(--radius);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .45);
+      overflow: hidden;
+    }
+
+    .video-modal::backdrop {
+      background: rgba(3, 5, 8, .82);
+      backdrop-filter: blur(8px);
+    }
+
+    .video-modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 24px 26px;
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .video-modal-brand {
+      display: block;
+      margin-bottom: 6px;
+      color: #a9beff;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .video-modal h2 {
+      margin-bottom: 0;
+      font-size: 28px;
+      line-height: 1.12;
+    }
+
+    .video-modal-close {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      padding: 0;
+      place-items: center;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, .42);
+      border-radius: 50%;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 26px 18px;
+      color: var(--muted-light);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .video-modal-footer a {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+    }
+
+    /* ---------- Publications ---------- */
+
+    .writing-list { border-top: 1px solid var(--ink); }
+
+    .writing-row {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr) auto;
+      gap: 38px;
+      align-items: start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+    }
+
+    .writing-date { padding-top: 3px; color: var(--blue); }
+
+    .writing-main h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+      line-height: 1.35;
+      transition: color .2s ease;
+    }
+
+    .writing-row:hover h3 { color: var(--blue); }
+
+    .writing-source {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .writing-type {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: color .2s ease, transform .2s var(--ease);
+    }
+
+    .writing-row:hover .writing-type {
+      color: var(--blue);
+      transform: translateX(3px);
+    }
+
+    /* ---------- Contact ---------- */
+
+    .contact-head { margin-bottom: 46px; }
+
+    .contact-head h2 {
+      max-width: none;
+      margin-bottom: 0;
+      font-size: clamp(56px, 8vw, 104px);
+      line-height: .98;
+    }
+
+    .contact-copy {
+      max-width: 640px;
+      margin: 20px 0 0;
+      color: #e2e8ff;
+      font-size: 17px;
+    }
+
+    .contact-mail {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, .42);
+      border-bottom: 1px solid rgba(255, 255, 255, .42);
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: clamp(26px, 4.6vw, 60px);
+      font-weight: 500;
+      line-height: 1.05;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: color .25s ease;
+    }
+
+    .contact-mail + .contact-mail { border-top: 0; }
+
+    .contact-handle {
+      color: #cdd9ff;
+      font-size: .55em;
+      font-style: italic;
+    }
+
+    .contact-mail:hover { color: #cdd9ff; }
+
+    .contact-mail-arrow {
+      font-family: var(--sans);
+      transition: transform .25s var(--ease);
+    }
+
+    .contact-mail:hover .contact-mail-arrow { transform: translateX(6px); }
+
+    .contact-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px;
+      margin-top: 46px;
+    }
+
+    .contact-meta-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue-pale);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .contact-meta p {
+      margin: 0;
+      color: #e2e8ff;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .contact-meta a {
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .5);
+      transition: border-color .2s ease;
+    }
+
+    .contact-meta a:hover { border-color: var(--white); }
+
+    footer {
+      padding: 26px 0;
+      background: var(--ink);
+      color: #aeb4bf;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Reveal ---------- */
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-reveal][data-delay="1"] { transition-delay: .08s; }
+    [data-reveal][data-delay="2"] { transition-delay: .16s; }
+    [data-reveal][data-delay="3"] { transition-delay: .24s; }
+
+    /* ---------- Responsive ---------- */
+
+    @media (min-width: 1360px) {
+      .spine { display: flex; }
+    }
+
+    @media (max-width: 1060px) {
+      .nav-links { gap: 18px; }
+      .hero-content { width: 74%; }
+      .case-featured { grid-template-columns: 1fr; }
+
+      .case-spotlight {
+        display: grid;
+        grid-template-columns: minmax(170px, .6fr) minmax(0, 1.4fr);
+        gap: 36px;
+        align-items: end;
+      }
+
+      .case-proof-grid { margin-top: 0; }
+      .work-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .recognition-grid { grid-template-columns: 1fr; }
+
+      .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cert:nth-child(4n+1) { padding-left: 22px; }
+      .cert:nth-child(2n+1) { padding-left: 0; }
+      .cert:nth-child(4n) { border-right: 1px solid var(--line); }
+      .cert:nth-child(2n) { border-right: 0; }
+      .experience-row {
+        grid-template-columns: 150px minmax(0, 1fr);
+      }
+
+      .experience-content { grid-column: 2; }
+    }
+
+    @media (max-width: 820px) {
+      .shell { width: min(calc(100% - 40px), var(--max)); }
+      .nav { min-height: 66px; }
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        position: fixed;
+        inset: 66px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 28px 20px 120px;
+        background: var(--white);
+        color: var(--ink);
+        transform: translateX(100%);
+        transition: transform .35s var(--ease);
+        overflow-y: auto;
+      }
+
+      .nav-links.open { transform: translateX(0); }
+
+      .nav-links a {
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+        font-family: var(--serif);
+        font-size: 30px;
+        font-weight: 500;
+      }
+
+      .nav-links a::after { display: none; }
+      .nav-actions a:not(.cv-link) { display: none; }
+      .nav-actions { margin-left: auto; }
+
+      .hero { min-height: 780px; }
+      .hero-media { object-position: 50% center; }
+
+      .hero::after {
+        background:
+          linear-gradient(90deg, rgba(4, 6, 9, .88), rgba(4, 6, 9, .16)),
+          linear-gradient(0deg, rgba(4, 6, 9, .9) 0%, rgba(4, 6, 9, .2) 65%);
+      }
+
+      .hero-content {
+        width: 100%;
+        padding-bottom: 52px;
+      }
+
+      .hero-copy { max-width: 580px; }
+      .hero-meta { display: none; }
+      .hero-scroll { display: none; }
+
+      .section { padding: 84px 0; }
+      .section-head { margin-bottom: 46px; }
+      .profile-head { margin-bottom: 48px; }
+
+      .case-content { padding: 38px 32px; }
+      .case-topline { margin-bottom: 36px; }
+      .case-grid { grid-template-columns: 1fr; }
+
+      .project-index-head {
+        display: block;
+      }
+
+      .project-index-head > p {
+        margin-top: 12px;
+        text-align: left;
+      }
+
+      .recognition-media figure:first-child img { min-height: 500px; }
+
+      .credential-rail { grid-template-columns: 1fr; }
+
+      .credential,
+      .credential:first-child,
+      .credential:last-child {
+        min-height: 0;
+        padding: 28px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .credential:last-child { border-bottom: 0; }
+      .credential:hover { background: transparent; }
+      .credential-label { margin-bottom: 20px; }
+      .credential-school { min-height: 0; }
+
+      .contact-meta {
+        grid-template-columns: 1fr;
+        gap: 26px;
       }
     }
-    
-    // ── LINE: 0.74 ──
-    if (p > 0.74) { crLine.classList.add('visible'); }
-    else { crLine.classList.remove('visible'); }
-    
-    // ── STATEMENT: 0.78 ──
-    if (p > 0.78) { crStatement.classList.add('visible'); }
-    else { crStatement.classList.remove('visible'); }
-    
-    // ── CTA: 0.84 ──
-    if (p > 0.84) { crCta.classList.add('visible'); }
-    else { crCta.classList.remove('visible'); }
-    
-    // ── Scroll invite: 0.90 ──
-    if (p > 0.90) { crScrollInvite.classList.add('visible'); }
-    else { crScrollInvite.classList.remove('visible'); }
-  }
-  
-  var ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(function() { update(); ticking = false; });
-      ticking = true;
+
+    @media (max-width: 560px) {
+      .shell { width: min(calc(100% - 32px), var(--max)); }
+      .nav-actions .cv-link { display: none; }
+
+      .hero {
+        min-height: 820px;
+        max-height: 940px;
+      }
+
+      .hero::after {
+        background: linear-gradient(0deg, rgba(4, 6, 9, .96) 0%, rgba(4, 6, 9, .54) 55%, rgba(4, 6, 9, .2) 100%);
+      }
+
+      h1 { font-size: 46px; }
+      .hero-credentials { font-size: 13px; }
+
+      .hero-interview {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 12px;
+        padding: 11px 12px;
+      }
+
+      .interview-play { width: 40px; height: 40px; }
+      .interview-title { white-space: normal; }
+      .interview-duration { display: none; }
+
+      .actions { align-items: stretch; }
+      .hero .button { flex: 1 1 160px; }
+
+      .section { padding: 70px 0; }
+
+      .case-content,
+      .case-card { padding: 30px 24px; }
+
+      .case-topline {
+        align-items: flex-start;
+        margin-bottom: 30px;
+      }
+
+      .case-featured h3 { font-size: 31px; }
+
+      .case-spotlight {
+        display: block;
+        padding: 30px 24px;
+      }
+
+      .case-spotlight-value { font-size: 52px; }
+      .case-proof-grid { margin-top: 28px; }
+      .case-card { min-height: 0; }
+      .case-card h3 { font-size: 27px; }
+      .mini-metrics { gap: 10px; }
+      .mini-value { font-size: 23px; }
+      .case-action { flex: 1 1 140px; }
+
+      .work-list { grid-template-columns: 1fr; }
+      .work-row { min-height: 0; padding: 24px; }
+
+      .experience-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .experience-filters { max-width: 100%; flex-wrap: wrap; }
+
+      .experience-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 26px 0;
+      }
+
+      .experience-content { grid-column: 1; }
+
+      .language-grid { grid-template-columns: 1fr; }
+
+      .language,
+      .language:first-child,
+      .language:last-child {
+        padding: 20px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .language:last-child { border-bottom: 0; }
+
+      .cert-grid { grid-template-columns: 1fr; }
+
+      .cert,
+      .cert:nth-child(4n),
+      .cert:nth-child(4n+1) {
+        padding: 18px 0;
+        border-right: 0;
+      }
+
+      .project-index-head h3 { font-size: 30px; }
+
+      .video-modal {
+        width: calc(100% - 20px);
+        max-height: calc(100svh - 20px);
+      }
+
+      .video-modal-head { padding: 18px; }
+      .video-modal h2 { font-size: 21px; }
+
+      .video-modal-footer {
+        align-items: flex-start;
+        padding: 14px 18px 16px;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .recognition-media { grid-template-columns: 1fr; }
+      .media-interview { grid-template-columns: 40px minmax(0, 1fr); }
+      .recognition-media figure:first-child { grid-row: auto; }
+
+      .recognition-media figure:first-child img {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+
+      .writing-row {
+        grid-template-columns: 74px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .writing-type { grid-column: 2; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
     }
-  }, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
 
-// ═══ TIMELINE ANIMATION ═══
-var tlItems=document.querySelectorAll('.tl-item');
-var tlFill=document.getElementById('tlFill');
-var tlSection=document.getElementById('timeline');
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
 
-var tlObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
-},{threshold:0.15,rootMargin:'0px 0px -10% 0px'});
-tlItems.forEach(function(item){tlObs.observe(item)});
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
 
-function updateTimelineFill(){
-  if(!tlSection||!tlFill)return;
-  var rect=tlSection.getBoundingClientRect();
-  var sectionTop=rect.top;
-  var sectionH=rect.height;
-  var vh=window.innerHeight;
-  var traveled=(-sectionTop+vh*0.5);
-  var pct=Math.max(0,Math.min(1,traveled/sectionH));
-  tlFill.style.height=(pct*100)+'%';
-}
+      [data-reveal],
+      .hero-stagger > * {
+        opacity: 1;
+        transform: none;
+      }
 
-// ═══ GLOBAL SCROLL ═══
-function onScroll(){
-  var sy=window.scrollY,mx=document.body.scrollHeight-window.innerHeight;
-  document.getElementById('progress').style.width=(mx>0?(sy/mx)*100:0)+'%';
-  document.getElementById('navbar').classList.toggle('scrolled',sy>60);
-  var cur='';document.querySelectorAll('section[id]').forEach(function(s){
-    if(sy>=s.offsetTop-200)cur=s.id});
-  document.querySelectorAll('.nav-links a[data-nav]').forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+cur)});
-  updateTimelineFill();
-}
-var sT=false;
-window.addEventListener('scroll',function(){if(!sT){requestAnimationFrame(function(){onScroll();sT=false});sT=true}},{passive:true});
-onScroll();
+      .head-rule { transform: scaleX(1); }
+      .hero-media { transform: none; }
+      .hero-scroll { display: none; }
+    }
+  </style>
+</head>
 
-// ═══ REVEALS ═══
-var rO=new IntersectionObserver(function(en){en.forEach(function(e){
-  if(e.isIntersecting){e.target.classList.add('visible');
-    e.target.querySelectorAll('[data-count]').forEach(function(c){
-      var t=parseFloat(c.dataset.count),s=performance.now();
-      (function tk(n){var p=Math.min((n-s)/2200,1);c.textContent=Math.round((1-Math.pow(1-p,4))*t);if(p<1)requestAnimationFrame(tk)})(performance.now());
-    })}
-})},{threshold:.1});
-document.querySelectorAll('.reveal,.stagger').forEach(function(el){rO.observe(el)});
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-// ═══ HAMBURGER ═══
-var ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
-ham.addEventListener('click',function(){ham.classList.toggle('open');mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':''});
-mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ham.classList.remove('open');mm.classList.remove('open');document.body.style.overflow=''})});
+  <header class="site-header" id="siteHeader">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Valentin Angenot, back to top">
+        Valentin Angenot
+        <span class="brand-mark">Portfolio &middot; 2026</span>
+      </a>
 
-// ═══ SMOOTH ANCHORS ═══
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-80,behavior:'smooth'})})});
+      <div class="nav-links" id="navLinks">
+        <a href="#education">Qualifications</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Selected work</a>
+        <a href="#recognition">Recognition</a>
+        <a href="#writing">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-// ═══ LIGHTBOX ═══
-window.openLightbox=function(s){var i=new Image();i.onload=function(){document.getElementById('lightbox-img').src=s;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'};i.src=s};
-window.closeLightbox=function(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''};
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox()});
+      <div class="nav-actions">
+        <a href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="cv-link" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+      </div>
 
-// ═══ MARQUEE VELOCITY ═══
-var lS=0,trks=document.querySelectorAll('.marquee-track');
-(function vl(){var v=Math.abs(window.scrollY-lS);lS=window.scrollY;var sp=Math.max(10,35-v*.3);trks.forEach(function(t){t.style.animationDuration=sp+'s'});requestAnimationFrame(vl)})();
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <span class="scroll-progress" id="scrollProgress" aria-hidden="true"></span>
+    </nav>
+  </header>
 
-})();
-</script>
+  <nav class="spine" id="spine" aria-label="Section index">
+    <a href="#education" data-spine="education">01</a>
+    <a href="#experience" data-spine="experience">02</a>
+    <a href="#work" data-spine="work">03</a>
+    <a href="#recognition" data-spine="recognition">04</a>
+    <a href="#writing" data-spine="writing">05</a>
+    <a href="#contact" data-spine="contact">06</a>
+    <span class="spine-label">Index</span>
+  </nav>
+
+  <dialog class="video-modal" id="interviewDialog" aria-labelledby="interviewDialogTitle">
+    <div class="video-modal-head">
+      <div>
+        <span class="video-modal-brand">RTBF La Premi&egrave;re &middot; Tendances Premi&egrave;re</span>
+        <h2 id="interviewDialogTitle">Digital transformation and award-winning student work</h2>
+      </div>
+      <button class="video-modal-close" id="closeInterview" type="button" aria-label="Close interview">&times;</button>
+    </div>
+    <div class="video-frame" id="interviewFrame"></div>
+    <div class="video-modal-footer">
+      <span>Featured guest &middot; 20-minute interview &middot; December 2025</span>
+      <a href="https://auvio.rtbf.be/media/tendances-premiere-tendances-premiere-le-dossier-3417149" target="_blank" rel="noopener">Open on RTBF Auvio &rarr;</a>
+    </div>
+  </dialog>
+
+  <main id="main">
+
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img
+        class="hero-media"
+        src="photo4.jpg"
+        width="7360"
+        height="4906"
+        alt="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI."
+        fetchpriority="high"
+        onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo4.jpg'}">
+
+      <div class="shell">
+        <div class="hero-content hero-stagger">
+          <p class="eyebrow">Strategy, Finance, AI &amp; Engineering</p>
+          <h1 id="hero-title">Valentin Angenot</h1>
+          <p class="hero-credentials">Business Engineer &middot; Industrial Engineer &middot; CFA Level I passed</p>
+          <p class="hero-copy">Teaching Assistant in Strategy, strategic consulting, AI project leadership, equity research and engineering.</p>
+          <button class="hero-interview js-open-interview" id="openInterview" type="button" aria-haspopup="dialog" aria-controls="interviewDialog">
+            <span class="interview-play" aria-hidden="true">&#9654;</span>
+            <span class="interview-copy">
+              <span class="interview-source">
+                <span class="rtbf-logo">
+                  <svg viewBox="0 0 3508 877" role="img" aria-labelledby="rtbfLogoTitle" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                    <title id="rtbfLogoTitle">RTBF</title>
+                    <g transform="matrix(3.00129,0,0,3.00129,-4457.13,-447.862)">
+                      <g transform="matrix(2.90461,0,0,2.90461,1905.29,242.052)">
+                        <path d="M36.381,52.394C34.512,50.66 32.439,49.673 29.7,49.673L-24.216,49.679L-24.255,49.679L-24.293,49.685C-25.916,50.107 -27.914,48.885 -29.558,47.893C-30.936,46.706 -31.546,45.056 -31.546,42.893L-31.546,8.182L29.646,8.186C31.649,8.186 33.956,7.912 36.084,5.947C37.838,4.084 38.723,2 38.723,-0.672C38.723,-3.207 37.828,-5.446 35.923,-7.22C34.152,-9.125 31.913,-10.018 29.377,-10.018L-31.545,-10.018L-31.544,-22.595C-31.544,-25.079 -32.546,-27.277 -34.269,-29.029C-35.999,-30.915 -38.216,-31.797 -40.756,-31.797C-43.291,-31.797 -45.528,-30.903 -47.435,-28.995C-49.342,-27.224 -50.233,-24.986 -50.233,-22.317L-50.233,50.689C-50.233,62.402 -44.618,68.035 -32.948,68.035L29.97,68.028C32.456,68.028 34.524,67.026 36.408,65.303C38.164,63.573 39.179,61.355 39.179,58.95C39.179,56.328 38.313,54.461 36.381,52.394Z"/>
+                        <path d="M87.782,-9.969C85.561,-9.969 83.154,-9.701 81.21,-7.787C79.455,-6.057 78.572,-3.841 78.572,-1.301C78.572,1.234 79.466,3.472 81.371,5.378C83.145,7.151 85.383,8.178 87.919,8.178L89.31,8.184L123.079,8.184C125.294,8.184 126.981,8.779 128.324,10.122C129.533,11.332 130.26,12.997 130.26,15.166L130.311,42.908C130.311,45.065 129.7,46.714 128.325,47.899C126.934,49.098 125.086,49.688 122.994,49.688L78.326,49.688C76.051,49.688 74.183,49.098 72.794,47.899C71.417,46.714 70.806,45.069 70.806,42.906L70.754,-22.749C70.754,-25.102 69.753,-27.303 68.029,-29.186C66.298,-30.943 64.083,-31.959 61.542,-31.959C59.008,-31.959 56.77,-30.933 54.864,-29.028C52.957,-27.252 52.065,-25.016 52.065,-22.479L52.065,50.56C52.065,62.007 57.986,68.039 69.743,68.039L131.139,68.053C142.764,68.053 148.818,62.312 148.818,50.655L148.818,7.117C148.818,-4.153 143.188,-9.74 131.491,-9.948L87.782,-9.969Z"/>
+                        <path d="M254.943,6.022C256.698,4.293 257.717,2.077 257.717,-0.463C257.717,-3 256.689,-5.237 254.917,-7.142C252.841,-9.085 250.605,-9.998 248.236,-9.998L179.538,-9.993C168.238,-9.73 162.317,-4.057 162.627,7.072L162.158,59.511C162.158,61.874 163.172,64.083 164.925,65.837C166.678,67.591 168.877,68.607 171.236,68.607C173.903,68.607 176.131,67.591 177.885,65.837C179.937,64.038 180.706,61.83 180.706,59.508L181.048,12.72C181.048,9.677 182.327,8.208 185.139,8.208L248.378,8.205C250.595,8.206 252.868,7.935 254.943,6.022Z"/>
+                        <path d="M-64.984,-7.405C-66.699,-9.122 -68.906,-9.969 -71.663,-9.969C-89.078,-9.987 -106.629,-9.928 -124.043,-9.996C-125.398,-10.019 -126.226,-10.522 -127.032,-11.636C-128.73,-14.109 -132.375,-14.963 -135.197,-14.963C-138.001,-14.963 -140.55,-13.839 -142.465,-11.839C-144.323,-9.895 -144.648,-7.753 -144.648,-5.251L-144.674,59.005C-144.674,61.361 -143.78,63.575 -141.874,65.347C-139.97,67.382 -137.734,68.146 -135.197,68.146C-132.66,68.146 -130.445,67.406 -128.716,65.678C-126.856,63.685 -125.985,61.736 -125.985,59.066L-125.985,15.26C-125.985,13.182 -125.343,11.274 -123.998,10.116C-122.626,8.801 -120.913,8.212 -118.673,8.196L-71.394,8.196C-68.629,8.196 -66.494,7.405 -64.956,5.76C-63.068,4.031 -62.184,1.814 -62.184,-0.725C-62.184,-3.264 -63.078,-5.497 -64.984,-7.405Z"/>
+                        <path d="M234.947,33.804L234.947,33.797C234.947,31.004 233.854,28.44 231.948,26.643C229.82,24.758 227.45,23.877 224.344,23.877L206.446,23.877C203.605,23.877 201.233,24.758 199.104,26.643C196.94,28.44 195.844,31.004 195.844,33.797L195.844,33.804C195.844,36.596 196.938,38.905 199.104,40.691C201.233,42.444 203.605,43.461 206.446,43.461L224.344,43.461C227.45,43.461 229.82,42.444 231.948,40.691C233.85,38.905 234.947,36.596 234.947,33.804Z"/>
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+                <span class="interview-brand">La Premi&egrave;re &middot; Tendances Premi&egrave;re</span>
+              </span>
+              <span class="interview-title">Watch the 20-minute interview</span>
+            </span>
+            <span class="interview-duration">Play in page</span>
+          </button>
+          <div class="actions">
+            <a class="button button-primary" href="#experience">View experience</a>
+            <a class="button button-light" href="cv.pdf" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+        <p class="hero-meta">Belgium-based<br>Open to roles in Belgium, Luxembourg, London,<br>Madrid, Barcelona and internationally</p>
+      </div>
+      <span class="hero-scroll" aria-hidden="true"></span>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="section section-white" id="education">
+      <div class="shell">
+        <header class="profile-head" data-reveal>
+          <div class="head-index">
+            <p class="eyebrow">01 &middot; Profile</p>
+            <span class="head-rule"></span>
+          </div>
+          <h2>Business Engineer.<br>Industrial Engineer.<br><span>CFA Level I passed.</span></h2>
+        </header>
+
+        <div class="credential-rail" data-reveal>
+          <article class="credential">
+            <div class="credential-label">01 &middot; HEC Li&egrave;ge &middot; 2025</div>
+            <h3>Business Engineer</h3>
+            <p class="credential-school">M.Sc. Business Engineering, Science &amp; Technology</p>
+            <p class="credential-honour">Valedictorian &middot; Major de Promotion</p>
+            <p class="credential-detail">B.Sc. 18/20 &middot; M.Sc. 18.5/20 &middot; First-ranked at both levels &middot; Summa Cum Laude with Committee Praise.</p>
+          </article>
+          <article class="credential">
+            <div class="credential-label">02 &middot; HELMo Gramme &middot; 2026</div>
+            <h3>Industrial Engineer</h3>
+            <p class="credential-school">M.Eng. Industrial Engineering</p>
+            <p class="credential-detail">Current average: 18.2/20 &middot; Mechanics, energy, industrial systems, robotics and optimisation.</p>
+          </article>
+          <article class="credential">
+            <div class="credential-label">03 &middot; CFA Institute &middot; Aug 2025</div>
+            <h3>CFA Level I</h3>
+            <p class="credential-school">Passed on the first attempt</p>
+            <p class="credential-detail">Financial analysis, valuation, portfolio management, ethics and quantitative methods.</p>
+          </article>
+        </div>
+
+        <div class="languages-block" data-reveal>
+          <h3 class="languages-title">Languages</h3>
+          <div class="language-grid" role="group" aria-label="Languages">
+            <div class="language">
+              <span class="language-name">French</span>
+              <strong class="language-level">Native</strong>
+            </div>
+            <div class="language">
+              <span class="language-name">English</span>
+              <strong class="language-level">C1</strong>
+            </div>
+            <div class="language">
+              <span class="language-name">Spanish</span>
+              <strong class="language-level">C1</strong>
+            </div>
+            <div class="language">
+              <span class="language-name">Dutch</span>
+              <strong class="language-level">Beginner</strong>
+              <span class="language-note">Ready to deepen</span>
+            </div>
+            <div class="language">
+              <span class="language-name">Italian</span>
+              <strong class="language-level">Beginner</strong>
+              <span class="language-note">Ready to deepen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="certifications-block" data-reveal>
+          <h3 class="languages-title">Certifications</h3>
+          <div class="cert-grid" role="list" aria-label="Certifications">
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">CFA Institute</span>
+              <p class="cert-name">CFA Level I &mdash; Passed</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">IBM</span>
+              <p class="cert-name">Generative AI for Executives and Business Leaders</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">University of London</span>
+              <p class="cert-name">Corporate Strategy</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">Dassault Syst&egrave;mes</span>
+              <p class="cert-name">Certified SOLIDWORKS Associate</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">Erasmus Rotterdam</span>
+              <p class="cert-name">Advanced Valuation &amp; Strategy &mdash; M&amp;A, PE &amp; VC</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">CFI</span>
+              <p class="cert-name">FMI Foundations in Financial Modeling</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">University of Michigan</span>
+              <p class="cert-name">Digital Twins</p>
+            </div>
+            <div class="cert" role="listitem">
+              <span class="cert-issuer">Yale University</span>
+              <p class="cert-name">Financial Markets</p>
+            </div>
+          </div>
+          <p class="additional-credentials">
+            <span>Python &middot; Data, NLP &amp; optimisation</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <div class="head-index">
+            <p class="eyebrow">02 &middot; Experience</p>
+            <span class="head-rule"></span>
+          </div>
+          <h2>Professional experience.</h2>
+          <p class="section-intro">Seven roles between 2022 and 2026 &mdash; all held in parallel with full-time studies.</p>
+        </header>
+
+        <div class="experience-toolbar" data-reveal>
+          <p class="experience-toolbar-label">Filter experience</p>
+          <div class="experience-filters" role="group" aria-label="Filter professional experience">
+            <button class="experience-filter" type="button" data-experience-filter="all" aria-pressed="true">All</button>
+            <button class="experience-filter" type="button" data-experience-filter="role" aria-pressed="false">Professional roles</button>
+            <button class="experience-filter" type="button" data-experience-filter="internship" aria-pressed="false">Internships</button>
+          </div>
+        </div>
+
+        <div class="experience-list">
+          <article class="experience-row" data-experience-type="internship" data-reveal>
+            <div class="experience-date">Sep 2025 &ndash; Jun 2026</div>
+            <div class="experience-role">
+              <h3>Industrial Engineering Intern &middot; Strategy &amp; Operations</h3>
+              <p class="experience-org">CILE &middot; Compagnie Intercommunale Li&eacute;geoise des Eaux &middot; Industrial Engineering degree internship</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Built the make-or-buy case and target operating model for bringing a critical field operation in-house across a utility serving 560,000+ residents.</p>
+              <ul class="experience-points">
+                <li>Modelled staffing, equipment, vehicle, compliance and workflows for 480 road-opening interventions per year across two depots and 24 municipalities.</li>
+                <li>Designed and built two linked browser applications combining geocoding, 24 rule sets, native DOCX generation, a canvas-based signage editor, submission workflows and analytics.</li>
+                <li>Quantified &euro;597K in ten-year savings, unified 24 permit procedures and reduced the core administrative workflow from 98 to 11 minutes.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-row" data-experience-type="role" data-reveal>
+            <div class="experience-date">Sep 2023 &ndash; Mar 2026</div>
+            <div class="experience-role">
+              <h3>Teaching Assistant &middot; Strategy &amp; Digital Transformation</h3>
+              <p class="experience-org">HEC Li&egrave;ge &amp; Faculty of Medicine, ULi&egrave;ge</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Mentored 300+ students on applied strategic diagnoses and transformation mandates built around live company and healthcare cases.</p>
+              <ul class="experience-points">
+                <li>Supervised corporate projects in digital strategy, Industry 4.0 and strategic consulting in collaboration with companies and MecaTech.</li>
+                <li>At the Faculty of Medicine, coached Master's teams on healthcare strategy and digital transition, translating field issues into structured recommendations.</li>
+              </ul>
+              <p class="experience-people"><strong>Faculty</strong> &nbsp; Prof. Nicolas Neysen</p>
+            </div>
+          </article>
+
+          <article class="experience-row" data-experience-type="role" data-reveal>
+            <div class="experience-date">Jul 2025 &ndash; Feb 2026</div>
+            <div class="experience-role">
+              <h3>AI Engineer &amp; Researcher</h3>
+              <p class="experience-org">University of Li&egrave;ge &middot; University of Rouen &middot; Long COVID Research Network</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Designed the clinical NLP architecture used to turn unstructured paediatric Long COVID narratives into interoperable phenotype data.</p>
+              <ul class="experience-points">
+                <li>Built an E5 + FAISS + LLM pipeline that mapped 148 clinical observations from 10 cases into 128 Human Phenotype Ontology terms.</li>
+                <li>Co-authored research on LLMs in Belgian primary care and contributed evidence used in scientific and public-health discussions.</li>
+              </ul>
+              <p class="experience-people"><strong>Research lead</strong> &nbsp; Dr Marc Jamoulle</p>
+            </div>
+          </article>
+
+          <article class="experience-row" data-experience-type="role" data-reveal>
+            <div class="experience-date">Sep 2022 &ndash; Feb 2026</div>
+            <div class="experience-role">
+              <h3>Student Instructor &middot; Finance, Mathematics &amp; Engineering Sciences</h3>
+              <p class="experience-org">HEC Li&egrave;ge &middot; Five course appointments</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Delivered tutorials, problem-solving sessions and student support across finance, accounting, physics, mathematics and supply-chain management.</p>
+              <ul class="experience-points">
+                <li>Corporate Finance &amp; Strategic Financial Analysis; Physics I &amp; II; Mathematics: Infinitesimal Analysis.</li>
+                <li>Supply Chain Management; Finance &amp; Accounting.</li>
+              </ul>
+              <p class="experience-people"><strong>Course leads</strong> &nbsp; Marie Lambert (corporate finance) &middot; Pierre Deneye (physics) &middot; Val&eacute;rie Henry (analysis) &middot; Sabine Limbourg &amp; &Eacute;lodie Bebronne (supply chain) &middot; Giuseppina Capodici &amp; Wilfried Niessen (finance &amp; accounting)</p>
+            </div>
+          </article>
+
+          <article class="experience-row" data-experience-type="role" data-reveal>
+            <div class="experience-date">Sep 2024 &ndash; Oct 2025</div>
+            <div class="experience-role">
+              <h3>Invited Lecturer</h3>
+              <p class="experience-org">HEC Li&egrave;ge Executive Education &middot; Li&egrave;ge &middot; On-site</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Invited to deliver applied AI sessions for executive audiences using business cases I had personally led.</p>
+              <ul class="experience-points">
+                <li>Structured the intervention around strategic opportunity selection, operational limits, governance and the conditions required for adoption in real organisations.</li>
+                <li>Translated technical systems into decision frameworks for non-technical professionals.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-row" data-experience-type="role" data-reveal>
+            <div class="experience-date">Sep 2024 &ndash; Sep 2025</div>
+            <div class="experience-role">
+              <h3>AI Engineer &amp; Project Lead</h3>
+              <p class="experience-org">AIASHI &middot; HEC Li&egrave;ge &middot; University of Li&egrave;ge</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Led a strategic research-intelligence initiative turning raw institutional data into a decision-ready taxonomy and quality-controlled pipeline, built to optimise the allocation of a &euro;200M budget through better data analysis.</p>
+              <ul class="experience-points">
+                <li>Engineered an NLP/LLM system processing 100,000+ documents; on 62,000 research abstracts, produced a three-level taxonomy spanning 1,977 topics.</li>
+                <li>Raised usable coverage to 89.8%, reduced unresolved records from 18,724 to 6,320 and reached 96% quality-control accuracy.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-row" data-experience-type="role" data-reveal>
+            <div class="experience-date">Sep 2024 &ndash; May 2025</div>
+            <div class="experience-role">
+              <h3>Equity Research Analyst</h3>
+              <p class="experience-org">CFA Institute Research Challenge &middot; Benelux</p>
+            </div>
+            <div class="experience-content">
+              <p class="experience-result">Produced full sell-side initiating coverage on Just Eat Takeaway.com (Euronext: TKWY), from industry analysis and forecasting to valuation and investment recommendation.</p>
+              <ul class="experience-points">
+                <li>Issued a SELL recommendation with 18.5% downside potential and defended the thesis before investment professionals at Euronext Amsterdam.</li>
+                <li>Ranked 2nd among 20 Benelux universities.</li>
+              </ul>
+              <p class="experience-people"><strong>Academic mentor</strong> &nbsp; Prof. Marie Lambert</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <div class="head-index">
+            <p class="eyebrow">03 &middot; Selected work</p>
+            <span class="head-rule"></span>
+          </div>
+          <h2>Selected work.</h2>
+          <p class="section-intro">Cases, models and reports with direct access to the work behind each result.</p>
+        </header>
+
+        <a class="case-featured" href="case-study.html" aria-label="Explore the public utility permit workflow software case study" data-reveal>
+          <div class="case-content">
+            <div class="case-topline">
+              <div class="case-index">01 &middot; Applied software &middot; Public utility</div>
+              <span class="case-open-label">Featured software case</span>
+            </div>
+            <h3>An end-to-end operating system for road-opening permits.</h3>
+            <p>Two linked browser applications unifying geocoding, municipal rules, document generation, signage design, submission and analytics.</p>
+          </div>
+          <div class="case-spotlight" role="group" aria-label="Public utility case highlights">
+            <div>
+              <span class="case-spotlight-label">Projected workflow value</span>
+              <strong class="case-spotlight-value">&euro;<span data-count="596881">596,881</span></strong>
+              <p class="case-spotlight-copy">Industrial Engineering internship</p>
+            </div>
+            <div>
+              <div class="case-proof-grid">
+                <span><strong>24</strong>Rule sets encoded</span>
+                <span><strong>98 &rarr; 11</strong>Minutes / workflow</span>
+                <span><strong>2</strong>Integrated applications</span>
+              </div>
+              <span class="case-open-icon">View the software case <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+
+        <div class="case-grid">
+          <article class="case-card" data-reveal>
+            <div class="case-card-topline">
+              <div class="case-index">02 &middot; Institutional intelligence</div>
+              <span class="case-card-icon" aria-hidden="true">&nearr;</span>
+            </div>
+            <h3>Research intelligence at institutional scale.</h3>
+            <p>An NLP/LLM system built to optimise the allocation of &euro;200M+ in research revenue.</p>
+            <div class="mini-metrics" role="group" aria-label="AIASHI project metrics">
+              <div class="mini-metric">
+                <div class="mini-value">100K+</div>
+                <div class="mini-label">Documents</div>
+              </div>
+              <div class="mini-metric">
+                <div class="mini-value">96%</div>
+                <div class="mini-label">QC rate</div>
+              </div>
+              <div class="mini-metric">
+                <div class="mini-value">1,977</div>
+                <div class="mini-label">Final topics</div>
+              </div>
+            </div>
+            <div class="case-actions">
+              <a class="case-action case-action-primary" href="https://www.digitalwallonia.be/fr/publications/digital-nextgen-12e-cahier-du-digital/" target="_blank" rel="noopener">Read article &rarr;</a>
+              <a class="case-action" href="thesis_presentation.html" target="_blank" rel="noopener">View defence &rarr;</a>
+            </div>
+          </article>
+
+          <article class="case-card" data-reveal data-delay="1">
+            <div class="case-card-topline">
+              <div class="case-index">03 &middot; Investment analysis</div>
+              <span class="case-card-icon" aria-hidden="true">&nearr;</span>
+            </div>
+            <h3>A sell-side thesis defended at Euronext.</h3>
+            <p>Full initiating coverage on Just Eat Takeaway.com with a SELL recommendation.</p>
+            <div class="mini-metrics" role="group" aria-label="CFA Research Challenge metrics">
+              <div class="mini-metric">
+                <div class="mini-value">2nd</div>
+                <div class="mini-label">Benelux</div>
+              </div>
+              <div class="mini-metric">
+                <div class="mini-value">20</div>
+                <div class="mini-label">Universities</div>
+              </div>
+              <div class="mini-metric">
+                <div class="mini-value">18.5%</div>
+                <div class="mini-label">Downside</div>
+              </div>
+            </div>
+            <div class="case-actions">
+              <a class="case-action case-action-primary" href="cfa-report.pdf" target="_blank" rel="noopener">Open report &rarr;</a>
+              <a class="case-action" href="cfa-presentation.pdf" target="_blank" rel="noopener">View presentation &rarr;</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-index" data-reveal>
+          <header class="project-index-head">
+            <div>
+              <p class="eyebrow">More projects</p>
+              <h3>Reports, models and research.</h3>
+            </div>
+            <p>Open the report, model or research behind each project.</p>
+          </header>
+
+          <div class="work-list">
+            <a class="work-row" href="denmark-sustainable-energy-plan-2045.pdf" target="_blank" rel="noopener">
+              <div class="work-year">2026 &middot; Energy</div>
+              <h3>Denmark Energy Plan 2045</h3>
+              <p>35 GW offshore wind &middot; ~&euro;90B over 20 years</p>
+              <span class="work-cta">Open report <span aria-hidden="true">&rarr;</span></span>
+            </a>
+            <article class="work-row">
+              <div class="work-year">2026 &middot; Mechanical systems</div>
+              <h3>Mechanical Systems Simulator</h3>
+              <p>Live RK4 model &middot; energy and phase tracking</p>
+              <div class="work-links">
+                <a class="work-cta" href="https://valentinangenot.github.io/simulation_modelling/" target="_blank" rel="noopener">Live model <span aria-hidden="true">&rarr;</span></a>
+                <a class="work-cta" href="simulation.pdf" target="_blank" rel="noopener">Report <span aria-hidden="true">&rarr;</span></a>
+              </div>
+            </article>
+            <a class="work-row" href="ai-for-biotech.pdf" target="_blank" rel="noopener">
+              <div class="work-year">2026 &middot; Biotech</div>
+              <h3>mRNA Sequence Optimisation</h3>
+              <p>LinearDesign &middot; structure and translation efficiency</p>
+              <span class="work-cta">Open report <span aria-hidden="true">&rarr;</span></span>
+            </a>
+            <a class="work-row" href="https://orbi.uliege.be/handle/2268/335655" target="_blank" rel="noopener">
+              <div class="work-year">2025 &middot; Health</div>
+              <h3>Clinical NLP for Long COVID</h3>
+              <p>E5 + FAISS + LLM &middot; HPO phenotyping</p>
+              <span class="work-cta">Open research <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="recognition">
+      <div class="shell recognition-grid">
+        <div class="recognition-copy" data-reveal>
+          <div class="head-index">
+            <p class="eyebrow">04 &middot; Recognition</p>
+            <span class="head-rule"></span>
+          </div>
+          <h2 class="recognition-title">Awards, distinctions and media.</h2>
+          <p class="section-intro">Academic honours, the CFA Research Challenge, a jury-awarded thesis and a national media appearance.</p>
+
+          <ul class="award-list">
+            <li>
+              <div class="award-number">2&times;</div>
+              <div>
+                <div class="award-title">Valedictorian, Business Engineering</div>
+                <p class="award-detail">B.Sc. 18/20 and M.Sc. 18.5/20, both Summa Cum Laude with Committee Praise.</p>
+              </div>
+            </li>
+            <li>
+              <div class="award-number">2025</div>
+              <div>
+                <div class="award-title">Jury Prize, Digital Transformation Thesis</div>
+                <p class="award-detail">Awarded by an industry panel for the business and societal impact of an AI-driven governance approach.</p>
+              </div>
+            </li>
+            <li>
+              <div class="award-number">#2</div>
+              <div>
+                <div class="award-title">CFA Research Challenge Benelux</div>
+                <p class="award-detail">Second among teams from 20 universities; final presentation at Euronext Amsterdam.</p>
+              </div>
+            </li>
+          </ul>
+
+          <button class="media-interview js-open-interview" type="button" aria-haspopup="dialog" aria-controls="interviewDialog">
+            <span class="interview-play" aria-hidden="true">&#9654;</span>
+            <span class="interview-copy">
+              <span class="interview-brand">RTBF La Premi&egrave;re &middot; Tendances Premi&egrave;re &middot; December 2025</span>
+              <span class="interview-title">Watch the 20-minute national radio interview</span>
+            </span>
+            <span class="interview-duration">Play in page</span>
+          </button>
+        </div>
+
+        <div class="recognition-media" data-reveal data-delay="1">
+          <figure>
+            <a href="photo3.jpg" target="_blank" rel="noopener" aria-label="Open thesis prize photograph">
+              <img
+                src="photo3.jpg"
+                width="7234"
+                height="4823"
+                loading="lazy"
+                alt="Valentin Angenot speaking after receiving the 2025 Digital Transformation Thesis Jury Prize."
+                onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo3.jpg'}">
+            </a>
+            <figcaption>Digital Transformation Thesis Jury Prize &middot; 2025</figcaption>
+          </figure>
+          <figure>
+            <a href="photo2.jpg" target="_blank" rel="noopener" aria-label="Open HEC Liège graduation photograph">
+              <img
+                src="photo2.jpg"
+                width="1145"
+                height="1000"
+                loading="lazy"
+                alt="Valentin Angenot at his HEC Liège graduation."
+                onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo2.jpg'}">
+            </a>
+            <figcaption>HEC Li&egrave;ge &middot; M.Sc. Business Engineering &middot; Valedictorian</figcaption>
+          </figure>
+          <figure>
+            <a href="photo1.jpg" target="_blank" rel="noopener" aria-label="Open Digital Transformation Thesis Prize photograph">
+              <img
+                src="photo1.jpg"
+                width="7891"
+                height="4544"
+                loading="lazy"
+                alt="Recipients and organisers of the 2025 Digital Transformation Thesis Prize."
+                onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/photo1.jpg'}">
+            </a>
+            <figcaption>Digital Transformation Thesis Prize &middot; 2025 cohort</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="writing">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <div class="head-index">
+            <p class="eyebrow">05 &middot; Publications</p>
+            <span class="head-rule"></span>
+          </div>
+          <h2>Publications &amp; contributions.</h2>
+          <p class="section-intro">Published articles, research contributions and field guides across governance, operations and healthcare.</p>
+        </header>
+
+        <div class="writing-list">
+          <a class="writing-row" href="from-friction-to-value.pdf" target="_blank" rel="noopener" data-reveal>
+            <div class="writing-date">2026</div>
+            <div class="writing-main">
+              <h3>From Friction to Value</h3>
+              <p class="writing-source">34-page field guide &middot; Strategy, engineering and applied AI</p>
+            </div>
+            <div class="writing-type">Field guide &rarr;</div>
+          </a>
+          <a class="writing-row" href="https://www.digitalwallonia.be/fr/publications/digital-nextgen-12e-cahier-du-digital/" target="_blank" rel="noopener" data-reveal>
+            <div class="writing-date">2026</div>
+            <div class="writing-main">
+              <h3>Quand le topic modeling devient un outil de gouvernance strategique</h3>
+              <p class="writing-source">Cahier du Digital #12 &middot; Digital Wallonia / Digital Lab</p>
+            </div>
+            <div class="writing-type">Published article &rarr;</div>
+          </a>
+          <a class="writing-row" href="https://orbi.uliege.be/handle/2268/336509" target="_blank" rel="noopener" data-reveal>
+            <div class="writing-date">2025</div>
+            <div class="writing-main">
+              <h3>Large Language Models in Belgian Primary Care</h3>
+              <p class="writing-source">Co-author &middot; ULi&egrave;ge &middot; AI in healthcare</p>
+            </div>
+            <div class="writing-type">Research paper &rarr;</div>
+          </a>
+          <a class="writing-row" href="https://orbi.uliege.be/handle/2268/335655" target="_blank" rel="noopener" data-reveal>
+            <div class="writing-date">2025</div>
+            <div class="writing-main">
+              <h3>Long COVID, Invisible Illness</h3>
+              <p class="writing-source">Research contribution &middot; Belgian Long COVID Research Network</p>
+            </div>
+            <div class="writing-type">Expert report &rarr;</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-blue" id="contact">
+      <div class="shell">
+        <header class="section-head contact-head" data-reveal>
+          <div class="head-index">
+            <p class="eyebrow">06 &middot; Contact</p>
+            <span class="head-rule"></span>
+          </div>
+          <h2>Let&rsquo;s talk.</h2>
+          <p class="contact-copy">For strategy, investment and industrial transformation roles where the bar is high. Replies within 24 hours.</p>
+        </header>
+
+        <div class="contact-channels" data-reveal>
+          <a class="contact-mail" href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">
+            <span>LinkedIn <span class="contact-handle">/ valentin-angenot</span></span>
+            <span class="contact-mail-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="contact-mail" href="mailto:valentinangenot@icloud.com">
+            <span>valentinangenot@icloud.com</span>
+            <span class="contact-mail-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="contact-meta" data-reveal data-delay="1">
+          <div>
+            <span class="contact-meta-label">Based in</span>
+            <p>Li&egrave;ge, Belgium &mdash; open to roles in Belgium, Luxembourg, London, Madrid, Barcelona and internationally.</p>
+          </div>
+          <div>
+            <span class="contact-meta-label">Languages</span>
+            <p>French native &middot; English C1 &middot; Spanish C1 &middot; Dutch and Italian beginner.</p>
+          </div>
+          <div>
+            <span class="contact-meta-label">Curriculum</span>
+            <p><a href="cv.pdf" target="_blank" rel="noopener">Download the full CV (PDF)</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner shell">
+      <span>&copy; 2026 Valentin Angenot</span>
+      <span>Strategy &middot; Finance &middot; AI &middot; Engineering</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var header = document.getElementById("siteHeader");
+      var scrollProgress = document.getElementById("scrollProgress");
+      var menuToggle = document.getElementById("menuToggle");
+      var navLinks = document.getElementById("navLinks");
+      var sectionLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+      var spine = document.getElementById("spine");
+      var spineLinks = Array.prototype.slice.call(document.querySelectorAll(".spine a"));
+      var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
+      var darkSections = Array.prototype.slice.call(document.querySelectorAll(".section-dark, .section-blue, .hero"));
+      var interviewTriggers = Array.prototype.slice.call(document.querySelectorAll(".js-open-interview"));
+      var lastInterviewTrigger = null;
+      var closeInterview = document.getElementById("closeInterview");
+      var interviewDialog = document.getElementById("interviewDialog");
+      var interviewFrame = document.getElementById("interviewFrame");
+      var experienceFilters = Array.prototype.slice.call(document.querySelectorAll("[data-experience-filter]"));
+      var experienceRows = Array.prototype.slice.call(document.querySelectorAll("[data-experience-type]"));
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* ----- Interview modal ----- */
+
+      function openInterviewModal() {
+        if (typeof interviewDialog.showModal !== "function") {
+          window.open("https://auvio.rtbf.be/media/tendances-premiere-tendances-premiere-le-dossier-3417149", "_blank", "noopener");
+          return;
+        }
+
+        var iframe = document.createElement("iframe");
+        iframe.src = "https://auvio.rtbf.be/embed/generic/content/media/3417149";
+        iframe.title = "RTBF La Premiere interview with Valentin Angenot";
+        iframe.allow = "autoplay; fullscreen; picture-in-picture";
+        iframe.allowFullscreen = true;
+        interviewFrame.replaceChildren(iframe);
+        interviewDialog.showModal();
+        document.body.classList.add("modal-open");
+        closeInterview.focus();
+      }
+
+      function closeInterviewModal() {
+        if (interviewDialog.open) {
+          interviewDialog.close();
+        }
+      }
+
+      interviewTriggers.forEach(function (trigger) {
+        trigger.addEventListener("click", function () {
+          lastInterviewTrigger = trigger;
+          openInterviewModal();
+        });
+      });
+      closeInterview.addEventListener("click", closeInterviewModal);
+
+      interviewDialog.addEventListener("click", function (event) {
+        var bounds = interviewDialog.getBoundingClientRect();
+        var withinDialog = event.clientX >= bounds.left &&
+          event.clientX <= bounds.right &&
+          event.clientY >= bounds.top &&
+          event.clientY <= bounds.bottom;
+
+        if (!withinDialog) {
+          closeInterviewModal();
+        }
+      });
+
+      interviewDialog.addEventListener("close", function () {
+        interviewFrame.replaceChildren();
+        document.body.classList.remove("modal-open");
+        (lastInterviewTrigger || interviewTriggers[0]).focus();
+      });
+
+      /* ----- Mobile menu ----- */
+
+      function closeMenu() {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        navLinks.classList.remove("open");
+        header.classList.remove("menu-active");
+        document.body.classList.remove("menu-open");
+      }
+
+      menuToggle.addEventListener("click", function () {
+        var open = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!open));
+        menuToggle.setAttribute("aria-label", open ? "Open navigation" : "Close navigation");
+        navLinks.classList.toggle("open", !open);
+        header.classList.toggle("menu-active", !open);
+        document.body.classList.toggle("menu-open", !open);
+      });
+
+      sectionLinks.forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+
+      /* ----- Experience filters ----- */
+
+      experienceFilters.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var filter = button.dataset.experienceFilter;
+
+          experienceFilters.forEach(function (item) {
+            item.setAttribute("aria-pressed", String(item === button));
+          });
+
+          experienceRows.forEach(function (row) {
+            row.hidden = filter !== "all" && row.dataset.experienceType !== filter;
+          });
+
+          window.requestAnimationFrame(updateHeader);
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeMenu();
+          closeInterviewModal();
+        }
+      });
+
+      /* ----- Scrollspy + progress + spine ----- */
+
+      function updateHeader() {
+        header.classList.toggle("scrolled", window.scrollY > 30);
+
+        var doc = document.documentElement;
+        var scrollable = doc.scrollHeight - window.innerHeight;
+        var progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+        scrollProgress.style.transform = "scaleX(" + Math.min(1, Math.max(0, progress)) + ")";
+
+        var current = "";
+        sections.forEach(function (section) {
+          if (window.scrollY >= section.offsetTop - 160) {
+            current = section.id;
+          }
+        });
+
+        sectionLinks.forEach(function (link) {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+        });
+
+        spineLinks.forEach(function (link) {
+          link.classList.toggle("active", link.dataset.spine === current);
+        });
+
+        /* Flip spine palette over dark sections */
+        if (spine) {
+          var mid = window.innerHeight / 2;
+          var onDark = darkSections.some(function (section) {
+            var rect = section.getBoundingClientRect();
+            return rect.top <= mid && rect.bottom >= mid;
+          });
+          spine.classList.toggle("on-dark", onDark);
+        }
+      }
+
+      var scrollTicking = false;
+      window.addEventListener("scroll", function () {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(function () {
+            updateHeader();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener("resize", updateHeader);
+      updateHeader();
+
+      /* ----- Count-up metrics ----- */
+
+      function animateCount(el) {
+        var target = parseInt(el.dataset.count, 10);
+        if (!target || reduceMotion) { return; }
+
+        var useGrouping = el.textContent.indexOf(",") !== -1;
+        var duration = 1400;
+        var start = null;
+
+        function frame(now) {
+          if (start === null) { start = now; }
+          var t = Math.min(1, (now - start) / duration);
+          var eased = 1 - Math.pow(1 - t, 3);
+          var value = Math.round(target * eased);
+          el.textContent = useGrouping ? value.toLocaleString("en-US") : String(value);
+          if (t < 1) { window.requestAnimationFrame(frame); }
+        }
+
+        window.requestAnimationFrame(frame);
+      }
+
+      /* ----- Reveal on scroll ----- */
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        document.querySelectorAll("[data-reveal]").forEach(function (element) {
+          element.classList.add("visible");
+        });
+      } else {
+        var counted = new WeakSet();
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+
+              entry.target.querySelectorAll("[data-count]").forEach(function (el) {
+                if (!counted.has(el)) {
+                  counted.add(el);
+                  animateCount(el);
+                }
+              });
+
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: .12,
+          rootMargin: "0px 0px -8% 0px"
+        });
+
+        document.querySelectorAll("[data-reveal]").forEach(function (element) {
+          observer.observe(element);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
 
