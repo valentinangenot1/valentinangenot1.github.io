@@ -1,483 +1,1284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>From Friction to €597K — Case Study by Valentin Angenot</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#FAFAF6;--card:#fff;
-  --navy:#0A2540;--ink:#111;--body:#444;--muted:#999;
-  --blue:#2F6BFF;--blue-d:#1E4FD0;--blue-l:#EBF0FF;
-  --green:#10B981;
-  --line:rgba(0,0,0,.08);
-  --serif:'DM Serif Display',Georgia,serif;
-  --sans:'Instrument Sans',-apple-system,sans-serif;
-  --mono:'JetBrains Mono',monospace;
-  --ease:cubic-bezier(.2,.7,.3,1);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px;scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
-::selection{background:var(--blue);color:#fff}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Valentin Angenot turned 24 municipal road-opening procedures into one browser-based workflow for CILE — two applications, zero servers, 98 minutes down to 11.">
+  <meta name="author" content="Valentin Angenot">
+  <meta name="theme-color" content="#f4f5f7">
+  <title>How 24 procedures became one workflow — Valentin Angenot</title>
+  <link rel="canonical" href="https://valentinangenot.com/case-study.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Valentin Angenot">
+  <meta property="og:title" content="How 24 municipal procedures became one software workflow">
+  <meta property="og:description" content="A software and operations case study for CILE: two browser applications, zero servers, 98 minutes down to 11 per permit.">
+  <meta property="og:url" content="https://valentinangenot.com/case-study.html">
+  <meta property="og:image" content="https://valentinangenot.com/framework-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
 
-.progress{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,var(--blue),var(--green));width:0;transition:width .1s}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5vw;background:rgba(250,250,246,.82);backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid rgba(0,0,0,.06);transition:transform .4s var(--ease)}
-nav.hidden{transform:translateY(-100%)}
-.nav-name{font-family:var(--serif);font-size:1rem;color:var(--ink);text-decoration:none}
-.nav-back{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--body);text-decoration:none;display:flex;align-items:center;gap:.55rem;padding:.72rem 1rem;border:1px solid var(--line);border-radius:999px;background:var(--card);box-shadow:0 10px 30px rgba(10,37,64,.06);transition:all .3s var(--ease)}
-.nav-back:hover{color:var(--ink);border-color:rgba(47,107,255,.35);transform:translateY(-1px);box-shadow:0 14px 35px rgba(47,107,255,.12)}
-.floating-back{position:fixed;left:1.2rem;bottom:1.2rem;z-index:700;display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.1rem;background:var(--navy);color:#fff;text-decoration:none;border-radius:999px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 18px 45px rgba(10,37,64,.22);transition:all .3s var(--ease)}
-.floating-back:hover{background:var(--blue);transform:translateY(-2px)}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How 24 municipal procedures became one software workflow",
+      "description": "A software and operations case study for CILE.",
+      "author": {
+        "@type": "Person",
+        "name": "Valentin Angenot"
+      },
+      "datePublished": "2026-05",
+      "url": "https://valentinangenot.com/case-study.html",
+      "mainEntityOfPage": "https://valentinangenot.com/case-study.html",
+      "image": "https://valentinangenot.com/framework-cover.png",
+      "about": [
+        "Software design",
+        "Operational transformation",
+        "Process automation"
+      ]
+    }
+  </script>
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:0 5vw;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-30%;right:-15%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(47,107,255,.06) 0%,transparent 65%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:40vw;height:40vw;background:radial-gradient(circle,rgba(16,185,129,.04) 0%,transparent 65%);pointer-events:none}
-.hero-inner{max-width:900px}
-.hero-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .3s var(--ease) forwards}
-.hero-tag span{display:inline-block;width:28px;height:1px;background:var(--blue);vertical-align:middle;margin-right:.8rem}
-.hero h1{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);line-height:1.02;letter-spacing:-.02em;color:var(--ink);opacity:0;animation:fadeUp 1s .5s var(--ease) forwards}
-.hero h1 i{font-style:italic;color:var(--blue)}
-.hero h1 .num{display:inline-block;background:var(--navy);color:#fff;padding:0 .15em;border-radius:4px;margin:0 .05em}
-.hero-desc{font-size:1.15rem;font-weight:400;color:var(--body);line-height:1.8;max-width:38em;margin-top:2rem;opacity:0;animation:fadeUp .8s .8s var(--ease) forwards}
-.hero-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.5rem;opacity:0;animation:fadeUp .8s 1s var(--ease) forwards}
-.chip{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;padding:.45rem .9rem;border:1px solid var(--line);border-radius:99px;color:var(--body);background:var(--card)}
-.scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeUp .8s 1.4s var(--ease) forwards}
-.scroll-cue span{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--blue),transparent);animation:pulse 2s ease-in-out infinite}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+  <style>
+    :root {
+      --paper: #f4f5f7;
+      --paper-deep: #e3e6eb;
+      --ink: #0a0c10;
+      --muted: #5d6470;
+      --rule: #d5d9e0;
+      --blue: #1a5cff;
+      --blue-dark: #0f4df0;
+      --blue-wash: #eef3ff;
+      --white: #ffffff;
+      --max: 1180px;
+      --article: 760px;
+      --ease: cubic-bezier(.22, .72, .22, 1);
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+      --mono: "DM Mono", ui-monospace, monospace;
+    }
 
-/* STATS */
-.stats{background:var(--navy);position:relative;overflow:hidden}
-.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(47,107,255,.15),transparent 50%),radial-gradient(circle at 80% 30%,rgba(16,185,129,.1),transparent 40%)}
-.stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:0 5vw}
-.stat{padding:3.5rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,.06);position:relative;z-index:1}
-.stat:last-child{border:none}
-.stat-n{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.6rem);color:#fff;line-height:1}
-.stat-n .unit{font-size:.4em;color:rgba(255,255,255,.4);font-family:var(--sans);font-weight:400}
-.stat-l{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.8rem;line-height:1.7}
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
 
-/* SECTIONS */
-.sec{padding:8rem 5vw}
-.sec-inner{max-width:700px;margin:0 auto}
-.sec-wide{max-width:1100px;margin:0 auto}
-.sec-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem}
-.sec h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
-.sec h2 i{font-style:italic;color:var(--blue)}
-.sec p{font-size:1.05rem;color:var(--body);line-height:1.85;margin-bottom:1.2rem}
-.sec p strong{color:var(--ink);font-weight:600}
-.pullquote{border-left:3px solid var(--blue);padding:1rem 0 1rem 2rem;margin:2.5rem 0}
-.pullquote p{font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--ink);line-height:1.5;margin:0}
+    html { scroll-behavior: smooth; }
 
-/* REVEAL */
-.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.rv.in{opacity:1;transform:none}
-.stg>*{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.stg.in>*{opacity:1;transform:none}
-.stg.in>*:nth-child(1){transition-delay:0s}.stg.in>*:nth-child(2){transition-delay:.08s}.stg.in>*:nth-child(3){transition-delay:.16s}.stg.in>*:nth-child(4){transition-delay:.24s}.stg.in>*:nth-child(5){transition-delay:.32s}.stg.in>*:nth-child(6){transition-delay:.4s}
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:3rem}
-.feat{background:var(--card);padding:2.2rem 1.8rem;transition:background .3s}
-.feat:hover{background:var(--blue-l)}
-.feat-num{font-family:var(--mono);font-size:.55rem;color:var(--blue);letter-spacing:.08em;margin-bottom:1rem}
-.feat h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem}
-.feat p{font-size:.85rem;color:var(--body);line-height:1.7;margin:0}
+    img { display: block; height: auto; max-width: 100%; }
+    a { color: inherit; }
 
-/* BEFORE/AFTER */
-.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(10,37,64,.12)}
-.ba-card{padding:3.5rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
-.ba-card.before{background:var(--card);border:1px solid var(--line);border-right:none}
-.ba-card.after{background:var(--navy);color:#fff}
-.ba-card.after::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(16,185,129,.12),transparent 60%)}
-.ba-big{font-family:var(--serif);font-size:clamp(4rem,8vw,6rem);line-height:1;position:relative;z-index:1}
-.ba-card.before .ba-big{color:#ccc}
-.ba-card.before .ba-big s{text-decoration:line-through;text-decoration-color:rgba(220,50,50,.4);text-decoration-thickness:3px}
-.ba-card.after .ba-big{color:#fff;text-shadow:0 0 40px rgba(16,185,129,.3)}
-.ba-unit{font-family:var(--sans);font-size:.8rem;font-weight:400;opacity:.5}
-.ba-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-top:1rem}
-.ba-card.before .ba-label{color:var(--muted)}
-.ba-card.after .ba-label{color:rgba(255,255,255,.45)}
-.ba-pct{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;font-weight:700;color:#fff;z-index:10;box-shadow:0 4px 20px rgba(47,107,255,.4)}
-.ba-bar{width:100%;height:6px;background:rgba(0,0,0,.06);border-radius:99px;margin-top:1.5rem;overflow:hidden;position:relative;z-index:1}
-.ba-bar-fill{height:100%;border-radius:99px;width:0;transition:width 1.5s cubic-bezier(.2,.7,.3,1)}
-.ba-card.before .ba-bar-fill{background:#ddd;width:100%}
-.ba-card.after .ba-bar-fill{background:var(--green)}
-.ba-card.after.animated .ba-bar-fill{width:11.2%}
+    ::selection { background: var(--blue); color: var(--white); }
 
-/* VALUE CALC */
-.calc{background:var(--navy);border-radius:20px;padding:3.5rem;margin-top:2rem;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(10,37,64,.18)}
-.calc::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(circle,rgba(47,107,255,.1),transparent 60%)}
-.calc::after{content:'';position:absolute;bottom:-30%;left:-10%;width:40%;height:140%;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 60%)}
-.calc-steps{position:relative;z-index:1}
-.calc-step{display:flex;align-items:baseline;gap:.6rem;font-family:var(--mono);font-size:.9rem;color:#6B7D99;line-height:2.4}
-.calc-step b{color:#fff;font-weight:600}
-.calc-eq{font-family:var(--mono);font-size:.75rem;color:#4A5F7A}
-.calc-divider{width:100%;height:1px;background:rgba(255,255,255,.08);margin:1rem 0}
-.calc-total-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.3rem;position:relative;z-index:1}
-.calc-result{font-family:var(--serif);font-size:clamp(2.5rem,5vw,3.8rem);color:var(--green);position:relative;z-index:1;text-shadow:0 0 60px rgba(16,185,129,.25)}
-.calc-note{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:1.2rem;position:relative;z-index:1}
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
 
-/* PRINCIPLES */
-.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}
-.tk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2rem;transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
-.tk:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.06);border-color:rgba(47,107,255,.2)}
-.tk-num{font-family:var(--mono);font-size:.6rem;color:var(--blue);letter-spacing:.1em;margin-bottom:.8rem}
-.tk h3{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.45rem;line-height:1.35}
-.tk p{font-size:.82rem;color:var(--body);line-height:1.7;margin:0}
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: var(--white);
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
 
-/* REPORT */
-.report-sec{background:linear-gradient(180deg,var(--bg) 0%,#f0eee8 100%);padding:6rem 5vw}
-.report-box{max-width:900px;margin:0 auto;display:grid;grid-template-columns:180px 1fr;gap:3rem;align-items:center}
-.book{width:180px;height:240px;perspective:800px;cursor:pointer}
-.book-inner{width:100%;height:100%;position:relative;transform:rotateY(-8deg);transition:transform .6s var(--ease);transform-style:preserve-3d}
-.book:hover .book-inner{transform:rotateY(0deg)}
-.book-cover{width:100%;height:100%;background:linear-gradient(160deg,#0A2540 0%,#143a63 100%);border-radius:2px 8px 8px 2px;box-shadow:6px 6px 30px rgba(10,37,64,.35),-2px 0 8px rgba(10,37,64,.15);position:relative;overflow:hidden;display:flex;flex-direction:column;padding:1.6rem}
-.book-cover::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px;background:var(--blue)}
-.book-cover::after{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:linear-gradient(90deg,rgba(0,0,0,.15),transparent)}
-.book-tag{font-family:var(--mono);font-size:.38rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(127,164,255,.7)}
-.book-title{font-family:var(--serif);font-size:1.1rem;color:#fff;line-height:1.15;margin-top:.8rem;flex:1}
-.book-title i{color:#7FA4FF}
-.book-spine{position:absolute;bottom:1.6rem;left:1.6rem;width:24px;height:2px;background:var(--blue)}
-.book-author{font-family:var(--mono);font-size:.36rem;letter-spacing:.12em;color:rgba(255,255,255,.35);margin-top:auto}
-.report-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
-.report-info h3{font-family:var(--serif);font-size:1.8rem;color:var(--ink);line-height:1.15;margin-bottom:.8rem}
-.report-info>p{font-size:.95rem;color:var(--body);line-height:1.75;margin-bottom:1.2rem;max-width:38em}
-.report-topics{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.6rem}
-.topic{font-family:var(--mono);font-size:.55rem;letter-spacing:.04em;color:var(--navy);background:var(--blue-l);border:1px solid rgba(47,107,255,.15);padding:.35rem .65rem;border-radius:4px}
-.dl-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;background:var(--navy);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.05em;text-decoration:none;border-radius:8px;transition:all .3s var(--ease)}
-.dl-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 30px rgba(47,107,255,.25)}
+    .skip-link:focus { transform: translateY(0); }
 
+    .reading-progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 1001;
+      width: 0;
+      height: 3px;
+      background: var(--blue);
+    }
 
-/* EXPLORE NEXT */
-.explore-sec{padding:6rem 5vw;background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.explore-inner{max-width:1100px;margin:0 auto}
-.explore-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:2rem}
-.explore-kicker{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
-.explore-head h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;color:var(--ink)}
-.explore-head h2 i{font-style:italic;color:var(--blue)}
-.explore-head p{max-width:28rem;color:var(--body);line-height:1.7;font-size:.98rem}
-.explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.explore-card{display:flex;flex-direction:column;min-height:210px;padding:1.8rem;background:var(--bg);border:1px solid var(--line);border-radius:18px;text-decoration:none;color:var(--ink);transition:all .35s var(--ease);position:relative;overflow:hidden}
-.explore-card::after{content:'↗';position:absolute;right:1.4rem;top:1.2rem;font-family:var(--mono);font-size:.9rem;color:var(--blue);opacity:.55;transition:transform .35s var(--ease),opacity .35s var(--ease)}
-.explore-card.download::after{content:'↓'}
-.explore-card:hover{transform:translateY(-6px);border-color:rgba(47,107,255,.25);box-shadow:0 24px 60px rgba(10,37,64,.09)}
-.explore-card:hover::after{transform:translate(3px,-3px);opacity:1}
-.explore-card.download:hover::after{transform:translateY(3px);opacity:1}
-.explore-num{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:1.1rem}
-.explore-title{font-size:1.15rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;max-width:15rem;margin-bottom:.7rem}
-.explore-text{font-size:.88rem;color:var(--body);line-height:1.65;margin-top:auto;max-width:18rem}
+    .shell {
+      width: min(calc(100% - 64px), var(--max));
+      margin-inline: auto;
+    }
 
-/* CTA */
-.cta{text-align:center;padding:8rem 5vw;position:relative}
-.cta::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
-.cta h2{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.5rem);color:var(--ink);margin-bottom:1rem}
-.cta h2 i{font-style:italic;color:var(--blue)}
-.cta>p{font-size:1.05rem;color:var(--body);max-width:28em;margin:0 auto 2.5rem;line-height:1.75}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-p{display:inline-block;padding:1rem 2.4rem;background:var(--blue);color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-decoration:none;border-radius:8px;transition:all .3s}
-.btn-p:hover{background:var(--blue-d);transform:translateY(-2px)}
-.btn-g{display:inline-block;padding:1rem 2.4rem;border:1px solid var(--line);color:var(--body);font-size:.75rem;font-weight:500;text-decoration:none;border-radius:8px;transition:all .3s}
-.btn-g:hover{border-color:var(--navy);color:var(--ink)}
+    .article-column {
+      width: min(calc(100% - 48px), var(--article));
+      margin-inline: auto;
+    }
 
-footer{border-top:1px solid var(--line);padding:2rem 5vw}
-.foot{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;font-family:var(--mono);font-size:.55rem;color:var(--muted);letter-spacing:.06em}
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 245, 247, .95);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
 
-@media(max-width:860px){
-  .feat-grid{grid-template-columns:1fr}
-  .tk-grid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .stat{border-bottom:1px solid rgba(255,255,255,.06)}
-  .report-box{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .report-topics{justify-content:center}
-  .explore-head{display:block;text-align:center}
-  .explore-head p{margin:1rem auto 0}
-  .explore-grid{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-  .hero{padding:0 5vw}
-  .stats-grid{grid-template-columns:1fr}
-  .ba-wrap{grid-template-columns:1fr}
-  .ba-pct{top:auto;bottom:0;left:50%;transform:translate(-50%,50%)}
-  .cta-btns{flex-direction:column;align-items:center}
-  .btn-p,.btn-g{width:100%;max-width:280px;text-align:center}
-  .calc{padding:1.5rem}
-  .calc-step{font-size:.75rem}
-  .calc-result{font-size:2.2rem}
-  nav{padding:.9rem 4vw}
-  .nav-name{font-size:.9rem}
-  .nav-back{font-size:.55rem;padding:.65rem .75rem}
-  .floating-back{left:50%;transform:translateX(-50%);bottom:.9rem;white-space:nowrap}
-  .floating-back:hover{transform:translateX(-50%) translateY(-2px)}
-}
-</style>
-</head>
-<body>
+    .nav {
+      min-height: 68px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
 
-<div class="progress" id="pg"></div>
+    .brand {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-<nav id="nav">
-  <a class="nav-name" href="index.html">Valentin Angenot</a>
-  <a class="nav-back" href="index.html" aria-label="Back to the main portfolio">&#8592; Back to main portfolio</a>
-</nav>
-<a class="floating-back" href="index.html" aria-label="Back to the main portfolio">&#8592; Main portfolio</a>
+    .edition {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-tag"><span></span>Case Study &middot; 2026</div>
-    <h1>From friction<br>to <span class="num">&euro;597K</span><br>in <i>ten days.</i></h1>
-    <p class="hero-desc">Working with Claude, I turned an organization's biggest administrative bottleneck into a tool that saves nearly six hundred thousand euros. This is the problem, the build, the numbers, and what transfers to any organization.</p>
-    <div class="hero-chips">
-      <span class="chip">1 person + Claude</span>
-      <span class="chip">Public utility</span>
-      <span class="chip">24 procedures unified</span>
-      <span class="chip">Zero infrastructure cost</span>
-    </div>
-  </div>
-  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
-</header>
+    .nav-actions {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
 
-<div class="stats">
-  <div class="stats-grid stg" id="stats">
-    <div class="stat">
-      <div class="stat-n"><span class="counter" data-target="98">0</span><span class="unit"> &rarr; </span><span class="counter" data-target="11">0</span></div>
-      <div class="stat-l">Minutes per task<br>before &rarr; after</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n"><span class="counter" data-target="24">0</span></div>
-      <div class="stat-l">Municipal procedures<br>unified into one</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n"><span class="counter" data-target="597">0</span><span class="unit">K&euro;</span></div>
-      <div class="stat-l">Value created<br>over ten years</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n"><span class="counter" data-target="0">0</span><span class="unit">&euro;</span></div>
-      <div class="stat-l">Hosting &amp;<br>infrastructure cost</div>
-    </div>
-  </div>
-</div>
+    .nav-mini {
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
 
-<!-- 01 -->
-<section class="sec">
-  <div class="sec-inner rv">
-    <div class="sec-tag">01 &mdash; The problem</div>
-    <h2>A small task,<br>repeated <i>thousands</i> of times.</h2>
-    <p>An organization decided to bring a field operation in-house instead of outsourcing it. The financial logic was sound. But one cost was hiding in the paperwork.</p>
-    <p>Every single job required permits from local authorities. Across the territory, <strong>24 different administrations</strong> each had their own rules: separate forms, separate platforms, separate deadlines, separate contacts, separate fees. For each job, an employee had to figure out the right procedure, gather the documents, draw a compliant plan, and route it to the right people.</p>
-    <p>Done by hand, this consumed <strong>over 90 minutes per job</strong>. It was slow. It was error-prone. And the whole operation depended on a single person keeping a maze of procedures in their head. The administrative overhead alone threatened to make the entire project unprofitable.</p>
-    <div class="pullquote"><p>The hard part was never the work itself. It was the paperwork around it, and there was a mountain of it.</p></div>
-  </div>
-</section>
+    .nav-mini:hover { color: var(--blue); }
 
-<!-- 02 -->
-<section class="sec" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="sec-inner rv">
-    <div class="sec-tag">02 &mdash; The solution</div>
-    <h2>One form.<br>Every rule. <i>Zero friction.</i></h2>
-    <p>The fix was a single web tool that absorbs the complexity behind one clean interface. The employee fills out <strong>one form</strong>, regardless of where the job takes place. The tool figures out which administration applies, loads the right rules, and produces every required document and message automatically. For the signage plan, the operator designs it using a built-in visual editor on a real map. The tool handles the formatting and export.</p>
-    <p>I built it in roughly <strong>ten working days</strong>, using Claude as my build partner. I brought the domain knowledge: I researched every procedure, mapped every rule, defined what "correct" looks like. Claude turned that knowledge into working software at a speed no individual could match alone.</p>
-  </div>
-  <div class="sec-wide">
-    <div class="feat-grid stg rv">
-      <div class="feat"><div class="feat-num">01</div><h3>Auto-detection</h3><p>Type an address and the tool identifies the right administration. It loads the correct rules, contacts, and deadlines instantly.</p></div>
-      <div class="feat"><div class="feat-num">02</div><h3>Document generation</h3><p>Official permit documents are created automatically, formatted to each authority's exact requirements. No retyping.</p></div>
-      <div class="feat"><div class="feat-num">03</div><h3>Visual plan editor</h3><p>A drag-and-drop editor to build compliant signage plans directly on a real map. No separate software needed.</p></div>
-      <div class="feat"><div class="feat-num">04</div><h3>Email automation</h3><p>Pre-filled messages go to the right recipients with the right attachments. Ready to send in one click.</p></div>
-      <div class="feat"><div class="feat-num">05</div><h3>Live dashboard</h3><p>Real-time view of activity, volumes, and trends across the territory. Exportable to a spreadsheet.</p></div>
-      <div class="feat"><div class="feat-num">06</div><h3>Runs anywhere</h3><p>The tool runs entirely in the browser. No server, no IT setup. It works on a tablet in the field.</p></div>
-    </div>
-  </div>
-</section>
+    .back-link {
+      display: inline-flex;
+      min-height: 38px;
+      align-items: center;
+      padding: 0 13px;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      transition: background .2s ease, color .2s ease;
+    }
 
-<!-- 03 -->
-<section class="sec">
-  <div class="sec-inner rv">
-    <div class="sec-tag">03 &mdash; The impact</div>
-    <h2>From 98 minutes<br>to <i>eleven.</i></h2>
-    <p>What used to take an employee over an hour and a half now takes eleven minutes. That gap, multiplied across every job over a ten-year horizon, is where the value lives.</p>
-  </div>
-  <div class="sec-wide rv">
-    <div class="ba-wrap" id="ba">
-      <div class="ba-card before">
-        <div class="ba-big"><s>98</s><span class="ba-unit"> min</span></div>
-        <div class="ba-label">Before, by hand</div>
-        <div class="ba-bar"><div class="ba-bar-fill"></div></div>
-      </div>
-      <div class="ba-card after">
-        <div class="ba-pct">&minus;89%</div>
-        <div class="ba-big">11<span class="ba-unit"> min</span></div>
-        <div class="ba-label">After, with the tool</div>
-        <div class="ba-bar"><div class="ba-bar-fill"></div></div>
-      </div>
-    </div>
-    <div class="calc">
-      <div class="calc-steps">
-        <div class="calc-step"><b>87</b>&thinsp;min saved &divide; 60 <span class="calc-eq">=</span> <b>1.45</b>&thinsp;hrs/job</div>
-        <div class="calc-step"><b>1.45</b>&thinsp;hrs &times; <b>&euro;77</b>/hr <span class="calc-eq">=</span> <b>&euro;111.65</b> saved per job</div>
-        <div class="calc-step"><b>&euro;111.65</b> &times; <b>5,346</b> jobs over 10 years <span class="calc-eq">=</span></div>
-      </div>
-      <div class="calc-divider"></div>
-      <div class="calc-total-label">Total value created</div>
-      <div class="calc-result">&euro;596,881</div>
-      <div class="calc-note">Conservative estimate &middot; excludes error reduction, faster onboarding &amp; strategic de-risking</div>
-    </div>
-  </div>
-  <div class="sec-inner rv" style="margin-top:2rem">
-    <p>That figure only captures the administrative time savings. It does not include <strong>fewer rejected applications</strong>, <strong>faster onboarding</strong> of new staff, or the fact that critical knowledge is no longer trapped in one person's head.</p>
-    <div class="pullquote"><p>The tool does not replace the operator. It upgrades them.</p></div>
-    <p>Before, a skilled field worker spent most of their permit time buried in chaotic admin: hunting for the right form, cross-referencing contacts, reformatting the same data across three systems. The actual expertise (knowing where to place signs, understanding traffic flow, reading a site) was squeezed into a fraction of the process.</p>
-    <p>Now that same person spends their time doing what they are actually good at: designing compliant signage plans with a purpose-built visual editor, making real decisions about real roads. The tool absorbed the bureaucracy so the human could do the thinking. That is not automation replacing a person. That is a person finally working at the level they should have been working at all along.</p>
-  </div>
-</section>
+    .back-link:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
 
-<!-- 04 -->
-<section class="sec" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="sec-inner rv">
-    <div class="sec-tag">04 &mdash; What transfers</div>
-    <h2>The method,<br><i>not</i> the tool.</h2>
-    <p>Forget the specifics. The reason this worked is a repeatable pattern that applies to almost any organization sitting on a tedious, recurring process. Six principles generalize.</p>
-  </div>
-  <div class="sec-wide">
-    <div class="tk-grid stg rv">
-      <div class="tk"><div class="tk-num">01</div><h3>Target expensive friction</h3><p>The biggest wins come from killing boring, repetitive work. Look for the task everyone dreads and nobody questions.</p></div>
-      <div class="tk"><div class="tk-num">02</div><h3>Human expertise is the moat</h3><p>AI writes the code. But knowing what to build, understanding the domain, mapping the rules, maintaining the relationships: that is irreplaceably human.</p></div>
-      <div class="tk"><div class="tk-num">03</div><h3>Turn knowledge into a system</h3><p>When procedures live in a tool instead of someone's memory, you get a real asset: easier onboarding, fewer errors, full traceability.</p></div>
-      <div class="tk"><div class="tk-num">04</div><h3>Price the impact in money</h3><p>"Saves time" is forgettable. "Saves &euro;597K over ten years" gets approved. Always translate minutes into euros, conservatively.</p></div>
-      <div class="tk"><div class="tk-num">05</div><h3>Design for the long run</h3><p>Building is a day. Operation is years. Separate data from logic so a non-developer can maintain it without touching code.</p></div>
-      <div class="tk"><div class="tk-num">06</div><h3>Co-construct for adoption</h3><p>Tools fail on adoption, not technology. Build with the team, not for them. Then measure the realized return to prove it works.</p></div>
-    </div>
-  </div>
-</section>
+    .article-header { padding: 92px 0 0; }
 
-<!-- REPORT -->
-<section class="report-sec">
-  <div class="report-box rv">
-    <div class="book">
-      <div class="book-inner">
-        <div class="book-cover">
-          <span class="book-tag">Methodology &middot; 2026</span>
-          <div class="book-title">From <i>Friction</i><br>to Value</div>
-          <div class="book-spine"></div>
-          <span class="book-author">Valentin Angenot</span>
-        </div>
-      </div>
-    </div>
-    <div class="report-info">
-      <div class="report-label">The complete methodology, free</div>
-      <h3>From Friction to Value</h3>
-      <p>A 34-page field guide that expands this case study into a full, reusable method. It covers process assessment, value sizing, intelligent design, building with Claude, advanced prompting and token strategy, cybersecurity, adoption, deployment, and benefits realization.</p>
-      <div class="report-topics">
-        <span class="topic">Process assessment</span>
-        <span class="topic">Value discovery</span>
-        <span class="topic">Building with Claude</span>
-        <span class="topic">Prompting &amp; tokens</span>
-        <span class="topic">Security</span>
-        <span class="topic">Adoption</span>
-        <span class="topic">Deployment</span>
-      </div>
-      <a href="from-friction-to-value.pdf" target="_blank" class="dl-btn">&darr; Download the report (PDF)</a>
-    </div>
-  </div>
-</section>
+    .kicker {
+      display: block;
+      margin-bottom: 25px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
+    h1,
+    h2,
+    blockquote {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+    }
 
-<!-- EXPLORE NEXT -->
-<section class="explore-sec rv">
-  <div class="explore-inner">
-    <div class="explore-head">
-      <div>
-        <div class="explore-kicker">Continue exploring</div>
-        <h2>More work,<br><i>same logic.</i></h2>
-      </div>
-      <p>Read the other publications, browse selected technical work, or download the CV from the main portfolio.</p>
-    </div>
-    <div class="explore-grid">
-      <a class="explore-card" href="index.html#publications">
-        <div class="explore-num">01 — Publications</div>
-        <div class="explore-title">Read other publications</div>
-        <div class="explore-text">Cahier du Digital, healthcare AI research, Long COVID, and other written work.</div>
-      </a>
-      <a class="explore-card" href="index.html#projects">
-        <div class="explore-num">02 — Selected work</div>
-        <div class="explore-title">Browse technical projects</div>
-        <div class="explore-text">AI for biotech, genetic portfolio optimization, and Denmark’s 2045 energy plan.</div>
-      </a>
-      <a class="explore-card download" href="cv.pdf" target="_blank" rel="noopener">
-        <div class="explore-num">03 — CV</div>
-        <div class="explore-title">Download the CV</div>
-        <div class="explore-text">One-click access to the full profile, education, experience, certifications, and projects.</div>
-      </a>
-    </div>
-  </div>
-</section>
+    h1 {
+      max-width: 1120px;
+      font-size: clamp(58px, 8vw, 108px);
+      line-height: .93;
+      letter-spacing: -.035em;
+    }
 
-<!-- CTA -->
-<section class="cta rv">
-  <h2>Let's build <i>yours.</i></h2>
-  <p>I combine strategy, engineering, and AI fluency to build tools that create measurable value inside organizations.</p>
-  <div class="cta-btns">
-    <a href="mailto:val.angenot@icloud.com" class="btn-p">Get in touch</a>
-    <a href="index.html" class="btn-g">&larr; Back to main portfolio</a>
-    <a href="cv.pdf" target="_blank" rel="noopener" class="btn-g">Download CV &darr;</a>
-  </div>
-</section>
+    .deck {
+      max-width: 860px;
+      margin: 38px 0 42px;
+      color: #2a2d33;
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.3vw, 30px);
+      line-height: 1.28;
+    }
 
-<footer><div class="foot"><span>&copy; 2026 Valentin Angenot</span><span>Strategy &middot; Engineering &middot; AI</span></div></footer>
+    .byline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      align-items: center;
+      padding: 18px 0;
+      border-top: 1px solid var(--ink);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
 
-<script>
-(function(){
-'use strict';
-var lastY=0,ticking=false;
-function onScroll(){
-  var y=scrollY,m=document.body.scrollHeight-innerHeight;
-  document.getElementById('pg').style.width=(m>0?(y/m)*100:0)+'%';
-  var nav=document.getElementById('nav');
-  if(y>lastY&&y>200)nav.classList.add('hidden');
-  else nav.classList.remove('hidden');
-  lastY=y;
-}
-addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){onScroll();ticking=false});ticking=true}},{passive:true});
+    .byline strong { color: var(--ink); }
 
-var obs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      if(e.target.id==='stats')animateCounters();
-      if(e.target.id==='ba'){
-        setTimeout(function(){
-          var after=document.querySelector('.ba-card.after');
-          if(after)after.classList.add('animated');
-        },400);
+    .case-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 42px;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .fact {
+      min-height: 170px;
+      padding: 30px 34px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border-right: 0; }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 10px;
+      font-family: var(--serif);
+      font-size: clamp(44px, 5vw, 64px);
+      font-weight: 500;
+      line-height: .95;
+      letter-spacing: -.025em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fact span {
+      display: block;
+      max-width: 230px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .story { padding: 84px 0 112px; }
+
+    .story p {
+      margin: 0 0 26px;
+      color: #26282c;
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.7;
+    }
+
+    .story .opening {
+      color: var(--ink);
+      font-size: 25px;
+      line-height: 1.58;
+    }
+
+    .opening::first-letter {
+      float: left;
+      margin: 9px 10px 0 0;
+      color: var(--blue);
+      font-family: var(--serif);
+      font-size: 92px;
+      font-weight: 500;
+      line-height: .68;
+    }
+
+    .story h2 {
+      margin: 76px 0 24px;
+      padding-top: 18px;
+      border-top: 2px solid var(--ink);
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+
+    .section-number {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    blockquote {
+      margin: 64px 0;
+      padding: 38px 0 34px;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+
+    blockquote span {
+      display: block;
+      margin-top: 22px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- Solution board ---------- */
+
+    .solution-figure {
+      width: min(calc(100% - 64px), 1040px);
+      margin: 54px auto 58px;
+    }
+
+    .solution-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 94px minmax(0, 1.15fr);
+      align-items: stretch;
+      overflow: hidden;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: 12px 12px 0 var(--paper-deep);
+    }
+
+    .solution-panel {
+      min-height: 410px;
+      padding: 38px;
+    }
+
+    .solution-panel.output { background: var(--blue-wash); }
+
+    .panel-label {
+      display: block;
+      margin-bottom: 30px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .solution-panel h3 {
+      max-width: 360px;
+      margin: 0 0 24px;
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.05;
+    }
+
+    .field {
+      margin-top: 12px;
+      padding: 15px 17px;
+      border: 1px solid #b9c0ce;
+      border-radius: 4px;
+      background: var(--white);
+    }
+
+    .field small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .field strong { font-size: 14px; }
+
+    .solution-arrow {
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 42px;
+    }
+
+    .output-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid #b9c0ce;
+    }
+
+    .output-list li {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #b9c0ce;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .check {
+      display: grid;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 50%;
+      background: #dce9e4;
+      color: #087b50;
+      font-size: 13px;
+    }
+
+    figcaption {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* ---------- System anatomy ---------- */
+
+    .system-figure {
+      width: min(calc(100% - 64px), 1040px);
+      margin: 54px auto 58px;
+    }
+
+    .system-board {
+      overflow: hidden;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: 12px 12px 0 var(--paper-deep);
+    }
+
+    .system-apps {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 88px minmax(0, 1fr);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .system-app { padding: 32px 34px 30px; }
+
+    .system-app h3 {
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .system-app > p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .system-app-file {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 4px 9px;
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+    }
+
+    .system-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .system-tags span {
+      padding: 5px 9px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      color: #3a3f48;
+      font-family: var(--mono);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .system-link {
+      display: grid;
+      place-items: center;
+      gap: 0;
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .system-link span {
+      display: block;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .system-link .sync-arrows {
+      font-family: var(--serif);
+      font-size: 26px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .system-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      align-items: center;
+      padding: 18px 34px;
+      background: var(--blue-wash);
+    }
+
+    .system-services-label {
+      margin-right: 8px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .system-services span:not(.system-services-label) {
+      padding: 5px 10px;
+      background: var(--white);
+      border: 1px solid #b9c0ce;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* ---------- Module grid ---------- */
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: min(calc(100% - 64px), 1040px);
+      margin: 46px auto 58px;
+    }
+
+    .module {
+      padding: 26px 28px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+    }
+
+    .module-name {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .module h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .module p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ---------- Deep dives ---------- */
+
+    .dive {
+      margin: 0 0 34px;
+      padding-left: 22px;
+      border-left: 3px solid var(--blue);
+    }
+
+    .dive h3 {
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .dive p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .dive code {
+      padding: 1px 6px;
+      background: var(--paper-deep);
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: .78em;
+    }
+
+    /* ---------- Results ---------- */
+
+    .result-table {
+      margin: 42px 0 34px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .result-row {
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .result-row strong {
+      font-family: var(--serif);
+      font-size: 43px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.02em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .result-row span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .note {
+      padding-left: 18px;
+      border-left: 3px solid var(--blue);
+      color: var(--muted) !important;
+      font-family: var(--sans) !important;
+      font-size: 14px !important;
+      line-height: 1.65 !important;
+    }
+
+    /* ---------- Report section ---------- */
+
+    .report-section {
+      padding: 104px 0;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: 265px minmax(0, 1fr);
+      gap: 78px;
+      align-items: center;
+    }
+
+    .report-cover-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    .report-cover {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .38);
+      box-shadow: 18px 20px 0 rgba(26, 92, 255, .72);
+      transition: transform .25s var(--ease);
+    }
+
+    .report-cover-link:hover .report-cover { transform: translate(-3px, -3px); }
+
+    .report-copy .kicker { color: #90adff; }
+
+    .report-copy h2 {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(48px, 6.4vw, 80px);
+      font-weight: 500;
+      line-height: .96;
+      letter-spacing: -.03em;
+    }
+
+    .report-copy p {
+      max-width: 680px;
+      margin: 28px 0 34px;
+      color: #d6d8dc;
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.55;
+    }
+
+    .report-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      background: var(--blue);
+      color: var(--white);
+      border: 1px solid var(--blue);
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background .2s ease, transform .2s var(--ease), border-color .2s ease;
+    }
+
+    .button:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      transform: translateY(-2px);
+    }
+
+    .button-ghost {
+      background: transparent;
+      border-color: rgba(255, 255, 255, .5);
+    }
+
+    .button-ghost:hover {
+      background: rgba(255, 255, 255, .08);
+      border-color: var(--white);
+    }
+
+    .author-band {
+      padding: 36px 0;
+      background: var(--ink);
+      color: var(--white);
+      border-top: 1px solid rgba(255, 255, 255, .14);
+    }
+
+    .author-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px 28px;
+    }
+
+    .author-name {
+      margin: 0 0 2px;
+      font-family: var(--serif);
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .author-role {
+      margin: 0;
+      color: #aeb4bf;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .author-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer {
+      padding: 26px 0;
+      background: #050608;
+      color: #aeb1b7;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ---------- Responsive ---------- */
+
+    @media (max-width: 860px) {
+      .case-facts { grid-template-columns: 1fr; }
+
+      .fact,
+      .fact:first-child {
+        min-height: 0;
+        padding: 24px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .fact:last-child { border-bottom: 0; }
+
+      .solution-board { grid-template-columns: 1fr; }
+      .solution-panel { min-height: 0; }
+
+      .solution-arrow { min-height: 72px; }
+      .solution-arrow span { transform: rotate(90deg); display: inline-block; }
+
+      .system-apps { grid-template-columns: 1fr; }
+
+      .system-link {
+        min-height: 64px;
+        padding: 12px 0;
+      }
+
+      .system-services { padding: 16px 24px; }
+      .system-app { padding: 26px 24px; }
+
+      .module-grid { grid-template-columns: 1fr; }
+
+      .report-grid { grid-template-columns: 1fr; }
+      .report-copy { order: -1; }
+      .report-cover { max-width: 250px; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(calc(100% - 40px), var(--max)); }
+      .article-column { width: min(calc(100% - 40px), var(--article)); }
+
+      .nav {
+        min-height: 64px;
+        grid-template-columns: 1fr auto;
+      }
+
+      .brand { font-size: 19px; }
+      .edition { display: none; }
+
+      .nav-mini { display: none; }
+
+      .back-link {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 11px;
+      }
+
+      .author-inner { display: block; }
+      .author-actions { margin-top: 18px; }
+      .author-actions .button { flex: 1 1 150px; }
+
+      .article-header { padding-top: 62px; }
+
+      h1 {
+        font-size: 48px;
+        line-height: .96;
+      }
+
+      .deck {
+        margin: 28px 0 34px;
+        font-size: 21px;
+      }
+
+      .byline { display: block; line-height: 1.8; }
+      .byline span { display: block; }
+
+      .case-facts { margin-top: 30px; }
+      .fact strong { font-size: 50px; }
+
+      .story { padding: 64px 0 80px; }
+
+      .story p {
+        font-size: 18px;
+        line-height: 1.68;
+      }
+
+      .story .opening { font-size: 21px; }
+
+      .story h2 {
+        margin-top: 60px;
+        font-size: 40px;
+      }
+
+      blockquote {
+        margin: 50px 0;
+        font-size: 35px;
+      }
+
+      .solution-figure,
+      .system-figure {
+        width: calc(100% - 40px);
+        margin: 42px auto 50px;
+      }
+
+      .solution-board,
+      .system-board {
+        box-shadow: 7px 7px 0 var(--paper-deep);
+      }
+
+      .solution-panel { padding: 26px 22px; }
+      .solution-panel h3 { font-size: 29px; }
+
+      .module-grid {
+        width: calc(100% - 40px);
+        margin: 38px auto 48px;
+      }
+
+      .dive {
+        padding-left: 16px;
+      }
+
+      .dive h3 { font-size: 23px; }
+      .dive p { font-size: 16px; }
+
+      .result-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .result-row strong { font-size: 39px; }
+
+      .report-section { padding: 78px 0; }
+      .report-grid { gap: 48px; }
+      .report-copy h2 { font-size: 46px; }
+      .report-copy p { font-size: 18px; }
+      .report-cover { max-width: 230px; }
+
+      .footer-inner { display: block; }
+
+      .footer-inner span + span {
+        display: block;
+        margin-top: 6px;
       }
     }
-  });
-},{threshold:.15});
-document.querySelectorAll('.rv,.stg').forEach(function(el){obs.observe(el)});
 
-var counted=false;
-function animateCounters(){
-  if(counted)return;counted=true;
-  document.querySelectorAll('.counter').forEach(function(el){
-    var target=parseInt(el.dataset.target);
-    var duration=1200;
-    var start=performance.now();
-    function step(now){
-      var progress=Math.min((now-start)/duration,1);
-      var ease=1-Math.pow(1-progress,3);
-      el.textContent=Math.round(ease*target);
-      if(progress<1)requestAnimationFrame(step);
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
     }
-    requestAnimationFrame(step);
-  });
-}
-})();
-</script>
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <div class="reading-progress" id="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Case study navigation">
+      <a class="brand" href="index.html">Valentin Angenot</a>
+      <span class="edition">Case study &middot; Software &amp; operations</span>
+      <div class="nav-actions">
+        <a class="nav-mini" href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="nav-mini" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+        <a class="back-link" href="index.html#work">&larr; Portfolio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="article">
+    <article>
+      <header class="article-header shell">
+        <span class="kicker">Software case study &middot; CILE &middot; 2026</span>
+        <h1>How 24 municipal procedures became one software workflow.</h1>
+        <p class="deck">The field operation was repeatable. The paperwork was not. I designed and built two linked browser applications that reduced a road-opening permit workflow from 98 minutes to 11.</p>
+
+        <div class="byline">
+          <span>By <strong>Valentin Angenot</strong></span>
+          <span>8-minute read</span>
+          <span>Li&egrave;ge, Belgium</span>
+        </div>
+
+        <div class="case-facts" role="group" aria-label="Case study facts">
+          <div class="fact">
+            <strong>24</strong>
+            <span>Municipal procedures translated into one operating path</span>
+          </div>
+          <div class="fact">
+            <strong>98 &rarr; 11</strong>
+            <span>Minutes required to prepare one permit package</span>
+          </div>
+          <div class="fact">
+            <strong>&euro;596,881</strong>
+            <span>Projected workflow value over ten years</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="story">
+        <div class="article-column">
+          <p class="opening">Internalising selected road-opening work made strategic sense for CILE. The bottleneck was not the excavation itself. It was the administrative process surrounding every intervention.</p>
+
+          <h2><span class="section-number">01 &middot; The case</span>One operation, 24 administrative realities.</h2>
+
+          <p>CILE serves more than 560,000 residents across 24 municipalities. The same type of field intervention could require a different form, contact, deadline and submission route depending on the address: Powalco in one commune, the GODP police platform in Ans and Saint-Nicolas, EAGLE&nbsp;BE in Vis&eacute;, plain e-mail elsewhere &mdash; each with its own signage-plan format, fees and validation circuit.</p>
+
+          <p>At roughly 480 interventions a year, that variation was more than an inconvenience. It created recurring administrative effort and made selected road-opening activities harder to bring in-house.</p>
+
+          <blockquote>
+            &ldquo;The field work did not change at the municipal border. The administrative process did.&rdquo;
+            <span>The design problem</span>
+          </blockquote>
+
+          <h2><span class="section-number">02 &middot; The solution</span>Move the complexity into the software.</h2>
+
+          <p>I mapped the 24 local procedures, identified their common structure and converted the variation into a single data model. The product was then designed around one operator journey: enter the address and intervention once, receive the complete permit package.</p>
+        </div>
+
+        <figure class="solution-figure">
+          <div class="solution-board">
+            <div class="solution-panel">
+              <span class="panel-label">One entry</span>
+              <h3>Describe the intervention.</h3>
+              <div class="field">
+                <small>Address</small>
+                <strong>Rue de l'Industrie 14, Li&egrave;ge</strong>
+              </div>
+              <div class="field">
+                <small>Intervention</small>
+                <strong>Urgent leak repair</strong>
+              </div>
+            </div>
+
+            <div class="solution-arrow" aria-hidden="true"><span>&rarr;</span></div>
+
+            <div class="solution-panel output">
+              <span class="panel-label">Ready package</span>
+              <h3>Local procedure matched automatically.</h3>
+              <ul class="output-list">
+                <li><span class="check">&#10003;</span>Permit documents generated</li>
+                <li><span class="check">&#10003;</span>Signage plan prepared</li>
+                <li><span class="check">&#10003;</span>Recipients identified</li>
+                <li><span class="check">&#10003;</span>Submission tracked</li>
+              </ul>
+            </div>
+          </div>
+          <figcaption>The operator follows one clear path. The rules of 24 municipalities remain inside the application.</figcaption>
+        </figure>
+
+        <div class="article-column">
+          <p>The application geocodes the address, detects the competent authority, applies the relevant rules, populates the required documents, prepares the signage plan, assembles the recipients and tracks the submission.</p>
+
+          <p>Built in ten working days, it runs entirely in the browser and requires no server deployment or additional infrastructure. Claude accelerated implementation as a development partner; the procedure research, product logic, validation and financial model remained my responsibility.</p>
+
+          <h2><span class="section-number">03 &middot; Under the hood</span>Two applications. Zero servers.</h2>
+
+          <p>The system is two single-page applications &mdash; a permit generator and a signage editor &mdash; that synchronise through the browser's local storage. The zero-server architecture is a deliberate choice, not a shortcut: the tool has to run on a CILE workstation or a field tablet with nothing to install, no backend to maintain, and no data leaving the machine.</p>
+        </div>
+
+        <figure class="system-figure">
+          <div class="system-board">
+            <div class="system-apps">
+              <div class="system-app">
+                <span class="system-app-file">index.html &middot; ~3,350 lines</span>
+                <h3>Permit generator</h3>
+                <p>Smart form, municipal rules engine, real-time validation, DOCX generation, e-mail workflow, site-manager registry, analytics dashboard.</p>
+                <div class="system-tags">
+                  <span>geocoding</span>
+                  <span>rules engine</span>
+                  <span>OOXML builder</span>
+                  <span>QR codes</span>
+                  <span>analytics</span>
+                </div>
+              </div>
+
+              <div class="system-link" aria-hidden="true">
+                <div>
+                  <span class="sync-arrows">&#8644;</span>
+                  <span>localStorage<br>sync</span>
+                </div>
+              </div>
+
+              <div class="system-app">
+                <span class="system-app-file">editeur.html &middot; ~1,470 lines</span>
+                <h3>Signage editor</h3>
+                <p>Interactive Leaflet map, geolocated placement of 60+ official Belgian road signs, multi-tab dimensioned-plan canvas, automatic detour computation.</p>
+                <div class="system-tags">
+                  <span>Leaflet</span>
+                  <span>4 map layers</span>
+                  <span>canvas plans</span>
+                  <span>OSRM routing</span>
+                  <span>PNG export</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="system-services">
+              <span class="system-services-label">External services</span>
+              <span>Nominatim geocoding</span>
+              <span>OSRM routing</span>
+              <span>SPW orthophotos + PICC</span>
+              <span>CartoDB basemaps</span>
+              <span>Google Street View</span>
+            </div>
+          </div>
+          <figcaption>Everything else &mdash; validation, document generation, persistence, analytics &mdash; runs client-side. Business data lives in four external JSON files that CILE can edit without touching a line of code.</figcaption>
+        </figure>
+
+        <div class="module-grid" role="group" aria-label="System modules">
+          <div class="module">
+            <span class="module-name">Rules engine</span>
+            <h3>24 municipalities as structured data</h3>
+            <p>Each commune is a record: submission platform, notice periods, required signage format (Qualiroute, annotated capture, dimensioned plan), contacts, fees, validation circuit and urgency procedure.</p>
+          </div>
+          <div class="module">
+            <span class="module-name">Geocoding</span>
+            <h3>Address to authority in one step</h3>
+            <p>Structured Nominatim queries, debounced at 800&nbsp;ms, with a postal-code fast path, tolerant commune matching and a supervised override for edge cases outside the base.</p>
+          </div>
+          <div class="module">
+            <span class="module-name">Document engine</span>
+            <h3>Word files built from raw XML</h3>
+            <p>The DOCX is assembled character by character in Office Open XML and zipped with JSZip &mdash; no document library &mdash; for pixel-level control over headers, tables, embedded plans and QR codes.</p>
+          </div>
+          <div class="module">
+            <span class="module-name">Detour computation</span>
+            <h3>Deviations calculated, not drawn</h3>
+            <p>The operator traces the blocked axis; three OSRM routing strategies run in parallel, candidates crossing the closure are excluded, and the best detour is rendered with arrows, metrics and a PNG export.</p>
+          </div>
+          <div class="module">
+            <span class="module-name">Validation</span>
+            <h3>Four validators, live</h3>
+            <p>Postal code against the CILE territory, date coherence with duration alerts, Belgian phone formats and working-hour checks &mdash; aggregated in real time to gate generation.</p>
+          </div>
+          <div class="module">
+            <span class="module-name">Field link</span>
+            <h3>From plan to site manager</h3>
+            <p>Placed signs are aggregated across map and plans into a quantified list, matched with a CRUD registry of site managers, and sent with the signage plans in one action.</p>
+          </div>
+        </div>
+
+        <div class="article-column">
+          <h2><span class="section-number">04 &middot; The details that matter</span>Where the engineering actually lives.</h2>
+
+          <div class="dive">
+            <h3>Rules live as data, not code.</h3>
+            <p>Deadlines change. Contacts change. Fees change. Every municipal rule sits in external JSON files (<code>communes.json</code>, <code>codes-postaux.json</code>) loaded fresh at startup &mdash; so CILE updates a deadline by editing a file, never by shipping code.</p>
+          </div>
+
+          <div class="dive">
+            <h3>Official municipal forms, filled automatically.</h3>
+            <p>Where a commune imposes its own template, the generator loads the official Word file and injects the form values directly into its XML &mdash; preserving the municipal layout, checkboxes and letterhead while removing the manual copying.</p>
+          </div>
+
+          <div class="dive">
+            <h3>E-mail attachments, despite the browser.</h3>
+            <p>Browsers cannot attach files through <code>mailto:</code>. The workflow degrades gracefully through three strategies &mdash; native Web Share on mobile, clipboard-to-Gmail on desktop, plain <code>mailto:</code> as the universal fallback &mdash; so the package reaches the commune from any device.</p>
+          </div>
+
+          <div class="dive">
+            <h3>The analytics were free.</h3>
+            <p>Every generated permit records an 18-field entry locally, feeding a dashboard of volumes, urgency rates, duration percentiles and per-commune breakdowns &mdash; with CSV export ready for Excel. Operational reporting came as a by-product of the workflow itself.</p>
+          </div>
+
+          <h2><span class="section-number">05 &middot; The result</span>From administrative friction to operating capacity.</h2>
+
+          <p>Measured against the existing process, permit preparation fell from 98 minutes to 11. The gain was not only faster paperwork: a fragmented procedure became a repeatable operating capability.</p>
+
+          <div class="result-table" role="group" aria-label="Case study results">
+            <div class="result-row">
+              <strong>87 minutes</strong>
+              <span>Saved on each permit workflow</span>
+            </div>
+            <div class="result-row">
+              <strong>&euro;0</strong>
+              <span>Additional server or infrastructure cost</span>
+            </div>
+            <div class="result-row">
+              <strong>&euro;596,881</strong>
+              <span>Projected value over ten years at modelled operating volumes</span>
+            </div>
+          </div>
+
+          <p class="note">The ten-year value is a projected business case, not a realised saving. It depends on adoption, operating volumes and the assumptions documented in the full report.</p>
+        </div>
+      </div>
+    </article>
+
+    <section class="report-section" aria-labelledby="report-title">
+      <div class="report-grid shell">
+        <a class="report-cover-link" href="from-friction-to-value.pdf" target="_blank" rel="noopener" aria-label="Open the From Friction to Value report">
+          <img class="report-cover" src="framework-cover.png" width="1192" height="1686" alt="Cover of From Friction to Value by Valentin Angenot">
+        </a>
+
+        <div class="report-copy">
+          <span class="kicker">The complete methodology</span>
+          <h2 id="report-title">Read the full case behind the article.</h2>
+          <p><em>From Friction to Value</em> covers the diagnosis, procedure mapping, product design, human&ndash;AI collaboration and financial model. The technical documentation details the architecture, data model and integration roadmap.</p>
+          <div class="report-actions">
+            <a class="button" href="from-friction-to-value.pdf" target="_blank" rel="noopener">Open the full report &rarr;</a>
+            <a class="button button-ghost" href="documentation-site.pdf" target="_blank" rel="noopener">Technical documentation &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="author-band" aria-label="Contact the author">
+      <div class="author-inner shell">
+        <div>
+          <p class="author-name">Valentin Angenot</p>
+          <p class="author-role">Business Engineer &middot; Industrial Engineer &middot; CFA Level I passed</p>
+        </div>
+        <div class="author-actions">
+          <a class="button" href="https://www.linkedin.com/in/valentin-angenot/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="button button-ghost" href="cv.pdf" target="_blank" rel="noopener">Download CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner shell">
+      <span>&copy; 2026 Valentin Angenot</span>
+      <span>Software &middot; Operations &middot; Engineering</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var progress = document.getElementById("progress");
+      var ticking = false;
+
+      function updateProgress() {
+        var height = document.documentElement.scrollHeight - window.innerHeight;
+        var ratio = height > 0 ? window.scrollY / height : 0;
+        progress.style.width = Math.min(100, Math.max(0, ratio * 100)) + "%";
+        ticking = false;
+      }
+
+      window.addEventListener("scroll", function () {
+        if (!ticking) {
+          window.requestAnimationFrame(updateProgress);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      updateProgress();
+    })();
+  </script>
 </body>
 </html>
