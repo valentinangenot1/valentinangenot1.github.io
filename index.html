@@ -2,6 +2,13 @@
 
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9JBP47H');</script>
+<!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Valentin Angenot | Strategy, Finance, AI &amp; Engineering</title>
@@ -2173,6 +2180,10 @@
   </style>
 </head>
 <body data-page="home" data-title-en="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" data-title-fr="Valentin Angenot | Stratégie, Finance, IA &amp; Ingénierie">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9JBP47H"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a class="skip-link" data-en="Skip to content" data-fr="Aller au contenu" href="#main">Skip to content</a>
 <header class="site-header" id="siteHeader">
 <nav aria-label="Primary navigation" class="nav shell">
@@ -3059,20 +3070,11 @@
   </script>
 
 <!-- ANALYTICS -------------------------------------------------------------
-     1. Google Analytics 4: replace G-XXXXXXXXXX (both places) with your
-        Measurement ID from analytics.google.com.
-     2. Umami (optional, privacy-friendly, no cookie banner needed): replace
-        the data-website-id, or delete that one line if you only want GA4.
-     Events below are sent to whichever of the two is present.
+     Google Tag Manager (container GTM-M9JBP47H) is loaded in <head>.
+     GA4 is configured inside GTM, not here, so nothing is counted twice.
+     Custom events below are pushed to dataLayer and picked up by GTM.
+     Umami is optional: replace the data-website-id, or delete that line.
 ------------------------------------------------------------------------- -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag("js", new Date());
-  gtag("config", "G-XXXXXXXXXX");
-</script>
-
 <script defer src="https://cloud.umami.is/script.js" data-website-id="REPLACE-WITH-YOUR-WEBSITE-ID"></script>
 
 <script>
@@ -3082,6 +3084,15 @@
     /* Provider-agnostic event helper: works with Umami, Plausible, GoatCounter or GA4. */
     function track(name, props) {
       props = props || {};
+      /* Google Tag Manager: every event lands in dataLayer as a custom event. */
+      try {
+        window.dataLayer = window.dataLayer || [];
+        var payload = { event: name };
+        for (var key in props) {
+          if (Object.prototype.hasOwnProperty.call(props, key)) payload[key] = props[key];
+        }
+        window.dataLayer.push(payload);
+      } catch (e) {}
       try { if (typeof window.gtag === "function") window.gtag("event", name, props); } catch (e) {}
       try { if (window.umami && window.umami.track) window.umami.track(name, props); } catch (e) {}
       try { if (typeof window.plausible === "function") window.plausible(name, { props: props }); } catch (e) {}
