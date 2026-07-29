@@ -1230,6 +1230,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-top: 1px solid var(--ink);
     }
 
+    /* [hidden] must win over any display rule below (experience filter) */
+    [hidden] { display: none !important; }
+
     .experience-row {
       display: grid;
       grid-template-columns: 170px minmax(0, 1.05fr) minmax(0, 1.35fr);
@@ -2326,7 +2329,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <span class="interview-duration" data-en="Play in page" data-fr="Lecture intégrée">Play in page</span>
 </button>
 <div class="actions">
-<a class="button button-primary" data-en="View experience" data-fr="Voir l’expérience" href="#experience">View experience</a>
 <a class="button button-light" data-en="Download CV" data-fr="Télécharger le CV" href="cv.pdf" rel="noopener" target="_blank">Download CV</a>
 </div>
 </div>
