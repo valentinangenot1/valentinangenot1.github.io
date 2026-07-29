@@ -1,1493 +1,452 @@
+<!doctype html>
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="How Valentin Angenot turned 24 municipal road-opening procedures into one browser-based workflow for CILE — two applications, zero servers, 98 minutes down to 11." name="description"/>
-<meta content="Valentin Angenot" name="author"/>
-<meta content="#f4f5f7" name="theme-color"/>
-<title>How 24 procedures became one workflow — Valentin Angenot</title>
-<link href="https://valentinangenot.com/case-study.html" rel="canonical"/>
-<link href="https://valentinangenot.com/case-study.html" hreflang="en" rel="alternate"/>
-<link href="https://valentinangenot.com/case-study.html" hreflang="x-default" rel="alternate"/>
-<meta content="article" property="og:type"/>
-<meta content="Valentin Angenot" property="og:site_name"/>
-<meta content="How 24 municipal procedures became one software workflow" property="og:title"/>
-<meta content="A software and operations case study for CILE: two browser applications, zero servers, 98 minutes down to 11 per permit." property="og:description"/>
-<meta content="https://valentinangenot.com/case-study.html" property="og:url"/>
-<meta content="https://valentinangenot.com/framework-cover.png" property="og:image"/>
-<meta content="summary_large_image" name="twitter:card"/>
+<meta content="How a business opportunity at CILE became an operational transformation and a Claude-assisted software system." name="description"/>
+<meta content="#07111f" name="theme-color"/>
+<title>Case study · Strategy, AI &amp; Operations — Valentin Angenot</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "How 24 municipal procedures became one software workflow",
-      "description": "A software and operations case study for CILE.",
-      "author": {
-        "@type": "Person",
-        "name": "Valentin Angenot"
-      },
-      "datePublished": "2026-05",
-      "url": "https://valentinangenot.com/case-study.html",
-      "mainEntityOfPage": "https://valentinangenot.com/case-study.html",
-      "image": "https://valentinangenot.com/framework-cover.png",
-      "about": [
-        "Software design",
-        "Operational transformation",
-        "Process automation"
-      ]
-    }
-  </script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
-      --paper: #f4f5f7;
-      --paper-deep: #e3e6eb;
-      --ink: #0a0c10;
-      --muted: #5d6470;
-      --rule: #d5d9e0;
-      --blue: #1a5cff;
-      --blue-dark: #0f4df0;
-      --blue-wash: #eef3ff;
-      --white: #ffffff;
-      --max: 1180px;
-      --article: 760px;
-      --ease: cubic-bezier(.22, .72, .22, 1);
-      --serif: "Newsreader", Georgia, serif;
-      --sans: "Manrope", Arial, sans-serif;
-      --mono: "DM Mono", ui-monospace, monospace;
-    }
-
-    *,
-    *::before,
-    *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img { display: block; height: auto; max-width: 100%; }
-    a { color: inherit; }
-
-    ::selection { background: var(--blue); color: var(--white); }
-
-    :focus-visible {
-      outline: 2px solid var(--blue);
-      outline-offset: 3px;
-    }
-
-    .skip-link {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      z-index: 1000;
-      padding: 10px 14px;
-      background: var(--ink);
-      color: var(--white);
-      transform: translateY(-160%);
-      transition: transform .2s ease;
-    }
-
-    .skip-link:focus { transform: translateY(0); }
-
-    .reading-progress {
-      position: fixed;
-      inset: 0 auto auto 0;
-      z-index: 1001;
-      width: 0;
-      height: 3px;
-      background: var(--blue);
-    }
-
-    .shell {
-      width: min(calc(100% - 64px), var(--max));
-      margin-inline: auto;
-    }
-
-    .article-column {
-      width: min(calc(100% - 48px), var(--article));
-      margin-inline: auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(244, 245, 247, .95);
-      border-bottom: 1px solid var(--rule);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .nav {
-      min-height: 68px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .brand {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .edition {
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .nav-actions {
-      justify-self: end;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .lang-select {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0 26px 0 9px;
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      opacity: .75;
-      transition: opacity .2s ease, border-color .2s ease;
-    }
-
-    .lang-select:hover,
-    .lang-select:focus-within {
-      opacity: 1;
-      border-color: var(--blue);
-    }
-
-    .lang-globe {
-      font-size: 13px;
-      line-height: 1;
-    }
-
-    .lang-select-input {
-      appearance: none;
-      -webkit-appearance: none;
-      margin: 0;
-      padding: 8px 0;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .lang-select-input:focus { outline: none; }
-
-    .lang-select-input option {
-      color: #0a0c10;
-      background: #fff;
-    }
-
-    .lang-caret {
-      position: absolute;
-      right: 9px;
-      font-size: 10px;
-      pointer-events: none;
-    }
-
-    .nav-mini {
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .nav-mini:hover { color: var(--blue); }
-
-    .back-link {
-      display: inline-flex;
-      min-height: 38px;
-      align-items: center;
-      padding: 0 13px;
-      border: 1px solid var(--ink);
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      transition: background .2s ease, color .2s ease;
-    }
-
-    .back-link:hover {
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .article-header { padding: 92px 0 0; }
-
-    .kicker {
-      display: block;
-      margin-bottom: 25px;
-      color: var(--blue);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    blockquote {
-      margin: 0;
-      font-family: var(--serif);
-      font-weight: 500;
-    }
-
-    h1 {
-      max-width: 1120px;
-      font-size: clamp(58px, 8vw, 108px);
-      line-height: .93;
-      letter-spacing: -.035em;
-    }
-
-    .deck {
-      max-width: 860px;
-      margin: 38px 0 42px;
-      color: #2a2d33;
-      font-family: var(--serif);
-      font-size: clamp(22px, 2.3vw, 30px);
-      line-height: 1.28;
-    }
-
-    .byline {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 24px;
-      align-items: center;
-      padding: 18px 0;
-      border-top: 1px solid var(--ink);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .byline strong { color: var(--ink); }
-
-    .case-facts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 42px;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-    }
-
-    .fact {
-      min-height: 170px;
-      padding: 30px 34px;
-      border-right: 1px solid var(--rule);
-    }
-
-    .fact:first-child { padding-left: 0; }
-    .fact:last-child { border-right: 0; }
-
-    .fact strong {
-      display: block;
-      margin-bottom: 10px;
-      font-family: var(--serif);
-      font-size: clamp(44px, 5vw, 64px);
-      font-weight: 500;
-      line-height: .95;
-      letter-spacing: -.025em;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .fact span {
-      display: block;
-      max-width: 230px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.45;
-    }
-
-    .story { padding: 84px 0 112px; }
-
-    .story p {
-      margin: 0 0 26px;
-      color: #26282c;
-      font-family: var(--serif);
-      font-size: 21px;
-      line-height: 1.7;
-    }
-
-    .story .opening {
-      color: var(--ink);
-      font-size: 25px;
-      line-height: 1.58;
-    }
-
-    .opening::first-letter {
-      float: left;
-      margin: 9px 10px 0 0;
-      color: var(--blue);
-      font-family: var(--serif);
-      font-size: 92px;
-      font-weight: 500;
-      line-height: .68;
-    }
-
-    .story h2 {
-      margin: 76px 0 24px;
-      padding-top: 18px;
-      border-top: 2px solid var(--ink);
-      font-size: clamp(40px, 5vw, 56px);
-      line-height: 1;
-      letter-spacing: -.02em;
-    }
-
-    .section-number {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--blue);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    blockquote {
-      margin: 64px 0;
-      padding: 38px 0 34px;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-      font-size: clamp(34px, 5vw, 52px);
-      line-height: 1.08;
-      letter-spacing: -.02em;
-    }
-
-    blockquote span {
-      display: block;
-      margin-top: 22px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    /* ---------- Solution board ---------- */
-
-    .solution-figure {
-      width: min(calc(100% - 64px), 1040px);
-      margin: 54px auto 58px;
-    }
-
-    .solution-board {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 94px minmax(0, 1.15fr);
-      align-items: stretch;
-      overflow: hidden;
-      border: 1px solid var(--ink);
-      border-radius: 6px;
-      background: var(--white);
-      box-shadow: 12px 12px 0 var(--paper-deep);
-    }
-
-    .solution-panel {
-      min-height: 410px;
-      padding: 38px;
-    }
-
-    .solution-panel.output { background: var(--blue-wash); }
-
-    .panel-label {
-      display: block;
-      margin-bottom: 30px;
-      color: var(--blue);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .solution-panel h3 {
-      max-width: 360px;
-      margin: 0 0 24px;
-      font-family: var(--serif);
-      font-size: 34px;
-      font-weight: 500;
-      line-height: 1.05;
-    }
-
-    .field {
-      margin-top: 12px;
-      padding: 15px 17px;
-      border: 1px solid #b9c0ce;
-      border-radius: 4px;
-      background: var(--white);
-    }
-
-    .field small {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .field strong { font-size: 14px; }
-
-    .solution-arrow {
-      display: grid;
-      place-items: center;
-      background: var(--ink);
-      color: var(--white);
-      font-family: var(--serif);
-      font-size: 42px;
-    }
-
-    .output-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      border-top: 1px solid #b9c0ce;
-    }
-
-    .output-list li {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #b9c0ce;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .check {
-      display: grid;
-      flex: 0 0 24px;
-      width: 24px;
-      height: 24px;
-      place-items: center;
-      border-radius: 50%;
-      background: #dce9e4;
-      color: #087b50;
-      font-size: 13px;
-    }
-
-    figcaption {
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    /* ---------- System anatomy ---------- */
-
-    .system-figure {
-      width: min(calc(100% - 64px), 1040px);
-      margin: 54px auto 58px;
-    }
-
-    .system-board {
-      overflow: hidden;
-      border: 1px solid var(--ink);
-      border-radius: 6px;
-      background: var(--white);
-      box-shadow: 12px 12px 0 var(--paper-deep);
-    }
-
-    .system-apps {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 88px minmax(0, 1fr);
-      border-bottom: 1px solid var(--ink);
-    }
-
-    .system-app { padding: 32px 34px 30px; }
-
-    .system-app h3 {
-      margin: 0 0 8px;
-      font-family: var(--serif);
-      font-size: 27px;
-      font-weight: 500;
-      line-height: 1.1;
-    }
-
-    .system-app > p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .system-app-file {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 4px 9px;
-      background: var(--ink);
-      color: var(--white);
-      border-radius: 3px;
-      font-family: var(--mono);
-      font-size: 10.5px;
-    }
-
-    .system-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .system-tags span {
-      padding: 5px 9px;
-      border: 1px solid var(--rule);
-      border-radius: 999px;
-      color: #3a3f48;
-      font-family: var(--mono);
-      font-size: 10px;
-      white-space: nowrap;
-    }
-
-    .system-link {
-      display: grid;
-      place-items: center;
-      gap: 0;
-      background: var(--blue);
-      color: var(--white);
-      text-align: center;
-    }
-
-    .system-link span {
-      display: block;
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      line-height: 1.6;
-    }
-
-    .system-link .sync-arrows {
-      font-family: var(--serif);
-      font-size: 26px;
-      letter-spacing: 0;
-      text-transform: none;
-    }
-
-    .system-services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 10px;
-      align-items: center;
-      padding: 18px 34px;
-      background: var(--blue-wash);
-    }
-
-    .system-services-label {
-      margin-right: 8px;
-      color: var(--blue);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .system-services span:not(.system-services-label) {
-      padding: 5px 10px;
-      background: var(--white);
-      border: 1px solid #b9c0ce;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    /* ---------- Module grid ---------- */
-
-    .module-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      width: min(calc(100% - 64px), 1040px);
-      margin: 46px auto 58px;
-    }
-
-    .module {
-      padding: 26px 28px;
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-    }
-
-    .module-name {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--blue);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .module h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .module p {
-      margin: 0;
-      color: var(--muted);
-      font-family: var(--sans);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    /* ---------- Deep dives ---------- */
-
-    .dive {
-      margin: 0 0 34px;
-      padding-left: 22px;
-      border-left: 3px solid var(--blue);
-    }
-
-    .dive h3 {
-      margin: 0 0 10px;
-      font-family: var(--serif);
-      font-size: 27px;
-      font-weight: 500;
-      line-height: 1.15;
-    }
-
-    .dive p {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.65;
-    }
-
-    .dive code {
-      padding: 1px 6px;
-      background: var(--paper-deep);
-      border-radius: 3px;
-      font-family: var(--mono);
-      font-size: .78em;
-    }
-
-    /* ---------- Results ---------- */
-
-    .result-table {
-      margin: 42px 0 34px;
-      border-top: 2px solid var(--ink);
-    }
-
-    .result-row {
-      display: grid;
-      grid-template-columns: 245px minmax(0, 1fr);
-      gap: 30px;
-      align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .result-row strong {
-      font-family: var(--serif);
-      font-size: 43px;
-      font-weight: 500;
-      line-height: 1;
-      letter-spacing: -.02em;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .result-row span {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.5;
-    }
-
-    .note {
-      padding-left: 18px;
-      border-left: 3px solid var(--blue);
-      color: var(--muted) !important;
-      font-family: var(--sans) !important;
-      font-size: 14px !important;
-      line-height: 1.65 !important;
-    }
-
-    /* ---------- Report section ---------- */
-
-    .report-section {
-      padding: 104px 0;
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .report-grid {
-      display: grid;
-      grid-template-columns: 265px minmax(0, 1fr);
-      gap: 78px;
-      align-items: center;
-    }
-
-    .report-cover-link {
-      display: block;
-      text-decoration: none;
-    }
-
-    .report-cover {
-      width: 100%;
-      border: 1px solid rgba(255, 255, 255, .38);
-      box-shadow: 18px 20px 0 rgba(26, 92, 255, .72);
-      transition: transform .25s var(--ease);
-    }
-
-    .report-cover-link:hover .report-cover { transform: translate(-3px, -3px); }
-
-    .report-copy .kicker { color: #90adff; }
-
-    .report-copy h2 {
-      max-width: 760px;
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(48px, 6.4vw, 80px);
-      font-weight: 500;
-      line-height: .96;
-      letter-spacing: -.03em;
-    }
-
-    .report-copy p {
-      max-width: 680px;
-      margin: 28px 0 34px;
-      color: #d6d8dc;
-      font-family: var(--serif);
-      font-size: 20px;
-      line-height: 1.55;
-    }
-
-    .report-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      display: inline-flex;
-      min-height: 50px;
-      align-items: center;
-      justify-content: center;
-      padding: 0 20px;
-      background: var(--blue);
-      color: var(--white);
-      border: 1px solid var(--blue);
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      transition: background .2s ease, transform .2s var(--ease), border-color .2s ease;
-    }
-
-    .button:hover {
-      background: var(--blue-dark);
-      border-color: var(--blue-dark);
-      transform: translateY(-2px);
-    }
-
-    .button-ghost {
-      background: transparent;
-      border-color: rgba(255, 255, 255, .5);
-    }
-
-    .button-ghost:hover {
-      background: rgba(255, 255, 255, .08);
-      border-color: var(--white);
-    }
-
-    .author-band {
-      padding: 36px 0;
-      background: var(--ink);
-      color: var(--white);
-      border-top: 1px solid rgba(255, 255, 255, .14);
-    }
-
-    .author-inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px 28px;
-    }
-
-    .author-name {
-      margin: 0 0 2px;
-      font-family: var(--serif);
-      font-size: 25px;
-      font-weight: 500;
-    }
-
-    .author-role {
-      margin: 0;
-      color: #aeb4bf;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .author-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer {
-      padding: 26px 0;
-      background: #050608;
-      color: #aeb1b7;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    /* ---------- Responsive ---------- */
-
-    @media (max-width: 860px) {
-      .case-facts { grid-template-columns: 1fr; }
-
-      .fact,
-      .fact:first-child {
-        min-height: 0;
-        padding: 24px 0;
-        border-right: 0;
-        border-bottom: 1px solid var(--rule);
-      }
-
-      .fact:last-child { border-bottom: 0; }
-
-      .solution-board { grid-template-columns: 1fr; }
-      .solution-panel { min-height: 0; }
-
-      .solution-arrow { min-height: 72px; }
-      .solution-arrow span { transform: rotate(90deg); display: inline-block; }
-
-      .system-apps { grid-template-columns: 1fr; }
-
-      .system-link {
-        min-height: 64px;
-        padding: 12px 0;
-      }
-
-      .system-services { padding: 16px 24px; }
-      .system-app { padding: 26px 24px; }
-
-      .module-grid { grid-template-columns: 1fr; }
-
-      .report-grid { grid-template-columns: 1fr; }
-      .report-copy { order: -1; }
-      .report-cover { max-width: 250px; }
-    }
-
-    @media (max-width: 620px) {
-      .shell { width: min(calc(100% - 40px), var(--max)); }
-      .article-column { width: min(calc(100% - 40px), var(--article)); }
-
-      .nav {
-        min-height: 64px;
-        grid-template-columns: 1fr auto;
-      }
-
-      .brand { font-size: 19px; }
-      .edition { display: none; }
-
-      .nav-mini { display: none; }
-
-      .back-link {
-        min-height: 36px;
-        padding: 0 10px;
-        font-size: 11px;
-      }
-
-      .author-inner { display: block; }
-      .author-actions { margin-top: 18px; }
-      .author-actions .button { flex: 1 1 150px; }
-
-      .article-header { padding-top: 62px; }
-
-      h1 {
-        font-size: 48px;
-        line-height: .96;
-      }
-
-      .deck {
-        margin: 28px 0 34px;
-        font-size: 21px;
-      }
-
-      .byline { display: block; line-height: 1.8; }
-      .byline span { display: block; }
-
-      .case-facts { margin-top: 30px; }
-      .fact strong { font-size: 50px; }
-
-      .story { padding: 64px 0 80px; }
-
-      .story p {
-        font-size: 18px;
-        line-height: 1.68;
-      }
-
-      .story .opening { font-size: 21px; }
-
-      .story h2 {
-        margin-top: 60px;
-        font-size: 40px;
-      }
-
-      blockquote {
-        margin: 50px 0;
-        font-size: 35px;
-      }
-
-      .solution-figure,
-      .system-figure {
-        width: calc(100% - 40px);
-        margin: 42px auto 50px;
-      }
-
-      .solution-board,
-      .system-board {
-        box-shadow: 7px 7px 0 var(--paper-deep);
-      }
-
-      .solution-panel { padding: 26px 22px; }
-      .solution-panel h3 { font-size: 29px; }
-
-      .module-grid {
-        width: calc(100% - 40px);
-        margin: 38px auto 48px;
-      }
-
-      .dive {
-        padding-left: 16px;
-      }
-
-      .dive h3 { font-size: 23px; }
-      .dive p { font-size: 16px; }
-
-      .result-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .result-row strong { font-size: 39px; }
-
-      .report-section { padding: 78px 0; }
-      .report-grid { gap: 48px; }
-      .report-copy h2 { font-size: 46px; }
-      .report-copy p { font-size: 18px; }
-      .report-cover { max-width: 230px; }
-
-      .footer-inner { display: block; }
-
-      .footer-inner span + span {
-        display: block;
-        margin-top: 6px;
-      }
-    }
-
-
-    /* ---------- Modern motion ---------- */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity .75s var(--ease), transform .75s var(--ease);
-      transition-delay: var(--d, 0s);
-      will-change: opacity, transform;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    .site-header {
-      transition: box-shadow .3s ease;
-    }
-
-    .site-header.scrolled {
-      box-shadow: 0 12px 34px rgba(10, 12, 16, .08);
-    }
-
-    .module {
-      transition: transform .3s var(--ease), border-color .3s ease, box-shadow .3s var(--ease);
-    }
-
-    .module:hover {
-      transform: translateY(-4px);
-      border-color: var(--blue);
-      box-shadow: 0 16px 34px rgba(10, 12, 16, .08);
-    }
-
-    .dive {
-      transition: border-color .3s ease;
-    }
-
-    .solution-board,
-    .system-board {
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-    }
-
-    .solution-board:hover,
-    .system-board:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 15px 15px 0 var(--paper-deep);
-    }
-
-    .fact strong {
-      display: block;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .solution-board:hover,
-      .system-board:hover {
-        transform: none;
-        box-shadow: 7px 7px 0 var(--paper-deep);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: .01ms !important;
-      }
-    }
+      --ink:#08111f;
+      --ink-2:#101b2e;
+      --paper:#f4f7fb;
+      --white:#fff;
+      --blue:#2468ff;
+      --blue-2:#70a0ff;
+      --green:#8ff07d;
+      --muted:#647083;
+      --line:#dce3ec;
+      --soft:#eef3f9;
+      --shadow:0 24px 70px rgba(8,17,31,.14);
+      --radius:26px;
+      --max:1220px;
+      --ease:cubic-bezier(.2,.75,.25,1);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    button{font:inherit}
+    :focus-visible{outline:3px solid rgba(36,104,255,.35);outline-offset:4px}
+    .shell{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+    .eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{letter-spacing:-.035em}
+    h1{font-size:clamp(48px,7vw,92px);line-height:.94;margin-bottom:24px;font-weight:800}
+    h2{font-size:clamp(36px,5vw,64px);line-height:1.02;margin-bottom:18px;font-weight:800}
+    h3{font-size:clamp(22px,2.4vw,32px);line-height:1.12;margin-bottom:12px;font-weight:800}
+    .lede{font-size:clamp(19px,2.2vw,27px);line-height:1.35;color:#dbe5f3;max-width:760px;margin-bottom:34px}
+    .section-copy{font-size:18px;color:var(--muted);max-width:720px}
+
+    /* header */
+    .site-header{position:fixed;inset:0 0 auto;z-index:100;color:#fff;transition:.3s;background:linear-gradient(180deg,rgba(7,17,31,.72),rgba(7,17,31,0));}
+    .site-header.scrolled{background:rgba(7,17,31,.93);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;font-weight:800;letter-spacing:.14em;font-size:12px}
+    .brand-mark{width:34px;height:34px;border:1px solid rgba(255,255,255,.34);border-radius:10px;display:grid;place-items:center;font-size:13px;letter-spacing:-.04em}
+    .nav-links{display:flex;align-items:center;gap:24px;font-size:12px;font-weight:700}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,.78)}
+    .nav-links a:hover{color:#fff}
+    .lang-toggle{display:flex;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:3px}
+    .lang-toggle button{border:0;background:transparent;color:rgba(255,255,255,.62);padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800;cursor:pointer}
+    .lang-toggle button.active{background:#fff;color:var(--ink)}
+    .progress{position:absolute;left:0;bottom:-1px;width:100%;height:2px;transform-origin:left;background:var(--blue);transform:scaleX(0)}
+
+    /* hero */
+    .hero{min-height:850px;padding:146px 0 76px;position:relative;color:#fff;background:#07111f;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-bg{position:absolute;inset:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 16%;transform:scale(1.035)}
+    .hero-bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,10,20,.98) 0%,rgba(4,10,20,.92) 35%,rgba(4,10,20,.38) 70%,rgba(4,10,20,.12) 100%),linear-gradient(180deg,rgba(4,10,20,.1),rgba(4,10,20,.55));}
+    .hero-content{position:relative;z-index:2;max-width:820px}
+    .hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:22px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#dbe5f3}
+    .hero-kicker span{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border:1px solid rgba(112,160,255,.55);border-radius:999px;color:#b9d1ff;background:rgba(36,104,255,.08)}
+    .hero h1 span{color:#9ac0ff}
+    .hero-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:760px}
+    .metric{padding:18px 20px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:rgba(8,17,31,.58);backdrop-filter:blur(12px)}
+    .metric strong{display:block;font-size:29px;line-height:1;margin-bottom:9px;color:#fff}
+    .metric strong em{font-style:normal;color:var(--green)}
+    .metric span{font-size:12px;color:#c4cfdd}
+    .hero-scroll{position:absolute;right:36px;bottom:36px;z-index:2;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.68);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-rl}
+    .hero-scroll::after{content:"";height:64px;width:1px;background:linear-gradient(#fff,transparent)}
+
+    /* chapter nav */
+    .chapter-nav{position:sticky;top:76px;z-index:50;background:rgba(244,247,251,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .chapter-nav-inner{display:flex;gap:8px;overflow:auto;padding:12px 0;scrollbar-width:none}
+    .chapter-nav a{white-space:nowrap;text-decoration:none;padding:9px 13px;border-radius:999px;font-size:11px;font-weight:800;color:var(--muted)}
+    .chapter-nav a:hover,.chapter-nav a.active{background:var(--ink);color:#fff}
+
+    section{padding:104px 0}
+    .section-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:64px;align-items:end;margin-bottom:44px}
+    .section-head .section-copy{margin:0}
+
+    /* opportunity */
+    .opportunity{background:#fff}
+    .opportunity-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:stretch}
+    .case-note{padding:34px;border-radius:var(--radius);background:linear-gradient(145deg,#eef4ff,#f8fbff);border:1px solid #d8e4ff;display:flex;flex-direction:column;justify-content:space-between;min-height:430px}
+    .case-note .big{font-size:clamp(30px,4vw,52px);font-weight:800;line-height:1.02;letter-spacing:-.045em;margin-bottom:22px}
+    .case-note p{color:var(--muted);font-size:17px}
+    .case-note .bottom{padding-top:28px;border-top:1px solid #d6e0ef;display:flex;gap:22px;flex-wrap:wrap}
+    .case-note .bottom div{min-width:120px}
+    .case-note .bottom strong{display:block;font-size:22px;margin-bottom:4px}
+    .case-note .bottom span{font-size:12px;color:var(--muted)}
+    .story-flow{display:grid;gap:12px}
+    .flow-item{position:relative;padding:24px 26px 24px 76px;border:1px solid var(--line);border-radius:20px;background:var(--paper);transition:.35s var(--ease)}
+    .flow-item:hover{transform:translateX(8px);border-color:#b9ccff;box-shadow:0 16px 40px rgba(36,104,255,.09)}
+    .flow-item::before{content:attr(data-step);position:absolute;left:22px;top:22px;width:36px;height:36px;border-radius:12px;background:#e4ecff;color:var(--blue);display:grid;place-items:center;font-weight:800}
+    .flow-item h3{font-size:20px;margin-bottom:6px}
+    .flow-item p{margin:0;color:var(--muted);font-size:14px}
+
+    /* product walkthrough */
+    .product{background:#07111f;color:#fff;overflow:hidden}
+    .product .section-copy{color:#aebbd0}
+    .walkthrough{display:grid;grid-template-columns:310px minmax(0,1fr);gap:24px;align-items:stretch}
+    .walk-tabs{display:grid;gap:8px;align-content:start}
+    .walk-tab{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;border-radius:18px;padding:17px 18px;text-align:left;cursor:pointer;transition:.25s}
+    .walk-tab span{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8fa5c3;margin-bottom:6px}
+    .walk-tab strong{font-size:15px}
+    .walk-tab.active,.walk-tab:hover{background:#fff;color:var(--ink);transform:translateX(6px)}
+    .walk-tab.active span,.walk-tab:hover span{color:var(--blue)}
+    .walk-display{position:relative;min-height:610px;border-radius:28px;overflow:hidden;background:#111b2e;border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 80px rgba(0,0,0,.35)}
+    .walk-slide{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:.48s var(--ease);pointer-events:none;display:grid;grid-template-rows:1fr auto}
+    .walk-slide.active{opacity:1;transform:none;pointer-events:auto}
+    .walk-media{padding:22px;display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,rgba(36,104,255,.18),transparent 55%)}
+    .walk-media img{width:100%;height:100%;max-height:465px;object-fit:contain;border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.28)}
+    .walk-caption{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px 28px;background:rgba(4,10,20,.82);border-top:1px solid rgba(255,255,255,.1)}
+    .walk-caption p{margin:0;color:#b6c2d5;font-size:14px}
+    .walk-caption strong{font-size:16px}
+    .walk-caption .business{color:var(--green)}
+    .screen-note{margin-top:16px;color:#8190a5;font-size:12px}
+
+    /* collaboration */
+    .collab{background:#fff}
+    .collab-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;position:relative}
+    .role-card{padding:30px;border:1px solid var(--line);border-radius:24px;min-height:370px;position:relative;overflow:hidden;transition:.35s var(--ease)}
+    .role-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+    .role-card::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-90px;bottom:-90px;background:rgba(36,104,255,.08)}
+    .role-card.human{background:linear-gradient(145deg,#f4fbf8,#fff)}
+    .role-card.opus{background:linear-gradient(145deg,#fff5ee,#fff)}
+    .role-card.code{background:linear-gradient(145deg,#f3f0ff,#fff)}
+    .role-icon{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;margin-bottom:24px;font-size:21px;font-weight:800;background:#fff;border:1px solid var(--line)}
+    .role-card ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+    .role-card li{font-size:14px;color:#465164;padding-left:24px;position:relative}
+    .role-card li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:800}
+    .collab-equation{margin:28px auto 0;max-width:860px;padding:22px 26px;border-radius:18px;background:var(--ink);color:#dfe8f5;text-align:center;font-size:16px}
+    .collab-equation strong{color:var(--green)}
+
+    /* results */
+    .results{padding:0;background:#08111f;color:#fff}
+    .results-wrap{display:grid;grid-template-columns:1.05fr .95fr;min-height:520px}
+    .results-copy{padding:86px max(24px,calc((100vw - var(--max))/2)) 86px max(24px,calc((100vw - var(--max))/2));display:flex;flex-direction:column;justify-content:center}
+    .results-image{position:relative;overflow:hidden}
+    .results-image img{width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.02)}
+    .results-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#08111f 0%,rgba(8,17,31,.25) 38%,transparent 72%)}
+    .result-list{display:grid;gap:22px;margin-top:28px}
+    .result-line{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)}
+    .result-line strong{font-size:30px;color:var(--green);line-height:1}
+    .result-line p{margin:0;color:#bac7d8;font-size:14px}
+
+    /* takeaways */
+    .takeaways{background:#f4f7fb}
+    .take-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:38px}
+    .take-intro{position:sticky;top:150px;align-self:start;padding:30px;border-radius:24px;background:var(--ink);color:#fff}
+    .take-intro p{color:#b8c3d3}
+    .take-intro .tag{display:inline-flex;padding:8px 10px;border-radius:999px;background:rgba(143,240,125,.1);color:var(--green);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+    .principles{display:grid;gap:12px}
+    .principle{border:1px solid var(--line);border-radius:20px;background:#fff;overflow:hidden}
+    .principle button{width:100%;border:0;background:#fff;padding:22px 24px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;text-align:left;cursor:pointer;color:var(--ink)}
+    .principle-index{width:40px;height:40px;border-radius:14px;background:#edf2ff;color:var(--blue);display:grid;place-items:center;font-weight:800}
+    .principle button strong{font-size:17px}
+    .principle button i{font-style:normal;font-size:22px;color:var(--blue);transition:.25s}
+    .principle.open button i{transform:rotate(45deg)}
+    .principle-body{display:grid;grid-template-rows:0fr;transition:.35s var(--ease)}
+    .principle.open .principle-body{grid-template-rows:1fr}
+    .principle-body>div{overflow:hidden}
+    .principle-body p{margin:0;padding:0 24px 24px 88px;color:var(--muted);font-size:15px}
+
+    /* production / CTA */
+    .production{background:#fff}
+    .readiness{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+    .ready-card{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+    .ready-card span{display:inline-flex;width:34px;height:34px;border-radius:12px;background:#e7eeff;color:var(--blue);align-items:center;justify-content:center;font-weight:800;margin-bottom:16px}
+    .ready-card h3{font-size:18px}
+    .ready-card p{margin:0;color:var(--muted);font-size:13px}
+    .cta{padding:56px 0 80px;background:#fff}
+    .cta-box{padding:46px;border-radius:28px;background:linear-gradient(135deg,#07111f,#142b50);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:var(--shadow)}
+    .cta-box h2{font-size:clamp(34px,4vw,56px);max-width:740px;margin:0}
+    .cta-link{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 22px;border-radius:14px;background:var(--blue);color:#fff;text-decoration:none;font-weight:800;white-space:nowrap;transition:.25s}
+    .cta-link:hover{transform:translateY(-3px);background:#3d7aff}
+    footer{padding:22px 0 34px;background:#fff;color:var(--muted);font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+
+    /* reveal */
+    [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    [data-reveal].visible{opacity:1;transform:none}
+
+    @media(max-width:980px){
+      .nav-links a:not(.back){display:none}
+      .hero{min-height:780px}
+      .hero-bg::before{background:linear-gradient(180deg,rgba(4,10,20,.42),rgba(4,10,20,.96) 68%)}
+      .hero-content{max-width:100%}
+      .section-head,.opportunity-grid,.walkthrough,.take-grid,.results-wrap{grid-template-columns:1fr}
+      .section-head{gap:16px}
+      .walk-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .walk-tab{padding:14px}
+      .walk-tab:hover,.walk-tab.active{transform:none}
+      .collab-grid{grid-template-columns:1fr}
+      .results-copy{padding:72px 24px}
+      .results-image{min-height:380px}
+      .take-intro{position:relative;top:auto}
+      .readiness{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .cta-box{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:680px){
+      .shell{width:min(calc(100% - 28px),var(--max))}
+      .nav{min-height:68px}
+      .brand{letter-spacing:.09em}
+      .brand span:last-child{display:none}
+      .hero{padding-top:118px;min-height:760px}
+      .hero-bg img{object-position:58% 12%}
+      .hero-bg::before{background:linear-gradient(180deg,rgba(4,10,20,.25),rgba(4,10,20,.97) 58%)}
+      .hero h1{font-size:48px}
+      .hero-metrics{grid-template-columns:1fr;gap:8px}
+      .metric{display:grid;grid-template-columns:130px 1fr;align-items:center;padding:14px 16px}
+      .metric strong{margin:0;font-size:23px}
+      .hero-scroll{display:none}
+      section{padding:74px 0}
+      .chapter-nav{top:68px}
+      .chapter-nav-inner{padding-left:0}
+      .case-note{min-height:auto;padding:24px}
+      .walk-tabs{display:flex;overflow:auto;padding-bottom:4px}
+      .walk-tab{min-width:180px}
+      .walk-display{min-height:540px}
+      .walk-caption{grid-template-columns:1fr;gap:12px;padding:20px}
+      .walk-media{padding:12px}
+      .result-line{grid-template-columns:1fr;gap:8px}
+      .readiness{grid-template-columns:1fr}
+      .principle button{grid-template-columns:42px 1fr auto;padding:18px}
+      .principle-body p{padding:0 18px 20px 76px}
+      .cta-box{padding:30px 24px}
+      .footer-inner{flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
 </head>
-<body data-title-en="How 24 procedures became one workflow — Valentin Angenot" data-title-fr="Comment 24 procédures sont devenues un seul workflow — Valentin Angenot">
-<a class="skip-link" data-en="Skip to article" data-fr="Aller à l’article" href="#article">Skip to article</a>
-<div aria-hidden="true" class="reading-progress" id="progress"></div>
-<header class="site-header">
-<nav aria-label="Case study navigation" class="nav shell">
-<a class="brand" href="index.html">Valentin Angenot</a>
-<span class="edition" data-en="Case study · Software &amp; operations" data-fr="Étude de cas · Logiciel &amp; opérations">Case study · Software &amp; operations</span>
-<div class="nav-actions">
-<div class="lang-select">
-<span aria-hidden="true" class="lang-globe">⊕</span>
-<label class="sr-only" for="langSelect">Language / Langue</label>
-<select class="lang-select-input" id="langSelect">
-<option value="en">English</option>
-<option value="fr">Français</option>
-</select>
-<span aria-hidden="true" class="lang-caret">▾</span>
-</div>
-<a class="nav-mini" href="https://www.linkedin.com/in/valentin-angenot/" rel="noopener" target="_blank">LinkedIn</a>
-<a class="nav-mini" href="cv.pdf" rel="noopener" target="_blank">CV</a>
-<a class="back-link" href="index.html#work">← Portfolio</a>
+<body>
+<header class="site-header" id="siteHeader">
+<div class="nav shell">
+<a class="brand" href="index.html"><span class="brand-mark">VA</span><span>VALENTIN ANGENOT</span></a>
+<nav aria-label="Case navigation" class="nav-links">
+<a class="back" href="index.html#work">← Portfolio</a>
+<a data-en="Opportunity" data-fr="Enjeu" href="#opportunity">Opportunity</a>
+<a data-en="Product" data-fr="Solution" href="#product">Product</a>
+<a data-en="Co-development" data-fr="Co-développement" href="#collaboration">Co-development</a>
+<a data-en="Takeaways" data-fr="Principes clés" href="#takeaways">Takeaways</a>
+<div aria-label="Language selector" class="lang-toggle">
+<button class="active" data-lang="en">EN</button><button data-lang="fr">FR</button>
 </div>
 </nav>
+</div>
+<div class="progress" id="progress"></div>
 </header>
-<main id="article">
-<article>
-<header class="article-header shell">
-<span class="kicker" data-en="Software case study · CILE · 2026" data-fr="Étude de cas logicielle · CILE · 2026">Software case study · CILE · 2026</span>
-<h1 data-en="How 24 municipal procedures became one software workflow." data-fr="Comment 24 procédures communales sont devenues un seul workflow logiciel.">How 24 municipal procedures became one software workflow.</h1>
-<p class="deck" data-en="The field operation was repeatable. The paperwork was not. I designed and built two linked browser applications that reduced a road-opening permit workflow from 98 minutes to 11." data-fr="L’opération de terrain était répétable. La paperasse, non. J’ai conçu et développé deux applications web liées qui ont réduit le workflow de demande d’ouverture de voirie de 98 à 11 minutes.">The field operation was repeatable. The paperwork was not. I designed and built two linked browser applications that reduced a road-opening permit workflow from 98 minutes to 11.</p>
-<div class="byline">
-<span data-en="By &lt;strong&gt;Valentin Angenot&lt;/strong&gt;" data-fr="Par &lt;strong&gt;Valentin Angenot&lt;/strong&gt;">By <strong>Valentin Angenot</strong></span>
-<span data-en="8-minute read" data-fr="Lecture de 8 minutes">8-minute read</span>
-<span data-en="Liège, Belgium" data-fr="Liège, Belgique">Liège, Belgium</span>
-</div>
-<div aria-label="Case study facts" class="case-facts" data-aria-label-en="Case study facts" data-aria-label-fr="Faits clés de l’étude de cas" role="group">
-<div class="fact">
-<strong>24</strong>
-<span data-en="Municipal procedures translated into one operating path" data-fr="Procédures communales traduites en un seul chemin opérationnel">Municipal procedures translated into one operating path</span>
-</div>
-<div class="fact">
-<strong>98 → 11</strong>
-<span data-en="Minutes required to prepare one permit package" data-fr="Minutes nécessaires pour préparer un dossier de demande">Minutes required to prepare one permit package</span>
-</div>
-<div class="fact">
-<strong>€596,881</strong>
-<span data-en="Projected workflow value over ten years" data-fr="Valeur projetée du workflow sur dix ans">Projected workflow value over ten years</span>
+<main>
+<section class="hero" id="top">
+<div class="hero-bg"><img alt="Roadworks crew preparing a street intervention" src="assets/cile-workers-hero-clean.webp"/></div>
+<div class="shell hero-content" data-reveal="">
+<div class="hero-kicker"><span data-en="Case study · Strategy, AI &amp; Operations" data-fr="Case study · Strategy, AI &amp; Operations">Case study · Strategy, AI &amp; Operations</span></div>
+<h1 data-en="Built with Claude.&lt;br&gt;&lt;span&gt;Grounded in business intelligence.&lt;/span&gt;" data-fr="Développé avec Claude.&lt;br&gt;&lt;span&gt;Piloté par la création de valeur.&lt;/span&gt;">Built with Claude.<br/><span>Grounded in business intelligence.</span></h1>
+<p class="lede" data-en="How a hidden operational bottleneck became a software-led advantage — and what leaders can reuse from the process." data-fr="Comment un frein opérationnel invisible a été transformé en avantage économique grâce au logiciel — et les enseignements directement transposables pour les dirigeants.">How a hidden operational bottleneck became a software-led advantage — and what leaders can reuse from the process.</p>
+<div class="hero-metrics">
+<div class="metric"><strong>98 <em>→</em> 11 min</strong><span data-en="Administrative workflow, before vs. after" data-fr="Temps de traitement administratif, avant / après">Administrative workflow, before vs. after</span></div>
+<div class="metric"><strong>€596k+</strong><span data-en="Projected value over ten years" data-fr="Valeur projetée à dix ans">Projected value over ten years</span></div>
+<div class="metric"><strong>24</strong><span data-en="Municipal procedures translated into one system" data-fr="Procédures communales consolidées dans un seul système">Municipal procedures translated into one system</span></div>
 </div>
 </div>
-</header>
-<div class="story">
-<div class="article-column">
-<p class="opening" data-en="Internalising selected road-opening work made strategic sense for CILE. The bottleneck was not the excavation itself. It was the administrative process surrounding every intervention." data-fr="Internaliser une partie des ouvertures de voirie avait un sens stratégique pour la CILE. Le goulot d’étranglement n’était pas l’excavation elle-même, mais le processus administratif entourant chaque intervention.">Internalising selected road-opening work made strategic sense for CILE. The bottleneck was not the excavation itself. It was the administrative process surrounding every intervention.</p>
-<h2 data-en='&lt;span class="section-number"&gt;01 · The case&lt;/span&gt;One operation, 24 administrative realities.' data-fr='&lt;span class="section-number"&gt;01 · Le cas&lt;/span&gt;Une opération, 24 réalités administratives.'><span class="section-number">01 · The case</span>One operation, 24 administrative realities.</h2>
-<p data-en="CILE serves more than 560,000 residents across 24 municipalities. The same type of field intervention could require a different form, contact, deadline and submission route depending on the address: Powalco in one commune, the GODP police platform in Ans and Saint-Nicolas, EAGLE BE in Visé, plain e-mail elsewhere — each with its own signage-plan format, fees and validation circuit." data-fr="La CILE dessert plus de 560 000 habitants sur 24 communes. Un même type d’intervention de terrain pouvait exiger un formulaire, un contact, un délai et un canal de dépôt différents selon l’adresse : Powalco ici, la plateforme de police GODP à Ans et Saint-Nicolas, EAGLE BE à Visé, un simple e-mail ailleurs — chacun avec son format de plan de signalisation, ses redevances et son circuit de validation.">CILE serves more than 560,000 residents across 24 municipalities. The same type of field intervention could require a different form, contact, deadline and submission route depending on the address: Powalco in one commune, the GODP police platform in Ans and Saint-Nicolas, EAGLE BE in Visé, plain e-mail elsewhere — each with its own signage-plan format, fees and validation circuit.</p>
-<p data-en="At roughly 480 interventions a year, that variation was more than an inconvenience. It created recurring administrative effort and made selected road-opening activities harder to bring in-house." data-fr="À environ 480 interventions par an, cette variation dépassait le simple désagrément. Elle créait un effort administratif récurrent et compliquait l’internalisation des activités d’ouverture de voirie.">At roughly 480 interventions a year, that variation was more than an inconvenience. It created recurring administrative effort and made selected road-opening activities harder to bring in-house.</p>
-<blockquote data-en="
-            “The field work did not change at the municipal border. The administrative process did.”
-            &lt;span&gt;The design problem&lt;/span&gt;
-" data-fr="
-            « Le travail de terrain ne changeait pas à la frontière communale. Le processus administratif, si. »
-            &lt;span&gt;Le problème de conception&lt;/span&gt;
-">
-            “The field work did not change at the municipal border. The administrative process did.”
-            <span>The design problem</span>
-</blockquote>
-<h2 data-en='&lt;span class="section-number"&gt;02 · The solution&lt;/span&gt;Move the complexity into the software.' data-fr='&lt;span class="section-number"&gt;02 · La solution&lt;/span&gt;Déplacer la complexité dans le logiciel.'><span class="section-number">02 · The solution</span>Move the complexity into the software.</h2>
-<p data-en="I mapped the 24 local procedures, identified their common structure and converted the variation into a single data model. The product was then designed around one operator journey: enter the address and intervention once, receive the complete permit package." data-fr="J’ai cartographié les 24 procédures locales, identifié leur structure commune et converti la variation en un modèle de données unique. Le produit a ensuite été conçu autour d’un seul parcours opérateur : saisir l’adresse et l’intervention une fois, recevoir le dossier de demande complet.">I mapped the 24 local procedures, identified their common structure and converted the variation into a single data model. The product was then designed around one operator journey: enter the address and intervention once, receive the complete permit package.</p>
+<div class="hero-scroll" data-en="Scroll the case" data-fr="Découvrir le cas">Scroll the case</div>
+</section>
+<nav aria-label="Case chapters" class="chapter-nav">
+<div class="chapter-nav-inner shell">
+<a class="active" data-en="01 · Opportunity" data-fr="01 · Enjeu stratégique" href="#opportunity">01 · Opportunity</a>
+<a data-en="02 · Product" data-fr="02 · Solution" href="#product">02 · Product</a>
+<a data-en="03 · Human × Claude" data-fr="03 · Humain × Claude" href="#collaboration">03 · Human × Claude</a>
+<a data-en="04 · Results" data-fr="04 · Impact" href="#results">04 · Results</a>
+<a data-en="05 · Reusable playbook" data-fr="05 · Principes réplicables" href="#takeaways">05 · Reusable playbook</a>
+<a data-en="06 · Production questions" data-fr="06 · Passage à l’échelle" href="#production">06 · Production questions</a>
 </div>
-<figure class="solution-figure">
-<div class="solution-board">
-<div class="solution-panel">
-<span class="panel-label" data-en="One entry" data-fr="Une saisie">One entry</span>
-<h3 data-en="Describe the intervention." data-fr="Décrire l’intervention.">Describe the intervention.</h3>
-<div class="field">
-<small data-en="Address" data-fr="Adresse">Address</small>
-<strong>Rue de l'Industrie 14, Liège</strong>
+</nav>
+<section class="opportunity" id="opportunity">
+<div class="shell">
+<div class="section-head" data-reveal="">
+<div><p class="eyebrow" data-en="01 · Business opportunity discovery" data-fr="01 · Identification de l’opportunité">01 · Business opportunity discovery</p><h2 data-en="The software was not the starting point." data-fr="Le logiciel n’était pas le point de départ.">The software was not the starting point.</h2></div>
+<p class="section-copy" data-en="The initial question was whether CILE could internalise selected road-opening work and create durable value. The software emerged only after the operating model exposed a hidden constraint." data-fr="L’enjeu initial était d’évaluer si la CILE pouvait internaliser une partie des ouvertures de voirie et créer durablement de la valeur. Le besoin logiciel est apparu lorsque le modèle cible a révélé un frein structurel à la rentabilité et au passage à l’échelle.">The initial question was whether CILE could internalise selected road-opening work and create durable value. The software emerged only after the operating model exposed a hidden constraint.</p>
 </div>
-<div class="field">
-<small>Intervention</small>
-<strong data-en="Urgent leak repair" data-fr="Réparation de fuite urgente">Urgent leak repair</strong>
-</div>
-</div>
-<div aria-hidden="true" class="solution-arrow"><span>→</span></div>
-<div class="solution-panel output">
-<span class="panel-label" data-en="Ready package" data-fr="Dossier prêt">Ready package</span>
-<h3 data-en="Local procedure matched automatically." data-fr="Procédure locale identifiée automatiquement.">Local procedure matched automatically.</h3>
-<ul class="output-list">
-<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Permit documents generated' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Documents de demande générés'><span class="check">✓</span>Permit documents generated</li>
-<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Signage plan prepared' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Plan de signalisation préparé'><span class="check">✓</span>Signage plan prepared</li>
-<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Recipients identified' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Destinataires identifiés'><span class="check">✓</span>Recipients identified</li>
-<li data-en='&lt;span class="check"&gt;✓&lt;/span&gt;Submission tracked' data-fr='&lt;span class="check"&gt;✓&lt;/span&gt;Soumission suivie'><span class="check">✓</span>Submission tracked</li>
-</ul>
-</div>
-</div>
-<figcaption data-en="The operator follows one clear path. The rules of 24 municipalities remain inside the application." data-fr="L’opérateur suit un seul chemin clair. Les règles des 24 communes restent dans l’application.">The operator follows one clear path. The rules of 24 municipalities remain inside the application.</figcaption>
-</figure>
-<div class="article-column">
-<p data-en="The application geocodes the address, detects the competent authority, applies the relevant rules, populates the required documents, prepares the signage plan, assembles the recipients and tracks the submission." data-fr="L’application géocode l’adresse, détecte l’autorité compétente, applique les règles pertinentes, remplit les documents requis, prépare le plan de signalisation, assemble les destinataires et suit la soumission.">The application geocodes the address, detects the competent authority, applies the relevant rules, populates the required documents, prepares the signage plan, assembles the recipients and tracks the submission.</p>
-<p data-en="Built in ten working days, it runs entirely in the browser and requires no server deployment or additional infrastructure. Claude accelerated implementation as a development partner; the procedure research, product logic, validation and financial model remained my responsibility." data-fr="Développée en dix jours ouvrables, elle tourne entièrement dans le navigateur et ne nécessite ni serveur ni infrastructure supplémentaire. Claude a accéléré l’implémentation comme partenaire de développement ; la recherche sur les procédures, la logique produit, la validation et le modèle financier sont restés de ma responsabilité.">Built in ten working days, it runs entirely in the browser and requires no server deployment or additional infrastructure. Claude accelerated implementation as a development partner; the procedure research, product logic, validation and financial model remained my responsibility.</p>
-<h2 data-en='&lt;span class="section-number"&gt;03 · Under the hood&lt;/span&gt;Two applications. Zero servers.' data-fr='&lt;span class="section-number"&gt;03 · Sous le capot&lt;/span&gt;Deux applications. Zéro serveur.'><span class="section-number">03 · Under the hood</span>Two applications. Zero servers.</h2>
-<p data-en="The system is two single-page applications — a permit generator and a signage editor — that synchronise through the browser's local storage. The zero-server architecture is a deliberate choice, not a shortcut: the tool has to run on a CILE workstation or a field tablet with nothing to install, no backend to maintain, and no data leaving the machine." data-fr="Le système se compose de deux applications mono-page — un générateur de demandes et un éditeur de signalisation — synchronisées via le stockage local du navigateur. L’architecture zéro-serveur est un choix délibéré, pas un raccourci : l’outil doit tourner sur un poste CILE ou une tablette de terrain sans rien installer, sans backend à maintenir, et sans donnée qui quitte la machine.">The system is two single-page applications — a permit generator and a signage editor — that synchronise through the browser's local storage. The zero-server architecture is a deliberate choice, not a shortcut: the tool has to run on a CILE workstation or a field tablet with nothing to install, no backend to maintain, and no data leaving the machine.</p>
-</div>
-<figure class="system-figure">
-<div class="system-board">
-<div class="system-apps">
-<div class="system-app">
-<span class="system-app-file" data-en="index.html · ~3,350 lines" data-fr="index.html · ~3 350 lignes">index.html · ~3,350 lines</span>
-<h3 data-en="Permit generator" data-fr="Générateur de demandes">Permit generator</h3>
-<p data-en="Smart form, municipal rules engine, real-time validation, DOCX generation, e-mail workflow, site-manager registry, analytics dashboard." data-fr="Formulaire intelligent, moteur de règles communales, validation en temps réel, génération DOCX, workflow e-mail, registre des chefs de chantier, dashboard analytique.">Smart form, municipal rules engine, real-time validation, DOCX generation, e-mail workflow, site-manager registry, analytics dashboard.</p>
-<div class="system-tags">
-<span data-en="geocoding" data-fr="géocodage">geocoding</span>
-<span data-en="rules engine" data-fr="moteur de règles">rules engine</span>
-<span data-en="OOXML builder" data-fr="builder OOXML">OOXML builder</span>
-<span>QR codes</span>
-<span data-en="analytics" data-fr="analytique">analytics</span>
-</div>
-</div>
-<div aria-hidden="true" class="system-link">
+<div class="opportunity-grid">
+<article class="case-note" data-reveal="">
 <div>
-<span class="sync-arrows">⇄</span>
-<span>localStorage<br/>sync</span>
+<div class="big" data-en="A make-or-buy case became an operating-system problem." data-fr="Un arbitrage make-or-buy a révélé un enjeu de conception du modèle opérationnel.">A make-or-buy case became an operating-system problem.</div>
+<p data-en="The business case combined field operations, staffing, compliance, workflow design and financial viability. The breakthrough was not a new machine. It was identifying the administrative complexity that would otherwise destroy scalability." data-fr="Le business case intégrait les opérations terrain, l’organisation, la conformité, les processus et la viabilité financière. Le point décisif n’était pas technologique : l’hétérogénéité administrative risquait d’absorber une partie de la valeur attendue et de rendre le modèle difficile à déployer.">The business case combined field operations, staffing, compliance, workflow design and financial viability. The breakthrough was not a new machine. It was identifying the administrative complexity that would otherwise destroy scalability.</p>
 </div>
-</div>
-<div class="system-app">
-<span class="system-app-file" data-en="editeur.html · ~1,470 lines" data-fr="editeur.html · ~1 470 lignes">editeur.html · ~1,470 lines</span>
-<h3 data-en="Signage editor" data-fr="Éditeur de signalisation">Signage editor</h3>
-<p data-en="Interactive Leaflet map, geolocated placement of 60+ official Belgian road signs, multi-tab dimensioned-plan canvas, automatic detour computation." data-fr="Carte Leaflet interactive, placement géolocalisé de plus de 60 panneaux routiers belges officiels, plans cotés multi-onglets sur canvas, calcul automatique de déviations.">Interactive Leaflet map, geolocated placement of 60+ official Belgian road signs, multi-tab dimensioned-plan canvas, automatic detour computation.</p>
-<div class="system-tags">
-<span>Leaflet</span>
-<span data-en="4 map layers" data-fr="4 couches carto">4 map layers</span>
-<span data-en="canvas plans" data-fr="plans sur canvas">canvas plans</span>
-<span data-en="OSRM routing" data-fr="routage OSRM">OSRM routing</span>
-<span data-en="PNG export" data-fr="export PNG">PNG export</span>
-</div>
-</div>
-</div>
-<div class="system-services">
-<span class="system-services-label" data-en="External services" data-fr="Services externes">External services</span>
-<span data-en="Nominatim geocoding" data-fr="Géocodage Nominatim">Nominatim geocoding</span>
-<span data-en="OSRM routing" data-fr="Routage OSRM">OSRM routing</span>
-<span data-en="SPW orthophotos + PICC" data-fr="Orthophotos SPW + PICC">SPW orthophotos + PICC</span>
-<span data-en="CartoDB basemaps" data-fr="Fonds CartoDB">CartoDB basemaps</span>
-<span>Google Street View</span>
-</div>
-</div>
-<figcaption data-en="Everything else — validation, document generation, persistence, analytics — runs client-side. Business data lives in four external JSON files that CILE can edit without touching a line of code." data-fr="Tout le reste — validation, génération documentaire, persistance, analytique — tourne côté client. Les données métier vivent dans quatre fichiers JSON externes que la CILE peut éditer sans toucher une ligne de code.">Everything else — validation, document generation, persistence, analytics — runs client-side. Business data lives in four external JSON files that CILE can edit without touching a line of code.</figcaption>
-</figure>
-<div aria-label="System modules" class="module-grid" data-aria-label-en="System modules" data-aria-label-fr="Modules du système" role="group">
-<div class="module">
-<span class="module-name" data-en="Rules engine" data-fr="Moteur de règles">Rules engine</span>
-<h3 data-en="24 municipalities as structured data" data-fr="24 communes en données structurées">24 municipalities as structured data</h3>
-<p data-en="Each commune is a record: submission platform, notice periods, required signage format (Qualiroute, annotated capture, dimensioned plan), contacts, fees, validation circuit and urgency procedure." data-fr="Chaque commune est un enregistrement : plateforme de dépôt, délais de préavis, format de signalisation requis (Qualiroute, capture annotée, plan coté), contacts, redevances, circuit de validation et procédure d’urgence.">Each commune is a record: submission platform, notice periods, required signage format (Qualiroute, annotated capture, dimensioned plan), contacts, fees, validation circuit and urgency procedure.</p>
-</div>
-<div class="module">
-<span class="module-name" data-en="Geocoding" data-fr="Géocodage">Geocoding</span>
-<h3 data-en="Address to authority in one step" data-fr="De l’adresse à l’autorité en une étape">Address to authority in one step</h3>
-<p data-en="Structured Nominatim queries, debounced at 800 ms, with a postal-code fast path, tolerant commune matching and a supervised override for edge cases outside the base." data-fr="Requêtes Nominatim structurées, débouncées à 800 ms, avec raccourci par code postal, correspondance tolérante des communes et forçage supervisé pour les cas hors base.">Structured Nominatim queries, debounced at 800 ms, with a postal-code fast path, tolerant commune matching and a supervised override for edge cases outside the base.</p>
-</div>
-<div class="module">
-<span class="module-name" data-en="Document engine" data-fr="Moteur documentaire">Document engine</span>
-<h3 data-en="Word files built from raw XML" data-fr="Des fichiers Word construits en XML brut">Word files built from raw XML</h3>
-<p data-en="The DOCX is assembled character by character in Office Open XML and zipped with JSZip — no document library — for pixel-level control over headers, tables, embedded plans and QR codes." data-fr="Le DOCX est assemblé caractère par caractère en Office Open XML puis zippé via JSZip — sans bibliothèque documentaire — pour un contrôle au pixel des en-têtes, tableaux, plans intégrés et QR codes.">The DOCX is assembled character by character in Office Open XML and zipped with JSZip — no document library — for pixel-level control over headers, tables, embedded plans and QR codes.</p>
-</div>
-<div class="module">
-<span class="module-name" data-en="Detour computation" data-fr="Calcul de déviations">Detour computation</span>
-<h3 data-en="Deviations calculated, not drawn" data-fr="Des déviations calculées, pas dessinées">Deviations calculated, not drawn</h3>
-<p data-en="The operator traces the blocked axis; three OSRM routing strategies run in parallel, candidates crossing the closure are excluded, and the best detour is rendered with arrows, metrics and a PNG export." data-fr="L’opérateur trace l’axe bloqué ; trois stratégies de routage OSRM tournent en parallèle, les candidats croisant la fermeture sont exclus, et la meilleure déviation est rendue avec flèches, métriques et export PNG.">The operator traces the blocked axis; three OSRM routing strategies run in parallel, candidates crossing the closure are excluded, and the best detour is rendered with arrows, metrics and a PNG export.</p>
-</div>
-<div class="module">
-<span class="module-name">Validation</span>
-<h3 data-en="Four validators, live" data-fr="Quatre validateurs, en direct">Four validators, live</h3>
-<p data-en="Postal code against the CILE territory, date coherence with duration alerts, Belgian phone formats and working-hour checks — aggregated in real time to gate generation." data-fr="Code postal contre le territoire CILE, cohérence des dates avec alertes de durée, formats téléphoniques belges et contrôles d’horaires — agrégés en temps réel pour conditionner la génération.">Postal code against the CILE territory, date coherence with duration alerts, Belgian phone formats and working-hour checks — aggregated in real time to gate generation.</p>
-</div>
-<div class="module">
-<span class="module-name" data-en="Field link" data-fr="Lien terrain">Field link</span>
-<h3 data-en="From plan to site manager" data-fr="Du plan au chef de chantier">From plan to site manager</h3>
-<p data-en="Placed signs are aggregated across map and plans into a quantified list, matched with a CRUD registry of site managers, and sent with the signage plans in one action." data-fr="Les panneaux placés sont agrégés carte et plans confondus en une liste quantifiée, reliée à un registre CRUD des chefs de chantier, et envoyés avec les plans de signalisation en une action.">Placed signs are aggregated across map and plans into a quantified list, matched with a CRUD registry of site managers, and sent with the signage plans in one action.</p>
-</div>
-</div>
-<div class="article-column">
-<h2 data-en='&lt;span class="section-number"&gt;04 · The details that matter&lt;/span&gt;Where the engineering actually lives.' data-fr='&lt;span class="section-number"&gt;04 · Les détails qui comptent&lt;/span&gt;Là où vit vraiment l’ingénierie.'><span class="section-number">04 · The details that matter</span>Where the engineering actually lives.</h2>
-<div class="dive">
-<h3 data-en="Rules live as data, not code." data-fr="Les règles vivent en données, pas en code.">Rules live as data, not code.</h3>
-<p data-en="Deadlines change. Contacts change. Fees change. Every municipal rule sits in external JSON files (&lt;code&gt;communes.json&lt;/code&gt;, &lt;code&gt;codes-postaux.json&lt;/code&gt;) loaded fresh at startup — so CILE updates a deadline by editing a file, never by shipping code." data-fr="Les délais changent. Les contacts changent. Les redevances changent. Chaque règle communale vit dans des fichiers JSON externes (&lt;code&gt;communes.json&lt;/code&gt;, &lt;code&gt;codes-postaux.json&lt;/code&gt;) rechargés au démarrage — la CILE met à jour un délai en éditant un fichier, jamais en livrant du code.">Deadlines change. Contacts change. Fees change. Every municipal rule sits in external JSON files (<code>communes.json</code>, <code>codes-postaux.json</code>) loaded fresh at startup — so CILE updates a deadline by editing a file, never by shipping code.</p>
-</div>
-<div class="dive">
-<h3 data-en="Official municipal forms, filled automatically." data-fr="Les formulaires communaux officiels, remplis automatiquement.">Official municipal forms, filled automatically.</h3>
-<p data-en="Where a commune imposes its own template, the generator loads the official Word file and injects the form values directly into its XML — preserving the municipal layout, checkboxes and letterhead while removing the manual copying." data-fr="Quand une commune impose son propre modèle, le générateur charge le fichier Word officiel et injecte les valeurs directement dans son XML — en préservant la mise en page communale, les cases à cocher et l’en-tête, tout en supprimant la copie manuelle.">Where a commune imposes its own template, the generator loads the official Word file and injects the form values directly into its XML — preserving the municipal layout, checkboxes and letterhead while removing the manual copying.</p>
-</div>
-<div class="dive">
-<h3 data-en="E-mail attachments, despite the browser." data-fr="Des pièces jointes e-mail, malgré le navigateur.">E-mail attachments, despite the browser.</h3>
-<p data-en="Browsers cannot attach files through &lt;code&gt;mailto:&lt;/code&gt;. The workflow degrades gracefully through three strategies — native Web Share on mobile, clipboard-to-Gmail on desktop, plain &lt;code&gt;mailto:&lt;/code&gt; as the universal fallback — so the package reaches the commune from any device." data-fr="Les navigateurs ne peuvent pas joindre de fichier via &lt;code&gt;mailto:&lt;/code&gt;. Le workflow dégrade élégamment sur trois stratégies — Web Share natif sur mobile, presse-papier vers Gmail sur desktop, &lt;code&gt;mailto:&lt;/code&gt; en repli universel — pour que le dossier atteigne la commune depuis n’importe quel appareil.">Browsers cannot attach files through <code>mailto:</code>. The workflow degrades gracefully through three strategies — native Web Share on mobile, clipboard-to-Gmail on desktop, plain <code>mailto:</code> as the universal fallback — so the package reaches the commune from any device.</p>
-</div>
-<div class="dive">
-<h3 data-en="The analytics were free." data-fr="L’analytique était gratuite.">The analytics were free.</h3>
-<p data-en="Every generated permit records an 18-field entry locally, feeding a dashboard of volumes, urgency rates, duration percentiles and per-commune breakdowns — with CSV export ready for Excel. Operational reporting came as a by-product of the workflow itself." data-fr="Chaque demande générée enregistre localement une entrée à 18 champs, alimentant un dashboard de volumes, taux d’urgence, percentiles de durée et répartitions par commune — avec export CSV prêt pour Excel. Le reporting opérationnel est venu en sous-produit du workflow lui-même.">Every generated permit records an 18-field entry locally, feeding a dashboard of volumes, urgency rates, duration percentiles and per-commune breakdowns — with CSV export ready for Excel. Operational reporting came as a by-product of the workflow itself.</p>
-</div>
-<h2 data-en='&lt;span class="section-number"&gt;05 · The result&lt;/span&gt;From administrative friction to operating capacity.' data-fr='&lt;span class="section-number"&gt;05 · Le résultat&lt;/span&gt;De la friction administrative à la capacité opérationnelle.'><span class="section-number">05 · The result</span>From administrative friction to operating capacity.</h2>
-<p data-en="Measured against the existing process, permit preparation fell from 98 minutes to 11. The gain was not only faster paperwork: a fragmented procedure became a repeatable operating capability." data-fr="Mesurée contre le processus existant, la préparation d’une demande est passée de 98 à 11 minutes. Le gain ne se limite pas à une paperasse plus rapide : une procédure fragmentée est devenue une capacité opérationnelle répétable.">Measured against the existing process, permit preparation fell from 98 minutes to 11. The gain was not only faster paperwork: a fragmented procedure became a repeatable operating capability.</p>
-<div aria-label="Case study results" class="result-table" data-aria-label-en="Case study results" data-aria-label-fr="Résultats de l’étude de cas" role="group">
-<div class="result-row">
-<strong>87 minutes</strong>
-<span data-en="Saved on each permit workflow" data-fr="Gagnées sur chaque workflow de demande">Saved on each permit workflow</span>
-</div>
-<div class="result-row">
-<strong>€0</strong>
-<span data-en="Additional server or infrastructure cost" data-fr="Coût serveur ou infrastructure supplémentaire">Additional server or infrastructure cost</span>
-</div>
-<div class="result-row">
-<strong>€596,881</strong>
-<span data-en="Projected value over ten years at modelled operating volumes" data-fr="Valeur projetée sur dix ans aux volumes opérationnels modélisés">Projected value over ten years at modelled operating volumes</span>
-</div>
-</div>
-<p class="note" data-en="The ten-year value is a projected business case, not a realised saving. It depends on adoption, operating volumes and the assumptions documented in the full report." data-fr="La valeur sur dix ans est un business case projeté, pas une économie réalisée. Elle dépend de l’adoption, des volumes opérationnels et des hypothèses documentées dans le rapport complet.">The ten-year value is a projected business case, not a realised saving. It depends on adoption, operating volumes and the assumptions documented in the full report.</p>
-</div>
+<div class="bottom">
+<div><strong>480</strong><span data-en="interventions / year" data-fr="interventions / an">interventions / year</span></div>
+<div><strong>2</strong><span data-en="operational teams" data-fr="équipes opérationnelles">operational teams</span></div>
+<div><strong>24</strong><span data-en="local rule environments" data-fr="cadres réglementaires locaux">local rule environments</span></div>
 </div>
 </article>
-<section aria-labelledby="report-title" class="report-section">
-<div class="report-grid shell">
-<a aria-label="Open the From Friction to Value report" class="report-cover-link" data-aria-label-en="Open the From Friction to Value report" data-aria-label-fr="Ouvrir le rapport From Friction to Value" href="from-friction-to-value.pdf" rel="noopener" target="_blank">
-<img alt="Cover of From Friction to Value by Valentin Angenot" class="report-cover" data-alt-en="Cover of From Friction to Value by Valentin Angenot" data-alt-fr="Couverture de From Friction to Value par Valentin Angenot" height="3372" src="framework-cover.png" width="2384"/>
-</a>
-<div class="report-copy">
-<span class="kicker" data-en="The complete methodology" data-fr="La méthodologie complète">The complete methodology</span>
-<h2 data-en="Read the full case behind the article." data-fr="Lire le cas complet derrière l’article." id="report-title">Read the full case behind the article.</h2>
-<p data-en="&lt;em&gt;From Friction to Value&lt;/em&gt; is the full report covering the diagnosis, procedure mapping, product design, human–AI collaboration and financial model." data-fr="&lt;em&gt;From Friction to Value&lt;/em&gt; est le rapport complet couvrant le diagnostic, la cartographie des procédures, la conception produit, la collaboration humain–IA et le modèle financier."><em>From Friction to Value</em> is the full report covering the diagnosis, procedure mapping, product design, human–AI collaboration and financial model.</p>
-<a class="button" data-en="Open the full report →" data-fr="Ouvrir le rapport complet →" href="from-friction-to-value.pdf" rel="noopener" target="_blank">Open the full report →</a>
+<div class="story-flow">
+<article class="flow-item" data-reveal="" data-step="1"><h3 data-en="Opportunity" data-fr="Enjeu">Opportunity</h3><p data-en="Internalise a repeatable field activity to gain control, resilience and economic value." data-fr="Internaliser une activité récurrente pour renforcer la maîtrise opérationnelle, la résilience et la performance économique.">Internalise a repeatable field activity to gain control, resilience and economic value.</p></article>
+<article class="flow-item" data-reveal="" data-step="2"><h3 data-en="Hidden complexity" data-fr="Frein structurel">Hidden complexity</h3><p data-en="Each municipality and police zone used different deadlines, channels, documents and contacts." data-fr="Vingt-quatre communes et plusieurs zones de police appliquaient des délais, canaux, pièces et circuits de validation différents.">Each municipality and police zone used different deadlines, channels, documents and contacts.</p></article>
+<article class="flow-item" data-reveal="" data-step="3"><h3 data-en="Business risk" data-fr="Valeur menacée">Business risk</h3><p data-en="The administrative burden threatened profitability, training time and operational reliability." data-fr="Le coût administratif, la courbe d’apprentissage et le risque de non-conformité fragilisaient le business case.">The administrative burden threatened profitability, training time and operational reliability.</p></article>
+<article class="flow-item" data-reveal="" data-step="4"><h3 data-en="Design response" data-fr="Réponse systémique">Design response</h3><p data-en="Encode the procedures once, surface the right rule at the right moment, and generate the operational outputs automatically." data-fr="Capitaliser les règles une fois, guider l’opérateur au bon moment et automatiser la production des livrables.">Encode the procedures once, surface the right rule at the right moment, and generate the operational outputs automatically.</p></article>
+</div>
 </div>
 </div>
 </section>
-<section aria-label="Contact the author" class="author-band" data-aria-label-en="Contact the author" data-aria-label-fr="Contacter l’auteur">
-<div class="author-inner shell">
-<div>
-<p class="author-name">Valentin Angenot</p>
-<p class="author-role" data-en="Business Engineer · Industrial Engineer · CFA Level I passed" data-fr="Ingénieur de gestion · Ingénieur industriel · CFA Level I réussi">Business Engineer · Industrial Engineer · CFA Level I passed</p>
+<section class="product" id="product">
+<div class="shell">
+<div class="section-head" data-reveal="">
+<div><p class="eyebrow" data-en="02 · What was built" data-fr="02 · La solution déployée">02 · What was built</p><h2 data-en="One workflow, from request to field execution." data-fr="Un parcours unique, de la demande à l’exécution terrain.">One workflow, from request to field execution.</h2></div>
+<div><p class="section-copy" data-en="The product hides procedural complexity behind a single operator path. Click through the workflow to see what each screen changes operationally." data-fr="La solution transforme vingt-quatre procédures en un parcours opérateur unique. Chaque écran élimine une étape manuelle, sécurise une décision ou fluidifie la coordination avec le terrain.">The product hides procedural complexity behind a single operator path. Click through the workflow to see what each screen changes operationally.</p><p class="screen-note" data-en="Screens are drawn from the project documentation. Public access to the operational prototype is not available." data-fr="Les écrans ci-dessous sont issus de la documentation projet ; le prototype opérationnel n’est pas diffusé publiquement.">Screens are drawn from the project documentation. Public access to the operational prototype is not available.</p></div>
 </div>
-<div class="author-actions">
-<a class="button" data-en="Connect on LinkedIn" data-fr="Me contacter sur LinkedIn" href="https://www.linkedin.com/in/valentin-angenot/" rel="noopener" target="_blank">Connect on LinkedIn</a>
-<a class="button button-ghost" data-en="Download CV" data-fr="Télécharger le CV" href="cv.pdf" rel="noopener" target="_blank">Download CV</a>
+<div class="walkthrough" data-reveal="">
+<div class="walk-tabs" role="tablist">
+<button class="walk-tab active" data-slide="0"><span>01</span><strong data-en="Request intake" data-fr="Ouverture du dossier">Request intake</strong></button>
+<button class="walk-tab" data-slide="1"><span>02</span><strong data-en="Municipality detected" data-fr="Commune identifiée">Municipality detected</strong></button>
+<button class="walk-tab" data-slide="2"><span>03</span><strong data-en="Rules applied" data-fr="Exigences chargées">Rules applied</strong></button>
+<button class="walk-tab" data-slide="3"><span>04</span><strong data-en="Signage planned" data-fr="Plan préparé">Signage planned</strong></button>
+<button class="walk-tab" data-slide="4"><span>05</span><strong data-en="Detour computed" data-fr="Déviation calculée">Detour computed</strong></button>
+<button class="walk-tab" data-slide="5"><span>06</span><strong data-en="Outputs ready" data-fr="Dossier prêt">Outputs ready</strong></button>
+</div>
+<div class="walk-display">
+<article class="walk-slide active"><div class="walk-media"><img alt="CILE request intake form" src="assets/cile-intake.webp"/></div><div class="walk-caption"><p><strong data-en="What the operator sees" data-fr="Expérience opérateur">What the operator sees</strong><br/><span data-en="One structured form for the address, dates, work type and operational context." data-fr="Un formulaire unique rassemble l’adresse, les dates, la nature des travaux et le contexte d’intervention.">One structured form for the address, dates, work type and operational context.</span></p><p><strong class="business" data-en="Business effect" data-fr="Impact opérationnel">Business effect</strong><br/><span data-en="A single entry point removes training friction and standardises the minimum data required." data-fr="Le point d’entrée unique standardise les données, réduit le temps de formation et sécurise la complétude du dossier.">A single entry point removes training friction and standardises the minimum data required.</span></p></div></article>
+<article class="walk-slide"><div class="walk-media"><img alt="Automatic municipality detection" src="assets/cile-detection.webp"/></div><div class="walk-caption"><p><strong data-en="What the operator sees" data-fr="Expérience opérateur">What the operator sees</strong><br/><span data-en="The address is geocoded and the relevant municipality is identified automatically." data-fr="L’adresse est géocodée et la commune compétente est identifiée automatiquement.">The address is geocoded and the relevant municipality is identified automatically.</span></p><p><strong class="business" data-en="Business effect" data-fr="Impact opérationnel">Business effect</strong><br/><span data-en="The system removes manual research and reduces the risk of following the wrong procedure." data-fr="La recherche manuelle disparaît et le risque d’appliquer une procédure inadaptée est fortement réduit.">The system removes manual research and reduces the risk of following the wrong procedure.</span></p></div></article>
+<article class="walk-slide"><div class="walk-media"><img alt="Municipal rules displayed in the application" src="assets/cile-rules.webp"/></div><div class="walk-caption"><p><strong data-en="What the operator sees" data-fr="Expérience opérateur">What the operator sees</strong><br/><span data-en="Deadlines, submission channels, contacts and documentary requirements appear contextually." data-fr="Les délais, canaux de dépôt, interlocuteurs et pièces requises sont affichés selon le contexte.">Deadlines, submission channels, contacts and documentary requirements appear contextually.</span></p><p><strong class="business" data-en="Business effect" data-fr="Impact opérationnel">Business effect</strong><br/><span data-en="Procedural knowledge becomes an organisational asset instead of remaining in one person’s memory." data-fr="L’expertise procédurale devient un référentiel partagé plutôt qu’une connaissance détenue par quelques personnes.">Procedural knowledge becomes an organisational asset instead of remaining in one person’s memory.</span></p></div></article>
+<article class="walk-slide"><div class="walk-media"><img alt="Interactive road signage editor" src="assets/cile-signage.webp"/></div><div class="walk-caption"><p><strong data-en="What the operator sees" data-fr="Expérience opérateur">What the operator sees</strong><br/><span data-en="Road signs are placed directly on a mapped or imported field view." data-fr="Les panneaux sont positionnés directement sur une carte ou une vue terrain importée.">Road signs are placed directly on a mapped or imported field view.</span></p><p><strong class="business" data-en="Business effect" data-fr="Impact opérationnel">Business effect</strong><br/><span data-en="Preparation moves into the same workflow, reducing tool switching and coordination gaps." data-fr="La préparation du chantier est intégrée au même flux, ce qui limite les ressaisies et les ruptures de coordination.">Preparation moves into the same workflow, reducing tool switching and coordination gaps.</span></p></div></article>
+<article class="walk-slide"><div class="walk-media"><img alt="Automatic detour calculation" src="assets/cile-detour.webp"/></div><div class="walk-caption"><p><strong data-en="What the operator sees" data-fr="Expérience opérateur">What the operator sees</strong><br/><span data-en="The blocked road segment and proposed diversion are calculated and visualised." data-fr="Le tronçon concerné et l’itinéraire de déviation proposé sont calculés et visualisés.">The blocked road segment and proposed diversion are calculated and visualised.</span></p><p><strong class="business" data-en="Business effect" data-fr="Impact opérationnel">Business effect</strong><br/><span data-en="A complex conditional task becomes repeatable and easier to review before submission." data-fr="Une tâche complexe devient reproductible, contrôlable et plus rapide à valider avant envoi.">A complex conditional task becomes repeatable and easier to review before submission.</span></p></div></article>
+<article class="walk-slide"><div class="walk-media"><img alt="Generated roadwork permit document" src="assets/cile-output.webp"/></div><div class="walk-caption"><p><strong data-en="What the operator sees" data-fr="Expérience opérateur">What the operator sees</strong><br/><span data-en="The document package, email content and field handoff are assembled automatically." data-fr="Le dossier, le contenu des e-mails et les informations destinées au terrain sont assemblés automatiquement.">The document package, email content and field handoff are assembled automatically.</span></p><p><strong class="business" data-en="Business effect" data-fr="Impact opérationnel">Business effect</strong><br/><span data-en="The output is submission-ready, traceable and consistent across municipalities." data-fr="Le dossier est prêt à l’envoi, traçable et cohérent quel que soit le territoire concerné.">The output is submission-ready, traceable and consistent across municipalities.</span></p></div></article>
+</div>
+</div>
+</div>
+</section>
+<section class="collab" id="collaboration">
+<div class="shell">
+<div class="section-head" data-reveal="">
+<div><p class="eyebrow" data-en="03 · Human × Claude co-development" data-fr="03 · Co-développement humain × Claude">03 · Human × Claude co-development</p><h2 data-en="Business thinking. AI acceleration. Clear ownership." data-fr="Vision métier. Accélération IA. Gouvernance claire.">Business thinking. AI acceleration. Clear ownership.</h2></div>
+<p class="section-copy" data-en="Claude did not replace domain work or decision-making. The value came from combining human ownership with a reasoning model and an agentic coding environment." data-fr="Claude n’a remplacé ni l’expertise métier ni les arbitrages. La valeur vient de l’articulation entre pilotage humain, capacité de raisonnement de Claude Opus 4.6 et exécution agentique dans Claude Code.">Claude did not replace domain work or decision-making. The value came from combining human ownership with a reasoning model and an agentic coding environment.</p>
+</div>
+<div class="collab-grid">
+<article class="role-card human" data-reveal=""><div class="role-icon">H</div><h3>Human</h3><p data-en="Owns the business problem and the consequences." data-fr="Porte l’enjeu économique et assume les décisions.">Owns the business problem and the consequences.</p><ul><li data-en="Frames the opportunity" data-fr="Cadre l’opportunité de valeur">Frames the opportunity</li><li data-en="Defines constraints and priorities" data-fr="Fixe les contraintes et priorités">Defines constraints and priorities</li><li data-en="Makes trade-offs" data-fr="Arbitre les compromis">Makes trade-offs</li><li data-en="Validates rules and outputs" data-fr="Valide les règles et les livrables">Validates rules and outputs</li><li data-en="Retains accountability" data-fr="Reste responsable du résultat">Retains accountability</li></ul></article>
+<article class="role-card opus" data-reveal=""><div class="role-icon">O</div><h3>Claude Opus 4.6</h3><p data-en="Acts as a reasoning and architecture partner." data-fr="Structure, challenge et sécurise le raisonnement.">Acts as a reasoning and architecture partner.</p><ul><li data-en="Challenges assumptions" data-fr="Challenge les hypothèses">Challenges assumptions</li><li data-en="Structures complex logic" data-fr="Formalise la logique métier">Structures complex logic</li><li data-en="Explores edge cases" data-fr="Teste les cas limites">Explores edge cases</li><li data-en="Supports architecture choices" data-fr="Éclaire les choix d’architecture">Supports architecture choices</li><li data-en="Accelerates documentation" data-fr="Accélère la documentation">Accelerates documentation</li></ul></article>
+<article class="role-card code" data-reveal=""><div class="role-icon">&gt;_</div><h3>Claude Code</h3><p data-en="Operates in the codebase and compresses iteration cycles." data-fr="Intervient directement dans le code et réduit le cycle idée → preuve.">Operates in the codebase and compresses iteration cycles.</p><ul><li data-en="Inspects the repository" data-fr="Analyse le repository">Inspects the repository</li><li data-en="Writes and refactors code" data-fr="Développe et refactorise">Writes and refactors code</li><li data-en="Runs tests and commands" data-fr="Exécute les tests et commandes">Runs tests and commands</li><li data-en="Implements bounded changes" data-fr="Implémente des changements cadrés">Implements bounded changes</li><li data-en="Shortens build loops" data-fr="Accélère les boucles d’itération">Shortens build loops</li></ul></article>
+</div>
+<div class="collab-equation" data-en="The winning model was not “AI builds software.” It was &lt;strong&gt;human judgment × Claude reasoning × Claude Code execution&lt;/strong&gt;." data-fr="Le modèle efficace n’était pas « l’IA développe seule ». C’était &lt;strong&gt;pilotage humain × raisonnement Claude × exécution Claude Code&lt;/strong&gt;." data-reveal="">The winning model was not “AI builds software.” It was <strong>human judgment × Claude reasoning × Claude Code execution</strong>.</div>
+</div>
+</section>
+<section class="results" id="results">
+<div class="results-wrap">
+<div class="results-copy" data-reveal="">
+<p class="eyebrow" data-en="04 · Measured results" data-fr="04 · Impact mesuré">04 · Measured results</p>
+<h2 data-en="The tool changed the economics of the operating model." data-fr="La solution a renforcé la viabilité économique du modèle.">The tool changed the economics of the operating model.</h2>
+<div class="result-list">
+<div class="result-line"><strong>98 → 11</strong><p data-en="Minutes required to prepare a standard permit workflow, based on the detailed before-and-after process analysis." data-fr="Temps de préparation d’un dossier standard, selon l’analyse détaillée avant / après.">Minutes required to prepare a standard permit workflow, based on the detailed before-and-after process analysis.</p></div>
+<div class="result-line"><strong>€596,880+</strong><p data-en="Projected cumulative value over ten years from lower administrative effort and avoided failure costs." data-fr="Valeur projetée à dix ans, issue de la réduction de l’effort administratif et des coûts de non-qualité.">Projected cumulative value over ten years from lower administrative effort and avoided failure costs.</p></div>
+<div class="result-line"><strong>One system</strong><p data-en="Procedural knowledge, document production and field coordination were brought into one repeatable workflow." data-fr="Règles, documents et coordination terrain réunis dans un processus unique, reproductible et transmissible.">Procedural knowledge, document production and field coordination were brought into one repeatable workflow.</p></div>
+</div>
+</div>
+<div class="results-image"><img alt="Field worker using a tablet" src="assets/cile-worker-tablet-clean.webp"/></div>
+</div>
+</section>
+<section class="takeaways" id="takeaways">
+<div class="shell">
+<div class="section-head" data-reveal="">
+<div><p class="eyebrow" data-en="05 · What leaders can reuse" data-fr="05 · Principes transposables">05 · What leaders can reuse</p><h2 data-en="A replicable playbook, not just a project story." data-fr="Un cadre réplicable, au-delà du cas CILE.">A replicable playbook, not just a project story.</h2></div>
+<p class="section-copy" data-en="The most useful lesson is not how to reproduce this exact software. It is how to identify a constrained value pool and turn operational knowledge into a maintainable system." data-fr="L’enjeu n’est pas de reproduire ce logiciel. Il est d’identifier une création de valeur freinée par la complexité, puis de transformer la connaissance métier en un système exploitable, maintenable et gouvernable.">The most useful lesson is not how to reproduce this exact software. It is how to identify a constrained value pool and turn operational knowledge into a maintainable system.</p>
+</div>
+<div class="take-grid">
+<aside class="take-intro" data-reveal=""><h3 data-en="The governing principle" data-fr="Le principe de départ">The governing principle</h3><p data-en="Do not start with software. Start with a business opportunity whose value is blocked by a repeatable constraint." data-fr="Ne partez pas de la technologie. Partez d’une opportunité de valeur dont l’exécution est freinée par une contrainte récurrente.">Do not start with software. Start with a business opportunity whose value is blocked by a repeatable constraint.</p><span class="tag" data-en="Business opportunity discovery" data-fr="Business opportunity discovery">Business opportunity discovery</span></aside>
+<div class="principles">
+<article class="principle open"><button><span class="principle-index">1</span><strong data-en="Find constrained value" data-fr="Identifier la valeur bloquée">Find constrained value</strong><i>+</i></button><div class="principle-body"><div><p data-en="Look for a process where demand, economics or strategic intent are attractive, but one recurring bottleneck prevents scale. That constraint is often a better software brief than a list of desired features." data-fr="Ciblez un processus dont l’intérêt stratégique et économique est démontré, mais dont une friction récurrente empêche l’industrialisation. Ce frein constitue souvent un meilleur point de départ qu’une liste de fonctionnalités.">Look for a process where demand, economics or strategic intent are attractive, but one recurring bottleneck prevents scale. That constraint is often a better software brief than a list of desired features.</p></div></div></article>
+<article class="principle"><button><span class="principle-index">2</span><strong data-en="Map the real operating model" data-fr="Modéliser le fonctionnement réel">Map the real operating model</strong><i>+</i></button><div class="principle-body"><div><p data-en="Model roles, handoffs, exceptions, timing and failure modes before automating. Claude becomes dramatically more useful when the operating reality is explicit." data-fr="Formalisez les rôles, interfaces, exceptions, délais et points de rupture avant d’automatiser. Claude devient réellement performant lorsque la réalité opérationnelle est explicite.">Model roles, handoffs, exceptions, timing and failure modes before automating. Claude becomes dramatically more useful when the operating reality is explicit.</p></div></div></article>
+<article class="principle"><button><span class="principle-index">3</span><strong data-en="Separate data, rules and judgment" data-fr="Distinguer données, règles et arbitrages">Separate data, rules and judgment</strong><i>+</i></button><div class="principle-body"><div><p data-en="Store changing facts as data, deterministic requirements as rules, and ambiguous decisions as explicit human judgment. This separation makes the system easier to maintain and audit." data-fr="Traitez les faits évolutifs comme des données, les exigences stables comme des règles et les zones d’ambiguïté comme des arbitrages humains. Cette séparation améliore la maintenabilité, l’auditabilité et le contrôle.">Store changing facts as data, deterministic requirements as rules, and ambiguous decisions as explicit human judgment. This separation makes the system easier to maintain and audit.</p></div></div></article>
+<article class="principle"><button><span class="principle-index">4</span><strong data-en="Use Claude as a co-builder" data-fr="Faire de Claude un partenaire de build">Use Claude as a co-builder</strong><i>+</i></button><div class="principle-body"><div><p data-en="Give Claude the problem frame, source material, constraints, acceptance tests and permission boundaries. Ask it to plan before changing files, then verify outputs with observable evidence." data-fr="Fournissez à Claude le contexte métier, les sources, les contraintes, les critères d’acceptation et les limites d’accès. Exigez un plan avant toute modification, puis validez chaque résultat par des preuves vérifiables.">Give Claude the problem frame, source material, constraints, acceptance tests and permission boundaries. Ask it to plan before changing files, then verify outputs with observable evidence.</p></div></div></article>
+<article class="principle"><button><span class="principle-index">5</span><strong data-en="Industrialise ownership" data-fr="Industrialiser la gouvernance">Industrialise ownership</strong><i>+</i></button><div class="principle-body"><div><p data-en="A prototype creates value only when someone owns the data, rule updates, hosting, security, testing, change control and user adoption. Production readiness is an operating-model decision." data-fr="La valeur ne se matérialise que si les responsabilités sont explicites : qualité des données, mise à jour des règles, hébergement, sécurité, tests, gestion des changements et adoption. La mise en production est d’abord un choix de gouvernance et de modèle opératoire.">A prototype creates value only when someone owns the data, rule updates, hosting, security, testing, change control and user adoption. Production readiness is an operating-model decision.</p></div></div></article>
+</div>
+</div>
+</div>
+</section>
+<section class="production" id="production">
+<div class="shell">
+<div class="section-head" data-reveal="">
+<div><p class="eyebrow" data-en="06 · From prototype to production" data-fr="06 · De la preuve de concept à l’exploitation">06 · From prototype to production</p><h2 data-en="The questions a project leader must force into the room." data-fr="Les décisions à prendre avant de passer à l’échelle.">The questions a project leader must force into the room.</h2></div>
+<p class="section-copy" data-en="AI can accelerate implementation. It does not remove the need to make explicit decisions about ownership, risk and the future operating model." data-fr="L’IA accélère le développement ; elle ne tranche ni les responsabilités, ni les risques, ni le modèle d’exploitation cible.">AI can accelerate implementation. It does not remove the need to make explicit decisions about ownership, risk and the future operating model.</p>
+</div>
+<div class="readiness">
+<article class="ready-card" data-reveal=""><span>1</span><h3>Data</h3><p data-en="What data enters the system, who owns it, how is it versioned, and what may be shared with a model provider?" data-fr="Quelles données sont utilisées ? Qui en est responsable ? Comment sont-elles versionnées, contrôlées et éventuellement partagées avec le fournisseur du modèle ?">What data enters the system, who owns it, how is it versioned, and what may be shared with a model provider?</p></article>
+<article class="ready-card" data-reveal=""><span>2</span><h3 data-en="Hosting" data-fr="Architecture &amp; hébergement">Hosting</h3><p data-en="Is a static client-side application sufficient, or do multi-user workflows require an API, database and identity layer?" data-fr="Une architecture locale ou statique suffit-elle, ou le passage à plusieurs utilisateurs impose-t-il une API, une base de données et une gestion des identités ?">Is a static client-side application sufficient, or do multi-user workflows require an API, database and identity layer?</p></article>
+<article class="ready-card" data-reveal=""><span>3</span><h3 data-en="Cybersecurity" data-fr="Cybersécurité">Cybersecurity</h3><p data-en="What are the trust boundaries, permissions, external dependencies, fallback paths and audit requirements?" data-fr="Quels sont les périmètres de confiance, droits d’accès, dépendances critiques, modes dégradés et exigences de traçabilité ?">What are the trust boundaries, permissions, external dependencies, fallback paths and audit requirements?</p></article>
+<article class="ready-card" data-reveal=""><span>4</span><h3 data-en="Legal &amp; privacy" data-fr="Juridique &amp; protection des données">Legal &amp; privacy</h3><p data-en="Are personal, contractual or regulated data involved? Which processing, retention and accountability rules apply?" data-fr="Le système traite-t-il des données personnelles, contractuelles ou réglementées ? Quelles règles de traitement, de conservation et de responsabilité s’appliquent ?">Are personal, contractual or regulated data involved? Which processing, retention and accountability rules apply?</p></article>
+<article class="ready-card" data-reveal=""><span>5</span><h3 data-en="Testing &amp; reliability" data-fr="Qualité &amp; résilience">Testing &amp; reliability</h3><p data-en="Which rules are business-critical, what evidence proves correctness, and what happens when an external service fails?" data-fr="Quelles règles conditionnent le résultat métier ? Quelles preuves attestent leur fiabilité ? Comment le service fonctionne-t-il en mode dégradé ?">Which rules are business-critical, what evidence proves correctness, and what happens when an external service fails?</p></article>
+<article class="ready-card" data-reveal=""><span>6</span><h3 data-en="Maintenance &amp; adoption" data-fr="Exploitation &amp; adoption">Maintenance &amp; adoption</h3><p data-en="Who updates the rules, supports users, trains new operators and decides when the product should evolve?" data-fr="Qui maintient le référentiel, accompagne les utilisateurs, forme les nouveaux opérateurs et arbitre les évolutions du produit ?">Who updates the rules, supports users, trains new operators and decides when the product should evolve?</p></article>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="shell">
+<div class="cta-box" data-reveal="">
+<h2 data-en="The strongest AI projects begin with a business constraint worth removing." data-fr="Les projets IA les plus solides commencent par une opportunité de valeur clairement identifiée — pas par la technologie.">The strongest AI projects begin with a business constraint worth removing.</h2>
+<a class="cta-link" data-en="Discuss a project →" data-fr="Échanger sur un projet →" href="mailto:valentinangenot@icloud.com">Discuss a project →</a>
 </div>
 </div>
 </section>
 </main>
-<footer>
-<div class="footer-inner shell">
-<span>© 2026 Valentin Angenot</span>
-<span data-en="Software · Operations · Engineering" data-fr="Logiciel · Opérations · Ingénierie">Software · Operations · Engineering</span>
-</div>
-</footer>
+<footer><div class="shell footer-inner"><span>© 2026 Valentin Angenot</span><a data-en="Back to selected work" data-fr="Retour aux projets sélectionnés" href="index.html#work">Back to selected work</a></div></footer>
 <script>
-    (function () {
-      "use strict";
+  const header = document.getElementById('siteHeader');
+  const progress = document.getElementById('progress');
+  const chapterLinks = [...document.querySelectorAll('.chapter-nav a')];
+  const chapters = chapterLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-      var progress = document.getElementById("progress");
-      var ticking = false;
+  function onScroll(){
+    header.classList.toggle('scrolled', scrollY > 28);
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+    let current = chapters[0]?.id;
+    chapters.forEach(section => { if(section.getBoundingClientRect().top <= 170) current = section.id; });
+    chapterLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-      function updateProgress() {
-        var height = document.documentElement.scrollHeight - window.innerHeight;
-        var ratio = height > 0 ? window.scrollY / height : 0;
-        progress.style.width = Math.min(100, Math.max(0, ratio * 100)) + "%";
-        ticking = false;
-      }
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} }), {threshold:.12});
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-      window.addEventListener("scroll", function () {
-        if (!ticking) {
-          window.requestAnimationFrame(updateProgress);
-          ticking = true;
-        }
-      }, { passive: true });
+  const tabs = [...document.querySelectorAll('.walk-tab')];
+  const slides = [...document.querySelectorAll('.walk-slide')];
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    const index = Number(tab.dataset.slide);
+    tabs.forEach((t,i) => t.classList.toggle('active', i === index));
+    slides.forEach((s,i) => s.classList.toggle('active', i === index));
+  }));
 
-      updateProgress();
-    })();
-  </script>
+  document.querySelectorAll('.principle button').forEach(button => button.addEventListener('click', () => button.closest('.principle').classList.toggle('open')));
 
-  <script>
-    (function () {
-      "use strict";
-      var body = document.body;
-      var swaps = document.querySelectorAll("[data-en]");
-      var ATTRS = ["aria-label", "alt", "title"];
-
-      function setLang(l) {
-        document.documentElement.setAttribute("lang", l);
-        swaps.forEach(function (el) {
-          el.innerHTML = el.getAttribute("data-" + l) || el.getAttribute("data-en");
-        });
-        ATTRS.forEach(function (a) {
-          document.querySelectorAll("[data-" + a + "-fr]").forEach(function (el) {
-            el.setAttribute(a, el.getAttribute("data-" + a + "-" + l));
-          });
-        });
-        var t = body.getAttribute("data-title-" + l);
-        if (t) document.title = t;
-        var sel = document.getElementById("langSelect");
-        if (sel && sel.value !== l) sel.value = l;
-        try { localStorage.setItem("va_lang", l); } catch (e) {}
-      }
-
-      var saved = null;
-      try { saved = localStorage.getItem("va_lang"); } catch (e) {}
-      var initial = saved || "en";
-      if (initial !== "en") setLang(initial);
-
-      var sel = document.getElementById("langSelect");
-      if (sel) {
-        sel.value = initial;
-        sel.addEventListener("change", function () { setLang(sel.value); });
-      }
-    })();
-  </script>
-
-  <script>
-    (function () {
-      "use strict";
-      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      /* Header shadow */
-      var header = document.querySelector(".site-header");
-      window.addEventListener("scroll", function () {
-        header.classList.toggle("scrolled", window.scrollY > 8);
-      }, { passive: true });
-
-      /* Scroll reveals */
-      var targets = document.querySelectorAll(
-        ".story h2, .article-column > p, blockquote, .solution-figure, .system-figure, .dive, .result-table, .report-grid, .author-inner"
-      );
-      targets.forEach(function (el) { el.classList.add("reveal"); });
-
-      /* Staggered grids */
-      [".case-facts .fact", ".module-grid .module", ".result-table .result-row"].forEach(function (sel) {
-        document.querySelectorAll(sel).forEach(function (el, i) {
-          el.classList.add("reveal");
-          el.style.setProperty("--d", (i * 90) + "ms");
-        });
-      });
-
-      var all = document.querySelectorAll(".reveal");
-      if (reduced || !("IntersectionObserver" in window)) {
-        all.forEach(function (el) { el.classList.add("in"); });
-      } else {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.classList.add("in");
-              io.unobserve(e.target);
-            }
-          });
-        }, { rootMargin: "0px 0px -8% 0px", threshold: .08 });
-        all.forEach(function (el) { io.observe(el); });
-      }
-
-      /* Count-up on the "24" fact */
-      var facts = document.querySelectorAll(".fact strong");
-      facts.forEach(function (el) {
-        var raw = el.textContent.trim();
-        if (!/^\d+$/.test(raw) || reduced) return;
-        var target = parseInt(raw, 10);
-        var done = false;
-        var io2 = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (!e.isIntersecting || done) return;
-            done = true;
-            var t0 = null;
-            function step(ts) {
-              if (!t0) t0 = ts;
-              var p = Math.min(1, (ts - t0) / 900);
-              el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
-              if (p < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-            io2.unobserve(el);
-          });
-        }, { threshold: .5 });
-        io2.observe(el);
-      });
-    })();
-  </script>
+  const languageButtons = [...document.querySelectorAll('[data-lang]')];
+  function setLanguage(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en][data-fr]').forEach(el => {
+      const value = el.dataset[lang];
+      if(value !== undefined) el.innerHTML = value;
+    });
+    languageButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    localStorage.setItem('cileCaseLang', lang);
+  }
+  languageButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+  setLanguage(localStorage.getItem('cileCaseLang') || 'en');
+</script>
 </body>
 </html>
