@@ -18,7 +18,7 @@
 <meta content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" property="og:title"/>
 <meta content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering." property="og:description"/>
 <meta content="https://valentinangenot.com/" property="og:url"/>
-<meta content="https://valentinangenot.com/img/og-image.jpg" property="og:image"/>
+<meta content="https://valentinangenot.com/og-image.jpg" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="image/jpeg" property="og:image:type"/>
@@ -28,11 +28,11 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" name="twitter:title"/>
 <meta content="Business Engineer. Industrial Engineer. CFA Level I passed. Two-time valedictorian with experience across strategy, AI, finance and field engineering." name="twitter:description"/>
-<meta content="https://valentinangenot.com/img/og-image.jpg" name="twitter:image"/>
+<meta content="https://valentinangenot.com/og-image.jpg" name="twitter:image"/>
 <link href="https://valentinangenot.com/" rel="canonical"/>
 <link href="https://valentinangenot.com/" hreflang="en" rel="alternate"/>
 <link href="https://valentinangenot.com/" hreflang="x-default" rel="alternate"/>
-<link as="image" href="img/hero-1280.avif" imagesizes="100vw" imagesrcset="img/hero-640.avif 640w, img/hero-960.avif 960w, img/hero-1280.avif 1280w, img/hero-1600.avif 1600w, img/hero-1920.avif 1920w, img/hero-2560.avif 2560w" rel="preload" type="image/avif"/>
+<link as="image" href="hero-1280.avif" imagesizes="100vw" imagesrcset="hero-640.avif 640w, hero-960.avif 960w, hero-1280.avif 1280w, hero-1600.avif 1600w, hero-1920.avif 1920w, hero-2560.avif 2560w" rel="preload" type="image/avif"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet"/>
@@ -42,7 +42,7 @@
     "@type": "Person",
     "name": "Valentin Angenot",
     "url": "https://valentinangenot.com/",
-    "image": "https://valentinangenot.com/img/hero-1600.jpg",
+    "image": "https://valentinangenot.com/hero-1600.jpg",
     "email": "mailto:valentinangenot@icloud.com",
     "jobTitle": "Business Engineer and Industrial Engineer",
     "homeLocation": {
@@ -112,8 +112,11 @@
       scroll-padding-top: 88px;
     }
 
+    html { overflow-x: hidden; }
+
     body {
       margin: 0;
+      overflow-x: hidden;
       background: var(--paper);
       color: var(--ink);
       font-family: var(--sans);
@@ -455,6 +458,7 @@
       position: relative;
       min-height: 780px;
       height: 100svh;
+      height: 100dvh;
       max-height: 1000px;
       display: flex;
       align-items: flex-end;
@@ -1973,15 +1977,26 @@
       .nav-actions .cv-link { display: none; }
 
       .hero {
-        min-height: 820px;
-        max-height: 940px;
+        min-height: 0;
+        height: auto;
+        max-height: none;
+        padding-top: 132px;
       }
+
+      .hero-content { padding-bottom: 44px; }
+
+      /* comfortable tap targets on touch screens */
+      .nav-actions a,
+      .lang-select-input,
+      .case-action,
+      .work-row,
+      .writing-row { min-height: 44px; }
 
       .hero::after {
         background: linear-gradient(0deg, rgba(4, 6, 9, .96) 0%, rgba(4, 6, 9, .54) 55%, rgba(4, 6, 9, .2) 100%);
       }
 
-      h1 { font-size: 46px; }
+      h1 { font-size: clamp(38px, 11.5vw, 46px); }
       .hero-credentials { font-size: 13px; }
 
       .hero-interview {
@@ -2157,7 +2172,7 @@
     }
   </style>
 </head>
-<body data-title-en="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" data-title-fr="Valentin Angenot | Stratégie, Finance, IA &amp; Ingénierie">
+<body data-page="home" data-title-en="Valentin Angenot | Strategy, Finance, AI &amp; Engineering" data-title-fr="Valentin Angenot | Stratégie, Finance, IA &amp; Ingénierie">
 <a class="skip-link" data-en="Skip to content" data-fr="Aller au contenu" href="#main">Skip to content</a>
 <header class="site-header" id="siteHeader">
 <nav aria-label="Primary navigation" class="nav shell">
@@ -2220,9 +2235,9 @@
 <main id="main">
 <section aria-labelledby="hero-title" class="hero" id="top">
 <picture class="hero-picture">
-<source sizes="100vw" srcset="img/hero-640.avif 640w, img/hero-960.avif 960w, img/hero-1280.avif 1280w, img/hero-1600.avif 1600w, img/hero-1920.avif 1920w, img/hero-2560.avif 2560w" type="image/avif"/>
-<source sizes="100vw" srcset="img/hero-640.webp 640w, img/hero-960.webp 960w, img/hero-1280.webp 1280w, img/hero-1600.webp 1600w, img/hero-1920.webp 1920w, img/hero-2560.webp 2560w" type="image/webp"/>
-<img alt="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI." class="hero-media" fetchpriority="high" height="1066" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/img/hero-1600.jpg'}" src="img/hero-1600.jpg" width="1600"/>
+<source sizes="100vw" srcset="hero-640.avif 640w, hero-960.avif 960w, hero-1280.avif 1280w, hero-1600.avif 1600w, hero-1920.avif 1920w, hero-2560.avif 2560w" type="image/avif"/>
+<source sizes="100vw" srcset="hero-640.webp 640w, hero-960.webp 960w, hero-1280.webp 1280w, hero-1600.webp 1600w, hero-1920.webp 1920w, hero-2560.webp 2560w" type="image/webp"/>
+<img alt="Valentin Angenot speaking during a panel discussion on digital transformation and applied AI." class="hero-media" fetchpriority="high" height="1066" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='https://valentinangenot.com/hero-1600.jpg'}" src="hero-1600.jpg" width="1600"/>
 </picture>
 <div class="shell">
 <div class="hero-content hero-stagger">
@@ -3042,5 +3057,114 @@
       });
     })();
   </script>
+
+<!-- ANALYTICS -------------------------------------------------------------
+     1. Google Analytics 4: replace G-XXXXXXXXXX (both places) with your
+        Measurement ID from analytics.google.com.
+     2. Umami (optional, privacy-friendly, no cookie banner needed): replace
+        the data-website-id, or delete that one line if you only want GA4.
+     Events below are sent to whichever of the two is present.
+------------------------------------------------------------------------- -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "G-XXXXXXXXXX");
+</script>
+
+<script defer src="https://cloud.umami.is/script.js" data-website-id="REPLACE-WITH-YOUR-WEBSITE-ID"></script>
+
+<script>
+  (function () {
+    "use strict";
+
+    /* Provider-agnostic event helper: works with Umami, Plausible, GoatCounter or GA4. */
+    function track(name, props) {
+      props = props || {};
+      try { if (typeof window.gtag === "function") window.gtag("event", name, props); } catch (e) {}
+      try { if (window.umami && window.umami.track) window.umami.track(name, props); } catch (e) {}
+      try { if (typeof window.plausible === "function") window.plausible(name, { props: props }); } catch (e) {}
+      try {
+        if (window.goatcounter && window.goatcounter.count) {
+          window.goatcounter.count({ path: name, title: name, event: true });
+        }
+      } catch (e) {}
+    }
+    window.vaTrack = track;
+
+    /* 1. Outbound and download clicks */
+    document.addEventListener("click", function (ev) {
+      var a = ev.target && ev.target.closest ? ev.target.closest("a") : null;
+      if (!a || !a.getAttribute("href")) return;
+      var href = a.getAttribute("href");
+      var label = (a.textContent || "").trim().slice(0, 60);
+
+      if (/\.pdf($|\?)/i.test(href)) {
+        track("pdf_open", { file: href.split("/").pop(), label: label });
+      } else if (href.indexOf("linkedin.com") > -1) {
+        track("linkedin_click", { label: label });
+      } else if (href.indexOf("mailto:") === 0) {
+        track("email_click", {});
+      } else if (href.indexOf("case-study") > -1) {
+        track("case_study_open", { label: label });
+      } else if (/^https?:/i.test(href) && href.indexOf(location.host) === -1) {
+        track("outbound_click", { url: href.split("?")[0].slice(0, 90) });
+      }
+    });
+
+    /* 2. Interview opens and language switches */
+    var interview = document.querySelector(".js-open-interview");
+    if (interview) interview.addEventListener("click", function () { track("interview_open", {}); });
+
+    var langSelect = document.getElementById("langSelect");
+    if (langSelect) langSelect.addEventListener("change", function () {
+      track("language_switch", { to: langSelect.value });
+    });
+
+    /* 3. Reading depth and genuine reads */
+    var marks = [25, 50, 75, 100];
+    var fired = {};
+    var started = Date.now();
+    var readSent = false;
+    var page = document.body.getAttribute("data-page") || (location.pathname.indexOf("case-study") > -1 ? "case_study" : "home");
+
+    function onScroll() {
+      var doc = document.documentElement;
+      var height = doc.scrollHeight - window.innerHeight;
+      var pct = height > 0 ? Math.round((window.scrollY / height) * 100) : 100;
+
+      for (var i = 0; i < marks.length; i++) {
+        var m = marks[i];
+        if (pct >= m && !fired[m]) {
+          fired[m] = true;
+          track("scroll_depth", { page: page, depth: m });
+        }
+      }
+
+      /* A "read" = past 70% and more than 45 seconds on the page. */
+      if (!readSent && pct >= 70 && (Date.now() - started) > 45000) {
+        readSent = true;
+        track("article_read", { page: page });
+      }
+    }
+
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+    }, { passive: true });
+
+    /* 4. Time on page, sent once when leaving */
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState !== "hidden") return;
+      var seconds = Math.round((Date.now() - started) / 1000);
+      if (seconds < 5 || window.__vaTimeSent) return;
+      window.__vaTimeSent = true;
+      track("time_on_page", { page: page, seconds: seconds });
+    });
+  })();
+</script>
 </body>
 </html>
