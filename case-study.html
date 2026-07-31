@@ -257,6 +257,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .whoami-links a.primary{background:var(--blue);border-color:var(--blue)}
     .whoami-links a.primary:hover{background:#0f4df0}
 
+    @media(max-width:1180px) and (min-width:981px){
+      .shell{width:min(calc(100% - 40px),var(--max))}
+      .hero{min-height:720px;padding:132px 0 64px}
+      .section-head{gap:36px}
+      .walkthrough{grid-template-columns:270px minmax(0,1fr);gap:24px}
+      .metric strong{font-size:26px}
+      .nav-links{gap:14px;font-size:11.5px}
+      section{padding:84px 0}
+    }
+
     @media(max-width:980px){
       .nav-links a:not(.back){display:none}
       .hero{min-height:0;height:auto;padding-bottom:56px}
