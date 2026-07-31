@@ -2191,6 +2191,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .work-row,
       .writing-row { min-height: 44px; }
 
+      /* Micro-labels are legible at 9-10px on a desktop screen, less so held at arm's length */
+      .experience-chip { font-size: 11.5px; }
+      .experience-date,
+      .experience-kind,
+      .cert-issuer,
+      .work-year,
+      .credential-label,
+      .case-index,
+      .interview-brand,
+      .language-note { font-size: 11px; }
+
+      /* comfortable touch targets */
+      .lang-toggle button { min-height: 40px; padding: 0 13px; }
+      .experience-filter { min-height: 40px; }
+
       .hero::after {
         background: linear-gradient(0deg, rgba(4, 6, 9, .96) 0%, rgba(4, 6, 9, .54) 55%, rgba(4, 6, 9, .2) 100%);
       }
@@ -2643,6 +2658,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .experience-toggle-icon { width: 32px; height: 32px; flex-basis: 32px; }
     .experience-panel { padding: 0 30px 30px; }
+
+    /* micro-labels need a little more size when the screen is held in one hand */
+    @media (max-width: 820px) {
+      .experience-chip { font-size: 11.5px; }
+      .action-note { font-size: 11px; }
+      .brand-mark { font-size: 10px; }
+    }
 
     .case-featured {
       grid-template-columns: minmax(0, 1fr) minmax(390px, .9fr);
